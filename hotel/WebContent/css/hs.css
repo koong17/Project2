@@ -3,8 +3,10 @@
 .m {
 	margin: 0.5rem;
 	display: inline-block;
+	
 }
 
 .marginAuto {
-	text-align: center;
+	 margin: 0rem 13rem;
+
 }

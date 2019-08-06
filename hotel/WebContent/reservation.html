@@ -109,38 +109,40 @@
 		<h1 class="mt-4 mb-3">예약</h1>
 		<!-- 예약 바 -->
 		<!-- <form action="reservation.html" method="post" name="reservationForm"> -->
-		
 		<ul class="breadcrumb">
+		<table class="marginAuto"><tr>
 			<!-- 체크인 -->
-			<li class="m">
+			<td class="m" >
 			<div class="input-group date">
-				<input type="text" class="form-control" value="체크인"> 
+				<input type="text" class="form-control" value="체크인" id="checkIn"> 
 				<span class="input-group-addon"> 
-				<i class="glyphicon glyphicon-calendar">
-				</i></span>
-			</div></li>
+				<span  class="glyphicon glyphicon-calendar">
+				</span></span>
+			</div></td>
 			<!-- 체크아웃 -->
-			<li class="m">
+			<td class="m">
 			<div class="input-group date">
-				<input type="text" class="form-control" value="체크아웃"> 
+				<input type="text" class="form-control" value="체크아웃" id="checkOut"> 
 				<span class="input-group-addon"> 
-				<i class="glyphicon glyphicon-calendar">
-				</i></span>
-			</div></li>
+				<span class="glyphicon glyphicon-calendar">
+				</span></span>
+			</div></td>
 	
 			<!-- 인원수 -->
-			<li class="m">
+			<td class="m">
+			<div>
 			<select class="browser-default custom-select">
-					<option selected>&nbsp;&nbsp;인원수</option>
+					<option selected>인원수</option>
 					<option value="num1">1</option>
 					<option value="num2">2</option>
 					<option value="num3">3</option>
 					<option value="num3">4</option>
-			</select></li>
+			</select></div></td>
 			
 			<!-- 검색 submit 버튼 -->
-			<li class="m">
- 			<button class="btn btn-primary" id="searchbtn">검색</button></li>
+			<td class="m"><div>
+ 			<button class="btn btn-primary" id="searchbtn">검색</button></div></td>
+ 		</tr></table>
 		</ul> 
 		<!-- </form> -->
 		</div>
