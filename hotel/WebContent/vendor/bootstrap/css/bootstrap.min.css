@@ -571,6 +571,11 @@ pre code {
 	margin-left: -15px
 }
 
+.rows {
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
 .no-gutters {
 	margin-right: 0;
 	margin-left: 0
@@ -6459,6 +6464,31 @@ a.close.disabled {
 	position: absolute;
 	right: 15%;
 	bottom: 20px;
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-align: center
+}
+
+.carousel-login {
+	position: absolute;
+	right: 15%;
+	bottom: 30px;
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-align: center
+}
+
+
+.carousel-join {
+	position: absolute;
+	right: 15%;
+	bottom: 30px;
 	left: 15%;
 	z-index: 10;
 	padding-top: 20px;
