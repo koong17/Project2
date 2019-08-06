@@ -57,12 +57,47 @@
   <!-- ./nav -->
 
   <!-- Page Content -->
-  <div class="container" height="1000px">
+  <div class="container" style="height: 800px">
 
-	<!-- 내용 채우기 -->
+		<!-- 내용 채우기 -->
 	
+	<form action = "boardUpdatePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
 	
-	ihiihihihi
+		<table>
+		
+		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
+		
+		<tr> <!-- 닉네임 -->
+			<td width="70" align = "center"> <label for="board_nick"> 닉 네 임</label></td>
+			<td width="100">
+			<input type="text" class="form-control" size= "10" maxlength="10" name ="board_nick" placeholder="닉네임을 입력하세요">
+			</td>
+		</tr>
+		<tr> <!-- 제목 -->
+			<td width="70" align = "center"> 제  목</td>
+			<td width="100">
+			<input type="text" class="form-control" size= "35" maxlength="30" 
+			name ="board_title" placeholder="제목을 입력하세요">
+			</td>
+		</tr>
+		<!--  --------------------------------------------------------------------------------------------- -->
+		<tr>
+			<td width="70" align = "center"> 내  용</td>
+			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" >
+			</textarea>
+			</td>
+		</tr>
+	</table>
+			
+		<br>
+		&emsp;&emsp;&emsp;&emsp;	
+  		<button class="btn btn-primary btn-lg" onclick="window.location='boardList.jsp' ">목록가기</button>
+  		
+ 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
+
+		
+		
+	</form>
 	
   </div>
   <!-- /.container -->
