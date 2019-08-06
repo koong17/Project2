@@ -38,5 +38,4 @@ public class BoardVO implements Serializable {
 	public void setBoard_date(Timestamp board_date) {
 		this.board_date = board_date;
 	}
-	
 }

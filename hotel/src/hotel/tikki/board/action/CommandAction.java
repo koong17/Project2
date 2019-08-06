@@ -3,7 +3,8 @@ package hotel.tikki.board.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// ìš”ì²­ íŒŒë¼ë¯¸í„°ë¡œ ëª…ë ¹ì–´ë¥¼ ì „ë‹¬í•˜ëŠ” ë°©ì‹ì˜ ìˆ˜í¼ ì¸í„°í˜ì´ìŠ¤
+// ¿äÃ» ÆÄ¶ó¹ÌÅÍ·Î ¸í·É¾î¸¦ Àü´ŞÇÏ´Â ¹æ½ÄÀÇ ¼öÆÛ ÀÎÅÍÆäÀÌ½º
+
 public interface CommandAction {
 	
 	public String process(HttpServletRequest request, 

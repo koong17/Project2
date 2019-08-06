@@ -17,6 +17,9 @@
 
   <!-- Custom styles for this template -->
   <link href="/hotel/css/modern-business.css" rel="stylesheet">
+  
+  <link href="/hotel/css/boardForm.css" rel="stylesheet">
+  
 
 </head>
 
@@ -57,44 +60,49 @@
   <!-- ./nav -->
 
   <!-- Page Content -->
-  <div class="container" style="height: 700px">
+  <div class="container" style="height: 800px">
 
 	<!-- 내용 채우기 -->
-	<center><b>글쓰기</b></center><br>
-	<form action = "writePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
 	
-		<table width='400' border='1' cellspacing='0' cellpadding='0' align="center">
+	<form action = "boardWritePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
+	
+		<table>
 		
-		<tr>
-			<td align = "right" colspan="2" >
-			<a href = "boardList.jsp"> 글목록 보기</a>
+		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
+		
+		<tr> <!-- 닉네임 -->
+			<td width="70" align = "center"> <label for="board_nick"> 닉 네 임</label></td>
+			<td width="100">
+			<input type="text" class="form-control" size= "10" maxlength="10" name ="board_nick" placeholder="닉네임을 입력하세요">
 			</td>
 		</tr>
-		<tr>
-			<td width="70" align = "center"> 닉 네 임</td>
-			<td width="330"><input type="text" size= "10" maxlength="10" name ="board_nick"></td>
-		</tr>
-		<tr>
+		<tr> <!-- 제목 -->
 			<td width="70" align = "center"> 제  목</td>
-			<td width="330">
-			<!-- 	답변인것에 대한 처리 -->
-			
-			<input type= "text" size = "40" maxlength="50" name = "board_title"></td>
+			<td width="100">
+			<input type="text" class="form-control" size= "35" maxlength="30" 
+			name ="board_title" placeholder="제목을 입력하세요">
+			</td>
 		</tr>
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="330"><textarea rows="13" cols="40" name = "board_content"></textarea></td>
+			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" >
+			</textarea>
+			</td>
 		</tr>
-		<tr>
-			<td align="center" colspan="2">
-			<input type = "submit" value = "글쓰기">
-			<input type= "reset" value = "다시작성">
-			<input type ="button" value = "목록보기" onclick="window.location='boardList.jsp' ">
-		</tr>
-		</table>
+	</table>
+			
+		<br>
+		&emsp;&emsp;&emsp;&emsp;	
+  		<button class="btn btn-primary btn-lg" onclick="window.location='boardList.jsp' ">목록가기</button>
+  		
+ 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
+
+		
+		
 	</form>
 	
+
   </div>
   <!-- /.container -->
 
