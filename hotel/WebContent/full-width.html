@@ -11,11 +11,47 @@
 
 <title>HOTEL TIKKI</title>
 
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
+
+<!-- datePicker -->
+<script src="vendor/jquery/jquery.js">
+	
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+<script type='text/javascript'
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.kr.js" charset="UTF-8"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+
+<!-- 
+<script src="vendor/bootstrap/js/bootstrap.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" > </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" ></script> 
+-->
+
+
+<script type='text/javascript'>
+	$(function() {
+		$('.input-group.date').datepicker({
+			calendarWeeks : false,
+			todayHighlight : true,
+			autoclose : true,
+			format : "yyyy/mm/dd",
+			language : "kr"
+		});
+	});
+</script>
+
 
 
 <style>
@@ -45,8 +81,7 @@
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownPortfolio" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> 객실소개 </a>
-					<!--  포트폴리오1 -> single portfolio item -->
+						aria-haspopup="true" aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
 							<a class="dropdown-item" href="portfolio-item.html">room1</a> <a
@@ -68,28 +103,51 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">예약</h1>
-
+		
 		<ol class="breadcrumb">
-			<!-- <li class="breadcrumb-item active">룸타입</li> -->
-			<li class="breadcrumb-item active">
-			<select class="browser-default custom-select">
+		<form action="reservation.do" method="post" name="reservationForm">  
+ 			<!-- <li class="breadcrumb-item active">룸타입</li> -->
+			<li class="breadcrumb-item active"><select
+				class="browser-default custom-select">
 					<option selected>객실 유형</option>
 					<option value="room1">room1</option>
 					<option value="room2">room2</option>
 					<option value="room3">room3</option>
 			</select></li>
-			<!-- 체크인 -->
-			<!-- 체크아웃 -->
-			<!-- 인원수 -->
-			
-		</ol>
 
-		<p>
-			Most of Start Bootstrap's unstyled templates can be directly
-			integrated into the Modern Business template. You can view all of our
-			unstyled templates on our website at <a
-				href="http://startbootstrap.com/template-categories/unstyled">http://startbootstrap.com/template-categories/unstyled</a>.
-		</p>
+
+			<!-- 체크인 -->
+			<div class="input-group date">
+				<input type="text" class="form-control" value="체크인"> 
+				<span class="input-group-addon"> 
+				<i class="glyphicon glyphicon-calendar">
+				</i></span>
+			</div> 
+			<!-- 체크아웃 -->
+			<div class="input-group date">
+				<input type="text" class="form-control" value="체크아웃"> 
+				<span class="input-group-addon"> 
+				<i class="glyphicon glyphicon-calendar">
+				</i></span>
+			</div>
+	
+			<!-- 인원수 -->
+			<li class="breadcrumb-item active">
+			<select class="browser-default custom-select">
+					<option selected>인원수</option>
+					<option value="num1">1</option>
+					<option value="num2">2</option>
+					<option value="num3">3</option>
+					<option value="num3">4</option>
+			</select></li>
+			
+			<button type="submit" class="btn btn-primary">확인</button>
+		</form>		
+		</ol>
+		
+	<p align="center">
+		방타입, 날짜, 인원을 선택 후 확인 버튼을 눌러주세요.
+	</p>
 
 	</div>
 	<!-- /.container -->
@@ -102,10 +160,6 @@
 		</div>
 		<!-- /.container -->
 	</footer>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
