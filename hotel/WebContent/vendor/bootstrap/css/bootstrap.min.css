@@ -4253,7 +4253,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	background-size: 100% 100%
 }
 
-
 @media ( max-width :575.98px) {
 	.navbar-expand-sm>.container, .navbar-expand-sm>.container-fluid {
 		padding-right: 0;
