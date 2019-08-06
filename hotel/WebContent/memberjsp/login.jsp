@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="hotel.tikki.member.model.*" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -17,15 +19,14 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
+<script src="js/inho.js"></script>
 </head>
-
-
 
 <body>
 	<!------ Include the above in your HEAD tag ---------->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">TIKKI</a> <a
+			<a class="navbar-brand" href="index.go">TIKKI</a> <a
 				class="navbar-login" href="login.go">로그인</a> <a
 				class="navbar-login" href="join.go">회원가입</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -72,11 +73,11 @@
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address">
+										class="form-control input-lg" placeholder="Email Address" required="required">
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password">
+										class="form-control input-lg" placeholder="Password"  required="required">
 								</div>
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
@@ -90,7 +91,7 @@
 											value="로그인">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
-										<a href="join.html" class="btn btn-lg btn-primary btn-block">회원가입</a>
+										<a href="join.go" class="btn btn-lg btn-primary btn-block">회원가입</a>
 									</div>
 								</div>
 							</fieldset>
@@ -109,5 +110,6 @@
     </div>
     <!-- /.container -->
   </footer>
+ 
 </body>
 </html>

@@ -1,6 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="utf-8">
-
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -17,6 +18,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
+<script src="js/inho.js"></script>
 </head>
 
 
@@ -25,7 +27,7 @@
 	<!------ Include the above in your HEAD tag ---------->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">TIKKI</a> <a
+			<a class="navbar-brand" href="index.go">TIKKI</a> <a
 				class="navbar-login" href="login.go">로그인</a> <a
 				class="navbar-login" href="join.go">회원가입</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -66,25 +68,26 @@
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="joinform" action="joinPro.go">
+						<form role="form" method="post" name="joinform" action="joinPro.go" onsubmit="return validate();">
 							<fieldset>
 								<h2>TIKKI에 오신 것을 환영합니다.</h2>
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address">
+										class="form-control input-lg" placeholder="Email Address" required="required">
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password">
+										class="form-control input-lg" placeholder="Password" required="required">
 								</div>
 								<div class="form-group">
 									<input type="text" name="nickname" id="nickname"
-										class="form-control input-lg" placeholder="nickname">
+										class="form-control input-lg" placeholder="nickname" required="required">
 								</div>
 								<div class="form-group">
 									<input type="text" name="phone" id="phone"
-										class="form-control input-lg" placeholder="phone">
+										class="form-control input-lg" 
+										placeholder="phone              ex)01012341234" required="required">
 								</div>		
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>

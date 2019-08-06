@@ -86,8 +86,8 @@ public class MemberDAO {
 		return result;
 	} 
 	
-	public int memberLoginCheck(String id, String pwd) throws Exception {  // 유저, 비번 체크해서 로그인 성공 여부 (성공 1, 실패 -1) 
-		String sql = "SELECT PASSWD FROM MEMBER WHERE ID = ?";
+	public int memberLoginCheck(String id, String password) throws Exception {  // 유저, 비번 체크해서 로그인 성공 여부 (성공 1, 실패 -1) 
+		String sql = "SELECT PASSWORD FROM MEMBER WHERE ID = ?";
 		String dbpwd = "";
 		int result = -1;
 		
@@ -97,8 +97,8 @@ public class MemberDAO {
 		ResultSet rs = pstmt.executeQuery();
 		
 		if( rs.next() ) {  //id check
-			dbpwd = rs.getString("passwd");
-			if( dbpwd.equals(pwd)) result = 1;  
+			dbpwd = rs.getString("password");
+			if( dbpwd.equals(password)) result = 1;  
 			
 		}else {
 			result = -1;  

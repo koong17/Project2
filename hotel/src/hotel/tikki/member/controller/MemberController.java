@@ -8,11 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import hotel.tikki.member.action.JoinFormProAction;
 import hotel.tikki.member.action.LoginFormProAction;
 import hotel.tikki.member.action.MemberAction;
-
 
 @WebServlet("*.go")
 public class MemberController extends HttpServlet {
@@ -33,33 +33,41 @@ public class MemberController extends HttpServlet {
 		System.out.println(requestURI);
 		System.out.println(contextPath);
 		System.out.println(com);
-		
+
 		MemberAction action = null;
 		String nextPage = "";
-		
-		if(com.equals("/join.go")) { 
-			nextPage="memberhtml/join.html";
+
+		if (com.equals("/join.go")) {
+			nextPage = "memberjsp/join.jsp";
+			
 		} else if (com.equals("/joinPro.go")) {
 			action = new JoinFormProAction();
 			try {
 				action.process(request, response);
+				nextPage = "memberjsp/joinPro.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			nextPage="memberjsp/joinPro.jsp";
+			}			
 		} else if (com.equals("/login.go")) {
-			nextPage="memberhtml/login.html";
+			nextPage = "memberjsp/login.jsp";
 		} else if (com.equals("/loginPro.go")) {
 			action = new LoginFormProAction();
-			try {
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+				try {
+					action.process(request, response);
+					nextPage = "memberjsp/loginPro.jsp";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		} else if (com.equals("/index.go")) {
+			nextPage = "index.jsp";
+		} else if (com.equals("/logout.go")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			nextPage = "memberjsp/logoutPro.jsp";
+		} else if (com.equals("/check.go")) {
+			nextPage = "memberjsp/check.jsp";
 		}
-		
-		
-		
+
 		RequestDispatcher dp = request.getRequestDispatcher(nextPage);
 		dp.forward(request, response);
 	}

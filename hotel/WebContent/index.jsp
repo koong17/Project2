@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="UTF-8">
 
 <head>
 
@@ -19,12 +22,18 @@
 </head>
 
 <body>
+
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">TIKKI</a>
+      <a class="navbar-brand" href="index.go">TIKKI</a>
+      <c:if test="${ sessionScope.id == null}">
       <a class="navbar-login" href="login.go">로그인</a>
       <a class="navbar-login" href="join.go">회원가입</a>
+      </c:if>
+      <c:if test="${ sessionScope.id != null}">
+      <a class="navbar-login" href="logout.go"><small>로그아웃</small></a>
+      </c:if>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

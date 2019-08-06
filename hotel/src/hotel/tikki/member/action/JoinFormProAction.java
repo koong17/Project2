@@ -17,11 +17,11 @@ public class JoinFormProAction implements MemberAction {
 		vo.setPassword(request.getParameter("password"));
 		vo.setNickname(request.getParameter("nickname"));
 		vo.setPhone(request.getParameter("phone"));
-		System.out.println("joinformAction");
+	
 		MemberDAO dao = MemberDAO.getInstance();
 		dao.memberinsert(vo);
 		
-		return "/joinPro.jsp";
+		return "/memberjsp/joinPro.jsp";
 	}
 
 }
