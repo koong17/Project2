@@ -13,6 +13,9 @@
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
+<!-- hs CSS -->
+<link href="css/hs.css" rel="stylesheet">
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,6 +30,7 @@
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
@@ -105,9 +109,10 @@
 		<h1 class="mt-4 mb-3">예약</h1>
 		<!-- 예약 바 -->
 		<!-- <form action="reservation.html" method="post" name="reservationForm"> -->
+		
 		<ul class="breadcrumb">
 			<!-- 체크인 -->
-			<li>
+			<li class="m">
 			<div class="input-group date">
 				<input type="text" class="form-control" value="체크인"> 
 				<span class="input-group-addon"> 
@@ -115,7 +120,7 @@
 				</i></span>
 			</div></li>
 			<!-- 체크아웃 -->
-			<li>
+			<li class="m">
 			<div class="input-group date">
 				<input type="text" class="form-control" value="체크아웃"> 
 				<span class="input-group-addon"> 
@@ -124,7 +129,7 @@
 			</div></li>
 	
 			<!-- 인원수 -->
-			<li>
+			<li class="m">
 			<select class="browser-default custom-select">
 					<option selected>&nbsp;&nbsp;인원수</option>
 					<option value="num1">1</option>
@@ -134,7 +139,7 @@
 			</select></li>
 			
 			<!-- 검색 submit 버튼 -->
-			<li>
+			<li class="m">
  			<button class="btn btn-primary" id="searchbtn">검색</button></li>
 		</ul> 
 		<!-- </form> -->
