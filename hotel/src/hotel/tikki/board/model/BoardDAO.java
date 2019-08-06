@@ -49,7 +49,7 @@ public class BoardDAO {  // controller
 		try {
 			conn = getConnection();
 			//현재 board 테이블에 레코드 유무 판단과 글 번호 지정
-			pstmt = conn.prepareStatement("SELECT MAX(NUM) FROM BOARD");
+			pstmt = conn.prepareStatement("SELECT MAX(BOARD_NUM) FROM BOARD");
 			rs = pstmt.executeQuery();
 			
 			if( rs.next() ) {
@@ -57,7 +57,7 @@ public class BoardDAO {  // controller
 			} else {
 				number = 1;
 			} // if end
-			
+			System.out.println("number : "+ number);
 			//insert 명령 처리
 			sb.append("INSERT INTO BOARD(BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE)");
 			sb.append(" VALUES(?, ?, ?, SYSDATE, ?)");
@@ -69,7 +69,6 @@ public class BoardDAO {  // controller
 			pstmt.setString(4, vo.getBoard_title());	
 			
 			pstmt.executeUpdate();
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -131,10 +130,10 @@ public class BoardDAO {  // controller
 			sb.append("ORDER BY REF DESC, RE_STEP ASC, RE_LEVEL DESC, REG_DATE asc) WHERE R>=? AND R<=? ORDER BY R asc ");*/
 			
 			// 수정 했음
-			sb.append("SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT, R ");
-			sb.append("FROM(SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT, ROWNUM R ");
-			sb.append("FROM(SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT ");
-			sb.append("FROM BOARD ORDER BY REF DESC, RE_STEP ASC) ORDER BY REF DESC,  re_step asc, re_level asc, reg_date asc) WHERE R>=? AND R<=?");
+			sb.append("select BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE, r");
+			sb.append(" from (select BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE, rownum r");
+			sb.append(" from(select BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE from board order by board_num desc))");
+			sb.append(" where r>= ? and r<=?");
 			
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, start);
@@ -146,21 +145,9 @@ public class BoardDAO {  // controller
 				
 				do {
 					BoardVO vo = new BoardVO();
-					vo.setNum(rs.getInt("num"));
-					vo.setWriter(rs.getString("writer"));
-					
-					vo.setEmail(rs.getString("email"));
-					vo.setSubject(rs.getString("subject"));
-					vo.setPasswd(rs.getString("passwd"));
-					vo.setReg_date(rs.getTimestamp("reg_date"));
-					
-					vo.setReadcount(rs.getInt("readcount"));
-					vo.setRef(rs.getInt("ref"));
-					vo.setRe_level(rs.getInt("re_level"));
-					vo.setRe_step(rs.getInt("re_step"));
-					
-					vo.setIp(rs.getString("ip"));
-					vo.setContent(rs.getString("content"));
+					vo.setBoard_num(rs.getInt("board_num"));
+					vo.setBoard_title(rs.getString("board_title"));
+					vo.setBoard_nick(rs.getString("board_nick"));
 					
 					// list 객체에 데이터 저장 Bean인 BoardVO 객체에 저장한다.
 					list.add(vo);

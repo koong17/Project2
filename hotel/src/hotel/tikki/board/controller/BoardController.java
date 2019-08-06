@@ -51,6 +51,7 @@ public class BoardController extends HttpServlet {
 				Object instance = className.newInstance(); 
 				 
 				commandMap.put(command, instance);   // put(key, value)
+				System.out.println("command : "+command+" instance : "+instance);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -96,9 +97,9 @@ public class BoardController extends HttpServlet {
 			e.printStackTrace();
 		} // try end
 		
-		request.setAttribute("CONTENT", view);
+		// request.setAttribute("CONTENT", view);
 				
-		RequestDispatcher  dp = request.getRequestDispatcher("/templete/templete.jsp");
+		RequestDispatcher  dp = request.getRequestDispatcher(view);
 		dp.forward(request, response);
 	}
 	
