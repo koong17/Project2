@@ -111,7 +111,7 @@
 				</td>
 				<td width="250">
 		   
-		 		<a href="content.do?num=${list.board_num }&pageNum=${ currentPage }">
+		 		<a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">
 						${ list.board_title }</a> 
 				</td>
 				<td align="center" width="100">${ list.board_nick }</a></td>

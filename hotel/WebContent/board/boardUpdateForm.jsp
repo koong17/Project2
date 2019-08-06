@@ -13,10 +13,13 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/modern-business.css" rel="stylesheet">
+  <link href="/hotel/css/modern-business.css" rel="stylesheet">
+  
+  <link href="/hotel/css/boardForm.css" rel="stylesheet">
+  
 
 </head>
 
@@ -59,10 +62,10 @@
   <!-- Page Content -->
   <div class="container" style="height: 800px">
 
-		<!-- 내용 채우기 -->
+	<!-- 내용 채우기 -->
 	
-	<form action = "boardUpdatePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
-	
+	<form action = "updatePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
+		<input type="hidden" name="board_num" value="${ vo.board_num }" >
 		<table>
 		
 		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
@@ -70,28 +73,27 @@
 		<tr> <!-- 닉네임 -->
 			<td width="70" align = "center"> <label for="board_nick"> 닉 네 임</label></td>
 			<td width="100">
-			<input type="text" class="form-control" size= "10" maxlength="10" name ="board_nick" placeholder="닉네임을 입력하세요">
+			<input type="text" class="form-control" size= "10" maxlength="10" name ="board_nick" value="${ vo.board_nick }">
 			</td>
 		</tr>
 		<tr> <!-- 제목 -->
 			<td width="70" align = "center"> 제  목</td>
 			<td width="100">
 			<input type="text" class="form-control" size= "35" maxlength="30" 
-			name ="board_title" placeholder="제목을 입력하세요">
+			name ="board_title" value="${ vo.board_title }">
 			</td>
 		</tr>
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" >
-			</textarea>
+			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content"  value="${ vo.board_content }"></textarea>
 			</td>
 		</tr>
 	</table>
 			
 		<br>
 		&emsp;&emsp;&emsp;&emsp;	
-  		<button class="btn btn-primary btn-lg" onclick="window.location='boardList.jsp' ">목록가기</button>
+  		<button class="btn btn-primary btn-lg" onclick="window.location='list.do' ">목록가기</button>
   		
  	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
 
@@ -99,6 +101,7 @@
 		
 	</form>
 	
+
   </div>
   <!-- /.container -->
 
@@ -111,8 +114,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
+  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

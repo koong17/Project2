@@ -175,30 +175,18 @@ public class BoardDAO {  // controller
 		
 		try {
 			conn = getConnection();
-			//조회수 증가
-			sql = "UPDATE BOARD SET READCOUNT = READCOUNT + 1 WHERE NUM = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.executeQuery();
 			
-			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE NUM = ?");
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE BOARD_NUM = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			
 			if( rs.next() ) {
 				vo = new BoardVO();
-				vo.setNum(rs.getInt("num"));
-				vo.setWriter(rs.getString("writer"));	
-				vo.setEmail(rs.getString("email"));
-				vo.setSubject(rs.getString("subject"));
-				vo.setPasswd(rs.getString("passwd"));
-				vo.setReg_date(rs.getTimestamp("reg_date"));
-				vo.setReadcount(rs.getInt("readcount"));
-				vo.setRef(rs.getInt("ref"));
-				vo.setRe_level(rs.getInt("re_level"));
-				vo.setRe_step(rs.getInt("re_step"));
-				vo.setIp(rs.getString("ip"));
-				vo.setContent(rs.getString("content"));
+				vo.setBoard_num(rs.getInt("board_num"));
+				vo.setBoard_nick(rs.getString("board_nick"));
+				vo.setBoard_date(rs.getTimestamp("board_date"));
+				vo.setBoard_content(rs.getString("board_content"));
+				vo.setBoard_title(rs.getString("board_title"));
 			} // if end			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -209,7 +197,7 @@ public class BoardDAO {  // controller
 	} // getDataDetail() end
 	
 	// update(num) - 업데이트시 사용하는 메소드
-	public BoardVO  update( int num ) {
+	public BoardVO  update( int board_num ) {
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -217,24 +205,17 @@ public class BoardDAO {  // controller
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE NUM = ?");
-			pstmt.setInt(1, num);
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE BOARD_NUM = ?");
+			pstmt.setInt(1, board_num);
 			rs = pstmt.executeQuery();
 			
 			if( rs.next() ) {
 				vo = new BoardVO();
-				vo.setNum(rs.getInt("num"));
-				vo.setWriter(rs.getString("writer"));	
-				vo.setEmail(rs.getString("email"));
-				vo.setSubject(rs.getString("subject"));
-				vo.setPasswd(rs.getString("passwd"));
-				vo.setReg_date(rs.getTimestamp("reg_date"));
-				vo.setReadcount(rs.getInt("readcount"));
-				vo.setRef(rs.getInt("ref"));
-				vo.setRe_level(rs.getInt("re_level"));
-				vo.setRe_step(rs.getInt("re_step"));
-				vo.setIp(rs.getString("ip"));
-				vo.setContent(rs.getString("content"));
+				vo.setBoard_num(rs.getInt("board_num"));
+				vo.setBoard_nick(rs.getString("board_nick"));
+				vo.setBoard_title(rs.getString("board_title"));
+				vo.setBoard_date(rs.getTimestamp("board_date"));
+				vo.setBoard_content(rs.getString("board_content"));
 			} // if end
 			
 		} catch (Exception e) {
@@ -246,53 +227,33 @@ public class BoardDAO {  // controller
 	} // update(num) end
 	
 	//update(vo) - 글수정시 처리 메소드 <=== updatePro.jsp 에서 사용
-	public int update(BoardVO vo) {
+	public void update(BoardVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
 		
-		String dbpasswd = "";
+		String db_num = "";
 		String sql = "";
-		int result = -1;
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("SELECT PASSWD FROM BOARD WHERE NUM = ?");
-			pstmt.setInt(1, vo.getNum());
-			rs = pstmt.executeQuery();
+			sql = "UPDATE BOARD SET BOARD_TITLE=?, BOARD_CONTENT=?, BOARD_DATE=SYSDATE";
+			sql += " WHERE BOARD_NUM = ?";
 			
-			if( rs.next() ) {
-				dbpasswd = rs.getString("passwd");
-				
-				if( dbpasswd.equals(vo.getPasswd())) {
-					sql = "UPDATE BOARD SET WRITER=?, EMAIL=?, SUBJECT=?, PASSWD=? ";
-					sql += " ,CONTENT = ? WHERE NUM = ?";
-					
-					System.out.println(sql);
-					
-					pstmt = conn.prepareStatement(sql);
-					
-					pstmt.setString(1, vo.getWriter());
-					pstmt.setString(2, vo.getEmail());
-					pstmt.setString(3, vo.getSubject());
-					pstmt.setString(4, vo.getPasswd());
-					pstmt.setString(5, vo.getContent());
-					pstmt.setInt(6, vo.getNum());
-					
-					pstmt.executeUpdate();
-					result = 1;
-					
-				} else {
-					result = 0;
-				} // in if end
-			} // out if end
+			System.out.println(sql);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getBoard_title());
+			pstmt.setString(2, vo.getBoard_content());
+			pstmt.setInt(3, vo.getBoard_num());
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
-		}					
-		return result;
+		}
 	} // update() end	
 	
 	//delete( num, passwd ) - deletePro.jsp

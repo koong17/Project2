@@ -64,7 +64,7 @@
 
 	<!-- 내용 채우기 -->
 	
-	<form action = "boardWritePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
+	<form action = "writePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
 	
 		<table>
 		
@@ -86,8 +86,7 @@
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" >
-			</textarea>
+			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" ></textarea>
 			</td>
 		</tr>
 	</table>
@@ -115,8 +114,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
+  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
