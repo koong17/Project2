@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jstl/fmt_rt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +16,10 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/modern-business.css" rel="stylesheet">
+  <link href="/hotel/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -70,68 +73,87 @@
       </li>
       <li class="breadcrumb-item active">고객문의</li>
     </ol>
+    
+    
+    
+	<center>
+		<b>글 목록(전체 글 : ${ count })
+		</b>
 	
-
-		<table class="table table-hover table table-striped" width="80%"> 
-		<!-- table-hover클래스는 마우스를 올리면 회색이 생기게
-		table-striped클래스는 홀수번째 테이블에 회색이 생겨있게-->
-		<!-- table table-bordered 이 클래스는 테이블의 선 그어주기--> 
+	<table width="700">
+		<tr>
+			<td align="right">
+				<a href="writeForm.do">글쓰기</a>
+			</td>
+		</tr>
+	</table>
+	<c:if test="${ count == 0 }">	
+		<table width="700" border="1" cellpadding="0" cellspacing="0">
+			<tr>
+				<td align="center">게시판에 저장된 글이 없습니다.</td>
+			</tr>
+		</table>	
+	</c:if>
 		
-			<tr> 
-				<th width="10%">번호</th> 
-				<th width="75%">제목</th> 
-				<th width="15%">작성자</th>
-			</tr> 
-			
-			<tr> 
-				<td>1</td> 
-				<td>aa</td> 
-				<td>aa</td>
-			</tr> 
-			
-			
-			<tr> 
-				<td>2</td> 
-				<td>b</td> 
-				<td>b</td>
-			</tr> 
-			
-			
-			<tr> 
-				<td>3</td> 
-				<td>c</td> 
-				<td>c</td>
-			</tr> 
-			
-		</table> 
+	<c:if test="${ count > 0 }">	
+		<table width="700" border="1" cellpadding="0" cellspacing="0"
+			align="center">
+			<tr height="30">
+				<td align="center" width="50">번 호</td>
+				<td align="center" width="50">제 목</td>
+				<td align="center" width="50">작성자</td>
+				
+		<c:forEach var="list"  items="${ list }">    		
+		
+			<tr height="30">
+				<td align="center" width="50">
+					<c:out value="${ list.board_num }" />
+				</td>
+				<td width="250">
+		   
+		 		<a href="content.do?num=${list.board_num }&pageNum=${ currentPage }">
+						${ list.board_title }</a> 
+				</td>
+				<td align="center" width="100">${ list.board_nick }</a></td>
+			</tr>
+		</c:forEach>
+		</table>
+	</c:if>
 	
+	 <c:if test="${ count > 0 }"> <!--  전체 페이지의 수를 연산 -->
+		    <c:set  var="pageCount"  value="${ count / pageSize + (count % pageSize ==0 ? 0 : 1) }" />
+			<c:set  var="startPage"  value="${ 1 }" />  <!-- 차후 수정!! -->
+			<c:set  var="pageBlock"  value="${ 5 }" />
+			
+			
+			<fmt:parseNumber var="result"  value="${ currentPage / pageBlock }" integerOnly="true" />
+			<c:if  test="${ currentPage % pageBlock != 0 }" > 
+				<c:set var="startPage" value="${ result * pageBlock + 1 }" />
+			</c:if>
+			
+			<c:if  test="${ currentPage % pageBlock == 0 }" > 
+				<c:set var="startPage" value="${ (result - 1) * pageBlock + 1 }" />
+			</c:if>
 		
-	    <!-- Pagination -->
-	    <ul class="pagination justify-content-center">
-	      <li class="page-item">
-	        <a class="page-link" href="#" aria-label="Previous">
-	          <span aria-hidden="true">&laquo;</span>
-	          <span class="sr-only">Previous</span>
-	        </a>
-	      </li>
-	      <li class="page-item">
-	        <a class="page-link" href="#">1</a>
-	      </li>
-	      <li class="page-item">
-	        <a class="page-link" href="#">2</a>
-	      </li>
-	      <li class="page-item">
-	        <a class="page-link" href="#">3</a>
-	      </li>
-	      <li class="page-item">
-	        <a class="page-link" href="#" aria-label="Next">
-	          <span aria-hidden="true">&raquo;</span>
-	          <span class="sr-only">Next</span>
-	        </a>
-	      </li>
-	    </ul>
-	    <a href=""></a>
-
+			<c:set  var="endPage"  value="${ startPage + pageBlock -1 }" />
+	
+			<c:if test="${ endPage > pageCount }" >
+				<c:set  var="endPage"  value="${ pageCount }" />
+			</c:if>
+			
+			<c:if test="${startPage >5 }" >
+				<a href="list.do?pageNum=${ startPage-5  }">[이전] </a>
+			</c:if>
+	
+			<c:forEach  var="i" begin="${startPage }" end="${ endPage }">
+				<a href="list.do?pageNum=${i}">[${ i }] </a>
+		   </c:forEach>
+		
+		<c:if test="${ endPage < pageCount }" >
+			<a href="list.do?pageNum=${ startPage+5 }">[다음] </a>
+		</c:if>
+	</c:if>
+	</center>
 
   </div>
   <!-- /.container -->

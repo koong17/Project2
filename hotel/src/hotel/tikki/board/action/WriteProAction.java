@@ -1,7 +1,5 @@
 package hotel.tikki.board.action;
 
-import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,7 +21,7 @@ public class WriteProAction implements CommandAction {
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.insert(vo);
 		
-		return "/board/boardWritePro.jsp";
+		return "list.do";
 	}
 
 }
