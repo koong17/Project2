@@ -13,10 +13,10 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="../css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -39,9 +39,9 @@
               객실소개
             </a><!--  포트폴리오1 -> single portfolio item -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="Deluxe.html">Deluxe</a>
-              <a class="dropdown-item" href="GrandDeluxe.html">Grand Deluxe</a>
-              <a class="dropdown-item" href="SuiteRoom.html">Suite Room</a>
+              <a class="dropdown-item" href="information/Deluxe.html">Deluxe</a>
+              <a class="dropdown-item" href="information/GrandDeluxe.html">Grand Deluxe</a>
+              <a class="dropdown-item" href="information/SuiteRoom.html">Suite Room</a>
             </div>
           </li>
           <li class="nav-item">
@@ -130,6 +130,7 @@
 	        </a>
 	      </li>
 	    </ul>
+	    <a href=""></a>
 
 
   </div>
