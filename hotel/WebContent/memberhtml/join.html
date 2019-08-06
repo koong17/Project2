@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="utf-8">
 
 <head>
 
@@ -13,6 +13,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="vendor/bootstrap/css/inho.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
@@ -25,8 +26,8 @@
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="index.html">TIKKI</a> <a
-				class="navbar-login" href="login.html">로그인</a> <a
-				class="navbar-login" href="join.html">회원가입</a>
+				class="navbar-login" href="login.go">로그인</a> <a
+				class="navbar-login" href="join.go">회원가입</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -57,23 +58,18 @@
 		</div>
 	</nav>
 	<!-- ./nav -->
-	
-	
-	
-	
 	<header>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg')">
-          <div class="carousel-login d-none d-md-block">
+        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 765px;">
+          <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form">
+						<form role="form" method="post" name="joinform" action="joinPro.go">
 							<fieldset>
 								<h2>TIKKI에 오신 것을 환영합니다.</h2>
-								<hr class="colorgraph">
+								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
 										class="form-control input-lg" placeholder="Email Address">
@@ -82,19 +78,27 @@
 									<input type="password" name="password" id="password"
 										class="form-control input-lg" placeholder="Password">
 								</div>
+								<div class="form-group">
+									<input type="text" name="nickname" id="nickname"
+										class="form-control input-lg" placeholder="nickname">
+								</div>
+								<div class="form-group">
+									<input type="text" name="phone" id="phone"
+										class="form-control input-lg" placeholder="phone">
+								</div>		
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
 		                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
 							<a href="" class="btn btn-link pull-right">Forgot Password?</a>
 						</span> -->
-								<hr class="colorgraph">
+								<!-- <hr class="colorgraph"> -->
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-lg btn-success btn-block"
-											value="로그인">
+											value="회원가입">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
-										<a href="join.html" class="btn btn-lg btn-primary btn-block">회원가입</a>
+										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">
 									</div>
 								</div>
 							</fieldset>
@@ -105,7 +109,13 @@
           </div>
         </div>
       </div>
-    </div>
   </header>
+  
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 </body>
 </html>
