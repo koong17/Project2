@@ -35,6 +35,8 @@
 
 <script>
     
+    
+    
     // Perform an asynchronous HTTP (Ajax) request.
     // 비동기 통신 Ajax를 Setting한다.
     $.ajaxSetup({
@@ -71,6 +73,29 @@
                 }
             })
         });
+        
+        function getComment() {
+            $.ajax({
+                url:"/hotel/cmntReadForm.do",
+                data:{
+                    board_num:"${ vo.board_num }"
+                },
+                beforeSend:function() {
+                    console.log("읽어오기 시작 전...");
+                },
+                complete:function() {
+                    console.log("읽어오기 완료 후...");
+                },
+                success:function(data) {
+                    console.log("comment를 정상적으로 조회하였습니다.");
+                    showHtml(data);
+                    
+                    let position = $("#showComment table tr:last").position();
+                    $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
+                }
+            })
+        }
+        
     });
  
     function showHtml(data) {
@@ -91,7 +116,7 @@
         $("#commentContent").focus();
     }
     
-    function getComment(event) {
+    /* function getComment(event) {
         $.ajax({
             url:"/hotel/cmntReadForm.do",
             data:{
@@ -111,7 +136,7 @@
                 $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
             }
         })
-    }
+    } */
 </script>
 
 <body>
@@ -188,29 +213,27 @@
 					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
 					    <textarea class="form-control" rows="3" id="cmnt_content" placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
 					    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-					        <input type="button" class="btn btn-default" value="댓글 읽기(${ vo.cmnt_count })" 
-					                onclick="getComment(1, event)" id="commentRead">
+					        <%-- <input type="button" class="btn btn-default" value="댓글 읽기(${ vo.cmnt_count })" 
+					                onclick="getComment(1, event)" id="commentRead"> --%>
 					    	
 					        <c:if test="${sessionScope.nick != null}">
 					            <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite">
 					        </c:if>
 					    </div>
-					</div>
-					 
-					<!-- Comment 태그 추가 -->
+					</div><!-- Comment 태그 추가 -->
 					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
 					    <div id="showComment" style="text-align: center;"></div>
-					</div>
-				
-				</pre></td>
+					</div></pre></td>
 			</tr>
 			
 			<tr height ="30">
 				<td colspan="6" align="right" >
-				<input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  <c:if test="${ sessionScope.nick == vo.board_nick }">
+					<input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      </c:if>
 				<input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
 				</td>
 			</tr>
