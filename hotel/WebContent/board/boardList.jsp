@@ -114,7 +114,7 @@
    </c:if>
    
    <button class="btn btn-primary btn-lg" id="button-right-fix2"
-			onclick="window.location='writeForm.do' ">글쓰기</button>
+			onclick="window.location='writeForm.do?pageNum=${ pageNum }'">글쓰기</button>
    
    
    <!-- 페이지 번호 -->

@@ -11,7 +11,8 @@ public class WriteFormAction implements CommandAction{
 		
 //		//세션에서 닉네임 받아오기
 //		request.setAttribute("board_nick", request.getParameter("board_nick"));
-
+		String pageNum = request.getParameter("pageNum");
+		request.setAttribute("pageNum", pageNum);
 		
 		return "/board/boardWriteForm.jsp" ;
 	}

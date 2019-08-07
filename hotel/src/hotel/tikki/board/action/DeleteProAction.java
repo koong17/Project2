@@ -22,7 +22,7 @@ public class DeleteProAction implements CommandAction {
 		//request.setAttribute("board_num", board_num);
 		request.setAttribute("pageNum", pageNum);
 		
-		return "list.do?pageNum="+pageNum ;
+		return "/board/boardDeletePro.jsp" ;
 	}
 
 }

@@ -21,7 +21,7 @@ public class WriteProAction implements CommandAction {
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.insert(vo);
 		
-		return "list.do";
+		return "/board/boardWritePro.jsp";
 	}
 
 }

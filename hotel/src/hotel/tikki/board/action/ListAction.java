@@ -42,6 +42,7 @@ public class ListAction implements CommandAction {
 		number = count - (currentPage - 1) * pageSize ;		 // ex) 9
 		
 		//해당 뷰에서 사용할 속성(저장)
+		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", new Integer(currentPage));
 		request.setAttribute("startRow", new Integer(startRow));
 		request.setAttribute("endRow", new Integer(endRow));

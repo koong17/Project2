@@ -66,6 +66,7 @@
 	
 	<form action = "updatePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
 		<input type="hidden" name="board_num" value="${ vo.board_num }" >
+		<input type="hidden" name="pageNum" value="${ pageNum }" >
 		<table>
 		
 		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
@@ -93,9 +94,9 @@
 			
 		<br>
 		&emsp;&emsp;&emsp;&emsp;	
-  		<button class="btn btn-primary btn-lg" onclick="window.location='list.do' ">목록가기</button>
+  		<input type="button" class="btn btn-primary btn-lg" onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
- 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
+ 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">수정</button>
 
 		
 		

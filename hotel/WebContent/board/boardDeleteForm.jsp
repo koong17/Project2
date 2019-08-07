@@ -58,9 +58,16 @@
 
   <!-- Page Content -->
   <div class="container" style="min-height: 700px">
-  <br><br>
-  	정말로 삭제하시겠습니까?<br><br>
-	<a href='deletePro.do?board_num=${ board_num }&pageNum=${ pageNum }'>네</a> <a href="list.do">아니요</a>
+  
+  	<script>
+  		var result = confirm("정말로 삭제하시겠습니까?");
+  			console.log(result);
+  		if( result == true ) {
+  			location.href="deletePro.do?board_num=${ board_num }&pageNum=${ pageNum }";
+  		} else {
+  			history.go(-1);
+  		}
+  	</script>
   </div>
   <!-- /.container -->
 

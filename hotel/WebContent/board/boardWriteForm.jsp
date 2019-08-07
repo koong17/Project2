@@ -93,7 +93,7 @@
 			
 		<br>
 		&emsp;&emsp;&emsp;&emsp;	
-  		<button class="btn btn-primary btn-lg" onclick="window.location='boardList.jsp' ">목록가기</button>
+  		<input type="button" class="btn btn-primary btn-lg" onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
  	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
 
