@@ -59,7 +59,7 @@ function ajaxIdSend() {
 function ajaxNickSend() {
 	createAjax();
 	var nickname = document.getElementById("nickname").value;
-	xmlReq.onreadystatechange = callBack;
+	xmlReq.onreadystatechange = callBack2;
 	xmlReq.open("GET", "memberjsp/checkNickname.jsp?nickname="+nickname, true);
 	xmlReq.send(null);
 	//send가 끝나고나면 비동기식이기 때문에 프로그램이 계속 진행
@@ -70,6 +70,13 @@ function callBack() {
 	if(xmlReq.readyState == 4) {
 		if(xmlReq.status == 200) {
 			printIdData();
+		}
+	}
+}
+
+function callBack2() {
+	if(xmlReq.readyState == 4) {
+		if(xmlReq.status == 200) {
 			printNickData();
 		}
 	}
@@ -83,14 +90,10 @@ function printIdData() {
 	var rootValue = rootNode.firstChild.nodeValue;
 	var rootTag = document.getElementById("resultId");
 	
-	var idNode = rootNode.getElementsByTagName("email");
-	var idValue = idNode.item(0).firstChild.nodeValue;
-	var idTag = document.getElementById("idTxt");
-	
 	if (rootValue == "true") {
 		rootTag.innerHTML = "사용 가능한 이메일";
 	} else {
-		rootTag.innerHTML = "중복된 이메일";
+		rootTag.innerHTML = "<font color='RED'>중복된 이메일</font>";
 	}
 }
 
@@ -101,13 +104,9 @@ function printNickData() {
 	var rootValue = rootNode.firstChild.nodeValue;
 	var rootTag = document.getElementById("resultNick");
 	
-	var nickNode = rootNode.getElementsByTagName("nickname");
-	var nickValue = nickNode.item(0).firstChild.nodeValue;
-	var nickTag = document.getElementById("idTxt");
-	
 	if (rootValue == "true") {
 		rootTag.innerHTML = "사용 가능한 닉네임";
 	} else {
-		rootTag.innerHTML = "중복된 닉네임";
+		rootTag.innerHTML = "<font color='RED'>중복된 닉네임</font>";
 	}
 }
