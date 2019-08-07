@@ -51,7 +51,7 @@
             <a class="nav-link" href="full-width.html">예약</a> <!-- full width -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="board.jsp">고객문의</a> <!--  포트폴리오1 수정 -->
+            <a class="nav-link" href="list.do">고객문의</a> <!--  포트폴리오1 수정 -->
           </li>
         </ul>
       </div>
@@ -86,7 +86,7 @@
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content"  value="${ vo.board_content }"></textarea>
+			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" >${ vo.board_content }</textarea>
 			</td>
 		</tr>
 	</table>

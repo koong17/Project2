@@ -83,9 +83,9 @@
 			
 			<tr height ="30">
 				<td colspan="4" align="right" >
-				<input type="button" value="글수정" onclick="document.location.href='updateForm.do?num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+				<input type="button" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type ="button" value ="글삭제" onclick="document.location.href='deleteForm.do?num=${ vo.board_num }&pageNum=${ pageNum }'">
+				<input type ="button" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type = "button" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
 				</td>
