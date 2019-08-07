@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+
+.m {
+	margin: 0.5rem;
+	display: inline-block;
+	
+}
+
+.marginAuto {
+	 margin: 0rem 13rem;
+
+}
