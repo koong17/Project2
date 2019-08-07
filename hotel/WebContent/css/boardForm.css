@@ -19,13 +19,44 @@ textarea{
 
 #button-right-fix{
 
-	margin-left:665px;
+	margin-left:530px;
 	
 }
 
 #button-right-fix2{
 
 	margin-left:985px;
+	
+}
+
+.table-content{
+	
+	width: 800;
+	height:1000;
+	margin-bottom: 1rem;
+	color: #212529;
+}
+
+.table-content td, .table-content th {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6
+}
+
+.table-content thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6
+}
+
+.table-content tbody+tbody {
+	border-top: 2px solid #dee2e6
+}
+
+.table-content td .reply {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+	background: #D4D8D9;
 	
 }
 

@@ -66,7 +66,7 @@
 	
 	<form action = "writePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
 	
-		<table border="1">
+		<table >
 		
 		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
 		
@@ -92,8 +92,9 @@
 	</table>
 			
 		<br>
-		&emsp;&emsp;&emsp;&emsp;	
-  		<input type="button" class="btn btn-primary btn-lg" onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+  		<input type="button" class="btn btn-primary btn-lg" 
+  		onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
  	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
 
