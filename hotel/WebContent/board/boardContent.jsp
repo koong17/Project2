@@ -72,36 +72,55 @@
   <!-- ./nav -->
 
   <!-- Page Content -->
-  <div class="container" style="min-height: 700px">
-	<center><b>상세보기 페이지</b><br>
-	<form>
-		<table width = "500" border = "1" cellspacing = "0" cellpadding = "0" 
-		 align="center" class="form-control">
-			
-			<tr height="30">
-				
-				<td align="center" width = "20"> ${ vo.board_num }</td>
-				<td align="center" width = "25" >글제목</td>
-				<td align="center" width = "125">${ vo.board_title } </td>
-				
-			</tr>
+  <div class="container" style="min-height:793px">
+   <center><br>
+   
 
-			<tr height="150">
-				<td align="center" width = "1000" colspan="15"><pre>${ vo.board_content }</pre></td>
-			</tr>
-			
-			<tr height ="30">
-				<td colspan="4" align="right" >
-				<input type="button" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type ="button" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type = "button" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
-				</td>
-			</tr>
-		</table>
-	</form>
-	</center>
+   <form>
+      <table cellspacing = "0" cellpadding = "0" 
+       align="center" class="table-content">
+       
+
+         
+         <tr height="30">
+            <td align="center" width = "20" >글번호</td>
+            <td align="center" width = "10"> ${ vo.board_num }</td>
+            <td align="center" width = "20" >글제목</td>
+            <td align="center" width = "150">${ vo.board_title } </td>
+            <td align="center" width = "20" >작성자</td>
+            <td align="center" width = "30">${ vo.board_nick } </td>
+            
+         </tr>
+
+
+         <tr>
+            <td height="300" width = "1000" colspan="20"><pre>${ vo.board_content }</pre></td>
+         </tr>
+         
+         <%-- <c:when test="${not empty param.cmnt_content}">
+         <tr>
+            <td height="300" width = "1000" colspan="20"><pre>${ vo.cmnt_content }</pre></td>
+         </tr>
+         </c:when>
+         
+         <c:otherwise>
+          
+         </c:otherwise> --%>
+         
+         <tr height ="30">
+            <td colspan="6" align="right" >
+            <input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
+            </td>
+         </tr>
+      </table>
+   </form>
+   </center>
+   
+   
   </div>
   <!-- /.container -->
 s
@@ -114,8 +133,8 @@ s
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
+  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -25,7 +25,7 @@
   <link href="/hotel/css/boardForm.css?after" rel="stylesheet">
   
   <!-- 모든 페이지에 들어가야 함 -->
-  <link href="vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+  <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 </head>
 
 <body>

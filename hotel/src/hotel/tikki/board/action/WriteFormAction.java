@@ -9,8 +9,8 @@ public class WriteFormAction implements CommandAction{
 	public String process(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-//		//세션에서 닉네임 받아오기
-//		request.setAttribute("board_nick", request.getParameter("board_nick"));
+		//세션에서 닉네임 받아오기
+		request.setAttribute("board_nick", request.getAttribute("nick"));
 		String pageNum = request.getParameter("pageNum");
 		request.setAttribute("pageNum", pageNum);
 		
