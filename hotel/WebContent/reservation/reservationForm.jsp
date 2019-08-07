@@ -145,14 +145,14 @@
 		</script>
 	<!-- 예약 바 끝 -->
 
-	<!-- /.container -->
+	<!-- 객실정보 -->
 	<div class="container" id="showShow" style="display: none;">
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item active">현재 이용 가능 객실</li>
 		</ol>
 
-		<!-- Project One -->
+		<!-- room1 -->
 		<div class="row">
 			<div class="col-md-7">
 				<a href="room1detail.jsp"> <img
@@ -171,7 +171,7 @@
 
 		<hr>
 
-		<!-- Project Two -->
+		<!-- room2 -->
 		<div class="row">
 			<div class="col-md-7">
 				<a href="room2detail.jsp"> <img
@@ -190,7 +190,7 @@
 
 		<hr>
 
-		<!-- Project Three -->
+		<!-- room3 -->
 		<div class="row">
 			<div class="col-md-7">
 				<a href="room3detail.jsp"> <img
@@ -206,7 +206,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- /.row -->
+	<!-- 객실정보 끝-->
 
 	<hr>
 
@@ -216,7 +216,7 @@
 			<p class="m-0 text-center text-white">Copyright &copy; Your
 				Website 2019</p>
 		</div>
-		<!-- /.container -->
+	
 	</footer>
 
 </body>
