@@ -13,10 +13,10 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/modern-business.css" rel="stylesheet">
+  <link href="/hotel/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -57,11 +57,42 @@
   <!-- ./nav -->
 
   <!-- Page Content -->
-  <div class="container" style="height: 700px">
-
-	<!-- 내용 채우기 -->
-	
-	
+  <div class="container" style="min-height: 700px">
+	<center><b>상세보기 페이지</b><br>
+	<form>
+		<table width = "500" border = "1" cellspacing = "0" cellpadding = "0" 
+		bgcolor = "${ bodyback_c }" align="center">
+			
+			<tr height="30">
+				<td align="center" width = "125" >글번호</td>
+				<td align="center" width = "125"> ${ vo.board_num }</td>
+				
+				<td align="center" width = "125" >작성자</td>
+				<td align="center" width = "125">${ vo.board_nick }</td>
+			</tr>
+			<tr height="30">
+				<td align="center" width = "125" >글제목</td>
+				<td align="center" width = "125">${ vo.board_title } </td>
+				
+				<td align="center" width = "125" >작성일</td>
+				<td align="center" width = "125">${ vo.board_date }</td>
+			</tr>
+			<tr height="150">
+				<td align="center" width = "125" colspan="4"><pre>${ vo.board_content }</pre></td>
+			</tr>
+			
+			<tr height ="30">
+				<td colspan="4" align="right" >
+				<input type="button" value="글수정" onclick="document.location.href='updateForm.do?num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type ="button" value ="글삭제" onclick="document.location.href='deleteForm.do?num=${ vo.board_num }&pageNum=${ pageNum }'">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type = "button" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
+				</td>
+			</tr>
+		</table>
+	</form>
+	</center>
   </div>
   <!-- /.container -->
 

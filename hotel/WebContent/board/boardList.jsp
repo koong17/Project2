@@ -31,6 +31,7 @@
 
 <body>
 
+<!-- <<<<<<< HEAD -->
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -91,6 +92,116 @@
 						<td align="center">게시판에 저장된 글이 없습니다.</td>
 					</tr>
 				</table>
+<!-- ======= -->
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">TIKKI</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">호텔소개</a> <!-- About 에 contact map-->
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" aria-haspopup="true" aria-expanded="false">
+              객실소개
+            </a><!--  포트폴리오1 -> single portfolio item -->
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="information/Deluxe.html">Deluxe</a>
+              <a class="dropdown-item" href="information/GrandDeluxe.html">Grand Deluxe</a>
+              <a class="dropdown-item" href="information/SuiteRoom.html">Suite Room</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="full-width.html">예약</a> <!-- full width -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="board.jsp">고객문의</a> <!--  포트폴리오1 수정 -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- ./nav -->
+
+  <!-- Page Content -->
+  <div class="container" height="1000px">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">고객문의
+      <small>HOTEL TIKKI에 대해 궁금한 점을 물어보세요.</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">고객문의</li>
+    </ol>
+    
+    
+    
+	<center>
+		<b>글 목록(전체 글 : ${ count })
+		</b>
+	
+	<table width="700">
+		<tr>
+			<td align="right">
+				<a href="writeForm.do">글쓰기</a>
+			</td>
+		</tr>
+	</table>
+	<c:if test="${ count == 0 }">	
+		<table width="700" border="1" cellpadding="0" cellspacing="0">
+			<tr>
+				<td align="center">게시판에 저장된 글이 없습니다.</td>
+			</tr>
+		</table>	
+	</c:if>
+		
+	<c:if test="${ count > 0 }">	
+		<table width="700" border="1" cellpadding="0" cellspacing="0"
+			align="center">
+			<tr height="30">
+				<td align="center" width="50">번 호</td>
+				<td align="center" width="50">제 목</td>
+				<td align="center" width="50">작성자</td>
+				
+		<c:forEach var="list"  items="${ list }">    		
+		
+			<tr height="30">
+				<td align="center" width="50">
+					<c:out value="${ list.board_num }" />
+				</td>
+				<td width="250">
+		   
+		 		<a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">
+						${ list.board_title }</a> 
+				</td>
+				<td align="center" width="100">${ list.board_nick }</a></td>
+			</tr>
+		</c:forEach>
+		</table>
+	</c:if>
+	
+	 <c:if test="${ count > 0 }"> <!--  전체 페이지의 수를 연산 -->
+		    <c:set  var="pageCount"  value="${ count / pageSize + (count % pageSize ==0 ? 0 : 1) }" />
+			<c:set  var="startPage"  value="${ 1 }" />  <!-- 차후 수정!! -->
+			<c:set  var="pageBlock"  value="${ 5 }" />
+			
+			
+			<fmt:parseNumber var="result"  value="${ currentPage / pageBlock }" integerOnly="true" />
+			<c:if  test="${ currentPage % pageBlock != 0 }" > 
+				<c:set var="startPage" value="${ result * pageBlock + 1 }" />
+			</c:if>
+			
+			<c:if  test="${ currentPage % pageBlock == 0 }" > 
+				<c:set var="startPage" value="${ (result - 1) * pageBlock + 1 }" />
+<!-- >>>>>>> suah -->
 			</c:if>
 
 			<c:if test="${ count > 0 }">
