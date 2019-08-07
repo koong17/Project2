@@ -1,4 +1,4 @@
-package hotel.tikki.board.comments.action;
+package hotel.tikki.board.action;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 
+import hotel.tikki.board.action.CommandAction;
 import hotel.tikki.board.comments.model.CommentsVO;
 import hotel.tikki.board.model.BoardDAO;
 
-public class ReadFormAction implements CommandAction {
+public class CmntReadFormAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {

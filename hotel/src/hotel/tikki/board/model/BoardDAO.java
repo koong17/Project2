@@ -196,7 +196,7 @@ public class BoardDAO {  // controller
 				vo.setBoard_title(rs.getString("board_title"));
 			} // if end
 			
-			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM COMMENTS WHERE BOARD_NUM = ?");
+			pstmt = conn.prepareStatement("SELECT COUNT(CMNT_NUM) FROM COMMENTS WHERE BOARD_NUM = ?");
 			pstmt.setInt(1, board_num);
 			rs = pstmt.executeQuery();
 			
@@ -327,15 +327,32 @@ public class BoardDAO {  // controller
 	    return comments;
 	}
 	 
+	@SuppressWarnings("resource")
 	public synchronized HashMap<String, Object> insertComment(int board_num, String cmnt_content, String cmnt_nick) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		HashMap<String, Object> hm = null;
+		ResultSet rs = null;
+		int cmnt_num = 1;
+		
+		
+		
 		try {
 			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("SELECT MAX(CMNT_NUM) FROM COMMENTS WHERE BOARD_NUM=?");
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) {
+				try{ cmnt_num = rs.getInt(1)+1; }catch(Exception e){}
+			}
+			
 		    pstmt = conn.prepareStatement("INSERT INTO comments(cmnt_num, board_num, cmnt_content, cmnt_nick, cmnt_date)"
-		    							+ " VALUES((select max(cmnt_num) from comments where board_num=?)+1, ?, ?, ?, sysdate)");
-		    pstmt.setInt(1, board_num);
+		    							+ " VALUES(?, ?, ?, ?, sysdate)");
+		    
+		    
+		    pstmt.setInt(1, cmnt_num);
 		    pstmt.setInt(2, board_num);
 		    pstmt.setString(3, cmnt_content);
 		    pstmt.setString(4, cmnt_nick);
@@ -349,7 +366,7 @@ public class BoardDAO {  // controller
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+			CloseUtil.close(rs);	CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}
 	    return hm;
 	}
