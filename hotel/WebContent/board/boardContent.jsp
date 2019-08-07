@@ -225,48 +225,6 @@
 		</table>
 	</form>
 	</center>
-	
-   <center><br>
-   
-
-   <form>
-      <table cellspacing = "0" cellpadding = "0" 
-       align="center" class="table-content">
-       
-
-         
-         <tr height="30">
-            <td align="center" width = "20" >글번호</td>
-            <td align="center" width = "10"> ${ vo.board_num }</td>
-            <td align="center" width = "20" >글제목</td>
-            <td align="center" width = "150">${ vo.board_title } </td>
-            <td align="center" width = "20" >작성자</td>
-            <td align="center" width = "30">${ vo.board_nick } </td>
-            
-         </tr>
-
-
-         <tr>
-            <td height="300" width = "1000" colspan="20"><pre>${ vo.board_content }</pre></td>
-         </tr>
-         
-
-         
-         <tr height ="30">
-            <td colspan="6" align="right" >
-      		   <c:if test="${ vo.board_nick == sessionScope.nick }">
-		            <input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
-		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		            <input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
-		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	   		   </c:if>
-               <input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
-            </td>
-         </tr>
-      </table>
-   </form>
-   </center>
-   
 
   </div>
   <!-- /.container -->
