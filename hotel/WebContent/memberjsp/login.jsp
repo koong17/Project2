@@ -22,7 +22,9 @@
 <link href="css/modern-business.css" rel="stylesheet">
 <script src="js/inho.js"></script>
 </head>
-
+<c:if test="${ sessionScope.id != null}">
+	<c:redirect url="index.go" />
+</c:if>
 <body>
 	<!------ Include the above in your HEAD tag ---------->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
