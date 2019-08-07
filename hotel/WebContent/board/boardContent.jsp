@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jstl/fmt_rt" %>
@@ -18,13 +18,19 @@
   <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-<<<<<<< HEAD
-  <link href="/hotel/css/modern-business.css" rel="stylesheet">
-  
-  <link href="/hotel/css/boardForm.css" rel="stylesheet">
-  
-  
 
+  <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
+  
+  <!-- board 전용 css -->
+  <link href="/hotel/css/boardForm.css?after" rel="stylesheet">
+  
+  <!-- 모든 페이지에 들어가야 함 -->
+  <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
+  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
 </head>
 
 <script>
@@ -42,12 +48,13 @@
     
     $(function() {
         $("#commentWrite").on("click", function() {
+        	console.log("click");
             $.ajax({
                 url:"/hotel/cmntWriteForm.do",
                 // data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
                 data:{
-                    commentContent:$("#cmnt_content").val(),
-                    articleNumber:"${ vo.board_num }"
+                    cmnt_content:$("#cmnt_content").val(),
+                    board_num:"${ vo.board_num }"
                 },
                 beforeSend:function() {
                     console.log("시작 전...");
@@ -59,7 +66,7 @@
                     if(data.result == 1) {            // 쿼리 정상 완료, executeUpdate 결과
                         console.log("comment가 정상적으로 입력되었습니다.");
                         $("#cmnt_content").val("");
-                        showHtml(data.comments, 1); // selectComments() 결과
+                        showHtml(data.comments); // selectComments() 결과
                     }
                 }
             })
@@ -106,7 +113,6 @@
         })
     }
 </script>
-=======
   <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
   
   <!-- board 전용 css -->
@@ -115,8 +121,6 @@
   <!-- 모든 페이지에 들어가야 함 -->
   <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 </head>
-
->>>>>>> suah
 
 <body>
 
@@ -163,7 +167,6 @@
 
   <!-- Page Content -->
   <div class="container" style="min-height:793px">
-<<<<<<< HEAD
 	<center><br>
 	
 
@@ -188,20 +191,17 @@
 				<td height="300" width = "1000" colspan="20"><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
-			<c:when test="${not empty param.cmnt_content}">
 			<tr>
 				<td height="300" width = "1000" colspan="20"><pre>
 					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
-					    <textarea class="form-control" rows="3" id="commentContent" placeholder="댓글을 입력하세요." style="width: 100%;" ></textarea>
+					    <textarea class="form-control" rows="3" id="cmnt_content" placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
 					    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-					        <c:if test="${sessionScope.nick == null}">
-					            <input type="button" class="btn btn-default" value="댓글 쓰기" disabled="disabled">
-					        </c:if>
+					        <input type="button" class="btn btn-default" value="댓글 읽기(${ vo.cmnt_count })" 
+					                onclick="getComment(1, event)" id="commentRead">
+					    	
 					        <c:if test="${sessionScope.nick != null}">
 					            <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite">
 					        </c:if>
-					        <input type="button" class="btn btn-default" value="댓글 읽기(${ vo.cmnt_count })" 
-					                onclick="getComment(1, event)" id="commentRead">
 					    </div>
 					</div>
 					 
@@ -212,11 +212,6 @@
 				
 				</pre></td>
 			</tr>
-			</c:when>
-			
-			<c:otherwise>
-			 
-			</c:otherwise>
 			
 			<tr height ="30">
 				<td colspan="6" align="right" >
@@ -231,8 +226,6 @@
 	</form>
 	</center>
 	
-	
-=======
    <center><br>
    
 
@@ -274,8 +267,7 @@
    </form>
    </center>
    
-   
->>>>>>> suah
+
   </div>
   <!-- /.container -->
 
@@ -286,10 +278,6 @@
     </div>
     <!-- /.container -->
   </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
-  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

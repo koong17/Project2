@@ -137,26 +137,7 @@ public class BoardDAO {  // controller
 		try {
 			conn = getConnection();
 			StringBuffer  sb = new StringBuffer();
-			// 방법 3>
-			//sb.append("SELECT j.* FROM (	SELECT k.*, rownum r FROM( SELECT * FROM board ORDER BY ref desc, re_step asc	) k ) j WHERE j.r BETWEEN ? AND ?");
 			
-			// 방법 2>
-			//sb.append("select * from (select rownum as r,  x.*   from (select *  from board  order by ref desc, re_step asc)  x ) where r BETWEEN ? and ?");
-			
-			//방법 1>
-			/*sb.append("SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT, R ");
-			sb.append("FROM(SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT, ROWNUM R ");
-			sb.append("FROM(SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT ");
-			sb.append("FROM BOARD ORDER BY REF DESC, RE_STEP ASC, re_level ) ORDER BY REF DESC,  re_step asc, re_level asc, reg_date asc) WHERE R>=? AND R<=?");*/
-			
-			//방법 4>
-			/*sb.append("SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT, R ");
-			sb.append("FROM(SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT, ROWNUM R ");
-			sb.append("FROM(SELECT NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT ");
-			sb.append("FROM BOARD GROUP BY NUM, WRITER, EMAIL, SUBJECT, PASSWD, REG_DATE, REF, RE_STEP, RE_LEVEL, CONTENT, IP, READCOUNT ORDER BY REF DESC, RE_STEP ASC) ");
-			sb.append("ORDER BY REF DESC, RE_STEP ASC, RE_LEVEL DESC, REG_DATE asc) WHERE R>=? AND R<=? ORDER BY R asc ");*/
-			
-			// 수정 했음
 			sb.append("select BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE, r");
 			sb.append(" from (select BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE, rownum r");
 			sb.append(" from(select BOARD_NUM, BOARD_NICK, BOARD_CONTENT, BOARD_DATE, BOARD_TITLE from board order by board_num desc))");
@@ -215,6 +196,12 @@ public class BoardDAO {  // controller
 				vo.setBoard_title(rs.getString("board_title"));
 			} // if end
 
+			
+			pstmt = conn.prepareStatement("SELECT COUNT(CMNT_NUM) FROM COMMENTS WHERE BOARD_NUM = ?");
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) vo.setCmnt_count(rs.getInt(1));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -341,15 +328,32 @@ public class BoardDAO {  // controller
 	    return comments;
 	}
 	 
+	@SuppressWarnings("resource")
 	public synchronized HashMap<String, Object> insertComment(int board_num, String cmnt_content, String cmnt_nick) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		HashMap<String, Object> hm = null;
+		ResultSet rs = null;
+		int cmnt_num = 1;
+		
+		
+		
 		try {
 			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("SELECT MAX(CMNT_NUM) FROM COMMENTS WHERE BOARD_NUM=?");
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) {
+				try{ cmnt_num = rs.getInt(1)+1; }catch(Exception e){}
+			}
+			
 		    pstmt = conn.prepareStatement("INSERT INTO comments(cmnt_num, board_num, cmnt_content, cmnt_nick, cmnt_date)"
-		    							+ " VALUES((select max(cmnt_num) from comments where board_num=?)+1, ?, ?, ?, sysdate)");
-		    pstmt.setInt(1, board_num);
+		    							+ " VALUES(?, ?, ?, ?, sysdate)");
+		    
+		    
+		    pstmt.setInt(1, cmnt_num);
 		    pstmt.setInt(2, board_num);
 		    pstmt.setString(3, cmnt_content);
 		    pstmt.setString(4, cmnt_nick);
@@ -363,7 +367,7 @@ public class BoardDAO {  // controller
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+			CloseUtil.close(rs);	CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}
 	    return hm;
 	}

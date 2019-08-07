@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jstl/fmt_rt" %>
@@ -77,11 +77,9 @@
 	<!-- 내용 채우기 -->
 	
 	<form action = "writePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
-
 		<input type="hidden" name="board_nick" value="${ sessionScope.nick }" >
 		
-		<table border="1">
-
+		<table>
 		
 		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
 		
@@ -92,20 +90,16 @@
 			</td>
 		</tr>  -->
 		<tr> <!-- 제목 -->
-
 			<td width="70" align = "center" required> 제  목</td>
-			<td width="100">
-
+			<td width="730">
 			<input type="text" class="form-control" size= "35" maxlength="30" 
 			name ="board_title" placeholder="제목을 입력하세요">
 			</td>
 		</tr>
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
-
-			<td width="70" align = "center" required> 내  용</td>
-			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" ></textarea>
-
+			<td width="70" align = "center"> 내  용</td>
+			<td width="730"><textarea class="form-control" rows="15" cols="80" name ="board_content" ></textarea>
 			</td>
 		</tr>
 	</table>
