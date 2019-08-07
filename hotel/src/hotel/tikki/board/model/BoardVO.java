@@ -7,7 +7,14 @@ public class BoardVO implements Serializable {
 	private int board_num;
 	private String board_nick, board_content, board_title;
 	private Timestamp board_date;
+	private int cmnt_count;
 	
+	public int getCmnt_count() {
+		return cmnt_count;
+	}
+	public void setCmnt_count(int cmnt_count) {
+		this.cmnt_count = cmnt_count;
+	}
 	public int getBoard_num() {
 		return board_num;
 	}
