@@ -17,11 +17,12 @@ $(document).ready(function(){
 
 
 $(function() {
+	 $('#checkIn#checkOut').datepicker('setDate', 'today');
 	$('#checkIn').datepicker({
+		language : "kr",
 		todayHighlight : true,
 		format : "yyyy/mm/dd",
-		language : "kr",
-		minDate : 0,
+		minDate : "0",
 		onClose: function( selectedDate ) {    
             // 시작일(fromDate) datepicker가 닫힐때
             // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정

@@ -107,16 +107,12 @@
 		<table class="marginAuto"><tr>
 			<!-- 체크인 -->
 			<td class="m" >
-			<div class="input-group date">
 				<input type="text" class="form-control" value="체크인"  id="checkIn" name="checkIn" > 
-				<span class="input-group-addon"> 
-				<span  class="glyphicon glyphicon-calendar">
-				</span></span>
-			</div></td>
+			</td>
 			<!-- 체크아웃 -->
 			<td class="m">
 			<div class="input-group date" >
-				<input type="text" class="form-control" value="체크아웃" id="checkOut" name="checkOut" > 
+				<input type="text" class="form-control" value="체크아웃" id="checkOut" name="checkIn" > 
 				<span class="input-group-addon"> 
 				<span class="glyphicon glyphicon-calendar">
 				</span></span>
