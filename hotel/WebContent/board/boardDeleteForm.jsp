@@ -60,7 +60,7 @@
   <div class="container" style="min-height: 700px">
   <br><br>
   	정말로 삭제하시겠습니까?<br><br>
-	<a href='deletePro.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'>네</a> <a href="list.do">아니요</a>
+	<a href='deletePro.do?board_num=${ board_num }&pageNum=${ pageNum }'>네</a> <a href="list.do">아니요</a>
   </div>
   <!-- /.container -->
 
