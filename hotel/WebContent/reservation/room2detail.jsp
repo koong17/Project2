@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,19 +47,20 @@
 						aria-haspopup="true" aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="room1detail.html">room1</a> <a
-								class="dropdown-item" href="room2detail.html">room2</a> <a
-								class="dropdown-item" href="room3detail.html">room3</a>
+							<a class="dropdown-item" href="room1detail.jsp">room1</a> <a
+								class="dropdown-item" href="room2detail.jsp">room2</a> <a
+								class="dropdown-item" href="room3detail.jsp">room3</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reservation.html">예약</a> <!-- full width --></li>
+						href="reservation.jsp">예약</a> <!-- full width --></li>
 					<li class="nav-item"><a class="nav-link"
-						href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
+						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- ./nav -->
+
 
 	<!-- Page Content -->
 	<div class="container">
@@ -92,7 +95,7 @@
 
 				<div class="aa aa-button reservation-wrap reservation-button"
 					align="center">
-					<a href="reservation_confirm.html" class="button">예약 하기</a>
+					<a href="reservation.jsp" class="button">예약 하기</a>
 				</div>
 
 				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. 아래 내용은 룸1 인포라 다시 넣든지 말든지 해야함 -->

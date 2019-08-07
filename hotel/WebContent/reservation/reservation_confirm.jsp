@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,14 +52,14 @@
 						aria-haspopup="true" aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="room1detail.html">room1</a> <a
-								class="dropdown-item" href="room2detail.html">room2</a> <a
-								class="dropdown-item" href="room3detail.html">room3</a>
+							<a class="dropdown-item" href="room1detail.jsp">room1</a> <a
+								class="dropdown-item" href="room2detail.jsp">room2</a> <a
+								class="dropdown-item" href="room3detail.jsp">room3</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reservation.html">예약</a> <!-- full width --></li>
+						href="reservation.jsp">예약</a> <!-- full width --></li>
 					<li class="nav-item"><a class="nav-link"
-						href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
+						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
 			</div>
 		</div>
@@ -74,7 +76,7 @@
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item active">변경사항이 있으신가요?</li>
-			<li class="breadcrumb-item"><a href="reservation.html"
+			<li class="breadcrumb-item"><a href="reservation.jsp"
 				style="color: #007bff;">돌아가기</a></li>
 		</ol>
 
