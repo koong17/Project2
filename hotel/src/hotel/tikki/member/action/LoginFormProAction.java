@@ -16,12 +16,17 @@ public class LoginFormProAction implements MemberAction {
 		String password = request.getParameter("password");
 		
 		MemberDAO dao = MemberDAO.getInstance();
+		
 		int result = dao.memberLoginCheck(id, password);
+		String nick = dao.memberNick(id);
 		
 		if(result == 1) {
-			session.setAttribute("id", id);	
+			session.setAttribute("id", id);
+			session.setAttribute("nick", nick);	
 			return "/memberjsp/loginPro.jsp";
-		} 
+		} else {
+			request.setAttribute("result", result);
+		}
 		
 		return "/memberjsp/login.jsp";
 	}

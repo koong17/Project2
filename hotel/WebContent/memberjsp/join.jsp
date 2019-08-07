@@ -74,7 +74,8 @@
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address" required="required">
+										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()">
+									<span id="resultId" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
@@ -82,7 +83,8 @@
 								</div>
 								<div class="form-group">
 									<input type="text" name="nickname" id="nickname"
-										class="form-control input-lg" placeholder="nickname" required="required">
+										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()">
+									<span id="resultNick" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="text" name="phone" id="phone"

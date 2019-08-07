@@ -39,3 +39,74 @@ function check(re, what, message) {
     what.focus();
     //return false;
 }
+
+var xmlReq; // 전역변수 지정
+//Ajax 객체 생성 과정
+function createAjax() {
+	xmlReq = new XMLHttpRequest();
+}
+
+//Ajax 객체를 이용한 데이터 전송 과정
+function ajaxIdSend() {
+	createAjax();
+	var email = document.getElementById("email").value;
+	xmlReq.onreadystatechange = callBack;
+	xmlReq.open("GET", "memberjsp/checkId.jsp?email="+email, true);
+	xmlReq.send(null);
+	//send가 끝나고나면 비동기식이기 때문에 프로그램이 계속 진행
+}
+
+function ajaxNickSend() {
+	createAjax();
+	var nickname = document.getElementById("nickname").value;
+	xmlReq.onreadystatechange = callBack2;
+	xmlReq.open("GET", "memberjsp/checkNickname.jsp?nickname="+nickname, true);
+	xmlReq.send(null);
+	//send가 끝나고나면 비동기식이기 때문에 프로그램이 계속 진행
+}
+
+//콜백
+function callBack() {
+	if(xmlReq.readyState == 4) {
+		if(xmlReq.status == 200) {
+			printIdData();
+		}
+	}
+}
+
+function callBack2() {
+	if(xmlReq.readyState == 4) {
+		if(xmlReq.status == 200) {
+			printNickData();
+		}
+	}
+}
+
+//결과 출력 과정
+function printIdData() {
+	var result = xmlReq.responseXML;
+	
+	var rootNode = result.documentElement;
+	var rootValue = rootNode.firstChild.nodeValue;
+	var rootTag = document.getElementById("resultId");
+	
+	if (rootValue == "true") {
+		rootTag.innerHTML = "사용 가능한 이메일";
+	} else {
+		rootTag.innerHTML = "<font color='RED'>중복된 이메일</font>";
+	}
+}
+
+function printNickData() {
+	var result = xmlReq.responseXML;
+	
+	var rootNode = result.documentElement;
+	var rootValue = rootNode.firstChild.nodeValue;
+	var rootTag = document.getElementById("resultNick");
+	
+	if (rootValue == "true") {
+		rootTag.innerHTML = "사용 가능한 닉네임";
+	} else {
+		rootTag.innerHTML = "<font color='RED'>중복된 닉네임</font>";
+	}
+}

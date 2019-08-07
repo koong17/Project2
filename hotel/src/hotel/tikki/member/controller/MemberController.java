@@ -38,13 +38,12 @@ public class MemberController extends HttpServlet {
 		String nextPage = "";
 
 		if (com.equals("/join.go")) {
-			nextPage = "memberjsp/join.jsp";
 			
+			nextPage = "memberjsp/join.jsp";
 		} else if (com.equals("/joinPro.go")) {
 			action = new JoinFormProAction();
 			try {
-				action.process(request, response);
-				nextPage = "memberjsp/joinPro.jsp";
+				nextPage = action.process(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
@@ -53,8 +52,7 @@ public class MemberController extends HttpServlet {
 		} else if (com.equals("/loginPro.go")) {
 			action = new LoginFormProAction();
 				try {
-					action.process(request, response);
-					nextPage = "memberjsp/loginPro.jsp";
+					nextPage = action.process(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,8 +62,6 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			nextPage = "memberjsp/logoutPro.jsp";
-		} else if (com.equals("/check.go")) {
-			nextPage = "memberjsp/check.jsp";
 		}
 
 		RequestDispatcher dp = request.getRequestDispatcher(nextPage);
