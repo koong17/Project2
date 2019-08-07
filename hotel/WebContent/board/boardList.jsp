@@ -122,9 +122,10 @@
       </c:forEach>
       </table>
    </c:if>
-   
+   <c:if test="${ sessionScope.nick != null }">
    <button class="btn btn-primary btn-lg" id="button-right-fix2"
 			onclick="window.location='writeForm.do?pageNum=${ pageNum }'">글쓰기</button>
+   </c:if>
    
    
    <!-- 페이지 번호 -->

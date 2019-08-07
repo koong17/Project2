@@ -90,7 +90,7 @@
 			</td>
 		</tr>  -->
 		<tr> <!-- 제목 -->
-			<td width="70" align = "center"> 제  목</td>
+			<td width="70" align = "center" required> 제  목</td>
 			<td width="100">
 			<input type="text" class="form-control" size= "35" maxlength="30" 
 			name ="board_title" placeholder="제목을 입력하세요">
@@ -98,7 +98,7 @@
 		</tr>
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
-			<td width="70" align = "center"> 내  용</td>
+			<td width="70" align = "center" required> 내  용</td>
 			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" ></textarea>
 			</td>
 		</tr>

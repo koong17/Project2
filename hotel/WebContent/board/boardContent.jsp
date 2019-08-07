@@ -115,7 +115,7 @@
 		            <input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
 		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	   		   </c:if>
-            <input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
+               <input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
             </td>
          </tr>
       </table>
