@@ -257,39 +257,22 @@ public class BoardDAO {  // controller
 		}
 	} // update() end	
 	
-	//delete( num, passwd ) - deletePro.jsp
-	public int delete(int num, String passwd) {
+	//delete( board_num) - deletePro.jsp
+	public void delete(int board_num) {
 		Connection conn = null;
 		PreparedStatement pstmt=null;
-		ResultSet rs = null;
-		
-		String dbpasswd = "";
-		int result = 0;
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("SELECT PASSWD FROM BOARD WHERE NUM=?");
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-			
-			if( rs.next() ) {
-				dbpasswd = rs.getString("passwd");
-				
-				if( dbpasswd.equals(passwd) ) {
-					pstmt = conn.prepareStatement("DELETE FROM BOARD WHERE NUM = ?");
-					pstmt.setInt(1, num);
-					result = pstmt.executeUpdate();
-					result = 1;   // 글삭제 성공
-					
-				} else 	result = 0;  // 비밀번호 틀림
-			} // out if end	
+			pstmt = conn.prepareStatement("DELETE FROM BOARD WHERE BOARD_NUM = ?");
+			pstmt.setInt(1, board_num);
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
-		}					
-		return result;
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}
 	} // delete() end
 }
 
