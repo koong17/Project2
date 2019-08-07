@@ -16,14 +16,9 @@
   <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-<<<<<<< HEAD
-  <link href="../css/modern-business.css" rel="stylesheet">
-  
-  <link href="../css/boardForm.css" rel="stylesheet">
-  
-=======
   <link href="/hotel/css/modern-business.css" rel="stylesheet">
->>>>>>> origin/suah
+  
+  <link href="/hotel/css/boardForm.css" rel="stylesheet">
 
 </head>
 

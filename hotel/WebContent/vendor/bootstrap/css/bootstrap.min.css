@@ -4862,9 +4862,9 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .pagination {
 	display: -ms-flexbox;
 	display: flex;
-	padding-left: 0;
 	list-style: none;
-	border-radius: .25rem
+	border-radius: .25rem;
+	
 }
 
 .page-link {
@@ -4893,9 +4893,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .page-item:first-child .page-link {
-	margin-left: 0;
+	
+	margin-left:0;
 	border-top-left-radius: .25rem;
-	border-bottom-left-radius: .25rem
+	border-bottom-left-radius: .25rem ;
+	
 }
 
 .page-item:last-child .page-link {
