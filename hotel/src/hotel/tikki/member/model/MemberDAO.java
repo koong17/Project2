@@ -3,6 +3,7 @@ package hotel.tikki.member.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -51,7 +52,7 @@ public class MemberDAO {
 		
 	}
 	
-	public String memberNick(String id) throws Exception {
+	public String memberNick(String id) throws Exception {   // 로그인 시 id와 닉네임 세션 저장
 		String sql = "SELECT NICKNAME FROM MEMBER WHERE ID = ?";
 		String nick = null;
 		Connection conn = getConnection();
@@ -72,14 +73,16 @@ public class MemberDAO {
 		pstmt.setString(1, id);
 		ResultSet rs = pstmt.executeQuery();
 		
-		if( rs.next() ) result = 1;
-		else result = -1;  
-		
-		CloseUtil.close(rs);  CloseUtil.close(pstmt); CloseUtil.close(conn);
+		if( rs.next() ) {
+			result = 1;
+		} else { 
+			result = -1; 
+		}  
+
+		CloseUtil.close(rs); CloseUtil.close(pstmt); CloseUtil.close(conn);
 				
 		return result;
-	} 
-	
+	}
 	
 	public int joinConfirmNick(String nickname) throws Exception { // 닉네임 중복 체크(있으면 1, 없으면 -1)
 		String sql = "SELECT NICKNAME FROM MEMBER WHERE NICKNAME = ?";

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +21,9 @@
 <link href="css/modern-business.css" rel="stylesheet">
 <script src="js/inho.js"></script>
 </head>
-
-
-
+<c:if test="${ sessionScope.id != null}">
+	<c:redirect url="index.go" />
+</c:if>
 <body>
 	<!------ Include the above in your HEAD tag ---------->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -75,21 +76,25 @@
 								<div class="form-group">
 									<input type="email" name="email" id="email"
 										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()">
+									<span id="emailTag" style="color: white;"></span>
 									<span id="resultId" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password" required="required">
+										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()">
+									<span id="passwordTag" style="color: white;"></span>	
 								</div>
 								<div class="form-group">
 									<input type="text" name="nickname" id="nickname"
 										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()">
+										<span id="nicknameTag" style="color: white;"></span>
 									<span id="resultNick" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="text" name="phone" id="phone"
 										class="form-control input-lg" 
-										placeholder="phone              ex)01012341234" required="required">
+										placeholder="phone" required="required" onkeyup="phonevalidate()">
+										<span id="phoneTag" style="color: white;"></span>
 								</div>		
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
