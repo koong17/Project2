@@ -40,7 +40,7 @@
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 <script type='text/javascript'
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap-datepicker.kr.js"
+<script src="../vendor/bootstrap/js/bootstrap-datepicker.kr.js"
 	charset="UTF-8"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
@@ -54,19 +54,7 @@
 
 
 <!-- Hyesoo JavaScript -->
-<script src="js/hidden.js"></script>
-
-<script type='text/javascript'>
-	$(function() {
-		$('.input-group.date').datepicker({
-			calendarWeeks : false,
-			todayHighlight : true,
-			autoclose : true,
-			format : "yyyy/mm/dd",
-			language : "kr"
-		});
-	});
-</script>
+<script src="../js/hidden.js"></script>
 
 </head>
 
@@ -120,15 +108,15 @@
 			<!-- 체크인 -->
 			<td class="m" >
 			<div class="input-group date">
-				<input type="text" class="form-control" value="체크인" id="checkIn"> 
+				<input type="text" class="form-control" value="체크인"  id="checkIn" name="checkIn" > 
 				<span class="input-group-addon"> 
 				<span  class="glyphicon glyphicon-calendar">
 				</span></span>
 			</div></td>
 			<!-- 체크아웃 -->
 			<td class="m">
-			<div class="input-group date">
-				<input type="text" class="form-control" value="체크아웃" id="checkOut"> 
+			<div class="input-group date" >
+				<input type="text" class="form-control" value="체크아웃" id="checkOut" name="checkOut" > 
 				<span class="input-group-addon"> 
 				<span class="glyphicon glyphicon-calendar">
 				</span></span>
@@ -138,7 +126,7 @@
 			<td class="m">
 			<div>
 			<select class="browser-default custom-select">
-					<option selected>인원수</option>
+					<option selected>인원수&nbsp;&nbsp;</option>
 					<option value="num1">1</option>
 					<option value="num2">2</option>
 					<option value="num3">3</option>
