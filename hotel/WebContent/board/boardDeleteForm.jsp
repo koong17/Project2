@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +13,10 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="/hotel/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -33,67 +35,42 @@
             <a class="nav-link" href="about.html">호텔소개</a> <!-- About 에 contact map-->
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" aria-haspopup="true" aria-expanded="false">
               객실소개
             </a><!--  포트폴리오1 -> single portfolio item -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="Deluxe.html">Deluxe</a>
-              <a class="dropdown-item" href="GrandDeluxe.html">Grand Deluxe</a>
-              <a class="dropdown-item" href="SuiteRoom.html">Suite Room</a>
+              <a class="dropdown-item" href="information/Deluxe.html">Deluxe</a>
+              <a class="dropdown-item" href="information/GrandDeluxe.html">Grand Deluxe</a>
+              <a class="dropdown-item" href="information/SuiteRoom.html">Suite Room</a>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="full-width.html">예약</a> <!-- full width -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 -->
+            <a class="nav-link" href="board.jsp">고객문의</a> <!--  포트폴리오1 수정 -->
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- ./nav -->
-  
+
   <!-- Page Content -->
-  <div class="container">
-
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Deluxe
-      <small></small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item active">Deluxe</li>
-    </ol>
-
-    <!-- Portfolio Item Row -->
-    <div class="row">
-
-      <div class="col-md-8">
-        <img class="img-fluid" src="http://placehold.it/750x450" alt="">
-      </div>
-
-      <div class="col-md-4">
-        <h3 class="my-3">Deluxe</h3>
-        <p>아늑하고 효율적인 공간</p>
-        <h5 class="my-3">글로벌 럭셔리 디자이너 민지남이 디자인한 '편안하고 아늑한 공간'에 들어오세요. 푸른 빛의 바다에서 최고의 휴식을 경험 할 수 있습니다.</h5>
-        <ul>
-          <li>베개</li>
-          <li>요가매트</li>
-          <li>최고급 담요</li>
-          <li>간식</li>
-        </ul>
-      </div>
-
-    </div>
-    <!-- /.row -->
-
+  <div class="container" style="min-height: 700px">
+  
+  	<script>
+  		var result = confirm("정말로 삭제하시겠습니까?");
+  			console.log(result);
+  		if( result == true ) {
+  			location.href="deletePro.do?board_num=${ board_num }&pageNum=${ pageNum }";
+  		} else {
+  			history.go(-1);
+  		}
+  	</script>
   </div>
   <!-- /.container -->
-  <br><br>
+
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">

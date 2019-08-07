@@ -4867,9 +4867,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .pagination {
 	display: -ms-flexbox;
 	display: flex;
-	padding-left: 0;
 	list-style: none;
-	border-radius: .25rem
+	border-radius: .25rem;
+	justify-content: center;
+	
 }
 
 .page-link {
@@ -4898,9 +4899,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .page-item:first-child .page-link {
-	margin-left: 0;
+	
+	margin-left:0;
 	border-top-left-radius: .25rem;
-	border-bottom-left-radius: .25rem
+	border-bottom-left-radius: .25rem ;
+	
 }
 
 .page-item:last-child .page-link {
@@ -9740,5 +9743,10 @@ a.text-dark:focus, a.text-dark:hover {
 		color: inherit;
 		border-color: #dee2e6
 	}
+	
+	
 }
+
+
+
 /*# sourceMappingURL=bootstrap.min.css.map */

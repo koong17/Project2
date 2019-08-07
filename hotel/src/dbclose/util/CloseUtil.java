@@ -23,7 +23,6 @@ public class CloseUtil {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 	}
 
 	public static void close(ResultSet rs) {
