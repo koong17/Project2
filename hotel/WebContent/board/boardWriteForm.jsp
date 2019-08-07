@@ -66,19 +66,19 @@
 	
 	<form action = "writePro.do" method="post" name = "writeform" onsubmit="return writeSave()">
 	
-		<table >
+		<table>
 		
 		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
 		
 		<tr> 
 			<td width="70" align = "center"> <label for="board_nick"> 닉 네 임</label></td>
-			<td width="100">
+			<td width="730">
 			<input type="text" class="form-control" size= "10" maxlength="10" name ="board_nick" placeholder="닉네임을 입력하세요">
 			</td>
 		</tr> 
 		<tr> <!-- 제목 -->
 			<td width="70" align = "center"> 제  목</td>
-			<td width="100">
+			<td width="730">
 			<input type="text" class="form-control" size= "35" maxlength="30" 
 			name ="board_title" placeholder="제목을 입력하세요">
 			</td>
@@ -86,7 +86,7 @@
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" ></textarea>
+			<td width="730"><textarea class="form-control" rows="15" cols="80" name ="board_content" ></textarea>
 			</td>
 		</tr>
 	</table>

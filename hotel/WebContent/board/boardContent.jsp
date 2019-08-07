@@ -24,6 +24,86 @@
 
 </head>
 
+<script>
+    
+    // Perform an asynchronous HTTP (Ajax) request.
+    // 비동기 통신 Ajax를 Setting한다.
+    $.ajaxSetup({
+        type:"POST",
+        async:true,
+        dataType:"json",
+        error:function(xhr) {
+            console.log("error html = " + xhr.statusText);
+        }
+    });
+    
+    $(function() {
+        $("#commentWrite").on("click", function() {
+            $.ajax({
+                url:"/hotel/cmntWriteForm.do",
+                // data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+                data:{
+                    commentContent:$("#cmnt_content").val(),
+                    articleNumber:"${ vo.board_num }"
+                },
+                beforeSend:function() {
+                    console.log("시작 전...");
+                },
+                complete:function() {
+                    console.log("완료 후...");
+                },
+                success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
+                    if(data.result == 1) {            // 쿼리 정상 완료, executeUpdate 결과
+                        console.log("comment가 정상적으로 입력되었습니다.");
+                        $("#cmnt_content").val("");
+                        showHtml(data.comments, 1); // selectComments() 결과
+                    }
+                }
+            })
+        });
+    });
+ 
+    function showHtml(data) {
+        let html = "<table class='table table-striped table-bordered' style='margin-top: 10px;'><tbody>";
+        $.each(data, function(index, item) {
+            html += "<tr align='center'>";
+            html += "<td>" + (index+1) + "</td>";
+            html += "<td>" + item.cmnt_nick + "</td>";
+            html += "<td align='left'>" + item.cmnt_content + "</td>";
+            let presentDay = item.Cmnt_date.substring(0, 10);
+            html += "<td>" + presentDay + "</td>";
+            html += "</tr>";
+        });
+        html += "</tbody></table>";
+        
+        $("#showComment").html(html);
+        $("#commentContent").val("");
+        $("#commentContent").focus();
+    }
+    
+    function getComment(event) {
+        $.ajax({
+            url:"/hotel/cmntReadForm.do",
+            data:{
+                board_num:"${ vo.board_num }"
+            },
+            beforeSend:function() {
+                console.log("읽어오기 시작 전...");
+            },
+            complete:function() {
+                console.log("읽어오기 완료 후...");
+            },
+            success:function(data) {
+                console.log("comment를 정상적으로 조회하였습니다.");
+                showHtml(data);
+                
+                let position = $("#showComment table tr:last").position();
+                $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
+            }
+        })
+    }
+</script>
+
 <body>
 
   <!-- Navigation -->
@@ -72,12 +152,15 @@
 
 			
 			<tr height="30">
-				
+				<td align="center" width = "20" >글번호</td>
 				<td align="center" width = "10"> ${ vo.board_num }</td>
-				<td align="center" width = "25" >글제목</td>
-				<td align="center" width = "180">${ vo.board_title } </td>
+				<td align="center" width = "20" >글제목</td>
+				<td align="center" width = "150">${ vo.board_title } </td>
+				<td align="center" width = "20" >작성자</td>
+				<td align="center" width = "30">${ vo.board_nick } </td>
 				
 			</tr>
+
 
 			<tr>
 				<td height="300" width = "1000" colspan="20"><pre>${ vo.board_content }</pre></td>
@@ -85,7 +168,27 @@
 			
 			<c:when test="${not empty param.cmnt_content}">
 			<tr>
-				<td height="300" width = "1000" colspan="20"><pre><%-- ${ vo.cmnt_content } --%></pre></td>
+				<td height="300" width = "1000" colspan="20"><pre>
+					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
+					    <textarea class="form-control" rows="3" id="commentContent" placeholder="댓글을 입력하세요." style="width: 100%;" ></textarea>
+					    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+					        <c:if test="${sessionScope.nick == null}">
+					            <input type="button" class="btn btn-default" value="댓글 쓰기" disabled="disabled">
+					        </c:if>
+					        <c:if test="${sessionScope.nick != null}">
+					            <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite">
+					        </c:if>
+					        <input type="button" class="btn btn-default" value="댓글 읽기(${ vo.cmnt_count })" 
+					                onclick="getComment(1, event)" id="commentRead">
+					    </div>
+					</div>
+					 
+					<!-- Comment 태그 추가 -->
+					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
+					    <div id="showComment" style="text-align: center;"></div>
+					</div>
+				
+				</pre></td>
 			</tr>
 			</c:when>
 			
@@ -94,7 +197,7 @@
 			</c:otherwise>
 			
 			<tr height ="30">
-				<td colspan="3" align="right" >
+				<td colspan="6" align="right" >
 				<input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
@@ -109,7 +212,7 @@
 	
   </div>
   <!-- /.container -->
-s
+
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">

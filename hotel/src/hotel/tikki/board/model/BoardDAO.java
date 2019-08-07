@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.naming.Context;
@@ -13,6 +14,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dbclose.util.CloseUtil;
+import hotel.tikki.board.comments.model.CommentsVO;
 
 public class BoardDAO {  // controller
 	
@@ -166,19 +168,18 @@ public class BoardDAO {  // controller
 	
 	// getDataDetail( num ) - content.jsp 상세보기 페이지
 	// num 에 해당하는 레코드를 board 테이블에서 검색함
-	public BoardVO getDataDetail( int num ) {
+	public BoardVO getDataDetail( int board_num ) {
 		Connection conn = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
 		
 		BoardVO vo = null;
-		String sql = "";
 		
 		try {
 			conn = getConnection();
 			
 			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE BOARD_NUM = ?");
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, board_num);
 			rs = pstmt.executeQuery();
 			
 			if( rs.next() ) {
@@ -188,7 +189,14 @@ public class BoardDAO {  // controller
 				vo.setBoard_date(rs.getTimestamp("board_date"));
 				vo.setBoard_content(rs.getString("board_content"));
 				vo.setBoard_title(rs.getString("board_title"));
-			} // if end			
+			} // if end
+			
+			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM COMMENTS WHERE BOARD_NUM = ?");
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) vo.setCmnt_count(rs.getInt(1));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -274,6 +282,73 @@ public class BoardDAO {  // controller
 			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}
 	} // delete() end
+	
+	// comment method들
+	// 댓글 내용 가져오기
+	public  ArrayList<CommentsVO> selectComments(int board_num) {
+		Connection conn = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs = null;
+		StringBuffer sb = new StringBuffer();
+		ArrayList<CommentsVO> comments = null;
+		
+		try {
+			conn = getConnection();
+		    sb.append("select cmnt_num, board_num, cmnt_content, cmnt_nick, cmnt_date");
+		    sb.append(" from comments where board_num=? order by cmnt_num desc");
+		    pstmt = conn.prepareStatement(sb.toString());
+		    pstmt.setInt(1, board_num);
+		    rs = pstmt.executeQuery();
+		    
+		    comments = new ArrayList<>();
+		    CommentsVO comment = null;
+		    
+		    while(rs.next()) {
+		        comment = new CommentsVO();
+		        comment.setBoard_num(rs.getInt("board_num"));
+		        comment.setCmnt_content(rs.getString("cmnt_content"));
+		        comment.setCmnt_date(rs.getTimestamp("cmnt_date"));
+		        comment.setCmnt_num(rs.getInt("cmnt_num"));
+		        comment.setCnmt_nick(rs.getString("cmnt_nick"));
+		        comments.add(comment);
+		    }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);	CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}
+	    
+	    return comments;
+	}
+	 
+	public synchronized HashMap<String, Object> insertComment(int board_num, String cmnt_content, String cmnt_nick) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		HashMap<String, Object> hm = null;
+		try {
+			conn = getConnection();
+		    pstmt = conn.prepareStatement("INSERT INTO comments(cmnt_num, board_num, cmnt_content, cmnt_nick, cmnt_date)"
+		    							+ " VALUES((select max(cmnt_num) from comments where board_num=?)+1, ?, ?, ?, sysdate)");
+		    pstmt.setInt(1, board_num);
+		    pstmt.setInt(2, board_num);
+		    pstmt.setString(3, cmnt_content);
+		    pstmt.setString(4, cmnt_nick);
+		    int result = pstmt.executeUpdate();
+		    ArrayList<CommentsVO> comments = selectComments(board_num);
+		    
+		    hm = new HashMap<>();
+		    hm.put("result", result);
+		    hm.put("comments", comments);
+		    
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}
+	    return hm;
+	}
+
 }
 
 
