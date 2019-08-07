@@ -40,6 +40,30 @@ public class BoardDAO {  // controller
 		return ds.getConnection();
 	}// getConnection();
 	
+//	public String getnick(int board_num) {
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		String board_nick = null;
+//		
+//		try {
+//			conn = getConnection();
+//			
+//			//현재 board 테이블의 레코드 수 구하기
+//			pstmt = conn.prepareStatement("SELECT BOARD_NICK FROM BOARD WHERE BOARD_NUM=?" );
+//			pstmt.setInt(1, board_num);
+//			rs = pstmt.executeQuery();
+//			
+//			if( rs.next() ) board_nick = rs.getString(1);
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+//		}	
+//		return board_nick;
+//	}
+	
 	//insert(vo) method - 새로운 글을 게시판에 추가, 글 입력 처리에 사용
 	public void insert(BoardVO vo) {
 		Connection conn = null ;
@@ -190,13 +214,8 @@ public class BoardDAO {  // controller
 				vo.setBoard_content(rs.getString("board_content"));
 				vo.setBoard_title(rs.getString("board_title"));
 			} // if end
-			
-			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM COMMENTS WHERE BOARD_NUM = ?");
-			pstmt.setInt(1, board_num);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) vo.setCmnt_count(rs.getInt(1));
-			
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
