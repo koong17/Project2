@@ -4864,6 +4864,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	display: flex;
 	list-style: none;
 	border-radius: .25rem;
+	justify-content: center;
 	
 }
 
