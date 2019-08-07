@@ -51,6 +51,18 @@ public class MemberDAO {
 		
 	}
 	
+	public String memberNick(String id) throws Exception {
+		String sql = "SELECT NICKNAME FROM MEMBER WHERE ID = ?";
+		String nick = null;
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		if( rs.next() ) nick = rs.getString("NICKNAME");
+		
+		return nick;
+	}
+	
 	public int joinConfirmID(String id) throws Exception { // 아이디 중복 체크(있으면 1, 없으면 -1)
 		String sql = "SELECT ID FROM MEMBER WHERE ID = ?";
 		int result = -1;
