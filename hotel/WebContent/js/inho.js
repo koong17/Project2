@@ -47,11 +47,20 @@ function createAjax() {
 }
 
 //Ajax 객체를 이용한 데이터 전송 과정
-function ajaxSend() {
+function ajaxIdSend() {
 	createAjax();
 	var email = document.getElementById("email").value;
 	xmlReq.onreadystatechange = callBack;
-	xmlReq.open("GET", "memberjsp/check.jsp?email="+email, true);
+	xmlReq.open("GET", "memberjsp/checkId.jsp?email="+email, true);
+	xmlReq.send(null);
+	//send가 끝나고나면 비동기식이기 때문에 프로그램이 계속 진행
+}
+
+function ajaxNickSend() {
+	createAjax();
+	var nickname = document.getElementById("nickname").value;
+	xmlReq.onreadystatechange = callBack;
+	xmlReq.open("GET", "memberjsp/checkNickname.jsp?nickname="+nickname, true);
 	xmlReq.send(null);
 	//send가 끝나고나면 비동기식이기 때문에 프로그램이 계속 진행
 }
@@ -60,26 +69,45 @@ function ajaxSend() {
 function callBack() {
 	if(xmlReq.readyState == 4) {
 		if(xmlReq.status == 200) {
-			printData();
+			printIdData();
+			printNickData();
 		}
 	}
 }
 
 //결과 출력 과정
-function printData() {
+function printIdData() {
 	var result = xmlReq.responseXML;
 	
 	var rootNode = result.documentElement;
 	var rootValue = rootNode.firstChild.nodeValue;
-	var rootTag = document.getElementById("result");
+	var rootTag = document.getElementById("resultId");
 	
 	var idNode = rootNode.getElementsByTagName("email");
 	var idValue = idNode.item(0).firstChild.nodeValue;
 	var idTag = document.getElementById("idTxt");
 	
 	if (rootValue == "true") {
-		rootTag.innerHTML = "사용 가능한 아이디";
+		rootTag.innerHTML = "사용 가능한 이메일";
 	} else {
-		rootTag.innerHTML = "중복된 아이디";
+		rootTag.innerHTML = "중복된 이메일";
+	}
+}
+
+function printNickData() {
+	var result = xmlReq.responseXML;
+	
+	var rootNode = result.documentElement;
+	var rootValue = rootNode.firstChild.nodeValue;
+	var rootTag = document.getElementById("resultNick");
+	
+	var nickNode = rootNode.getElementsByTagName("nickname");
+	var nickValue = nickNode.item(0).firstChild.nodeValue;
+	var nickTag = document.getElementById("idTxt");
+	
+	if (rootValue == "true") {
+		rootTag.innerHTML = "사용 가능한 닉네임";
+	} else {
+		rootTag.innerHTML = "중복된 닉네임";
 	}
 }
