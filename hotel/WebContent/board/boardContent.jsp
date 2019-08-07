@@ -109,10 +109,12 @@
          
          <tr height ="30">
             <td colspan="6" align="right" >
-            <input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      		   <c:if test="${ vo.board_nick == sessionScope.nick }">
+		            <input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            <input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	   		   </c:if>
             <input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
             </td>
          </tr>
