@@ -57,3 +57,16 @@ create table comments(
     CONSTRAINT cmnt_fk_id foreign key(cmnt_nick)
     REFERENCES member(nickname) on delete cascade
 );
+
+SELECT *
+
+FROM member
+
+WHERE not REGEXP_LIKE (id,'/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$'); -- 이메일 양식만 찾기
+
+
+SELECT *
+
+FROM member
+
+WHERE REGEXP_LIKE (id,'/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$'); -- 이메일 양식 아닌것 안보임

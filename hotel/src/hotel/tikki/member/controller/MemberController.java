@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import hotel.tikki.member.action.JoinFormProAction;
+import hotel.tikki.member.action.LoginFormAction;
 import hotel.tikki.member.action.LoginFormProAction;
+import hotel.tikki.member.action.LogoutAction;
 import hotel.tikki.member.action.MemberAction;
 
 @WebServlet("*.go")
@@ -48,7 +50,12 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}			
 		} else if (com.equals("/login.go")) {
-			nextPage = "memberjsp/login.jsp";
+			action = new LoginFormAction();
+			try {
+				nextPage = action.process(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		} else if (com.equals("/loginPro.go")) {
 			action = new LoginFormProAction();
 				try {
@@ -58,10 +65,14 @@ public class MemberController extends HttpServlet {
 				}
 		} else if (com.equals("/index.go")) {
 			nextPage = "index.jsp";
+			
 		} else if (com.equals("/logout.go")) {
-			HttpSession session = request.getSession();
-			session.invalidate();
-			nextPage = "memberjsp/logoutPro.jsp";
+			action = new LogoutAction();
+			try {
+				nextPage = action.process(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		RequestDispatcher dp = request.getRequestDispatcher(nextPage);

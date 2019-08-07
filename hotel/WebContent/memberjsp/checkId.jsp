@@ -23,4 +23,5 @@
 	
 	response.setContentType("text/xml;charset=utf-8");
 	response.getWriter().write(str.toString());
+	System.out.println(str.toString());
 %>
