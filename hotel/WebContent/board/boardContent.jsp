@@ -61,24 +61,18 @@
 	<center><b>상세보기 페이지</b><br>
 	<form>
 		<table width = "500" border = "1" cellspacing = "0" cellpadding = "0" 
-		bgcolor = "${ bodyback_c }" align="center">
+		 align="center" class="form-control">
 			
 			<tr height="30">
-				<td align="center" width = "125" >글번호</td>
-				<td align="center" width = "125"> ${ vo.board_num }</td>
 				
-				<td align="center" width = "125" >작성자</td>
-				<td align="center" width = "125">${ vo.board_nick }</td>
-			</tr>
-			<tr height="30">
-				<td align="center" width = "125" >글제목</td>
+				<td align="center" width = "20"> ${ vo.board_num }</td>
+				<td align="center" width = "25" >글제목</td>
 				<td align="center" width = "125">${ vo.board_title } </td>
 				
-				<td align="center" width = "125" >작성일</td>
-				<td align="center" width = "125">${ vo.board_date }</td>
 			</tr>
+
 			<tr height="150">
-				<td align="center" width = "125" colspan="4"><pre>${ vo.board_content }</pre></td>
+				<td align="center" width = "1000" colspan="15"><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
 			<tr height ="30">
@@ -95,7 +89,7 @@
 	</center>
   </div>
   <!-- /.container -->
-
+s
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
