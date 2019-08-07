@@ -39,3 +39,47 @@ function check(re, what, message) {
     what.focus();
     //return false;
 }
+
+var xmlReq; // 전역변수 지정
+//Ajax 객체 생성 과정
+function createAjax() {
+	xmlReq = new XMLHttpRequest();
+}
+
+//Ajax 객체를 이용한 데이터 전송 과정
+function ajaxSend() {
+	createAjax();
+	var email = document.getElementById("email").value;
+	xmlReq.onreadystatechange = callBack;
+	xmlReq.open("GET", "memberjsp/check.jsp?email="+email, true);
+	xmlReq.send(null);
+	//send가 끝나고나면 비동기식이기 때문에 프로그램이 계속 진행
+}
+
+//콜백
+function callBack() {
+	if(xmlReq.readyState == 4) {
+		if(xmlReq.status == 200) {
+			printData();
+		}
+	}
+}
+
+//결과 출력 과정
+function printData() {
+	var result = xmlReq.responseXML;
+	
+	var rootNode = result.documentElement;
+	var rootValue = rootNode.firstChild.nodeValue;
+	var rootTag = document.getElementById("result");
+	
+	var idNode = rootNode.getElementsByTagName("email");
+	var idValue = idNode.item(0).firstChild.nodeValue;
+	var idTag = document.getElementById("idTxt");
+	
+	if (rootValue == "true") {
+		rootTag.innerHTML = "사용 가능한 아이디";
+	} else {
+		rootTag.innerHTML = "중복된 아이디";
+	}
+}
