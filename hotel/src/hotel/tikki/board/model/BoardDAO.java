@@ -205,13 +205,14 @@ public class BoardDAO {  // controller
 				vo.setBoard_content(rs.getString("board_content"));
 				vo.setBoard_title(rs.getString("board_title"));
 			} // if end
+
 			
 			pstmt = conn.prepareStatement("SELECT COUNT(CMNT_NUM) FROM COMMENTS WHERE BOARD_NUM = ?");
 			pstmt.setInt(1, board_num);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) vo.setCmnt_count(rs.getInt(1));
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
