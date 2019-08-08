@@ -17,21 +17,21 @@
 	rel="stylesheet">
 
 <!-- hs CSS -->
-<link href="../css/hs.css" rel="stylesheet">
+<link href="/hotel/css/hs.css" rel="stylesheet">
 
 <!-- Bootstrap core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../css/modern-business.css" rel="stylesheet">
+<link href="/hotel/css/modern-business.css" rel="stylesheet">
 
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet"
-	href="../vendor/bootstrap/css/style.css" />
+	href="/hotel/vendor/bootstrap/css/style.css" />
 
 <!-- Bootstrap core JavaScript -->
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../vendor/jquery/jquery.js"></script>
+<script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/hotel/vendor/jquery/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 
@@ -54,7 +54,7 @@
 
 
 <!-- Hyesoo JavaScript -->
-<script src="../js/hidden.js"></script>
+<script src="/hotel/js/hidden.js"></script>
 
 </head>
 
@@ -130,8 +130,8 @@
      	   </div></div>
 			<!-- 인원수 -->
 			<td class='m'>
-			<select class="browser-default custom-select">
-					<option selected id="peopleNum">인원수&nbsp;&nbsp;</option>
+			<select class="browser-default custom-select" id="peopleNum">
+					<option selected >인원수&nbsp;&nbsp;</option>
 					<option value="num1">1</option>
 					<option value="num2">2</option>
 					<option value="num3">3</option>
@@ -148,9 +148,31 @@
 	<script>
 			$(document).ready(function(){
 				$("#searchbtn").click(function() {
-					$("#showShow").show();
+					// $("#showShow").show();
+					 $.ajax({
+			            url:{ 			//"/hotel/cmntUpdate.do"
+			            	
+			            },
+			            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
+			            	checkIn: $("#checkIn").val(),
+			            	checkOut: $("#checkOut").val(),
+			            	peopleNum: $("#peopleNum").val()
+			            },
+			            beforeSend:function() {
+			                console.log("시작 전...");
+			            },
+			            complete:function() {
+			                console.log("완료 후...");
+			            },
+			            success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
+			                console.log("comment가 정상적으로 수정되었습니다.");
+			            	// view 영역의 것들
+			            }
+			        });
 				});
 			});
+			
 		</script>
 	<!-- 예약 바 끝 -->
 
