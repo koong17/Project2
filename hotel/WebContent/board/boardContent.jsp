@@ -109,7 +109,7 @@
             let presentDay = vo.cmnt_date.substring(5, 10);
             html += "<td width='45px'>" + presentDay + "</td>";
             if( vo.cmnt_nick == "zi") { // 관리자 닉네임으로 바꿀 것
-             	console.log('들어옴');
+             	console.log('들어왔습니다.');
              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary'>"
              	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary'></td>";
             }
