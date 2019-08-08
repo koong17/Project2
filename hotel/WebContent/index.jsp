@@ -14,13 +14,6 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
-  
-  <!-- 모든 페이지에 들어가야 함 -->
-  <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 
 </head>
 
