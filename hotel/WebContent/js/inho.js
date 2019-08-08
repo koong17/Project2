@@ -24,6 +24,17 @@ function passwordvalidate() {
 	}
 }
 
+function password2validate() {
+	var password2 = document.getElementById("password2").value;
+	var re = /([^\s\w]|[A-z0-9]){8,16}/; // 패스워드 적합한지 검사할 정규식
+	var password2Tag = document.getElementById("password2Tag");
+	if (!re.test(password2)) {
+		password2Tag.innerHTML = "패스워드는 8~16자 사용 가능합니다.";
+	} else {
+		password2Tag.innerHTML = "";
+	}
+}
+
 function nicknamevalidate() {
 	var nickname = document.getElementById("nickname").value;
 	var re =  /[a-z0-9가-힣]{2,12}/; // 닉네임 적합한지 검사할 정규식
@@ -91,6 +102,41 @@ function check(re, what, message) {
     what.value = "";
     what.focus();
     //return false;
+}
+
+
+function updatevalidate() {
+	var re =  /[a-z0-9가-힣]{2,12}/; // 닉네임 적합한지 검사할 정규식
+	var re3 = /^[0-9]{9,11}$/; // 전화번호 적합한지 검사할 정규식
+ 
+    var nickname = document.getElementById("nickname");
+    var phone = document.getElementById("phone");
+
+   
+    if(!check(re,nickname,"닉네임은 2~12자이며, 특수문자 제외")) {
+        return false;
+    }
+    
+    if(!check(re3, phone, "전화번호는 9~11자 숫자만 가능합니다.")) {
+        return false;
+    }
+    
+    alert("회원수정이 완료되었습니다.");
+}
+
+function passvalidate() {
+    var re =  /[a-z0-9가-힣]{2,12}/;
+    
+    var password = document.getElementById("password");
+    var password2 = document.getElementById("password2");
+
+    if(!check(re,password,"패스워드는 8~16자 사용 가능합니다.")) {
+        return false;
+    }
+    
+    if(!check(re,password2,"패스워드는 8~16자 사용 가능합니다.")) {
+        return false;
+    }
 }
 
 var xmlReq; // 전역변수 지정
