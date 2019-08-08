@@ -109,11 +109,10 @@
 			<!-- 	<input type="text" class="form-control" value="체크인"  id="checkIn" name="checkIn" >  -->
 			<div class ='col-md-2'>
             <div class='input-group date ' id='datetimepicker6'>
+                <input type='text' class="form-control" placeholder="체크인" id="checkIn"/>
                 <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
+               		<span class="glyphicon glyphicon-calendar"></span>
                 </span>
-                <input type='text' class="form-control" />
-                
             </div></div>
 			<!-- 체크아웃 -->
 			<!-- <div class="input-group date" >
@@ -124,16 +123,15 @@
 			</div> -->
 			<div class ='col-md-2'>
             <div class='input-group date' id='datetimepicker7'>
-                <span class="input-group-addon">
+                <input type='text' class="form-control" placeholder="체크아웃" id="checkOut"/>
+                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
-                <input type='text' class="form-control" />
-                
      	   </div></div>
 			<!-- 인원수 -->
 			<td class='m'>
 			<select class="browser-default custom-select">
-					<option selected>인원수&nbsp;&nbsp;</option>
+					<option selected id="peopleNum">인원수&nbsp;&nbsp;</option>
 					<option value="num1">1</option>
 					<option value="num2">2</option>
 					<option value="num3">3</option>

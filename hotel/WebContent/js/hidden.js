@@ -6,7 +6,6 @@ $(document).ready(function(){
 
 $(function () {
 	$('#datetimepicker6').datetimepicker({
-		 minDate : 'now',
 		 format: 'YYYY-MM-DD HH:mm:ss'
 	});
     $('#datetimepicker7').datetimepicker({
@@ -15,6 +14,9 @@ $(function () {
     });
 	$('#datetimepicker6').datetimepicker().data('DateTimePicker').format('YYYY-MM-DD');
 		$('#datetimepicker7').datetimepicker().data('DateTimePicker').format('YYYY-MM-DD');
+		$('#datetimepicker6').datetimepicker({
+			 minDate : 'now'
+		});
     $("#datetimepicker6").on("dp.change", function (e) {
         $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
     });
