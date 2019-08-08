@@ -99,16 +99,17 @@
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="200"><textarea class="form-control-textarea" rows="15" cols="100" name ="board_content" >${ vo.board_content }</textarea>
+			<td width="200"><textarea class="form-control-textarea" rows="15" cols="111" name ="board_content" >${ vo.board_content }</textarea>
+			
 			</td>
 		</tr>
 	</table>
 			
 		<br>
-		&emsp;&emsp;&emsp;&emsp;	
-  		<input type="button" class="btn btn-primary btn-lg" onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;	
+  		<input type="button" class="btn btn-primary" onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
- 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">수정</button>
+ 	    <input type="submit" class="btn btn-primary" id="button-right-fix" value="수정"/>
 
 		
 		

@@ -106,10 +106,10 @@
 			
 		<br>
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-  		<input type="button" class="btn btn-primary btn-lg" 
+  		<input type="button" class="btn btn-primary" 
   		onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
- 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
+ 	    <button type="submit" class="btn btn-primary" id="button-right-fix">제출</button>
 
 		
 		
