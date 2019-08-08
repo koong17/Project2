@@ -130,10 +130,11 @@ public class BoardDAO {  // controller
 	//getSelectAll(startRow, endRow) : list.jsp 에서 사용할 전체 레코드 출력 메소드
 	public List<BoardVO> getSelectAll( int start,  int end ) {
 		Connection conn = null;
-		PreparedStatement pstmt=null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs2 = null;
 		List  list = null;
-		
 		try {
 			conn = getConnection();
 			StringBuffer  sb = new StringBuffer();
@@ -153,9 +154,18 @@ public class BoardDAO {  // controller
 				
 				do {
 					BoardVO vo = new BoardVO();
-					vo.setBoard_num(rs.getInt("board_num"));
+					int board_num = rs.getInt("board_num");
+					vo.setBoard_num(board_num);
 					vo.setBoard_title(rs.getString("board_title"));
 					vo.setBoard_nick(rs.getString("board_nick"));
+					
+					pstmt2 = conn.prepareStatement("select count(*) from comments where board_num=?");
+					pstmt2.setInt(1, board_num);
+					rs2 = pstmt2.executeQuery();
+					int cmnt_count = 0;
+					if(rs2.next()) cmnt_count = rs2.getInt(1);
+					
+					vo.setCmnt_count(cmnt_count);
 					
 					// list 객체에 데이터 저장 Bean인 BoardVO 객체에 저장한다.
 					list.add(vo);
@@ -306,16 +316,16 @@ public class BoardDAO {  // controller
 		    rs = pstmt.executeQuery();
 		    
 		    comments = new ArrayList<>();
-		    CommentsVO comment = null;
+		    CommentsVO vo = null;
 		    
 		    while(rs.next()) {
-		        comment = new CommentsVO();
-		        comment.setBoard_num(rs.getInt("board_num"));
-		        comment.setCmnt_content(rs.getString("cmnt_content"));
-		        comment.setCmnt_date(rs.getTimestamp("cmnt_date"));
-		        comment.setCmnt_num(rs.getInt("cmnt_num"));
-		        comment.setCnmt_nick(rs.getString("cmnt_nick"));
-		        comments.add(comment);
+		        vo = new CommentsVO();
+		        vo.setBoard_num(rs.getInt("board_num"));
+		        vo.setCmnt_content(rs.getString("cmnt_content"));
+		        vo.setCmnt_date(rs.getTimestamp("cmnt_date"));
+		        vo.setCmnt_num(rs.getInt("cmnt_num"));
+		        vo.setCmnt_nick(rs.getString("cmnt_nick"));
+		        comments.add(vo);
 		    }
 			
 		} catch (Exception e) {

@@ -100,7 +100,7 @@ public class BoardController extends HttpServlet {
 		// request.setAttribute("CONTENT", view);
 				
 		RequestDispatcher  dp = request.getRequestDispatcher(view);
-		dp.forward(request, response);
+		if(view != null) dp.forward(request, response);
 	}
 	
 }

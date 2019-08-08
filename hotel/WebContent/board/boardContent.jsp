@@ -48,7 +48,7 @@
         }
     });
     
-    $(function() {
+    $(document).ready(function() {
         $("#commentWrite").on("click", function() {
         	console.log("click");
             $.ajax({
@@ -74,39 +74,42 @@
             })
         });
         
-        function getComment() {
-            $.ajax({
-                url:"/hotel/cmntReadForm.do",
-                data:{
-                    board_num:"${ vo.board_num }"
-                },
-                beforeSend:function() {
-                    console.log("읽어오기 시작 전...");
-                },
-                complete:function() {
-                    console.log("읽어오기 완료 후...");
-                },
-                success:function(data) {
-                    console.log("comment를 정상적으로 조회하였습니다.");
-                    showHtml(data);
-                    
-                    let position = $("#showComment table tr:last").position();
-                    $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
-                }
-            })
-        }
+        $.ajax({
+            url:"/hotel/cmntReadForm.do",
+            data:{
+                board_num:"${ vo.board_num }"
+            },
+            beforeSend:function() {
+                console.log("읽어오기 시작 전...");
+            },
+            complete:function() {
+                console.log("읽어오기 완료 후...");
+            },
+            success:function(data) {
+                console.log("comment를 정상적으로 조회하였습니다.");
+                showHtml(data);
+                
+                let position = $("#showComment table tr:last").position();
+                // $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
+            }
+        })
         
     });
  
     function showHtml(data) {
         let html = "<table class='table table-striped table-bordered' style='margin-top: 10px;'><tbody>";
-        $.each(data, function(index, item) {
+        $.each(data, function(index, vo) {
             html += "<tr align='center'>";
-            html += "<td>" + (index+1) + "</td>";
-            html += "<td>" + item.cmnt_nick + "</td>";
-            html += "<td align='left'>" + item.cmnt_content + "</td>";
-            let presentDay = item.Cmnt_date.substring(0, 10);
+            html += "<td>" + vo.cmnt_num + "</td>";
+            html += "<td>" + vo.cmnt_nick + "</td>";
+            console.log(vo.cmnt_nick);
+            html += "<td align='left' width='200px'>" + vo.cmnt_content + "</td>";
+            let presentDay = vo.cmnt_date.substring(5, 10);
             html += "<td>" + presentDay + "</td>";
+            if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
+             	console.log('들어옴');
+             	html +=  "<td><input type='button' value='수정'><input type='button' value='삭제'></td>";
+            }
             html += "</tr>";
         });
         html += "</tbody></table>";
@@ -209,21 +212,18 @@
 			</tr>
 			
 			<tr>
-				<td height="300" width = "1000" colspan="20"><pre>
+				<td height="300" width = "1000" colspan="20"> <!-- 원래 pre 있던 자리 -->
 					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
-					    <textarea class="form-control" rows="3" id="cmnt_content" placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
-					    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-					        <%-- <input type="button" class="btn btn-default" value="댓글 읽기(${ vo.cmnt_count })" 
-					                onclick="getComment(1, event)" id="commentRead"> --%>
-					    	
-					        <c:if test="${sessionScope.nick != null}">
-					            <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite">
-					        </c:if>
+					    <c:if test="${sessionScope.nick != null}">
+						    <textarea class="form-control" rows="3" id="cmnt_content" placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
+						    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+					        <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite">
+					    </c:if>
 					    </div>
 					</div><!-- Comment 태그 추가 -->
 					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
 					    <div id="showComment" style="text-align: center;"></div>
-					</div></pre></td>
+					</div></td>
 			</tr>
 			
 			<tr height ="30">

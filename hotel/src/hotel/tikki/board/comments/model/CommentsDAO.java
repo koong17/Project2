@@ -89,7 +89,7 @@ public class CommentsDAO {  // controller
 		        comment.setCmnt_content(rs.getString("cmnt_content"));
 		        comment.setCmnt_date(rs.getTimestamp("cmnt_date"));
 		        comment.setCmnt_num(rs.getInt("cmnt_num"));
-		        comment.setCnmt_nick(rs.getString("cmnt_nick"));
+		        comment.setCmnt_nick(rs.getString("cmnt_nick"));
 		        comments.add(comment);
 		    }
 			
