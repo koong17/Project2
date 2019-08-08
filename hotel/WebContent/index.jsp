@@ -14,10 +14,10 @@
   <title>HOTEL TIKKI</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="vendor/bootstrap/css/inho.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
+  <link href="vendor/bootstrap/css/inho.css?after" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="css/modern-business.css?after" rel="stylesheet">
 
 </head>
 
