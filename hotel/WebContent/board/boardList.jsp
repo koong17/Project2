@@ -91,11 +91,7 @@
 
 
    <c:if test="${ count == 0 }">   
-      <table width="700" border="1" cellpadding="0" cellspacing="0">
-         <tr>
-            <td align="center">게시판에 저장된 글이 없습니다.</td>
-         </tr>
-      </table>   
+      <h2><center>게시판에 저장된 글이 없습니다.</center></h2>
    </c:if>
       
    <c:if test="${ count > 0 }">   
