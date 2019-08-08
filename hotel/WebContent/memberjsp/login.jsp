@@ -29,9 +29,9 @@
 	<!------ Include the above in your HEAD tag ---------->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.go">TIKKI</a> <a
-				class="navbar-login" href="login.go">로그인</a> <a
-				class="navbar-login" href="join.go">회원가입</a>
+			<a class="navbar-brand" href="index.go">TIKKI</a> 
+			<a class="navbar-login" href="login.go"><small>로그인</small></a>
+     		<a class="navbar-login" href="join.go"><small>회원가입</small></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"

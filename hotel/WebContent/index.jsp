@@ -31,11 +31,27 @@
     <div class="container">
       <a class="navbar-brand" href="index.go">TIKKI</a>
       <c:if test="${ sessionScope.id == null}">
-      <a class="navbar-login" href="login.go">로그인</a>
-      <a class="navbar-login" href="join.go">회원가입</a>
+      <a class="navbar-login" href="login.go"><small>로그인</small></a>
+      <a class="navbar-login" href="join.go"><small>회원가입</small></a>
       </c:if>
       <c:if test="${ sessionScope.id != null}">
       <a class="navbar-login" href="logout.go"><small>로그아웃</small></a>
+      <div>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+				<a class="navbar-login dropdown-toggle" href="#"
+					id="navbarDropdownPortfolio" aria-haspopup="true"
+					aria-expanded="false"><small>${sessionScope.nick}님 페이지 </small> </a>
+					<div class="dropdown-menu dropdown-menu-right"
+						aria-labelledby="navbarDropdownPortfolio">
+						<a class="dropdown-item" href="update.go">회원수정</a>
+						<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a>  
+						<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
+						<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+					</div>
+				</li>
+			</ul>
+      </div>	
       </c:if>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
