@@ -76,6 +76,10 @@
             })
         });
         
+        readComments();
+    });
+    
+    function readComments() {
         $.ajax({
             url:"/hotel/cmntReadForm.do",
             data:{
@@ -94,9 +98,9 @@
                 let position = $("#showComment table tr:last").position();
                 // $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
             }
-        })
-        
-    });
+        });
+    	
+    }
  
     function showHtml(data) {
         let html = "<table class='table2' style='margin-top: 10px;'><tbody>";
@@ -111,7 +115,7 @@
             if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
              	console.log('들어왔습니다.');
              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary'>"
-             	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary'></td>";
+             	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary' onclick='deleteCmnt("+ vo.cmnt_num +")' ></td>";
             }
             html += "</tr>";
         });
@@ -122,6 +126,27 @@
         $("#commentContent").focus();
     }
     
+    function deleteCmnt(input_cmnt_num) {
+        $.ajax({
+            url:"/hotel/cmntDelete.do",
+            // data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+            data:{
+            	cmnt_num: input_cmnt_num,
+            	board_num: "${ vo.board_num }"
+            },
+            beforeSend:function() {
+                console.log("시작 전...");
+            },
+            complete:function() {
+                console.log("완료 후...");
+            },
+            success:function() {            // 서버에 대한 정상응답이 오면 실행, callback
+                console.log("comment가 정상적으로 삭제되었습니다.");
+                readComments();
+            }
+        });
+    }
+
     /* function getComment(event) {
         $.ajax({
             url:"/hotel/cmntReadForm.do",
@@ -204,6 +229,8 @@
 	<form>
 		<table cellspacing = "0" cellpadding = "0" 
 		 align="center" class="table-content">
+		 
+      <input type="hidden" id=session_nick value=${sessionScope.nick }>
 		 
 
 			

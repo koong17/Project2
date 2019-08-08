@@ -381,7 +381,26 @@ public class BoardDAO {  // controller
 		}
 	    return hm;
 	}
-
+	
+	
+	// 댓글 삭제
+	public void deleteComment(int cmnt_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("DELETE COMMENTS WHERE CMNT_NUM=?");
+			pstmt.setInt(1, cmnt_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}
+	}
 }
 
 
