@@ -29,24 +29,24 @@
 <link type="text/css" rel="stylesheet"
 	href="../vendor/bootstrap/css/style.css" />
 
-<!-- datePicker -->
-<script src="../vendor/jquery/jquery.js"></script>
-
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
+<script src="../vendor/jquery/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
-<script type='text/javascript'
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap-datepicker.kr.js"
-	charset="UTF-8"></script>
+
+<!-- datePicker -->
+<!-- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
+</head>
 
 <!-- 
-<script src="vendor/bootstrap/js/bootstrap.min.js" ></script>
 <script src="https://code.jquery.com/jquery-3.2.1.js" > </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" ></script> 
@@ -104,33 +104,44 @@
 		<!-- 예약 바 -->
 		<!-- <form action="reservation.html" method="post" name="reservationForm"> -->
 		<ul class="breadcrumb">
-		<table class="marginAuto"><tr>
+		<table><tr>
 			<!-- 체크인 -->
-			<td class="m" >
-				<input type="text" class="form-control" value="체크인"  id="checkIn" name="checkIn" > 
-			</td>
+			<!-- 	<input type="text" class="form-control" value="체크인"  id="checkIn" name="checkIn" >  -->
+			<div class ='col-md-2'>
+            <div class='input-group date ' id='datetimepicker6'>
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <input type='text' class="form-control" />
+                
+            </div></div>
 			<!-- 체크아웃 -->
-			<td class="m">
-			<div class="input-group date" >
+			<!-- <div class="input-group date" >
 				<input type="text" class="form-control" value="체크아웃" id="checkOut" name="checkIn" > 
 				<span class="input-group-addon"> 
 				<span class="glyphicon glyphicon-calendar">
 				</span></span>
-			</div></td>
-	
+			</div> -->
+			<div class ='col-md-2'>
+            <div class='input-group date' id='datetimepicker7'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <input type='text' class="form-control" />
+                
+     	   </div></div>
 			<!-- 인원수 -->
-			<td class="m">
-			<div>
+			<td class='m'>
 			<select class="browser-default custom-select">
 					<option selected>인원수&nbsp;&nbsp;</option>
 					<option value="num1">1</option>
 					<option value="num2">2</option>
 					<option value="num3">3</option>
 					<option value="num3">4</option>
-			</select></div></td>
+			</select></td>
 			
 			<!-- 검색 submit 버튼 -->
-			<td class="m"><div>
+			<td class='m'><div>
  			<button class="btn btn-primary" id="searchbtn">검색</button></div></td>
  		</tr></table>
 		</ul> 
