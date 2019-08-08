@@ -8,7 +8,7 @@
   		<servlet-class>hotel.tikki.reserve.controller.ReserveController</servlet-class>
   		<init-param>
   			 <param-name>ReserveConfig</param-name>
-  			 <param-value>C:\Users\1027\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\reservation.properties</param-value>
+  			 <param-value>C:\Users\1027\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandReserve.properties</param-value>
   		</init-param>
   </servlet>
   <servlet-mapping>

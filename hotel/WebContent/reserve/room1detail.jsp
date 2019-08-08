@@ -5,7 +5,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -14,13 +14,13 @@
 <title>HOTEL TIKKI</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../css/modern-business.css" rel="stylesheet">
+<link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
 <!-- minjee.css -->
-<link href="../css/minjee.css" rel="stylesheet">
+<link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
 </head>
 
@@ -67,13 +67,13 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			Grand Deluxe
+			Deluxe
 		</h1>
 
-		<!-- 경로 -->
+		<!-- 룸 상세 페이지 - 예약하는 도중에만 볼 수 있는게 아니므로 일단 경로는 뺐음 -->
 		<!-- <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="reservation.html"
-				style="color: #007bff;">예약 페이지로 돌아가기</a></li>
+			<li class="breadcrumb-item"><a href="reservation.html" style="color: #007bff;">예약
+					페이지로 돌아가기</a></li>
 			<li class="breadcrumb-item active">객실 상세보기</li>
 		</ol> -->
 
@@ -86,8 +86,7 @@
 
 			<div class="col-md-4">
 				<p>
-				<h4 style="font-style:italic;">"스탠다드 객실 중 가장 큰 규모로 욕실에서의 야경이 돋보이며, 더 이그제큐티브 라운지 서비스를 즐기실 수
-					있습니다."</h4>
+				<h4 style="font-style:italic;">"디럭스 룸은 편안하고 안락한 공간을 효율적으로 구성했습니다."</h4>
 				</p>
 				<br> 글로벌 럭셔리 호텔 디자이너 피터 리미디오스가 디자인한 '시대를 아우르는 모던함'을 만나보십시오. 요트
 				콘셉트로 구성한 프라이빗 바와 세계적인 수준의 침구류와 함께 생애 최고의 휴식을 경험해보시기 바랍니다.<br> <br>
@@ -98,7 +97,7 @@
 					<a href="reservation.jsp" class="button">예약 하기</a>
 				</div>
 
-				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. 아래 내용은 룸1 인포라 다시 넣든지 말든지 해야함 -->
+				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. -->
 
 				<!-- <h3 class="my-3">ROOM INFO</h3>
 				<ul>

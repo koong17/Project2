@@ -86,7 +86,7 @@
 								class="dropdown-item" href="room3detail.jsp">room3</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reservation.jsp">예약</a> <!-- full width --></li>
+						href="reserve.jsp">예약</a> <!-- full width --></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
@@ -193,7 +193,7 @@
 			<div class="col-md-5">
 				<h3>Deluxe</h3>
 				<p>그냥 그냥 디럭스</p>
-				<a class="btn btn-primary" href="reservation_confirm.jsp">예약하기
+				<a class="btn btn-primary" href="reserveConfirmForm.jsp">예약하기
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
@@ -212,7 +212,7 @@
 			<div class="col-md-5">
 				<h3>Grand Deluxe</h3>
 				<p>좋은 좋은 디럭스</p>
-				<a class="btn btn-primary" href="reservation_confirm.jsp">예약하기
+				<a class="btn btn-primary" href="reserveConfirmForm.jsp">예약하기
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
@@ -231,7 +231,7 @@
 			<div class="col-md-5">
 				<h3>Suite Room</h3>
 				<p>제일 제일 좋은 룸</p>
-				<a class="btn btn-primary" href="reservation_confirm.jsp">예약하기
+				<a class="btn btn-primary" href="reserveConfirmForm.jsp">예약하기
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
