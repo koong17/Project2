@@ -79,6 +79,28 @@
         readComments();
     });
     
+    function updateCmnt(input_cmnt_num) {
+        $.ajax({
+            url:"/hotel/cmntUpdate.do",
+            // data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+            data:{
+            	cmnt_num: input_cmnt_num,
+            	board_num: "${ vo.board_num }",
+            	cmnt_content: $("#cmnt_update_content").val()
+            },
+            beforeSend:function() {
+                console.log("시작 전...");
+            },
+            complete:function() {
+                console.log("완료 후...");
+            },
+            success:function() {            // 서버에 대한 정상응답이 오면 실행, callback
+                console.log("comment가 정상적으로 수정되었습니다.");
+                readComments();
+            }
+        });
+    }
+    
     function readComments() {
         $.ajax({
             url:"/hotel/cmntReadForm.do",
@@ -99,7 +121,28 @@
                 // $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
             }
         });
-    	
+    }
+    
+    function updateCmntRead(input_cmnt_num) {
+        $.ajax({
+            url:"/hotel/cmntReadForm.do",
+            data:{
+                board_num:"${ vo.board_num }"
+            },
+            beforeSend:function() {
+                console.log("읽어오기 시작 전...");
+            },
+            complete:function() {
+                console.log("읽어오기 완료 후...");
+            },
+            success:function(data) {
+                console.log("comment를 정상적으로 조회하였습니다.");
+                updateCmntForm(data, input_cmnt_num);
+                
+                let position = $("#showComment table tr:last").position();
+                // $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
+            }
+        });
     }
  
     function showHtml(data) {
@@ -114,7 +157,7 @@
             html += "<td width='45px'>" + presentDay + "</td>";
             if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
              	console.log('들어왔습니다.');
-             	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary'>"
+             	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
              	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary' onclick='deleteCmnt("+ vo.cmnt_num +")' ></td>";
             }
             html += "</tr>";
@@ -124,6 +167,41 @@
         $("#showComment").html(html);
         $("#commentContent").val("");
         $("#commentContent").focus();
+    }
+    
+    function updateCmntForm(data, input_cmnt_num) {
+    	 let html = "<table class='table2' style='margin-top: 10px;'><tbody>";
+         $.each(data, function(index, vo) {
+        	 if(input_cmnt_num == vo.cmnt_num){
+        		 html += "<tr align='center'>";
+        		 html += "<td height='30' width = '1000' colspan='6'>";
+        		 html += "<div class='input-group' role='group' aria-label='...' style='margin-top: 10px; width: 100%;'>";
+				 html += "<c:if test='${sessionScope.nick != null}'>";
+				 html += "<textarea class='form-control' rows='3' id='cmnt_update_content' placeholder='댓글을 입력하세요.' style='width: 100%;'></textarea>";
+				 html += "<input type='button' class='btn btn-secondary button-right-fix' value='댓글 수정' onclick='updateCmnt("+vo.cmnt_num+")''>";
+				 html += "</c:if></div></td>";
+        	 } else {
+	             html += "<tr align='center'>";
+	             html += "<td width='30px'>" + vo.cmnt_num + "</td>";
+	             html += "<td width='35px'>" + vo.cmnt_nick + "</td>";
+	             console.log(vo.cmnt_nick);
+	             html += "<td align='left' width='450px'>" + vo.cmnt_content + "</td>";
+	             let presentDay = vo.cmnt_date.substring(5, 10);
+	             html += "<td width='45px'>" + presentDay + "</td>";
+	             if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
+	              	console.log('들어왔습니다.');
+	              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
+	              	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary' onclick='deleteCmnt("+ vo.cmnt_num +")' ></td>";
+	             }
+	             html += "</tr>";
+        		 
+        	 }
+         });
+         html += "</tbody></table>";
+         
+         $("#showComment").html(html);
+         // $("#commentContent").val("");
+         $("#commentContent").focus();
     }
     
     function deleteCmnt(input_cmnt_num) {
