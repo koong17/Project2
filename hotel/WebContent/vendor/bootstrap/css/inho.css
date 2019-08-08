@@ -1,0 +1,37 @@
+.navbar-login {
+	display: inline-block;
+	padding-top: .3125rem;
+	padding-bottom: .3125rem;
+	margin-right: 1rem;
+	font-size: 1rem;
+	line-height: inherit;
+	white-space: nowrap
+}
+
+.navbar-login:focus, .navbar-login:hover {
+	text-decoration: none
+}
+
+.carousel-login {
+	position: absolute;
+	right: 15%;
+	bottom: 20px;
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 300px;
+	color: #fff;
+	text-align: center
+}
+
+.carousel-join {
+	position: absolute;
+	right: 15%;
+	bottom: 20px;
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 200px;
+	color: #fff;
+	text-align: center
+}

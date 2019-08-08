@@ -11,7 +11,7 @@
 	ReserveDAO dao = ReserveDAO.getInstance();
 	dao.getConnection();
 	
-	out.print("board connection success");
+	out.print("connection success");
 
 %>
 </body>

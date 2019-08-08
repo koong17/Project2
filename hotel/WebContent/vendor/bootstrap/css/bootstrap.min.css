@@ -571,6 +571,11 @@ pre code {
 	margin-left: -15px
 }
 
+.rows {
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
 .no-gutters {
 	margin-right: 0;
 	margin-left: 0
@@ -1792,7 +1797,7 @@ pre code {
 
 .form-control {
 	display: block;
-	width: 100%;
+	width: 800px;
 	height: calc(1.5em + .75rem + 2px);
 	padding: .375rem .75rem;
 	font-size: 1rem;
@@ -4181,19 +4186,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	text-decoration: none
 }
 
-.navbar-login {
-	display: inline-block;
-	padding-top: .3125rem;
-	padding-bottom: .3125rem;
-	margin-right: 1rem;
-	font-size: 1rem;
-	line-height: inherit;
-	white-space: nowrap
-}
-
-.navbar-login:focus, .navbar-login:hover {
-	text-decoration: none
-}
 
 .navbar-nav {
 	display: -ms-flexbox;
@@ -4252,7 +4244,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	background: no-repeat center center;
 	background-size: 100% 100%
 }
-
 
 @media ( max-width :575.98px) {
 	.navbar-expand-sm>.container, .navbar-expand-sm>.container-fluid {
@@ -4863,9 +4854,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .pagination {
 	display: -ms-flexbox;
 	display: flex;
-	padding-left: 0;
 	list-style: none;
-	border-radius: .25rem
+	border-radius: .25rem;
+	justify-content: center;
+	
 }
 
 .page-link {
@@ -4894,9 +4886,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .page-item:first-child .page-link {
-	margin-left: 0;
+	
+	margin-left:0;
 	border-top-left-radius: .25rem;
-	border-bottom-left-radius: .25rem
+	border-bottom-left-radius: .25rem ;
+	
 }
 
 .page-item:last-child .page-link {
@@ -6459,6 +6453,31 @@ a.close.disabled {
 	position: absolute;
 	right: 15%;
 	bottom: 20px;
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-align: center
+}
+
+.carousel-login {
+	position: absolute;
+	right: 15%;
+	bottom: 30px;
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-align: center
+}
+
+
+.carousel-join {
+	position: absolute;
+	right: 15%;
+	bottom: 30px;
 	left: 15%;
 	z-index: 10;
 	padding-top: 20px;
@@ -9711,5 +9730,10 @@ a.text-dark:focus, a.text-dark:hover {
 		color: inherit;
 		border-color: #dee2e6
 	}
+	
+	
 }
+
+
+
 /*# sourceMappingURL=bootstrap.min.css.map */
