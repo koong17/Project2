@@ -85,10 +85,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="full-width.html">예약</a> <!-- full width -->
+            <a class="nav-link" href="reserve.to">예약</a> <!-- full width -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 -->
+            <a class="nav-link" href="list.do">고객문의</a> 
           </li>
         </ul>
       </div>

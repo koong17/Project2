@@ -68,9 +68,9 @@
 								class="dropdown-item" href="portfolio-item.html">room3</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="full-width.html">예약</a> <!-- full width --></li>
+						href="reserve.to">예약</a> <!-- full width --></li>
 					<li class="nav-item"><a class="nav-link"
-						href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
+						href="list.do">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
 			</div>
 		</div>
