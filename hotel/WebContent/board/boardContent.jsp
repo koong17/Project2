@@ -99,18 +99,19 @@
     });
  
     function showHtml(data) {
-        let html = "<table class='table table-striped table-bordered' style='margin-top: 10px;'><tbody>";
+        let html = "<table class='table2' style='margin-top: 10px;'><tbody>";
         $.each(data, function(index, vo) {
             html += "<tr align='center'>";
-            html += "<td>" + vo.cmnt_num + "</td>";
-            html += "<td>" + vo.cmnt_nick + "</td>";
+            html += "<td width='30px'>" + vo.cmnt_num + "</td>";
+            html += "<td width='35px'>" + vo.cmnt_nick + "</td>";
             console.log(vo.cmnt_nick);
-            html += "<td align='left' width='200px'>" + vo.cmnt_content + "</td>";
+            html += "<td align='left' width='450px'>" + vo.cmnt_content + "</td>";
             let presentDay = vo.cmnt_date.substring(5, 10);
-            html += "<td>" + presentDay + "</td>";
-            if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
+            html += "<td width='45px'>" + presentDay + "</td>";
+            if( vo.cmnt_nick == "zi") { // 관리자 닉네임으로 바꿀 것
              	console.log('들어옴');
-             	html +=  "<td><input type='button' value='수정'><input type='button' value='삭제'></td>";
+             	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary'>"
+             	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary'></td>";
             }
             html += "</tr>";
         });
@@ -206,7 +207,7 @@
 		 
 
 			
-			<tr height="30">
+			<tr height="30" width = "1000">
 				<td align="center" width = "20" >글번호</td>
 				<td align="center" width = "10"> ${ vo.board_num }</td>
 				<td align="center" width = "20" >글제목</td>
@@ -218,33 +219,43 @@
 
 
 			<tr>
-				<td height="300" width = "1000" colspan="20"><pre>${ vo.board_content }</pre></td>
+				<td height="300" width = "1000" colspan="6"><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
 			<tr>
-				<td height="300" width = "1000" colspan="20"> <!-- 원래 pre 있던 자리 -->
+				<td height="30" width = "1000" colspan="6"> <!-- 원래 pre 있던 자리 -->
 					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
 					    <c:if test="${sessionScope.nick != null}">
 						    <textarea class="form-control" rows="3" id="cmnt_content" placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
-						    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-					        <input type="button" class="btn btn-default" value="댓글 쓰기" id="commentWrite">
+						    
+					        <input type="button" class="btn btn-secondary button-right-fix" value="댓글 쓰기" id="commentWrite">
+					        
 					    </c:if>
-					    </div>
+					 		
 					</div><!-- Comment 태그 추가 -->
-					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
-					    <div id="showComment" style="text-align: center;"></div>
-					</div></td>
+				</td>
+			</tr>	
+			
+			<tr>
+				<td height="30" width = "1000" colspan="6">
+					
+				   <div id="showComment" style="text-align: center;">
+				   </div>
+					
+				</td>
 			</tr>
 			
+			<!-- 버튼 -->
+			
 			<tr height ="30">
-				<td colspan="6" align="right" >
+				<td colspan="7" align="right" >
 				  <c:if test="${ sessionScope.nick == vo.board_nick }">
-					<input type="button" class="btn btn-primary btn-lg" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+					<input type="button" class="btn btn-primary" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type ="button" class="btn btn-primary btn-lg" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
+					<input type ="button" class="btn btn-primary" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			      </c:if>
-				<input type = "button" class="btn btn-primary btn-lg" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
+				<input type = "button" class="btn btn-primary" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
 				</td>
 			</tr>
 		</table>
