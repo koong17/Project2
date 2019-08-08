@@ -111,7 +111,7 @@
             <td width="250">
          
              <a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">
-                  ${ list.board_title }</a> 
+                  ${ list.board_title } <c:if test="${ list.cmnt_count != 0 }">(${ list.cmnt_count })</c:if></a> 
             </td>
             <td align="center" width="100">${ list.board_nick }</a></td>
          </tr>

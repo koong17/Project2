@@ -27,6 +27,9 @@ public class CmntReadFormAction implements CommandAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        for(CommentsVO vo : comments) {
+        	System.out.println(vo);
+        }
         
         JSONArray jsonArr = new JSONArray(comments);        // 스프링에선 애노테이션(?)
         PrintWriter pw = response.getWriter();
