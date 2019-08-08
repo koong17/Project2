@@ -4,3 +4,7 @@
 
 
  <c:redirect url="${ referer }" />
+ 
+ <%
+ 	session.invalidate();
+ %>

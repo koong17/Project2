@@ -221,3 +221,24 @@ function printNickData() {
 		rootTag.innerHTML = "<font color='RED'>중복된 닉네임</font>";
 	}
 }
+
+function kakaologout() {
+	/*Kakao.Auth.logout();*/
+	Kakao.Auth.logout({
+		callback: function(){
+			alert('callback');
+		}
+	});
+}
+
+
+function kakaologinform(){
+	Kakao.Auth.loginForm({
+		success: function(authObj){
+			alert(authObj);
+		},
+		fail: function(errorObj) {
+			alert(errorObj);
+		}
+	});
+}
