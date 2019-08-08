@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="hotel.tikki.member.model.*" %>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="hotel.tikki.member.model.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +20,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
-<script src="js/inho.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 
 </head>
 <c:if test="${ sessionScope.id != null}">
@@ -29,11 +28,12 @@
 </c:if>
 <body>
 	<!------ Include the above in your HEAD tag ---------->
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<nav
+		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.go">TIKKI</a> 
-			<a class="navbar-login" href="login.go"><small>로그인</small></a>
-     		<a class="navbar-login" href="join.go"><small>회원가입</small></a>
+			<a class="navbar-brand" href="index.go">TIKKI</a> <a
+				class="navbar-login" href="login.go"><small>로그인</small></a> <a
+				class="navbar-login" href="join.go"><small>회원가입</small></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -47,8 +47,7 @@
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownPortfolio" aria-haspopup="true"
-						aria-expanded="false"> 객실소개 </a>
-					<!--  포트폴리오1 -> single portfolio item -->
+						aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
 							<a class="dropdown-item" href="portfolio-item.html">room1</a> <a
@@ -64,82 +63,75 @@
 		</div>
 	</nav>
 	<!-- ./nav -->
-	<header>
-      <div class="carousel-inner" role="listbox">
-        <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 765px;">
-          <div class="carousel-login d-none d-md-block">
-          	<div class="container" align="center">
-				<div class="rows" style="margin-top: 20px;" >
-					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" action="loginPro.go" name="loginform" method="post">
-							<fieldset>
-								<h2>TIKKI에 오신 것을 환영합니다.</h2>
-								<!-- <hr class="colorgraph"> -->
-								<c:if test="${ result == -1 }">
-									<script type="text/javascript">
-										alert("아이디나 비밀번호가 틀렸습니다.");
-									</script>
-								</c:if>
-								<div class="form-group">
-									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address" required="required">
-								</div>
-								<div class="form-group">
-									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password"  required="required">
-								</div>
-								<!-- <span class="button-checkbox">
-							<button type="button" class="btn" data-color="info">Remember Me</button>
-		                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
-							<a href="" class="btn btn-link pull-right">Forgot Password?</a>
-						</span> -->
-								<!-- <hr class="colorgraph"> -->
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<input type="submit" class="btn btn-lg btn-success btn-block"
-											value="로그인">
-									</div>
-									<div>
-										<a id="kakao-login-btn"></a>
-										<a href="http://developers.kakao.com/logout"></a>
-										<script type='text/javascript'>
-										  //<![CDATA[
-										    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-										    Kakao.init('d1ce22a2ba83b778614742f0e9a963ae');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
-										    // 카카오 로그인 버튼을 생성합니다.
-										    Kakao.Auth.createLoginButton({
-										      container: '#kakao-login-btn',
-										      success: function(authObj) {
-										        alert(JSON.stringify(authObj));
-										      },
-										      fail: function(err) {
-										         alert(JSON.stringify(err));
-										      }
-										    });
-										  //]]>
-										</script>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<a href="join.go" class="btn btn-lg btn-primary btn-block">회원가입</a>
-									</div>
-								</div>
-							</fieldset>
-						</form>
+<header>
+	<div class="carousel-inner" role="listbox">
+		<!-- Slide One - Set the background image for this slide in the line below -->
+<div class="carousel-item active"
+	style="background-image: url('img/koong.jpg'); height: 765px;">
+<div class="carousel-login d-none d-md-block">
+	<div class="container" align="center">
+		<div class="rows" style="margin-top: 20px;">
+			<div
+				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form role="form" action="loginPro.go" name="loginform"
+					method="post">
+					<fieldset>
+						<h2>TIKKI에 오신 것을 환영합니다.</h2>
+						<!-- <hr class="colorgraph"> -->
+						<c:if test="${ result == -1 }">
+							<script type="text/javascript">
+								alert("아이디나 비밀번호가 틀렸습니다.");
+							</script>
+						</c:if>
+						<div class="form-group">
+							<input type="email" name="email" id="email"
+								class="form-control input-lg" placeholder="Email Address"
+								required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" id="password"
+								class="form-control input-lg" placeholder="Password"
+								required="required">
+						</div>
+						<!-- <span class="button-checkbox">
+			<button type="button" class="btn" data-color="info">Remember Me</button>
+                  <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+			<a href="" class="btn btn-link pull-right">Forgot Password?</a>
+		</span> -->
+						<!-- <hr class="colorgraph"> -->
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input type="submit"
+									class="btn btn-lg btn-success btn-block" value="로그인">
+							</div>
+
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<a href="join.go" class="btn btn-lg btn-primary btn-block">회원가입</a>
+							</div>
+							<div style="width: 100%; margin-top: 20px;">
+								<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://localhost:8080/hotel/oauth&response_type=code" onclick="kakaologinform()">
+									<img src="img/kakao_account_login_btn_medium_wide.png" />
+								</a>
+							</div>
+						</div>
+								</fieldset>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
-          </div>
-        </div>
-      </div>
-  </header>
-  
-   <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
- 
+		</div>
+	</div>
+</header>
+
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2019</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+	<script src="js/inho.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </body>
 </html>
