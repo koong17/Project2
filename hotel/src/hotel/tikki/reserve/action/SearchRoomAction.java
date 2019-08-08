@@ -1,5 +1,5 @@
 package hotel.tikki.reserve.action;
 
-public class ReserveSearchRoom {
+public class SearchRoomAction {
 
 }
