@@ -21,6 +21,8 @@
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
 <script src="js/inho.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 </head>
 <c:if test="${ sessionScope.id != null}">
 	<c:redirect url="index.go" />
@@ -97,6 +99,26 @@
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-lg btn-success btn-block"
 											value="로그인">
+									</div>
+									<div>
+										<a id="kakao-login-btn"></a>
+										<a href="http://developers.kakao.com/logout"></a>
+										<script type='text/javascript'>
+										  //<![CDATA[
+										    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+										    Kakao.init('d1ce22a2ba83b778614742f0e9a963ae');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
+										    // 카카오 로그인 버튼을 생성합니다.
+										    Kakao.Auth.createLoginButton({
+										      container: '#kakao-login-btn',
+										      success: function(authObj) {
+										        alert(JSON.stringify(authObj));
+										      },
+										      fail: function(err) {
+										         alert(JSON.stringify(err));
+										      }
+										    });
+										  //]]>
+										</script>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<a href="join.go" class="btn btn-lg btn-primary btn-block">회원가입</a>
