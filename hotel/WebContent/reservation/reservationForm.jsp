@@ -17,21 +17,21 @@
 	rel="stylesheet">
 
 <!-- hs CSS -->
-<link href="/hotel/css/hs.css" rel="stylesheet">
+<link href="../css/hs.css?after" rel="stylesheet">
 
 <!-- Bootstrap core CSS -->
-<link href="/hotel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/hotel/css/modern-business.css" rel="stylesheet">
+<link href="../css/modern-business.css?after" rel="stylesheet">
 
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet"
-	href="/hotel/vendor/bootstrap/css/style.css" />
+	href="../vendor/bootstrap/css/style.css?after" />
 
 <!-- Bootstrap core JavaScript -->
-<script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/hotel/vendor/jquery/jquery.js"></script>
+<script src="../vendor/jquery/jquery.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 
@@ -43,7 +43,7 @@
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css?after" />
 </head>
 
 <!-- 
@@ -54,7 +54,7 @@
 
 
 <!-- Hyesoo JavaScript -->
-<script src="/hotel/js/hidden.js"></script>
+<script src="../js/hidden.js"></script>
 
 </head>
 
@@ -102,40 +102,34 @@
 		<!-- Page Head -->
 		<h1 class="mt-4 mb-3">예약</h1>
 		<!-- 예약 바 -->
-		<!-- <form action="reservation.html" method="post" name="reservationForm"> -->
 		<ul class="breadcrumb">
 		<table><tr>
 			<!-- 체크인 -->
-			<!-- 	<input type="text" class="form-control" value="체크인"  id="checkIn" name="checkIn" >  -->
-			<div class ='col-md-2'>
+			<div class ='col-md-3'>
             <div class='input-group date ' id='datetimepicker6'>
-                <input type='text' class="form-control" placeholder="체크인" id="checkIn"/>
+                <input type="text" class="form-control" placeholder="체크인" id="checkIn" />
                 <span class="input-group-addon">
                		<span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div></div>
 			<!-- 체크아웃 -->
-			<!-- <div class="input-group date" >
-				<input type="text" class="form-control" value="체크아웃" id="checkOut" name="checkIn" > 
-				<span class="input-group-addon"> 
-				<span class="glyphicon glyphicon-calendar">
-				</span></span>
-			</div> -->
 			<div class ='col-md-2'>
             <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" placeholder="체크아웃" id="checkOut"/>
+                <input type='text' class="form-control" placeholder="체크아웃" id="checkOut" />
                  <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
      	   </div></div>
+     	   
+     	    
 			<!-- 인원수 -->
 			<td class='m'>
-			<select class="browser-default custom-select" id="peopleNum">
+			<select class="browser-default custom-select" id="peopleNum" required="required">
 					<option selected >인원수&nbsp;&nbsp;</option>
-					<option value="num1">1</option>
-					<option value="num2">2</option>
-					<option value="num3">3</option>
-					<option value="num3">4</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
 			</select></td>
 			
 			<!-- 검색 submit 버튼 -->
@@ -145,14 +139,14 @@
 		</ul> 
 		<!-- </form> -->
 	</div>
+	
 	<script>
 			$(document).ready(function(){
 				$("#searchbtn").click(function() {
 					// $("#showShow").show();
 					 $.ajax({
-			            url:{ 			//"/hotel/cmntUpdate.do"
-			            	
-			            },
+			            url:"/hotel/rsbar.to",			//"/hotel/cmntUpdate.do"
+			            
 			            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
 			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
 			            	checkIn: $("#checkIn").val(),
@@ -165,25 +159,54 @@
 			            complete:function() {
 			                console.log("완료 후...");
 			            },
-			            success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
+			            success:function(roomList) {            // 서버에 대한 정상응답이 오면 실행, callback
 			                console.log("comment가 정상적으로 수정되었습니다.");
+			            	
+			                show(roomList);
 			            	// view 영역의 것들
 			            }
 			        });
 				});
 			});
 			
-		</script>
+			function show(data) {
+				let html = "";
+				html += '<ol class="breadcrumb"><li class="breadcrumb-item active">현재 이용 가능 객실</li></ol>';
+				
+					$.each(data, function(index, roomNum ) {
+						if(roomNum==1) {
+							html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
+							html += ' class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">';
+							html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
+							html += '<a class="btn btn-primary" href="reservation_confirm.jsp">예약하기';
+							html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div><hr>';
+						} else if(roomNum==2) {
+							html += '<div class="row"><div class="col-md-7"><a href="room2detail.jsp"> <img';
+							html += 'class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt=""></a></div>';
+							html += '<div class="col-md-5"><h3>Grand Deluxe</h3><p>좋은 좋은 디럭스</p>';
+							html += '<a class="btn btn-primary" href="reservation_confirm.jsp">예약하기';
+							html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div><hr>';
+						} else if(roomNum==3) {
+							html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <imgclass="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary" href="reservation_confirm.jsp">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+						}
+					});
+					
+				html += '<hr>';
+				$( "#showshow" ).html(html);
+				
+			}
+			
+	</script>
 	<!-- 예약 바 끝 -->
 
 	<!-- 객실정보 -->
 	<div class="container" id="showShow" style="display: none;">
-
+<!-- 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item active">현재 이용 가능 객실</li>
 		</ol>
 
-		<!-- room1 -->
+		room1
 		<div class="row">
 			<div class="col-md-7">
 				<a href="room1detail.jsp"> <img
@@ -198,11 +221,11 @@
 				</a>
 			</div>
 		</div>
-		<!-- /.row -->
+		/.row
 
 		<hr>
 
-		<!-- room2 -->
+		room2
 		<div class="row">
 			<div class="col-md-7">
 				<a href="room2detail.jsp"> <img
@@ -217,11 +240,11 @@
 				</a>
 			</div>
 		</div>
-		<!-- /.row -->
+		/.row
 
 		<hr>
 
-		<!-- room3 -->
+		room3
 		<div class="row">
 			<div class="col-md-7">
 				<a href="room3detail.jsp"> <img
@@ -235,7 +258,7 @@
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- 객실정보 끝-->
 

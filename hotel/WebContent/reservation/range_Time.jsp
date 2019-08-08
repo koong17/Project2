@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="../css/bts3.css" rel="stylesheet">
+<!-- <link href="../css/bts3.css" rel="stylesheet"> -->
 <!-- hs CSS
 <link href="../css/hs2.css" rel="stylesheet">
 
@@ -14,7 +14,7 @@ Bootstrap core CSS
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
-​<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+��<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet"
@@ -26,8 +26,8 @@ Bootstrap core CSS
     <div class='col-md-5'>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker6'>
-                <input type='text' class="form-control"  value='check'/>
-                <span class="input-group-addon_v2">
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
@@ -36,8 +36,8 @@ Bootstrap core CSS
     <div class='col-md-5'>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control"  value='체크아웃' />
-                <span class="input-group-addon_v2">
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>

@@ -100,7 +100,7 @@ public class ReserveController extends HttpServlet {
 				
 		RequestDispatcher  dp = request.getRequestDispatcher(view);
 		
-		dp.forward(request, response); // 오류나면 if문으로 null 처리하기
+		if(view!=null) dp.forward(request, response); // 오류나면 if문으로 null 처리하기
 	}
 	
 }

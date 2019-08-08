@@ -20,10 +20,8 @@ public class RSBarAction implements CommandAction {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession(true);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String checkInStr = request.getParameter("checkIn");
-		String checkOutStr = request.getParameter("checkOut");
-		Date checkIn = (Date) sdf.parse(checkInStr);
-		Date checkOut = (Date) sdf.parse(checkOutStr);
+		String checkIn = request.getParameter("checkIn");
+		String checkOut = request.getParameter("checkOut");
 		String peopleNum = request.getParameter("peopleNum");
 		
 		ReserveDAO dao = ReserveDAO.getInstance();

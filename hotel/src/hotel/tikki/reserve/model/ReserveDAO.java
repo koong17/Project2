@@ -35,33 +35,34 @@ public class ReserveDAO {
    
    
    
-   public int select(ReserveVO vo) { //고객이 검색한 정보에 상응하는 방 정보를 불러오는 기능
+   public ArrayList<Integer> select(String checkIn, String checkOut) { //고객이 검색한 정보에 상응하는 방 정보를 불러오는 기능
       Connection conn = null ;
       PreparedStatement pstmt = null;
       ResultSet rs = null;
+      ArrayList<Integer> roomList = new ArrayList<Integer>();
       
-      String sql = "SELECT R.ROOM_NUM FROM ROOMS R NOT IN (SELECT B.ROOM_NUM FROM RESERVATION B WHERE NOT (B.CHECK_IN>'2019-08-07' OR B.CHECK_OUT<'2019-08-19')) ORDER BY R.ROOM_NUM" ;
+      String sql = "SELECT R.ROOM_NUM FROM ROOMS R WHERE r.room_num NOT IN" + 
+      		" (SELECT B.ROOM_NUM FROM RESERVATION B WHERE NOT" + 
+      		" (B.CHECK_IN>TO_DATE(?, 'YYYY-MM-DD') OR B.CHECK_OUT<TO_DATE(?, 'YYYY-MM-DD')))" + 
+      		" ORDER BY R.ROOM_num" ;
       
       try {
          conn = getConnection();
          pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, checkIn);
+         pstmt.setString(2, checkOut);
+         rs = pstmt.executeQuery();
          
-         pstmt.setInt(1, vo.getRoom_num());
-         pstmt.setInt(2, vo.getRsrv_num());
-         pstmt.setDate(3, vo.getCheck_in());
-         pstmt.setDate(4, vo.getCheck_out());
-         pstmt.setInt(5, vo.getRsrv_ppl());
-         pstmt.setString(6, vo.getRsrv_nick());
-         pstmt.setString(7, vo.getRsrv_status());
-         
-         pstmt.executeUpdate();
+         while(rs.next()) {
+        	 roomList.add(rs.getInt(1));
+         }
          
       } catch (Exception e) {
          e.printStackTrace();
       } finally {
          CloseUtil.close(rs);         CloseUtil.close(pstmt);         CloseUtil.close(conn);
       }
-      return 0;
+      return roomList;
    } //select() end
    
    public int search(ReserveVO vo) { //고객이 선택한 방에 대한 정보를 가져오는 구문
