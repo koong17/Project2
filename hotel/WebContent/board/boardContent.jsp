@@ -156,7 +156,7 @@
             let presentDay = vo.cmnt_date.substring(5, 10);
 
             html += "<td width='50px'>" + presentDay + "</td>";
-            if( vo.cmnt_nick == "zi") { // 관리자 닉네임으로 바꿀 것
+            if( vo.cmnt_nick == '${nick}' || '${nick}'=='god') { // 관리자 닉네임으로 바꿀 것
 
              	console.log('들어왔습니다.');
              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
@@ -172,7 +172,7 @@
     }
     
     function updateCmntForm(data, input_cmnt_num) {
-    	 let html = "<table class='table2' style='margin-top: 10px;'><tbody>";
+    	 let html = "<table class='table2' style='margin-top: 10px'><tbody>";
          $.each(data, function(index, vo) {
         	 if(input_cmnt_num == vo.cmnt_num){
         		 html += "<tr align='center'>";
@@ -184,15 +184,16 @@
 				 html += "</c:if></div></td>";
         	 } else {
 	             html += "<tr align='center'>";
-	             html += "<td width='30px'>" + vo.cmnt_num + "</td>";
-	             html += "<td width='35px'>" + vo.cmnt_nick + "</td>";
+	             html += "<td width='40px'>" + vo.cmnt_num + "</td>";
+	             html += "<td width='80px'>" + vo.cmnt_nick + "</td>";
 	             console.log(vo.cmnt_nick);
-	             html += "<td align='left' width='450px'>" + vo.cmnt_content + "</td>";
+	             html += "<td align='left' width='700px'>" + vo.cmnt_content + "</td>";
 	             let presentDay = vo.cmnt_date.substring(5, 10);
-	             html += "<td width='45px'>" + presentDay + "</td>";
-	             if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
+	             html += "<td width='70px'>" + presentDay + "</td>";
+	             if( vo.cmnt_nick == "zi") { // 관리자 닉네임으로 바꿀 것
 	              	console.log('들어왔습니다.');
-	              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
+	              	
+	              	html +=  "<td width='200px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
 	              	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary' onclick='deleteCmnt("+ vo.cmnt_num +")' ></td>";
 	             }
 	             html += "</tr>";
@@ -303,7 +304,19 @@
 
   <!-- Page Content -->
   <div class="container" style="min-height:793px">
-	<center><br>
+
+	<center>
+	
+	  
+      <!-- Page Heading/Breadcrumbs -->
+    <br><br>
+    <ol class="breadcrumb2">
+      <li class="breadcrumb-item active">Home /</li>
+      </li>
+      <li class="breadcrumb2-item">
+      	<a href="list.do"> &nbsp;고객문의</a>
+      </li>
+    </ol>
 	
 
 	<form>
@@ -312,7 +325,7 @@
 		 
       <input type="hidden" id=session_nick value=${sessionScope.nick }>
 		 
-
+			<!-- ---------------------------------------------------------------------------------------- -->
 			
 			<tr height="30" width = "1000">
 				<td align="center" width = "20" >글번호</td>
@@ -323,48 +336,58 @@
 				<td align="center" width = "30">${ vo.board_nick } </td>
 				
 			</tr>
-
+			<!-- ---------------------------------------------------------------------------------------- -->
 
 			<tr>
 				<td height="300" width = "1000" colspan="6"><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
-			<tr>
-				<td height="30" width = "1000" colspan="6"> <!-- 원래 pre 있던 자리 -->
-					<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
-					    <c:if test="${sessionScope.nick != null}">
-						    <textarea class="form-control" rows="3" id="cmnt_content" placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
-						    
-					        <input type="button" class="btn btn-secondary button-right-fix" value="댓글 쓰기" id="commentWrite">
-					        
-					    </c:if>
-					 		
-					</div><!-- Comment 태그 추가 -->
-				</td>
-			</tr>	
+			<c:if test="${ sessionScope.id != null && sessionScope.nick == 'god'}">
+				<tr>
+					<td height="50" width = "1000" colspan="6"> <!-- 원래 pre 있던 자리 -->  <!--  -->
+						<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
+						    <c:if test="${sessionScope.nick != null}">
+							    <textarea class="form-control" rows="5" id="cmnt_content" 
+							    placeholder="댓글을 입력하세요." style="width: 100%;"></textarea>
+							    
+						        <input type="button" class="btn btn-secondary button-right-fix" value="댓글 쓰기" id="commentWrite">
+						        
+						    </c:if>
+						 		
+						</div>
+					</td>
+				</tr>	
+			</c:if>
 			
-			<tr>
-				<td height="30" width = "1000" colspan="6">
-					
-				   <div id="showComment" style="text-align: center;">
-				   </div>
-					
-				</td>
-			</tr>
-			
-			<!-- 버튼 -->
+			<!-- ---------------------------------------------------------------------------------------- -->
+			<c:if test="${ vo.cmnt_count != 0 }">
+				<tr>
+					<td width = "1000" colspan="6">
+						
+					   <div id="showComment" style="text-align: center;">
+					   <!-- 여기에서 댓글읽기 -->
+					   </div>
+						
+					</td>
+				</tr>
+			</c:if>
+			<!-- ---------------------------------------------------------------------------------------- -->
+			<!-- 글수정 글삭제 목록보기 버튼 -->
 			
 			<tr height ="30">
 				<td colspan="7" align="right" >
 				  <c:if test="${ sessionScope.nick == vo.board_nick }">
-					<input type="button" class="btn btn-primary" value="글수정" onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
+					<input type="button" class="btn btn-primary" value="글수정" 
+						   onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type ="button" class="btn btn-primary" value ="글삭제" onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
+					<input type ="button" class="btn btn-primary" value ="글삭제" 
+						   onclick="document.location.href='deleteForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			      </c:if>
-				<input type = "button" class="btn btn-primary" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
+					<input type = "button" class="btn btn-primary" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
 				</td>
 			</tr>
+			
 		</table>
 	</form>
 	</center>
@@ -374,7 +397,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" id="hotel-footer-fix-boardContent">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

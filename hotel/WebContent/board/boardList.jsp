@@ -26,6 +26,10 @@
   
   <!-- 모든 페이지에 들어가야 함 -->
   <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+  
+  <!-- footer가 아래에 위치할 수있도록 고정한다. -->
+
+  
 </head>
 
 <body>
@@ -72,7 +76,7 @@
   <!-- ./nav -->
 
   <!-- Page Content -->
-  <div class="container" height="1000px">
+  <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">고객문의
@@ -177,7 +181,7 @@
 
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" id="hotel-footer-fix">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

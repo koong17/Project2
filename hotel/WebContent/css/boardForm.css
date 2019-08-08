@@ -62,14 +62,14 @@ textarea{
 
 .table2{
 	
-	
 	width: 100%;
 	margin-bottom: 1rem;
 	color: #212529;
-	background-color: #eceef0;
+	background-color: #e9ecef;
 }
 
 .table2 td, .table2 th {
+	
 	padding: .75rem;
 	vertical-align: top;
 	border-top: 1px solid #dee2e6
@@ -88,7 +88,7 @@ textarea{
 	padding: .75rem;
 	vertical-align: top;
 	border-top: 1px solid #dee2e6;
-	background: #D4D8D9;
+	background: #e9ecef;
 	
 }
 
@@ -100,6 +100,51 @@ textarea{
 	
 }
 
+#hotel-footer-fix{
+	position: absolute;
+	bottom: 0;
+	width:100%
+}
+
+#hotel-footer-fix-boardContent{
+	margin-top:2.5em;
+}
+
+.breadcrumb2 {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding: .75rem 1rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	background-color: #e9ecef;
+	border-radius: .25rem;
+	width: 1020px;
+}
+
+.breadcrumb2-item+.breadcrumb2-item {
+	padding-left: .5rem
+}
+
+.breadcrumb2-item+.breadcrumb2-item::before {
+	display: inline-block;
+	padding-right: .5rem;
+	color: #6c757d;
+	content: "/"
+}
+
+.breadcrumb2-item+.breadcrumb2-item:hover::before {
+	text-decoration: underline
+}
+
+.breadcrumb2-item+.breadcrumb2-item:hover::before {
+	text-decoration: none
+}
+
+.breadcrumb2-item.active {
+	color: #6c757d
+}
 
 
 
