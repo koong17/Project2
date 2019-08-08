@@ -102,15 +102,15 @@
         let html = "<table class='table2' style='margin-top: 10px;'><tbody>";
         $.each(data, function(index, vo) {
             html += "<tr align='center'>";
-            html += "<td width='40px'>" + vo.cmnt_num + "</td>";
-            html += "<td width='70px'>" + vo.cmnt_nick + "</td>";
+            html += "<td width='30px'>" + vo.cmnt_num + "</td>";
+            html += "<td width='35px'>" + vo.cmnt_nick + "</td>";
             console.log(vo.cmnt_nick);
-            html += "<td align='left' width='550px'>" + vo.cmnt_content + "</td>";
+            html += "<td align='left' width='450px'>" + vo.cmnt_content + "</td>";
             let presentDay = vo.cmnt_date.substring(5, 10);
-            html += "<td width='55px'>" + presentDay + "</td>";
+            html += "<td width='45px'>" + presentDay + "</td>";
             if( vo.cmnt_nick == "수아") { // 관리자 닉네임으로 바꿀 것
-             	console.log('들어옴');
-             	html +=  "<td width='160px'><input type='button' value='수정' class='btn btn-secondary'>"
+             	console.log('들어왔습니다.');
+             	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary'>"
              	+" &nbsp;<input type='button' value='삭제' class='btn btn-secondary'></td>";
             }
             html += "</tr>";
