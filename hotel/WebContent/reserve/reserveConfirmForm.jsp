@@ -107,7 +107,7 @@
 		<!-- 예약저장 버튼 -->
 		<div class="aa aa-button reservation-wrap reservation-button"
 			align="center">
-			<form action="index.go">
+			<form action="confirmPro.to">
 				<input type="hidden" name="roomNum" value='${ roomNum }'>
 				<input type="hidden" name="checkIn" value='${ checkIn }'>
 				<input type="hidden" name="checkOut" value='${ checkOut }'>
