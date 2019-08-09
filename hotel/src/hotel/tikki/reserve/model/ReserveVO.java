@@ -5,8 +5,7 @@ import java.sql.Date;
 public class ReserveVO {
 
 	int room_num, rsrv_num, rsrv_ppl;
-	Date check_in, check_out;
-	String rsrv_nick, rsrv_status;
+	String rsrv_nick, rsrv_status, check_in, check_out;
 	
 //////////////getter and setter//////////////
 	public int getRoom_num() {
@@ -27,16 +26,16 @@ public class ReserveVO {
 	public void setRsrv_ppl(int rsrv_ppl) {
 		this.rsrv_ppl = rsrv_ppl;
 	}
-	public Date getCheck_in() {
+	public String getCheck_in() {
 		return check_in;
 	}
-	public void setCheck_in(Date check_in) {
+	public void setCheck_in(String check_in) {
 		this.check_in = check_in;
 	}
-	public Date getCheck_out() {
+	public String getCheck_out() {
 		return check_out;
 	}
-	public void setCheck_out(Date check_out) {
+	public void setCheck_out(String check_out) {
 		this.check_out = check_out;
 	}
 	public String getRsrv_nick() {

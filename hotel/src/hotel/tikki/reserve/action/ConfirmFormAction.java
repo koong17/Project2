@@ -17,7 +17,10 @@ public class ConfirmFormAction implements CommandAction {
 		String nick= request.getParameter("nick");
 		String roomType= request.getParameter("roomType");
 		String priceview= "", total="";
-		int price = 0;
+		int price= 0;
+		int roomNum = 0;
+		
+		
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		int checkDate = (int)(sdf.parse(checkOut).getTime()-sdf.parse(checkIn).getTime())/(24*60*60*1000);
@@ -52,7 +55,9 @@ public class ConfirmFormAction implements CommandAction {
 		request.setAttribute("roomType", roomType);
 		request.setAttribute("priceview",priceview);
 		request.setAttribute("total",total);
-		request.setAttribute("checkDate", new Integer(checkDate));
+		request.setAttribute("price",price);
+		request.setAttribute("checkDate", checkDate);
+		request.setAttribute("roomNum", roomNum);
 		
 		return "/reserve/reserveConfirmForm.jsp";
 	}
