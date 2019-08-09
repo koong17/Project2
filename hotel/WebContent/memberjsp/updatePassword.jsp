@@ -51,12 +51,12 @@
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Current Password" required="required"  onkeyup="passwordvalidate()">
+										class="form-control input-lg" placeholder="Current Password" required="required"  onkeyup="passwordvalidate()" maxlength="16">
 									<!-- <span id="passwordTag" style="color: white;"></span> -->	
 								</div>
 								<div class="form-group">
 									<input type="password" name="password2" id="password2"
-										class="form-control input-lg" placeholder="Reset Password" required="required" onkeyup="password2validate()">
+										class="form-control input-lg" placeholder="Reset Password" required="required" onkeyup="password2validate()" maxlength="16">
 									<span id="password2Tag" style="color: white;"></span>	
 								</div>
 								<!-- <span class="button-checkbox">
