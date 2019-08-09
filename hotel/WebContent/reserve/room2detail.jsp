@@ -52,7 +52,7 @@
 								class="dropdown-item" href="room3detail.jsp">room3</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reservation.jsp">예약</a> <!-- full width --></li>
+						href="reserve.to">예약</a> <!-- full width --></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
@@ -95,7 +95,7 @@
 
 				<div class="aa aa-button reservation-wrap reservation-button"
 					align="center">
-					<a href="reservation.jsp" class="button">예약 하기</a>
+					<a href="reserve.to" class="button">예약 하기</a>
 				</div>
 
 				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. 아래 내용은 룸1 인포라 다시 넣든지 말든지 해야함 -->

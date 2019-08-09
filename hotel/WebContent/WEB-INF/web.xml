@@ -2,13 +2,13 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>HOTEL</display-name>
   
-  <!-- BoardController.java -->
+  <!-- ReserveController.java -->
   <servlet>
   		<servlet-name>ReserveController</servlet-name>
   		<servlet-class>hotel.tikki.reserve.controller.ReserveController</servlet-class>
   		<init-param>
   			 <param-name>ReserveConfig</param-name>
-  			 <param-value>C:\Users\1027\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandReserve.properties</param-value>
+  			 <param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandReserve.properties</param-value>
   		</init-param>
   </servlet>
   <servlet-mapping>

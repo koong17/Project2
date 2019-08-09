@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
 
 <meta charset="utf-8">
@@ -58,7 +57,7 @@
 								class="dropdown-item" href="room3detail.jsp">room3</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reservation.jsp">예약</a> <!-- full width --></li>
+						href="reservation.to">예약</a> <!-- full width --></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
@@ -91,13 +90,14 @@
 						<table >
 							<tr><td style="text-align:right;"><b>체크 인</b></td> <td width="20"></td><td >${ checkIn }</td></tr>
 							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td>${ checkOut }</td></tr>
-							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ checkDate } 일</td></tr>
+							<tr><td style="text-align:right;"><b>객실금액</b></td> <td width="20"></td><td>KRW ${ priceview }</td></tr>
+							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ checkDate } 박</td></tr>
 							<tr><td style="text-align:right;"><b>투숙인원</b></td> <td width="20"></td><td style="text-align:center;">${ peopleNum } 명</td></tr>
 						</table>
 					</div>
 					<hr> <b>객실</b><br> ${ roomType } <br>
 					<br> <img src="/hotel/img/koong.jpg" width="300">
-					<hr> <br> <b><h4>요금합계 </h4></b> ${ price } 만원<br></li>
+					<hr> <br> <b><h4>총 예약금액 </h4><h5>KRW ${ total }</h5></b><br></li>
 			</ol>
 		</div>
 
@@ -107,7 +107,7 @@
 		<!-- 예약저장 버튼 -->
 		<div class="aa aa-button reservation-wrap reservation-button"
 			align="center">
-			<a href="../index.html" class="button">예약 완료</a>
+			<a href="index.go" class="button">예약 완료</a>
 		</div>
 
 	</div>
