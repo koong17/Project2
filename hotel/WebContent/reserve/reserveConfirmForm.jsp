@@ -107,7 +107,14 @@
 		<!-- 예약저장 버튼 -->
 		<div class="aa aa-button reservation-wrap reservation-button"
 			align="center">
-			<a href="../index.html" class="button">예약 완료</a>
+			<form action="index.go">
+				<input type="hidden" name="roomNum" value='${ roomNum }'>
+				<input type="hidden" name="checkIn" value='${ checkIn }'>
+				<input type="hidden" name="checkOut" value='${ checkOut }'>
+				<input type="hidden" name="peopleNum" value='${ peopleNum }'>
+				<input type="hidden" name="nickname" value='${ sessionScope.nick }'>
+				<input type="submit" class="button" value="예약 완료">
+			</form>
 		</div>
 
 	</div>

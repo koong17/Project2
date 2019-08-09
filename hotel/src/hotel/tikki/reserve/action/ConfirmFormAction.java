@@ -16,6 +16,7 @@ public class ConfirmFormAction implements CommandAction {
 		String nick= request.getParameter("nick");
 		String roomType= request.getParameter("roomType");
 		int price= 0;
+		int roomNum = 0;
 		
 		
 		
@@ -26,12 +27,15 @@ public class ConfirmFormAction implements CommandAction {
 		
 		if( roomType.equals("deluxe")) {
 			roomType="Deluxe";
+			roomNum=1;
 			price = 20;
 		} else if( roomType.equals("grand")) {
 			roomType="Grand Deluxe";
+			roomNum=2;
 			price = 30;
 		} else if( roomType.equals("suite")) {
 			roomType="Suite";
+			roomNum=3;
 			price = 50;
 		}
 		
@@ -41,7 +45,8 @@ public class ConfirmFormAction implements CommandAction {
 		request.setAttribute("nick", nick);
 		request.setAttribute("roomType", roomType);
 		request.setAttribute("price",price);
-		request.setAttribute("checkDate", new Integer(checkDate));
+		request.setAttribute("checkDate", checkDate);
+		request.setAttribute("roomNum", roomNum);
 		
 		return "/reserve/reserveConfirmForm.jsp";
 	}

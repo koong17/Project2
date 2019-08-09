@@ -74,8 +74,8 @@ public class ReserveDAO {
          
          pstmt.setInt(1, vo.getRoom_num());
          pstmt.setInt(2, vo.getRsrv_num());
-         pstmt.setDate(3, vo.getCheck_in());
-         pstmt.setDate(4, vo.getCheck_out());
+         pstmt.setString(3, vo.getCheck_in());
+         pstmt.setString(4, vo.getCheck_out());
          pstmt.setInt(5, vo.getRsrv_ppl());
          pstmt.setString(6, vo.getRsrv_nick());
          pstmt.setString(7, vo.getRsrv_status());
@@ -90,33 +90,43 @@ public class ReserveDAO {
       return 0;
    } //search() end
 
-   public int insert(ReserveVO vo) { //고객이 원하는 예약 정보를 예약 DB에 저장
+   public void insert(ReserveVO vo) { //고객이 원하는 예약 정보를 예약 DB에 저장
       Connection conn = null ;
       PreparedStatement pstmt = null;
       ResultSet rs = null;
-      
-      String sql = "insert into reservation values(1,1,'2019-08-16','2019-08-22',2,'nick',1)";
-      
-      try {
-         conn = getConnection();
-         pstmt = conn.prepareStatement(sql);
-         
-         pstmt.setInt(1, vo.getRoom_num());
-         pstmt.setInt(2, vo.getRsrv_num());
-         pstmt.setDate(3, vo.getCheck_in());
-         pstmt.setDate(4, vo.getCheck_out());
-         pstmt.setInt(5, vo.getRsrv_ppl());
-         pstmt.setString(6, vo.getRsrv_nick());
-         pstmt.setString(7, vo.getRsrv_status());
-         
-         pstmt.executeUpdate();
-         
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         CloseUtil.close(rs);         CloseUtil.close(pstmt);         CloseUtil.close(conn);
-      }
-      return 0;
+	  
+      int number = 0;		
+	
+		try {
+			conn = getConnection();
+			//현재 board 테이블에 레코드 유무 판단과 글 번호 지정
+			pstmt = conn.prepareStatement("SELECT MAX(RSRV_NUM) FROM RESERVATION");
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) {
+				number = rs.getInt(1) + 1;     // 1 : num , 다음 글 번호는 가장 큰 번호 + 1 
+			} else {
+				number = 1;
+			} // if end
+		
+			System.out.println("number : "+ number);
+			
+			String sql = "insert into reservation values(?, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'), ?, ?, 'n')";   
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getRoom_num());
+			pstmt.setInt(2, number);
+			pstmt.setString(3, vo.getCheck_in());
+			pstmt.setString(4, vo.getCheck_out());
+			pstmt.setInt(5, vo.getRsrv_ppl());
+			pstmt.setString(6, vo.getRsrv_nick());
+		 
+			pstmt.executeUpdate();
+		 
+		  } catch (Exception e) {
+		     e.printStackTrace();
+		  } finally {
+		     CloseUtil.close(rs);         CloseUtil.close(pstmt);         CloseUtil.close(conn);
+		  }
    } //insert() end
 
 }

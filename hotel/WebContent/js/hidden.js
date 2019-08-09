@@ -2,11 +2,11 @@ $(function () {
 	$('#datetimepicker6').datetimepicker({
 		 minDate : 'now'
 	});
+	
 	$('#datetimepicker6').datetimepicker({
 		 format: 'YYYY-MM-DD HH:mm:ss'
 	});
     $('#datetimepicker7').datetimepicker({
-        useCurrent: false, //Important! See issue #1075
         format: 'YYYY-MM-DD HH:mm:ss'
     });
     
