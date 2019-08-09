@@ -20,54 +20,19 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
-
+<link href="/hotel/css/boardForm.css?after" rel="stylesheet">
 
 </head>
 <c:if test="${ sessionScope.id != null}">
 	<c:redirect url="index.go" />
 </c:if>
 <body>
-	<!------ Include the above in your HEAD tag ---------->
-	<nav
-		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="index.go">TIKKI</a> <a
-				class="navbar-login" href="login.go"><small>로그인</small></a> <a
-				class="navbar-login" href="join.go"><small>회원가입</small></a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="about.html">호텔소개</a>
-						<!-- About 에 contact map--></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#"
-						id="navbarDropdownPortfolio" aria-haspopup="true"
-						aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
-						<div class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="portfolio-item.html">room1</a> <a
-								class="dropdown-item" href="portfolio-item.html">room1</a> <a
-								class="dropdown-item" href="portfolio-item.html">room3</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link"
-						href="full-width.html">예약</a> <!-- full width --></li>
-					<li class="nav-item"><a class="nav-link"
-						href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- ./nav -->
+<jsp:include page="/navigation.jsp"/>
 <header>
 	<div class="carousel-inner" role="listbox">
 		<!-- Slide One - Set the background image for this slide in the line below -->
 <div class="carousel-item active"
-	style="background-image: url('img/koong.jpg'); height: 765px;">
+	style="background-image: url('img/koong.jpg'); height: 761px;">
 <div class="carousel-login d-none d-md-block">
 	<div class="container" align="center">
 		<div class="rows" style="margin-top: 20px;">
@@ -76,7 +41,8 @@
 				<form role="form" action="loginPro.go" name="loginform"
 					method="post">
 					<fieldset>
-						<h2>TIKKI에 오신 것을 환영합니다.</h2>
+						<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
+						<p>
 						<!-- <hr class="colorgraph"> -->
 						<c:if test="${ result == -1 }">
 							<script type="text/javascript">
@@ -123,14 +89,7 @@
 		</div>
 	</div>
 </header>
-
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2019</p>
-		</div>
-		<!-- /.container -->
-	</footer>
+<jsp:include page="/footer.jsp"/>
 	<script src="js/inho.js"></script>
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </body>
