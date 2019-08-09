@@ -21,7 +21,8 @@
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
 <link href="/hotel/css/boardForm.css?after" rel="stylesheet">
-
+<script src="vendor/jquery/jquery.min.js?after"></script>
+<script src="js/inho.js?after"></script>
 </head>
 <c:if test="${ sessionScope.id != null}">
 	<c:redirect url="index.go" />
@@ -31,8 +32,8 @@
 <header>
 	<div class="carousel-inner" role="listbox">
 		<!-- Slide One - Set the background image for this slide in the line below -->
-<div class="carousel-item active"
-	style="background-image: url('img/koong.jpg'); height: 800px;">
+<div class="carousel-item active" id="headerheight"
+	style="background-image: url('img/koong.jpg');">
 <div class="carousel-login d-none d-md-block">
 	<div class="container" align="center">
 		<div class="rows" style="margin-top: 20px;">

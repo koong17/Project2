@@ -1,3 +1,9 @@
+$(document).ready(function() {
+	$('#headerheight').height(window.innerHeight-176);
+	console.log(window.innerHeight-176);
+});
+
+
 function emailvalidate() {
 	var email = document.getElementById("email").value;
 	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
