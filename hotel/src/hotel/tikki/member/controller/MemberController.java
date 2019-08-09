@@ -1,126 +1,106 @@
 package hotel.tikki.member.controller;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import hotel.tikki.member.action.DeleteAction;
-import hotel.tikki.member.action.DeleteProAction;
-import hotel.tikki.member.action.JoinFormProAction;
-import hotel.tikki.member.action.LoginFormAction;
-import hotel.tikki.member.action.LoginFormProAction;
-import hotel.tikki.member.action.LogoutAction;
 import hotel.tikki.member.action.MemberAction;
-import hotel.tikki.member.action.UpdateFormAction;
-import hotel.tikki.member.action.UpdateFormProAction;
-import hotel.tikki.member.action.UpdatePassAction;
-import hotel.tikki.member.action.UpdatePassProAction;
 
-@WebServlet("*.go")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private Map commandMap = new HashMap();
+
+	// 초기화 - 1회 호출됨
+	// 명령어와 명령어 처리 클래스가 매핑되어 있는 properties  파일을 읽어 들이는 역할
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		String props = config.getInitParameter("MemberConfig");
+		Properties pr = new Properties();
+		FileInputStream  f = null;
+		
+		try {
+			// commandBoard.properties 파일의 내용을 읽어옴
+			f = new FileInputStream(props);
+			//commandBoard.properties 파일의 정보를 Properties 객체에 저장
+			pr.load(f);	 // key=value
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( f != null ) try{ f.close(); }catch(Exception e) { e.printStackTrace(); }
+		} //end try
+		
+		Iterator  key = pr.keySet().iterator();  // key 값 추출
+		
+		while( key.hasNext() ) {
+			String command = (String)key.next();
+			String value = pr.getProperty(command);  // value  -  edu.kosta.boardAction.WriteFormAction
+			
+			try {
+				Class className = Class.forName(value);  // forName() 문자열을 클래스로 변환.
+				// 클래스로 변환시켰기 때문에 객체 생성함.
+				Object instance = className.newInstance(); 
+				 
+				commandMap.put(command, instance);   // put(key, value)
+				System.out.println("command : "+command+" instance : "+instance);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} // end while
+		
+	} // end init(~~~) 
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
+					throws ServletException, IOException {
+			doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String com = requestURI.substring(contextPath.length());
+			throws ServletException, IOException {	
+			doProcess(request, response);
+	}
 
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {			
+		String view = null;
 		MemberAction action = null;
-		String nextPage = "";
-
-		if (com.equals("/join.go")) {
+		
+		try {
+			String command = request.getRequestURI();
+			System.out.println("command : " + command );	// command : /web06_boardMVC/writeForm.do		
+			System.out.println("request.getContextPath() : " + request.getContextPath());   //   /web06_boardMVC
 			
-			nextPage = "memberjsp/join.jsp";
-		} else if (com.equals("/joinPro.go")) {
-			action = new JoinFormProAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
-		} else if (com.equals("/login.go")) {
-			action = new LoginFormAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
-		} else if (com.equals("/loginPro.go")) {
-			action = new LoginFormProAction();
-				try {
-					nextPage = action.process(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		} else if (com.equals("/index.go")) {
-			nextPage = "index.jsp";
+			if( command.indexOf(request.getContextPath()) == 0 ) {  // 경로가 없다면,...
+				command = command.substring(request.getContextPath().length() + 1);  //  /web06_boardMVC
+				System.out.println("if command : " + command);
+			} // if end
 			
-		} else if (com.equals("/logout.go")) {
-			action = new LogoutAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (com.equals("/update.go")) {
-			action = new UpdateFormAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (com.equals("/updatePro.go")) {
-			action = new UpdateFormProAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (com.equals("/updatePassword.go")) {
-			action = new UpdatePassAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (com.equals("/updatePasswordPro.go")) {
-			action = new UpdatePassProAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (com.equals("/delete.go")) {
-			action = new DeleteAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (com.equals("/deletePro.go")) {
-			action = new DeleteProAction();
-			try {
-				nextPage = action.process(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		RequestDispatcher dp = request.getRequestDispatcher(nextPage);
+			action = (MemberAction)commandMap.get(command);
+			System.out.println("action : " + action);  // action : edu.kosta.boardAction.WriteFormAction
+			view = action.process(request, response); 
+			System.out.println("view : " + view);     
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} // try end
+		
+		// request.setAttribute("CONTENT", view);
+				
+		RequestDispatcher  dp = request.getRequestDispatcher(view);
 		dp.forward(request, response);
 	}
-}
+}	

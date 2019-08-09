@@ -34,7 +34,6 @@ public class MemberDAO {
 	public void memberinsert(MemberVO vo) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		System.out.println("memberinsert");
 		
 		conn = getConnection();
 		pstmt = conn.prepareStatement("INSERT INTO MEMBER(id, password, nickname, phone) values(?,?,?,?)");
