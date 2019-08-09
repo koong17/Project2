@@ -19,6 +19,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
+<link href="/hotel/css/boardForm.css?after" rel="stylesheet">
 <script src="js/inho.js"></script>
 </head>
 <c:if test="${ sessionScope.id != null}">
@@ -71,7 +72,8 @@
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 						<form role="form" method="post" name="joinform" action="joinPro.go" onsubmit="return validate();">
 							<fieldset>
-								<h2>TIKKI에 오신 것을 환영합니다.</h2>
+								<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
+								<p>
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
@@ -121,7 +123,7 @@
       </div>
   </header>
   
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" id="hotel-footer-fix-boardContent">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

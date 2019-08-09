@@ -20,7 +20,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
-
+<link href="/hotel/css/boardForm.css?after" rel="stylesheet">
 
 </head>
 <c:if test="${ sessionScope.id != null}">
@@ -76,7 +76,8 @@
 				<form role="form" action="loginPro.go" name="loginform"
 					method="post">
 					<fieldset>
-						<h2>TIKKI에 오신 것을 환영합니다.</h2>
+						<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
+						<p>
 						<!-- <hr class="colorgraph"> -->
 						<c:if test="${ result == -1 }">
 							<script type="text/javascript">
@@ -124,7 +125,7 @@
 	</div>
 </header>
 
-	<footer class="py-5 bg-dark">
+	<footer class="py-5 bg-dark" id="hotel-footer-fix-boardContent">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; Your
 				Website 2019</p>
