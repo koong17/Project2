@@ -42,25 +42,25 @@
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()">
+										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()" maxlength="20">
 									<span id="emailTag" style="color: white;"></span>
 									<span id="resultId" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()">
+										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()" maxlength="16">
 									<span id="passwordTag" style="color: white;"></span>	
 								</div>
 								<div class="form-group">
 									<input type="text" name="nickname" id="nickname"
-										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()">
+										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()" maxlength="12">
 										<span id="nicknameTag" style="color: white;"></span>
 									<span id="resultNick" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="text" name="phone" id="phone"
 										class="form-control input-lg" 
-										placeholder="phone" required="required" onkeyup="phonevalidate()">
+										placeholder="phone" required="required" onkeyup="phonevalidate()" maxlength="11">
 										<span id="phoneTag" style="color: white;"></span>
 								</div>		
 								<!-- <span class="button-checkbox">

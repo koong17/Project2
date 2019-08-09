@@ -30,6 +30,19 @@
   		<url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  		<servlet-name>MemberController</servlet-name>
+  		<servlet-class>hotel.tikki.member.controller.MemberController</servlet-class>
+  		<init-param>
+  			 <param-name>MemberConfig</param-name>
+  			 <param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandMember.properties</param-value>
+  		</init-param>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>MemberController</servlet-name>
+  		<url-pattern>*.go</url-pattern>
+  </servlet-mapping>
+  
   <!-- jdbc:HotelDB DBCP setting -->
   <resource-ref>
      <description>Hotel Connection</description>
