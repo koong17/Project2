@@ -56,7 +56,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="reservation.html">예약</a> <!-- full width -->
+            <a class="nav-link" href="reserve.to">예약</a> <!-- full width -->
           </li>
           <li class="nav-item">
             <a class="nav-link" href="list.do">고객문의</a> <!--  포트폴리오1 수정 -->

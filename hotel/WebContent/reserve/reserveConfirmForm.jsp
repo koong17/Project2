@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
 <meta charset="utf-8">
@@ -76,7 +77,7 @@
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item active">변경사항이 있으신가요?</li>
-			<li class="breadcrumb-item"><a href="reserveForm.jsp"
+			<li class="breadcrumb-item"><a href="reserve.to"
 				style="color: #007bff;">돌아가기</a></li>
 		</ol>
 
@@ -87,13 +88,16 @@
 							TIKKI</h3></b>예약정보<br>
 					<hr>
 					<div>
-						<b>체크 인</b> (db가져옴)<br> <b>체크아웃</b> (db가져옴)<br> <b>숙박일수</b>
-						(db가져옴)<br> <b>투숙인원</b> (db가져옴)<br> <b>객실타입</b> (db가져옴)<br>
+						<table >
+							<tr><td style="text-align:right;"><b>체크 인</b></td> <td width="20"></td><td >${ checkIn }</td></tr>
+							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td>${ checkOut }</td></tr>
+							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ checkDate } 일</td></tr>
+							<tr><td style="text-align:right;"><b>투숙인원</b></td> <td width="20"></td><td style="text-align:center;">${ peopleNum } 명</td></tr>
+						</table>
 					</div>
-					<hr> <b>객실/패키지</b><br> (룸타입(Deluxe) db가져옴) / 객실타입(db가져옴)<br>
-					<br> <img src="../img/koong.jpg" width="300"><br> (선택한
-					방 img) <br>
-					<hr> <br> <b><h4>요금합계 (계산결과)</h4></b><br></li>
+					<hr> <b>객실</b><br> ${ roomType } <br>
+					<br> <img src="/hotel/img/koong.jpg" width="300">
+					<hr> <br> <b><h4>요금합계 </h4></b> ${ price } 만원<br></li>
 			</ol>
 		</div>
 
@@ -103,7 +107,7 @@
 		<!-- 예약저장 버튼 -->
 		<div class="aa aa-button reservation-wrap reservation-button"
 			align="center">
-			<a href="../index.html" class="button">예약 저장</a>
+			<a href="../index.html" class="button">예약 완료</a>
 		</div>
 
 	</div>

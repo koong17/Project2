@@ -1,9 +1,3 @@
-$(document).ready(function(){
-	$("#searchbtn").click(function() {
-		$("#showShow").show();
-	});
-});
-
 $(function () {
 	$('#datetimepicker6').datetimepicker({
 		 minDate : 'now'

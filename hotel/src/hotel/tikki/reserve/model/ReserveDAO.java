@@ -39,14 +39,14 @@ public class ReserveDAO {
       
       String sql = "SELECT R.ROOM_NUM FROM ROOMS R WHERE r.room_num NOT IN" + 
       		" (SELECT B.ROOM_NUM FROM RESERVATION B WHERE NOT" + 
-      		" (B.CHECK_IN>TO_DATE(?, 'YYYY-MM-DD') OR B.CHECK_OUT<TO_DATE(?, 'YYYY-MM-DD')))" + 
+      		" (B.CHECK_IN>TO_DATE(?, 'YYYY-MM-DD') OR B.CHECK_OUT-1<TO_DATE(?, 'YYYY-MM-DD')))" + 
       		" ORDER BY R.ROOM_num" ;
       
       try {
          conn = getConnection();
          pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1, checkIn);
-         pstmt.setString(2, checkOut);
+         pstmt.setString(1, checkOut);
+         pstmt.setString(2, checkIn);
          rs = pstmt.executeQuery();
          
          while(rs.next()) {
