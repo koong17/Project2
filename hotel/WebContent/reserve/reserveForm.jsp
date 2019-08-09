@@ -100,7 +100,7 @@
 	<div class="container" id="f">
 
 		<!-- Page Head -->
-		<h1 class="mt-4 mb-3">예약</h1>
+		<h1 class="mt-4 mb-3">예약 Reservation</h1>
 		<!-- 예약 바 -->
 		<ul class="breadcrumb">
 		<table><tr>
@@ -124,7 +124,7 @@
      	    
 			<!-- 인원수 -->
 			<td class='m'>
-			<select class="form-control custom-select" id="peopleNum" required="required">
+			<select class="browser-default custom-select" id="peopleNum" required="required">
 					<option selected >인원수</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -153,28 +153,32 @@
 		$(document).ready(function(){
 			$("#searchbtn").click(function() {
 				// $("#showShow").show();
-				 $.ajax({
-		            url:"/hotel/reserveForm.to",			//"/hotel/cmntUpdate.do"
-		            
-		            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
-		            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
-		            	checkIn: $("#checkIn").val(),
-		            	checkOut: $("#checkOut").val(),
-		            	peopleNum: $("#peopleNum").val()
-		            },
-		            beforeSend:function() {
-		                console.log("시작 전...");
-		            },
-		            complete:function() {
-		                console.log("완료 후...");
-		            },
-		            success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
-		                console.log("comment가 정상적으로 수정되었습니다.");
-		            	
-		                show(data);
-		            	// view 영역의 것들
-		            }
-		        });
+				if($("#checkIn").val() != "" && $("#checkOut").val() != "" && $("#peopleNum").val() != "인원수") {
+					 $.ajax({
+			            url:"/hotel/reserveForm.to",			//"/hotel/cmntUpdate.do"
+			            
+			            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
+			            	checkIn: $("#checkIn").val(),
+			            	checkOut: $("#checkOut").val(),
+			            	peopleNum: $("#peopleNum").val()
+			            },
+			            beforeSend:function() {
+			                console.log("시작 전...");
+			            },
+			            complete:function() {
+			                console.log("완료 후...");
+			            },
+			            success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
+			                console.log("comment가 정상적으로 수정되었습니다.");
+			            	
+			                show(data);
+			            	// view 영역의 것들
+			            }
+			        });
+				} else {
+					alert("정보를 전부 입력해야 합니다.");
+				}
 			});
 		});
 		
@@ -194,13 +198,10 @@
 					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
 					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div>';
 					html += '<div class="col-md-5"><h3>Grand Deluxe</h3><p>좋은 좋은 디럭스</p>';
-					html += '<a class="btn btn-primary" href="confirmForm.to">?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">예약하기';
+					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=grand">예약하기';
 					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
 				} else if(roomNum=='3') {
-					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> 
-					html += '<img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div>';
-					html += '<div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary"'; 
-					html += 'href="confirmForm.to">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
 				}
 				html += '<hr>';
 			});
