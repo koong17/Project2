@@ -85,12 +85,7 @@
 		
 		<tr><td width="200"><h1 class="mt-4 mb-3">&emsp;글쓰기</h1></td></tr>
 		
-		<!-- <tr> 
-			<td width="70" align = "center"> <label for="board_nick"> 닉 네 임</label></td>
-			<td width="730">
-			<input type="text" class="form-control" size= "10" maxlength="10" name ="board_nick" placeholder="닉네임을 입력하세요">
-			</td>
-		</tr>  -->
+	
 		<tr> <!-- 제목 -->
 			<td width="70" align = "center" required> 제  목</td>
 			<td width="730">

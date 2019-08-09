@@ -93,24 +93,26 @@
     
     <!-- 검색 div -->
     
-    <form class="form-inline" action="BoardShow" method="get" style="float: right;">
+    <form class="form-inline" action="memberSearchList.admin" method="get" style="float: right;">
     		<select name="searchOption" class="form-control">
-    			<option value="T" selected=>제목</option>
-    			<option value="C">내용</option>
-    			<option value="W">작성자</option>
+     			<option value="id" selected>아이디</option>
+    			<option value="nick">닉네임</option>
+    			<option value="phone">전화번호</option> 
     		</select>
-    		<input name="search" class="form-control" type="text" value="">&nbsp;
-    		<input class="btn btn-success" type="submit" value="검색"> 
-    		<input name="ct" type="hidden" value="ask">
+    		<input type="text" name="search" class="form-control"  value="">&nbsp;
+    		<input type="submit" class="btn btn-success" value="검색"> 
+    		
     </form>
     
 	<!-- 본문 -->    
 
-   <c:if test="${ count == 0 }">   
+   <c:if test="${ count == 0 }">
+      <br><br>
       <h2><center>회원정보 관리에 저장된 회원이 없습니다.</center></h2>
    </c:if>
-      
+   
    <c:if test="${ count > 0 }">   
+      <br><br>
       <table width="500" cellpadding="0" cellspacing="0"
          align="center" class="table">
          <tr height="30">
@@ -125,19 +127,18 @@
          <tr height="30">
             
             <td align="center" width="100">
-               <c:out value="${ list.board_num }" /> <!-- 회원닉네임 -->
+               <c:out value="${ list.nickname }" /> <!-- 회원닉네임 -->
             </td>
             
-            <td width="200">
-            	<a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">${ list.board_title } <!-- 회원이메일 -->
-                <c:if test="${ list.cmnt_count != 0 }">(${ list.cmnt_count })</c:if></a> 
+            <td align="center" width="200">
+            	<a href="memberList.do?id=${list.id }&pageNum=${ currentPage }">${ list.id } <!-- 회원이메일 --></a> 
             </td>
             
-            <td align="center" width="200">${ list.board_nick } <!-- 회원전화번호 -->
+            <td align="center" width="100">${ list.phone } <!-- 회원전화번호 -->
             </td>
             
-            <td align="center" width="50">
-               <c:out value="${ list.board_num }" /> <!-- 회원비밀번호-->
+            <td align="center" width="100">
+               <c:out value="${ list.password }" /> <!-- 회원비밀번호-->
             </td>
   
          </tr>

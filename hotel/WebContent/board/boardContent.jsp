@@ -156,7 +156,7 @@
             let presentDay = vo.cmnt_date.substring(5, 10);
 
             html += "<td width='50px'>" + presentDay + "</td>";
-            if( vo.cmnt_nick == '${nick}' || '${nick}'=='god') { // 관리자 닉네임으로 바꿀 것
+        	if( vo.cmnt_id == '${nick}' || '${nick}'=='관리자') { 
 
              	console.log('들어왔습니다.');
              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
@@ -190,7 +190,7 @@
 	             html += "<td align='left' width='700px'>" + vo.cmnt_content + "</td>";
 	             let presentDay = vo.cmnt_date.substring(5, 10);
 	             html += "<td width='70px'>" + presentDay + "</td>";
-	             if( vo.cmnt_nick == "zi") { // 관리자 닉네임으로 바꿀 것
+	             if( vo.cmnt_nick == "관리자") { // 관리자 닉네임으로 바꿀 것
 	              	console.log('들어왔습니다.');
 	              	
 	              	html +=  "<td width='200px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
@@ -342,7 +342,7 @@
 				<td height="300" width = "1000" colspan="6"><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
-			<c:if test="${ sessionScope.id != null && sessionScope.nick == 'god'}">
+			<c:if test="${ sessionScope.id != null && sessionScope.nick == '관리자'}">
 				<tr>
 					<td height="50" width = "1000" colspan="6"> <!-- 원래 pre 있던 자리 -->  <!--  -->
 						<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
@@ -376,7 +376,7 @@
 			
 			<tr height ="30">
 				<td colspan="7" align="right" >
-				  <c:if test="${ sessionScope.nick == vo.board_nick || sessionScope.nick == 'god'}">
+				  <c:if test="${ sessionScope.nick == vo.board_nick || sessionScope.nick == '관리자'}">
 					<input type="button" class="btn btn-primary" value="글수정" 
 						   onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
