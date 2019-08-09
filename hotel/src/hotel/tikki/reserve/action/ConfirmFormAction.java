@@ -29,23 +29,22 @@ public class ConfirmFormAction implements CommandAction {
 		
 		if( roomType.equals("deluxe")) {
 			roomType="Deluxe";
+			roomNum=1;
 			price=200000;
-			priceview = df.format(price);
-			total = df.format(price*checkDate*peopleNum);
 			
 		} else if( roomType.equals("grand")) {
 			roomType="Grand Deluxe";
+			roomNum=2;
 			price=300000;
-			priceview = df.format(price);
-			total = df.format(price*checkDate*peopleNum);
 			
 		} else if( roomType.equals("suite")) {
 			roomType="Suite";
+			roomNum=3;
 			price=500000;
-			priceview = df.format(price);
-			total =df.format(price*checkDate*peopleNum);
 		}
 		
+		priceview = df.format(price);
+		total =df.format(price*checkDate*peopleNum);
 		
 		
 		request.setAttribute("checkIn", checkIn);
