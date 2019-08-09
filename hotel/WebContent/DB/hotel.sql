@@ -12,7 +12,7 @@ drop table member;
 create table member(
     id varchar2(50) primary key,
     password varchar2(30) not null,
-    nickname varchar2(30) unique,
+    nickname varchar2(30) unique not null,
     phone varchar2(30) not null
 );
 
@@ -28,7 +28,8 @@ create table rooms(
 create table reservation(
     room_num number(10) not null, -- 방 번호
     rsrv_num number(10) not null, -- 예약 번호
-    rsrv_date date, -- 예약 날짜
+    check_in date, -- 체크인 날짜
+    check_out date, -- 체크아웃 날짜
     rsrv_ppl number(10) not null, -- 예약 인원 수
     rsrv_nick varchar2(30) not null,
     rsrv_status CHAR(1) not null, -- 예약 현황(y 예약완료, n 예약X , d 예약 보류)

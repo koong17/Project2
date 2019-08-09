@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
@@ -228,27 +228,7 @@
         });
     }
 
-    /* function getComment(event) {
-        $.ajax({
-            url:"/hotel/cmntReadForm.do",
-            data:{
-                board_num:"${ vo.board_num }"
-            },
-            beforeSend:function() {
-                console.log("읽어오기 시작 전...");
-            },
-            complete:function() {
-                console.log("읽어오기 완료 후...");
-            },
-            success:function(data) {
-                console.log("comment를 정상적으로 조회하였습니다.");
-                showHtml(data);
-                
-                let position = $("#showComment table tr:last").position();
-                $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
-            }
-        })
-    } */
+    
 </script>
 <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
@@ -314,7 +294,7 @@
       <li class="breadcrumb-item active">Home /</li>
       </li>
       <li class="breadcrumb2-item">
-      	<a href="list.do"> &nbsp;고객문의</a>
+      	<a href="list.do"> &nbsp;회원관리 목록</a>
       </li>
     </ol>
 	

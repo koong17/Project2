@@ -41,7 +41,9 @@
       <c:if test="${ sessionScope.id != null}">
       <a class="navbar-login" href="logout.go"><small>로그아웃</small></a>
       </c:if>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" 
+     		  data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" 
+      		  aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -106,10 +108,10 @@
 			
 		<br>
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-  		<input type="button" class="btn btn-primary btn-lg" 
+  		<input type="button" class="btn btn-primary" 
   		onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
- 	    <button type="submit" class="btn btn-primary btn-lg" id="button-right-fix">제출</button>
+ 	    <button type="submit" class="btn btn-primary" id="button-right-fix">제출</button>
 
 		
 		
@@ -120,7 +122,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" id="hotel-footer-fix">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

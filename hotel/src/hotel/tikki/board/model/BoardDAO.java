@@ -381,7 +381,47 @@ public class BoardDAO {  // controller
 		}
 	    return hm;
 	}
-
+	
+	
+	// 댓글 삭제
+	public void deleteComment(int cmnt_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("DELETE COMMENTS WHERE CMNT_NUM=?");
+			pstmt.setInt(1, cmnt_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}
+	}
+	
+	public void updateComment(int cmnt_num, int board_num, String cmnt_content) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("UPDATE COMMENTS SET CMNT_CONTENT=?, CMNT_DATE=SYSDATE WHERE CMNT_NUM = ? AND BOARD_NUM=?");
+			pstmt.setString(1, cmnt_content);
+			pstmt.setInt(2, cmnt_num);
+			pstmt.setInt(3, board_num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}
+	}
 }
 
 
