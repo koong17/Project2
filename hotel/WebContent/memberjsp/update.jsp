@@ -21,16 +21,31 @@
 <link href="css/modern-business.css?after" rel="stylesheet">
 <script src="js/inho.js"></script>
 </head>
-<c:if test="${ sessionScope.id != null}">
+<c:if test="${ sessionScope.id == null}">
 	<c:redirect url="index.go" />
 </c:if>
 <body>
 	<!------ Include the above in your HEAD tag ---------->
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.go">TIKKI</a>
-				<a class="navbar-login" href="login.go"><small>로그인</small></a>
-      			<a class="navbar-login" href="join.go"><small>회원가입</small></a>
+			<a class="navbar-brand" href="index.go">TIKKI</a> <a
+				class="navbar-login" href="logout.go"><small>로그아웃</small></a>
+			<div>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+					<a class="navbar-login dropdown-toggle" href="#"
+						id="navbarDropdownPortfolio" aria-haspopup="true"
+						aria-expanded="false"><small>${sessionScope.nick}님 페이지 </small> </a>
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="navbarDropdownPortfolio">
+							<a class="dropdown-item" href="update.go">회원수정</a>
+							<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a> 
+							<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
+							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+						</div>
+					</li>
+				</ul>
+			</div>	
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -69,20 +84,15 @@
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="joinform" action="joinPro.go" onsubmit="return validate();">
+						<form role="form" method="post" name="updateform" action="updatePro.go" onsubmit="return updatevalidate();">
 							<fieldset>
-								<h2>TIKKI에 오신 것을 환영합니다.</h2>
+								<h2>회원 수정</h2>
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
-									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()">
-									<span id="emailTag" style="color: white;"></span>
-									<span id="resultId" style="color: white;"></span>
-								</div>
-								<div class="form-group">
-									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()">
-									<span id="passwordTag" style="color: white;"></span>	
+								<label name="emaillabel" id="emaillabel"
+										class="form-control input-lg" style="text-align: left;">${ sessionScope.id }</label>
+								<input type="hidden" name="email" id="email"
+										class="form-control input-lg" value="${ sessionScope.id }">
 								</div>
 								<div class="form-group">
 									<input type="text" name="nickname" id="nickname"
@@ -105,7 +115,7 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-lg btn-success btn-block"
-											value="회원가입">
+											value="회원수정">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">
