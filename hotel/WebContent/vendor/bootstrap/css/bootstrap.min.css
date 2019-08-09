@@ -1797,7 +1797,7 @@ pre code {
 
 .form-control {
 	display: block;
-	width: 100%;
+	width: 800px;
 	height: calc(1.5em + .75rem + 2px);
 	padding: .375rem .75rem;
 	font-size: 1rem;
@@ -4245,7 +4245,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	background-size: 100% 100%
 }
 
-
 @media ( max-width :575.98px) {
 	.navbar-expand-sm>.container, .navbar-expand-sm>.container-fluid {
 		padding-right: 0;
@@ -4855,9 +4854,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .pagination {
 	display: -ms-flexbox;
 	display: flex;
-	padding-left: 0;
 	list-style: none;
-	border-radius: .25rem
+	border-radius: .25rem;
+	justify-content: center;
+	
 }
 
 .page-link {
@@ -4886,9 +4886,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .page-item:first-child .page-link {
-	margin-left: 0;
+	
+	margin-left:0;
 	border-top-left-radius: .25rem;
-	border-bottom-left-radius: .25rem
+	border-bottom-left-radius: .25rem ;
+	
 }
 
 .page-item:last-child .page-link {
@@ -9728,5 +9730,10 @@ a.text-dark:focus, a.text-dark:hover {
 		color: inherit;
 		border-color: #dee2e6
 	}
+	
+	
 }
+
+
+
 /*# sourceMappingURL=bootstrap.min.css.map */

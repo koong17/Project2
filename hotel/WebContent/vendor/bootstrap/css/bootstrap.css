@@ -2394,6 +2394,7 @@ textarea.form-control {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -4804,7 +4805,7 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 0.75rem 1rem;
+  padding: 3.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
   background-color: #e9ecef;
@@ -4819,14 +4820,13 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: "/";
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
   text-decoration: underline;
 }
 
-.breadcrumb-item + .breadcrumb-item:hover::before {
+.breadcrumb-item + .-item:hover::before {
   text-decoration: none;
 }
 

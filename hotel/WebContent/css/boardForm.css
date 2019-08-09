@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+.form-control-textarea {
+
+	line-height: 1.5;
+	color: #495057;
+	background-color: white;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+ 
+
+textarea{
+	resize:none;
+	
+}
+
+#button-right-fix{
+
+	margin-left:650px;
+	
+}
+
+#button-right-fix2{
+
+	margin-left:985px;
+	
+}
+
+.table-content{
+	
+	width: 800;
+	height:1000;
+	margin-bottom: 1rem;
+	color: #212529;
+}
+
+.table-content td, .table-content th {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6
+}
+
+.table-content thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6
+}
+
+.table-content tbody+tbody {
+	border-top: 2px solid #dee2e6
+}
+
+.table-content td .reply {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+	background: #D4D8D9;
+	
+}
+
+.table2{
+	
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #212529;
+	background-color: #e9ecef;
+}
+
+.table2 td, .table2 th {
+	
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6
+}
+
+.table2 thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6
+}
+
+.table2 tbody+tbody {
+	border-top: 2px solid #dee2e6
+}
+
+.table2 td .reply {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+	background: #e9ecef;
+	
+}
+
+.button-right-fix{
+
+	margin-left:900px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	
+}
+
+#hotel-footer-fix{
+	position: absolute;
+	bottom: 0;
+	width:100%
+}
+
+#hotel-footer-fix-boardContent{
+	margin-top:2.5em;
+}
+
+.breadcrumb2 {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding: .75rem 1rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	background-color: #e9ecef;
+	border-radius: .25rem;
+	width: 1020px;
+}
+
+.breadcrumb2-item+.breadcrumb2-item {
+	padding-left: .5rem
+}
+
+.breadcrumb2-item+.breadcrumb2-item::before {
+	display: inline-block;
+	padding-right: .5rem;
+	color: #6c757d;
+	content: "/"
+}
+
+.breadcrumb2-item+.breadcrumb2-item:hover::before {
+	text-decoration: underline
+}
+
+.breadcrumb2-item+.breadcrumb2-item:hover::before {
+	text-decoration: none
+}
+
+.breadcrumb2-item.active {
+	color: #6c757d
+}
+
+.searchbox-memberlist{
+	margin-right:500px;
+}
+
+
