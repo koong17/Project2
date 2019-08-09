@@ -14,16 +14,29 @@
 	      <div>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown">
-					<a class="navbar-login dropdown-toggle" href="#"
-						id="navbarDropdownPortfolio" aria-haspopup="true"
-						aria-expanded="false"><small>${sessionScope.nick}님 페이지 </small> </a>
-						<div class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="update.go">회원수정</a>
-							<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a>  
-							<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
-						</div>
+					<c:if test="${ sessionScope.nick == '관리자' }">
+						<a class="navbar-login dropdown-toggle" href="#"
+							id="navbarDropdownPortfolio" aria-haspopup="true"
+							aria-expanded="false"><small>관리자 페이지 </small> </a>
+							<div class="dropdown-menu dropdown-menu-right"
+								aria-labelledby="navbarDropdownPortfolio">
+								<a class="dropdown-item" href="memberList.admin">회원정보관리</a>
+								<a class="dropdown-item" href="xxx.admin">예약관리</a>
+							</div>
+					</c:if>
+					<c:if test="${ sessionScope.nick != '관리자' }">
+					
+						<a class="navbar-login dropdown-toggle" href="#"
+							id="navbarDropdownPortfolio" aria-haspopup="true"
+							aria-expanded="false"><small>${sessionScope.nick}님 페이지 </small> </a>
+							<div class="dropdown-menu dropdown-menu-right"
+								aria-labelledby="navbarDropdownPortfolio">
+								<a class="dropdown-item" href="update.go">회원수정</a>
+								<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a>  
+								<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
+								<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							</div>
+					</c:if>
 					</li>
 				</ul>
 	      </div>	

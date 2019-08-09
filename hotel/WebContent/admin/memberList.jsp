@@ -159,43 +159,43 @@
    <nav aria-label="Page navigation example">
 	<ul class="pagination">
     <c:if test="${ count > 0 }"> <!--  전체 페이지의 수를 연산 -->
-          <c:set  var="pageCount"  value="${ count / pageSize + (count % pageSize ==0 ? 0 : 1) }" />
+     
+          <c:set  var="pageCount"  value="${ count / pageSize + (count % pageSize ==0 ? 0 : 1) }" />  <!-- 5 -->
          <c:set  var="startPage"  value="${ 1 }" />  <!-- 차후 수정!! -->
          <c:set  var="pageBlock"  value="${ 5 }" />
          
          
-         <fmt:parseNumber var="result"  value="${ currentPage / pageBlock }" integerOnly="true" />
+         <fmt:parseNumber var="result"  value="${ currentPage / pageBlock }" integerOnly="true" /> <!-- 1 -->
          <c:if  test="${ currentPage % pageBlock != 0 }" > 
-            <c:set var="startPage" value="${ result * pageBlock + 1 }" />
+            <c:set var="startPage" value="${ result * pageBlock + 1}" /> <!-- 1 * 6 -->
          </c:if>
          
-         <c:if  test="${ currentPage % pageBlock == 0 }" > 
-            <c:set var="startPage" value="${ (result - 1) * pageBlock + 1 }" />
+         <c:if  test="${ currentPage % pageBlock == 0 }" >  
+            <c:set var="startPage" value="${ (result - 1) * pageBlock + 1 }" />  <!-- -1 * --> 
          </c:if>
       
          <c:set  var="endPage"  value="${ startPage + pageBlock -1 }" />
-   
-         <c:if test="${ endPage > pageCount }" >
+
+         <c:if test="${ endPage > pageCount }" > 
             <c:set  var="endPage"  value="${ pageCount }" />
          </c:if>
          
          <c:if test="${startPage >5 }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${ startPage-5  }"> Previous </a></li>
+				href="memberList.admin?pageNum=${ startPage-5  }"> Previous </a></li>
 		</c:if>
 
    
         
          <c:forEach var="i" begin="${startPage }" end="${ endPage }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${i}">${ i } </a></li>
+				href="memberList.admin?pageNum=${i}">${ i } </a></li>
 		 </c:forEach>
       
-
       
-      	<c:if test="${ endPage < pageCount }">
+      	<c:if test="${ endPage < pageCount-1 }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${ startPage+5 }"> Next </a></li>
+				href="memberList.admin?pageNum=${ startPage+5 }"> Next </a></li>
 		</c:if>
    </c:if>
    </ul>

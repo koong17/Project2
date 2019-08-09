@@ -166,7 +166,7 @@
       
 
       
-      	<c:if test="${ endPage < pageCount }">
+      	<c:if test="${ endPage < pageCount-1 }">
 			<li class="page-item"><a class="page-link"
 				href="list.do?pageNum=${ startPage+5 }"> Next </a></li>
 		</c:if>
