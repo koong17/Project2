@@ -14,14 +14,19 @@
 <title>HOTEL TIKKI</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../css/modern-business.css" rel="stylesheet">
+<link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
 <!-- minjee.css -->
-<link href="../css/minjee.css" rel="stylesheet">
+<link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
+<style>
+#f {
+	min-height: 1000px;
+}
+</style>
 </head>
 
 <body>
@@ -61,72 +66,50 @@
 	</nav>
 	<!-- ./nav -->
 
-
 	<!-- Page Content -->
-	<div class="container">
+	<div class="container" id="f">
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			Deluxe
+			예약 확인 <small>Reservation Confirm</small>
 		</h1>
 
-		<!-- 룸 상세 페이지 - 예약하는 도중에만 볼 수 있는게 아니므로 일단 경로는 뺐음 -->
-		<!-- <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="reservation.html" style="color: #007bff;">예약
-					페이지로 돌아가기</a></li>
-			<li class="breadcrumb-item active">객실 상세보기</li>
-		</ol> -->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item active">변경사항이 있으신가요?</li>
+			<li class="breadcrumb-item"><a href="reserveForm.jsp"
+				style="color: #007bff;">돌아가기</a></li>
+		</ol>
 
-		<!-- Portfolio Item Row -->
-		<div class="row">
-
-			<div class="col-md-8">
-				<img class="img-fluid" src="../img/koong.jpg" alt="">
-			</div>
-
-			<div class="col-md-4">
-				<p>
-				<h4 style="font-style:italic;">"디럭스 룸은 편안하고 안락한 공간을 효율적으로 구성했습니다."</h4>
-				</p>
-				<br> 글로벌 럭셔리 호텔 디자이너 피터 리미디오스가 디자인한 '시대를 아우르는 모던함'을 만나보십시오. 요트
-				콘셉트로 구성한 프라이빗 바와 세계적인 수준의 침구류와 함께 생애 최고의 휴식을 경험해보시기 바랍니다.<br> <br>
-				<b>문의전화</b> | 02-1234-5678<br> <br>
-
-				<div class="aa aa-button reservation-wrap reservation-button"
-					align="center">
-					<a href="reservation.jsp" class="button">예약 하기</a>
-				</div>
-
-				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. -->
-
-				<!-- <h3 class="my-3">ROOM INFO</h3>
-				<ul>
-					<li>체크인 : 오후 3시 이후</li>
-					<li>체크아웃 : 낮 12시</li>
-					<li>숙박 예정일 1일 전 18시까지는 위약금 없음</li>
-				</ul>
-				<hr>
-				<ul>
-					<li>55인치 TV</li>
-					<li>50~100Mbps 초고속 유·무선 인터넷(Wifi)</li>
-					<li>커피·티 무료 제공</li>
-					<li>엑스트라 베드 1개 추가 36,300원/1박</li>
-				</ul>
-				<hr>
-				<ul>
-					<li>객실에서 즐기실 수 있는 다양한 룸서비스 메뉴가 준비되어 있습니다.</li>
-					<li>식사, 음료 | 24시간 서비스</li>
-					<li>중식, 일식 | 점심 12:00~14:00, 저녁 18:00~21:30</li>
-				</ul> -->
-			</div>
-
+		<!-- 예약확인 -->
+		<div align="center">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item" style="margin: auto;"><b><h3>HOTEL
+							TIKKI</h3></b>예약정보<br>
+					<hr>
+					<div>
+						<b>체크 인</b> (db가져옴)<br> <b>체크아웃</b> (db가져옴)<br> <b>숙박일수</b>
+						(db가져옴)<br> <b>투숙인원</b> (db가져옴)<br> <b>객실타입</b> (db가져옴)<br>
+					</div>
+					<hr> <b>객실/패키지</b><br> (룸타입(Deluxe) db가져옴) / 객실타입(db가져옴)<br>
+					<br> <img src="../img/koong.jpg" width="300"><br> (선택한
+					방 img) <br>
+					<hr> <br> <b><h4>요금합계 (계산결과)</h4></b><br></li>
+			</ol>
 		</div>
-		<!-- /.row -->
+
+		<!-- 유의사항 등 넣으려면 이쪽에 넣기 -->
+		<br>
+		
+		<!-- 예약저장 버튼 -->
+		<div class="aa aa-button reservation-wrap reservation-button"
+			align="center">
+			<a href="../index.html" class="button">예약 저장</a>
+		</div>
 
 	</div>
 	<!-- /.container -->
-	<p>
-		<!-- Footer -->
+
+	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; Your

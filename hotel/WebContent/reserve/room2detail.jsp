@@ -14,13 +14,13 @@
 <title>HOTEL TIKKI</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../css/modern-business.css" rel="stylesheet">
+<link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
 <!-- minjee.css -->
-<link href="../css/minjee.css" rel="stylesheet">
+<link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
 </head>
 
@@ -67,7 +67,7 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			Suite Room
+			Grand Deluxe
 		</h1>
 
 		<!-- 경로 -->
@@ -86,11 +86,12 @@
 
 			<div class="col-md-4">
 				<p>
-				<h4 style="font-style:italic;">"HOTEL TIKKI 스위트 룸에서 펼쳐지는 잊지 못할 순간"</h4>
+				<h4 style="font-style:italic;">"스탠다드 객실 중 가장 큰 규모로 욕실에서의 야경이 돋보이며, 더 이그제큐티브 라운지 서비스를 즐기실 수
+					있습니다."</h4>
 				</p>
-				그림처럼 펼쳐지는 도심 전경을 바라보며 즐기는 여유로운 휴식. 더 이그제큐티브 라운지에서의 다채로운 다이닝과 객실에서 즐기는 로맨틱한 와인, 그리고 레이트 체크아웃으로 보다 느긋하고 풍성한 하루를 선사합니다.<br>
-				※스위트룸은 전화 예약만 가능합니다. <br>
-				<br> <b>문의전화</b> | 02-1234-5678<br> <br>
+				<br> 글로벌 럭셔리 호텔 디자이너 피터 리미디오스가 디자인한 '시대를 아우르는 모던함'을 만나보십시오. 요트
+				콘셉트로 구성한 프라이빗 바와 세계적인 수준의 침구류와 함께 생애 최고의 휴식을 경험해보시기 바랍니다.<br> <br>
+				<b>문의전화</b> | 02-1234-5678<br> <br>
 
 				<div class="aa aa-button reservation-wrap reservation-button"
 					align="center">

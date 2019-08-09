@@ -14,14 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotel.tikki.reserve.action.CommandAction;
+import hotel.tikki.board.action.CommandAction;
 
 public class ReserveController extends HttpServlet {
 	
 	private Map commandMap = new HashMap();
 
-	// ÃÊ±âÈ­ - 1È¸ È£ÃâµÊ
-	// ¸í·É¾î¿Í ¸í·É¾î Ã³¸® Å¬·¡½º°¡ ¸ÅÇÎµÇ¾î ÀÖ´Â properties  ÆÄÀÏÀ» ÀĞ¾î µéÀÌ´Â ¿ªÇÒ
+	// ì´ˆê¸°í™” - 1íšŒ í˜¸ì¶œë¨
+	// ëª…ë ¹ì–´ì™€ ëª…ë ¹ì–´ ì²˜ë¦¬ í´ë˜ìŠ¤ê°€ ë§¤í•‘ë˜ì–´ ìˆëŠ” properties  íŒŒì¼ì„ ì½ì–´ ë“¤ì´ëŠ” ì—­í• 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		String props = config.getInitParameter("ReserveConfig");
@@ -29,9 +29,9 @@ public class ReserveController extends HttpServlet {
 		FileInputStream  f = null;
 		
 		try {
-			// commandBoard.properties ÆÄÀÏÀÇ ³»¿ëÀ» ÀĞ¾î¿È
+			// commandBoard.properties íŒŒì¼ì˜ ë‚´ìš©ì„ ì½ì–´ì˜´
 			f = new FileInputStream(props);
-			//commandBoard.properties ÆÄÀÏÀÇ Á¤º¸¸¦ Properties °´Ã¼¿¡ ÀúÀå
+			//commandBoard.properties íŒŒì¼ì˜ ì •ë³´ë¥¼ Properties ê°ì²´ì— ì €ì¥
 			pr.load(f);	 // key=value
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,15 +39,15 @@ public class ReserveController extends HttpServlet {
 			if( f != null ) try{ f.close(); }catch(Exception e) { e.printStackTrace(); }
 		} //end try
 		
-		Iterator  key = pr.keySet().iterator();  // key °ª ÃßÃâ
+		Iterator  key = pr.keySet().iterator();  // key ê°’ ì¶”ì¶œ
 		
 		while( key.hasNext() ) {
 			String command = (String)key.next();
 			String value = pr.getProperty(command);  // value  -  edu.kosta.boardAction.WriteFormAction
 			
 			try {
-				Class className = Class.forName(value);  // forName() ¹®ÀÚ¿­À» Å¬·¡½º·Î º¯È¯.
-				// Å¬·¡½º·Î º¯È¯½ÃÄ×±â ¶§¹®¿¡ °´Ã¼ »ı¼ºÇÔ.
+				Class className = Class.forName(value);  // forName() ë¬¸ìì—´ì„ í´ë˜ìŠ¤ë¡œ ë³€í™˜.
+				// í´ë˜ìŠ¤ë¡œ ë³€í™˜ì‹œì¼°ê¸° ë•Œë¬¸ì— ê°ì²´ ìƒì„±í•¨.
 				Object instance = className.newInstance(); 
 				 
 				commandMap.put(command, instance);   // put(key, value)
@@ -80,11 +80,11 @@ public class ReserveController extends HttpServlet {
 		
 		try {
 			String command = request.getRequestURI();
-			System.out.println("command : " + command );	// command : /hotel/reservation.to	
-			System.out.println("request.getContextPath() : " + request.getContextPath());   //   /hotel
+			System.out.println("command : " + command );	// command : /web06_boardMVC/writeForm.do		
+			System.out.println("request.getContextPath() : " + request.getContextPath());   //   /web06_boardMVC
 			
-			if( command.indexOf(request.getContextPath()) == 0 ) {  // °æ·Î°¡ ¾ø´Ù¸é,...
-				command = command.substring(request.getContextPath().length() + 1);  //  reservation.to	
+			if( command.indexOf(request.getContextPath()) == 0 ) {  // ê²½ë¡œê°€ ì—†ë‹¤ë©´,...
+				command = command.substring(request.getContextPath().length() + 1);  //  /web06_boardMVC
 				System.out.println("if command : " + command);
 			} // if end
 			
@@ -96,12 +96,13 @@ public class ReserveController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} // try end
+		
 		// request.setAttribute("CONTENT", view);
 				
 		RequestDispatcher  dp = request.getRequestDispatcher(view);
-		
-		if(view!=null) dp.forward(request, response); // ¿À·ù³ª¸é if¹®À¸·Î null Ã³¸®ÇÏ±â
+
+		if(view != null) dp.forward(request, response);
+
 	}
 	
 }
-
