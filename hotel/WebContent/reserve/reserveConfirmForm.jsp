@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<jsp:include page="navigation.jsp"/>
+<jsp:include page="/navigation.jsp"/>
 
 	<!-- Page Content -->
 	<div class="container" id="f">
