@@ -57,6 +57,7 @@
 	<div class="container" id="showShow" >
 
 		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index.go">Home</a></li>
 			<li class="breadcrumb-item active">나의 예약 현황 목록</li>
 		</ol>
 			
