@@ -12,7 +12,7 @@ public class ConfirmProAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		return "";
 	}
 
 }
