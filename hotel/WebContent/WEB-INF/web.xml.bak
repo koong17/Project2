@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+<<<<<<< HEAD
+  <display-name>HOTEL</display-name>
+
+=======
+  <display-name>hotel</display-name>
+  
+  <!-- AdminController.java -->
+  <servlet>
+  		<servlet-name>AdminController</servlet-name>
+  		<servlet-class>hotel.tikki.admin.controller.AdminController</servlet-class>
+  		<init-param>
+  			 <param-name>AdminConfig</param-name>
+  			 <param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandAdmin.properties</param-value>
+  		</init-param>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>AdminController</servlet-name>
+  		<url-pattern>*.admin</url-pattern>
+  </servlet-mapping>
+  
+>>>>>>> zizi
+  <!-- BoardController.java -->
+  <servlet>
+        <servlet-name>BoardController</servlet-name>
+        <servlet-class>hotel.tikki.board.controller.BoardController</servlet-class>
+        <init-param>
+          <param-name>boardConfig</param-name>
+          <param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandBoard.properties</param-value>
+        </init-param>
+  </servlet>
+  <servlet-mapping>
+        <servlet-name>BoardController</servlet-name>
+        <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  <!-- ReserveController.java -->
+  <servlet>
+  		<servlet-name>ReserveController</servlet-name>
+  		<servlet-class>hotel.tikki.reserve.controller.ReserveController</servlet-class>
+  		<init-param>
+  			<param-name>ReserveConfig</param-name>
+  			<param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandReserve.properties</param-value>
+  		</init-param>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>ReserveController</servlet-name>
+  		<url-pattern>*.to</url-pattern>
+  </servlet-mapping>
+  
+  <!-- MemberController.java -->
+  <servlet>
+  		<servlet-name>MemberController</servlet-name>
+  		<servlet-class>hotel.tikki.member.controller.MemberController</servlet-class>
+  		<init-param>
+  			<param-name>MemberConfig</param-name>
+  			<param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandMember.properties</param-value>
+  		</init-param>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>MemberController</servlet-name>
+  		<url-pattern>*.go</url-pattern>
+  </servlet-mapping>
+  
+  <!-- jdbc:HotelDB DBCP setting -->
+  <resource-ref>
+     <description>Hotel Connection</description>
+     <res-ref-name>jdbc:HotelDB</res-ref-name>
+     <res-type>javax.sql.DataSource</res-type>
+     <res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <!-- error 를 처리하는 페이지를 만들어서 처리 -->
+  <error-page>
+  		<error-code>404</error-code>
+  		<location>/404.html</location>
+  </error-page>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
