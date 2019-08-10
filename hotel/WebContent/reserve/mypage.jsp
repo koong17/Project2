@@ -57,6 +57,7 @@
 	<div class="container" id="showShow" >
 
 		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index.go">Home</a></li>
 			<li class="breadcrumb-item active">나의 예약 현황 목록</li>
 		</ol>
 			
@@ -90,10 +91,8 @@
 								<td colspan="2" align="right">
 									<div>
 										 <c:if test="${ list.rsrv_status == 'n' }">
-						  					 <form action="delete.to">
-												<input type="hidden" name="rsrv_num" value='${ list.rsrv_num }'>
-												<input type="submit" class="button" value="예약 취소">
-											</form>
+						  					  <input type="button" value="예약취소" onclick=
+               									"document.location.href='reserveDelete.to?rsrv_num=${ list.rsrv_num }'">
 										</c:if>
   					 				</div>
 								</td>
