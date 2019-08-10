@@ -32,46 +32,7 @@
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.go">TIKKI</a>
-      <c:if test="${ sessionScope.id == null}">
-      <a class="navbar-login" href="login.go">로그인</a>
-      <a class="navbar-login" href="join.go">회원가입</a>
-      </c:if>
-      <c:if test="${ sessionScope.id != null}">
-      <a class="navbar-login" href="logout.go"><small>로그아웃</small></a>
-      </c:if>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="information/about.html">호텔소개</a> <!-- About 에 contact map-->
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" aria-haspopup="true" aria-expanded="false">
-              객실소개
-            </a><!--  포트폴리오1 -> single portfolio item -->
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/hotel/reservation/room1detail.html">room1</a>
-              <a class="dropdown-item" href="/hotel/reservation/room2detail.html">room2</a>
-              <a class="dropdown-item" href="/hotel/reservation/room3detail.html">room3</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/hotel/reservation/reservation.html">예약</a> <!-- full width -->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="list.do">고객문의</a> <!--  포트폴리오1 수정 -->
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- ./nav -->
+<jsp:include page="/navigation.jsp"/>
 
   <!-- Page Content -->
   <div class="container">
@@ -93,24 +54,26 @@
     
     <!-- 검색 div -->
     
-    <form class="form-inline" action="BoardShow" method="get" style="float: right;">
+    <form class="form-inline" action="memberSearchList.admin" method="get" style="float: right;">
     		<select name="searchOption" class="form-control">
-    			<option value="T" selected=>제목</option>
-    			<option value="C">내용</option>
-    			<option value="W">작성자</option>
+     			<option value="id" selected>아이디</option>
+    			<option value="nick">닉네임</option>
+    			<option value="phone">전화번호</option> 
     		</select>
-    		<input name="search" class="form-control" type="text" value="">&nbsp;
-    		<input class="btn btn-success" type="submit" value="검색"> 
-    		<input name="ct" type="hidden" value="ask">
+    		<input type="text" name="search" class="form-control"  value="">&nbsp;
+    		<input type="submit" class="btn btn-success" value="검색"> 
+    		
     </form>
     
 	<!-- 본문 -->    
 
-   <c:if test="${ count == 0 }">   
+   <c:if test="${ count == 0 }">
+      <br><br>
       <h2><center>회원정보 관리에 저장된 회원이 없습니다.</center></h2>
    </c:if>
-      
+   
    <c:if test="${ count > 0 }">   
+      <br><br>
       <table width="500" cellpadding="0" cellspacing="0"
          align="center" class="table">
          <tr height="30">
@@ -125,19 +88,18 @@
          <tr height="30">
             
             <td align="center" width="100">
-               <c:out value="${ list.board_num }" /> <!-- 회원닉네임 -->
+               <c:out value="${ list.nickname }" /> <!-- 회원닉네임 -->
             </td>
             
-            <td width="200">
-            	<a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">${ list.board_title } <!-- 회원이메일 -->
-                <c:if test="${ list.cmnt_count != 0 }">(${ list.cmnt_count })</c:if></a> 
+            <td align="center" width="200">
+            	<a href="memberList.do?id=${list.id }&pageNum=${ currentPage }">${ list.id } <!-- 회원이메일 --></a> 
             </td>
             
-            <td align="center" width="200">${ list.board_nick } <!-- 회원전화번호 -->
+            <td align="center" width="100">${ list.phone } <!-- 회원전화번호 -->
             </td>
             
-            <td align="center" width="50">
-               <c:out value="${ list.board_num }" /> <!-- 회원비밀번호-->
+            <td align="center" width="100">
+               <c:out value="${ list.password }" /> <!-- 회원비밀번호-->
             </td>
   
          </tr>
