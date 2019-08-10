@@ -16,7 +16,7 @@ public class ConfirmFormAction implements CommandAction {
 		int peopleNum= Integer.parseInt(request.getParameter("peopleNum"));
 		String nick= request.getParameter("nick");
 		String roomType= request.getParameter("roomType");
-		String priceview= "", total="";
+		String priceview= "", total="" , img="";
 		int price= 0;
 		int roomNum = 0;
 		
@@ -31,16 +31,19 @@ public class ConfirmFormAction implements CommandAction {
 			roomNum=1;
 			roomType="Deluxe";
 			price=200000;
+			img="/hotel/img/deluxe.jpg";
 			
 		} else if( roomType.equals("grand")) {
 			roomNum=2;
 			roomType="Grand Deluxe";
 			price=300000;
+			img="/hotel/img/grand.jpg";
 			
 		} else if( roomType.equals("suite")) {
 			roomNum=3;
 			roomType="Suite";
 			price=500000;
+			img="/hotel/img/suite.jpg";
 		}
 		
 		priceview = df.format(price);
@@ -57,6 +60,7 @@ public class ConfirmFormAction implements CommandAction {
 		request.setAttribute("price",price);
 		request.setAttribute("checkDate", checkDate);
 		request.setAttribute("roomNum", roomNum);
+		request.setAttribute("img", img);
 		
 		return "/reserve/reserveConfirmForm.jsp";
 	}

@@ -62,7 +62,7 @@
 						</table>
 					</div>
 					<hr> <b>객실</b><br> ${ roomType } <br>
-					<br> <img src="/hotel/img/koong.jpg" width="300">
+					<br> <img src="${ img }" width="600">
 					<hr> <br> <b><h4>총 예약금액 </h4><h5>KRW ${ total }</h5></b><br></li>
 			</ol>
 		</div>

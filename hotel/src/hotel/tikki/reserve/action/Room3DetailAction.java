@@ -8,7 +8,7 @@ public class Room3DetailAction implements CommandAction {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		return "/hotel/room3detail.jsp";
+		return "/reserve/room3detail.jsp";
 	}
 
 }
