@@ -221,7 +221,7 @@ public class ReserveDAO {
 	      ResultSet rs = null;	
 		
 			try {
-				String sql = "delete from reservation where rsrv_num = ?";   
+				String sql = "DELETE FROM RESERVATION WHERE RSRV_NUM = ?";   
 				
 				conn = getConnection();
 				
