@@ -25,9 +25,7 @@
 </head>
 
 <body>
-
-	<jsp:include page="/navigation.jsp"/>
-
+<jsp:include page="/navigation.jsp"/>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -48,7 +46,7 @@
 		<div class="row">
 
 			<div class="col-md-8">
-				<img class="img-fluid" src="../img/koong.jpg" alt="">
+				<img class="img-fluid" src="/hotel/img/deluxe.jpg" alt="">
 			</div>
 
 			<div class="col-md-4">

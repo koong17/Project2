@@ -25,8 +25,8 @@
 </head>
 
 <body>
+<jsp:include page="/navigation.jsp"/>
 
-	<jsp:include page="/navigation.jsp"/>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -47,11 +47,9 @@
 		<div class="row">
 
 			<div class="col-md-8">
-				<img class="img-fluid" src="../img/koong.jpg" alt="">
+				<img class="img-fluid" src="/hotel/img/grand.jpg" alt="">
 			</div>
-
 			<div class="col-md-4">
-				<p>
 				<h4 style="font-style:italic;">"스탠다드 객실 중 가장 큰 규모로 욕실에서의 야경이 돋보이며, 더 이그제큐티브 라운지 서비스를 즐기실 수
 					있습니다."</h4>
 				</p>

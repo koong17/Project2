@@ -25,16 +25,14 @@
 </head>
 
 <body>
-
-	<jsp:include page="/navigation.jsp"/>
-
+<jsp:include page="/navigation.jsp"/>
 
 	<!-- Page Content -->
 	<div class="container">
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
-			Suite Room
+			Suite
 		</h1>
 
 		<!-- 경로 -->
@@ -48,7 +46,7 @@
 		<div class="row">
 
 			<div class="col-md-8">
-				<img class="img-fluid" src="../img/koong.jpg" alt="">
+				<img class="img-fluid" src="/hotel/img/suite.jpg" alt="">
 			</div>
 
 			<div class="col-md-4">
