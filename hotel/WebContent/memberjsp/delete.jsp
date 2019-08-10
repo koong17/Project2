@@ -19,52 +19,41 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
-<link href="/hotel/css/boardForm.css?after" rel="stylesheet">
-<script src="vendor/jquery/jquery.min.js?after"></script>
-<script src="js/inho.js?after"></script>
-
+<script src="js/inho.js"></script>
 </head>
-<c:if test="${ sessionScope.id != null}">
+<c:if test="${ sessionScope.id == null}">
 	<c:redirect url="index.go" />
 </c:if>
 <body>
-<jsp:include page="/navigation.jsp"/>
+	<jsp:include page="/navigation.jsp"/>
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg');" id="headerheight">
+        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 765px;">
           <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="joinform" action="joinPro.go" onsubmit="return validate();">
+						<form role="form" method="post" name="updateform" action="deletePro.go" onsubmit="return passvalidate();">
 							<fieldset>
-								<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
-								<p>
+								<h2>회원 탈퇴</h2>
 								<!-- <hr class="colorgraph"> -->
+								<c:if test="${ result == -1 }">
+									<script type="text/javascript">
+										alert("비밀번호가 일치하지 않습니다.");
+									</script>
+								</c:if>
 								<div class="form-group">
-									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()" maxlength="20">
-									<span id="emailTag" style="color: white;"></span>
-									<span id="resultId" style="color: white;"></span>
+								<label name="emaillabel" id="emaillabel"
+										class="form-control input-lg" style="text-align: left;">${ sessionScope.id }</label>
+								<input type="hidden" name="email" id="email"
+										class="form-control input-lg" value="${ sessionScope.id }">
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()" maxlength="16">
-									<span id="passwordTag" style="color: white;"></span>	
+										class="form-control input-lg" placeholder="Current Password" required="required"  onkeyup="passwordvalidate()">
+									<!-- <span id="passwordTag" style="color: white;"></span> -->	
 								</div>
-								<div class="form-group">
-									<input type="text" name="nickname" id="nickname"
-										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()" maxlength="12">
-										<span id="nicknameTag" style="color: white;"></span>
-									<span id="resultNick" style="color: white;"></span>
-								</div>
-								<div class="form-group">
-									<input type="text" name="phone" id="phone"
-										class="form-control input-lg" 
-										placeholder="phone" required="required" onkeyup="phonevalidate()" maxlength="11">
-										<span id="phoneTag" style="color: white;"></span>
-								</div>		
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
 		                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
@@ -74,7 +63,7 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-lg btn-success btn-block"
-											value="회원가입">
+											value="탈퇴">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">
@@ -89,7 +78,7 @@
         </div>
       </div>
   </header>
-   <jsp:include page="/footer.jsp"/>
- 
+  
+  <jsp:include page="/footer.jsp"/>
 </body>
 </html>

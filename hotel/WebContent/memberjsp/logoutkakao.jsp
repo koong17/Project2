@@ -2,4 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 
-<meta http-equiv="Refresh" content="0; url=login.go" />
+
+ <c:redirect url="${ referer }" />
+ 
+ <%
+ 	session.invalidate();
+ %>

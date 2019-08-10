@@ -30,11 +30,13 @@ public class ConfirmFormAction implements CommandAction {
 		if( roomType.equals("deluxe")) {
 			roomNum=1;
 			roomType="Deluxe";
-			price=200000;		
+			price=200000;
+			
 		} else if( roomType.equals("grand")) {
 			roomNum=2;
 			roomType="Grand Deluxe";
 			price=300000;
+			
 		} else if( roomType.equals("suite")) {
 			roomNum=3;
 			roomType="Suite";

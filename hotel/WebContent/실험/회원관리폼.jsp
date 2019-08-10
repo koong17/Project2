@@ -27,8 +27,6 @@
   <!-- 모든 페이지에 들어가야 함 -->
   <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
   
-  <!-- footer가 아래에 위치할 수있도록 고정한다. -->
-
   
 </head>
 
@@ -78,54 +76,82 @@
   <!-- Page Content -->
   <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">고객문의
-      <small>HOTEL TIKKI에 대해 궁금한 점을 물어보세요.</small>
+    
+	    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">회원관리페이지
+      <small>회원을 관리하고 조회할 수 있습니다.</small>
     </h1>
+
+
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index.go">Home</a>
       </li>
-      <li class="breadcrumb-item active">고객문의</li>
+      <li class="breadcrumb-item active">회원정보 관리</li>
     </ol>
     
-<!-- 본문 -->    
+    <!-- 검색 div -->
     
-
+    <form class="form-inline" action="memsearchresult.jsp" method="get" style="float: right;">
+    		<select name="searchOption" class="form-control">
+    			<option value="T" selected=>제목</option>
+<!--     			<option value="C">내용</option>
+    			<option value="W">작성자</option> -->
+    		</select>
+    		<input name="search" class="form-control" type="text">&nbsp;
+    		<input class="btn btn-success" type="submit" value="검색"> 
+<!--     		<input name="ct" type="hidden" value="ask"> -->
+    </form>
+    
+	<!-- 본문 -->    
 
    <c:if test="${ count == 0 }">   
-      <h2><center>게시판에 저장된 글이 없습니다.</center></h2>
+      <h2><center>회원정보 관리에 저장된 회원이 없습니다.</center></h2>
    </c:if>
       
    <c:if test="${ count > 0 }">   
-      <table width="700" cellpadding="0" cellspacing="0"
+      <table width="500" cellpadding="0" cellspacing="0"
          align="center" class="table">
          <tr height="30">
-            <td align="center" width="50">번 호</td>
-            <td align="center" width="50">제 목</td>
-            <td align="center" width="50">작성자</td>
+            <td align="center" >회원 닉네임</td>
+            <td align="center" >회원 이메일</td>
+            <td align="center" >회원 전화번호</td>
+            <td align="center" >회원 비밀번호</td>
+          </tr>
             
       <c:forEach var="list"  items="${ list }">          
       
          <tr height="30">
+            
+            <td align="center" width="100">
+               <c:out value="${ list.board_num }" /> <!-- 회원닉네임 -->
+            </td>
+            
+            <td width="200">
+            	<a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">${ list.board_title } <!-- 회원이메일 -->
+                <c:if test="${ list.cmnt_count != 0 }">(${ list.cmnt_count })</c:if></a> 
+            </td>
+            
+            <td align="center" width="200">${ list.board_nick } <!-- 회원전화번호 -->
+            </td>
+            
             <td align="center" width="50">
-               <c:out value="${ list.board_num }" />
+               <c:out value="${ list.board_num }" /> <!-- 회원비밀번호-->
             </td>
-            <td width="250">
-         
-             <a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">
-                  ${ list.board_title } <c:if test="${ list.cmnt_count != 0 }">(${ list.cmnt_count })</c:if></a> 
-            </td>
-            <td align="center" width="100">${ list.board_nick }</td>
+  
          </tr>
+         
       </c:forEach>
+      
       </table>
    </c:if>
-   <c:if test="${ sessionScope.nick != null }">
+   
+   <!-- 글쓰기 버튼 필요한지 안한지 모름 -->
+<%--    <c:if test="${ sessionScope.nick != null }">
    <button class="btn btn-primary btn-lg" id="button-right-fix2"
 			onclick="window.location='writeForm.do?pageNum=${ pageNum }'">글쓰기</button>
-   </c:if>
+   </c:if> --%>
    
    
    <!-- 페이지 번호 -->
