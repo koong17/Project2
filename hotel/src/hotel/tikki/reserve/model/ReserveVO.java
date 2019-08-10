@@ -6,6 +6,7 @@ public class ReserveVO {
 
 	int room_num, rsrv_num, rsrv_ppl;
 	String rsrv_nick, rsrv_status, check_in, check_out;
+	String check_date, price, room_type;
 	
 //////////////getter and setter//////////////
 	public int getRoom_num() {
@@ -50,4 +51,24 @@ public class ReserveVO {
 	public void setRsrv_status(String rsrv_status) {
 		this.rsrv_status = rsrv_status;
 	}
+	public String getCheck_date() {
+		return check_date;
+	}
+	public void setCheck_date(String check_date) {
+		this.check_date = check_date;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getRoom_type() {
+		return room_type;
+	}
+	public void setRoom_type(String room_type) {
+		this.room_type = room_type;
+	}
+	
+	
 }

@@ -156,7 +156,7 @@
             let presentDay = vo.cmnt_date.substring(5, 10);
 
             html += "<td width='50px'>" + presentDay + "</td>";
-            if( vo.cmnt_nick == '${nick}' || '${nick}'=='god') { // 관리자 닉네임으로 바꿀 것
+        	if( vo.cmnt_id == '${nick}' || '${nick}'=='관리자') { 
 
              	console.log('들어왔습니다.');
              	html +=  "<td width='140px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
@@ -190,7 +190,7 @@
 	             html += "<td align='left' width='700px'>" + vo.cmnt_content + "</td>";
 	             let presentDay = vo.cmnt_date.substring(5, 10);
 	             html += "<td width='70px'>" + presentDay + "</td>";
-	             if( vo.cmnt_nick == "zi") { // 관리자 닉네임으로 바꿀 것
+	             if( vo.cmnt_nick == "관리자") { // 관리자 닉네임으로 바꿀 것
 	              	console.log('들어왔습니다.');
 	              	
 	              	html +=  "<td width='200px'><input type='button' value='수정' class='btn btn-secondary' onclick='updateCmntRead("+ vo.cmnt_num +")'>"
@@ -260,47 +260,7 @@
 </head>
 
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.go">TIKKI</a>
-      <c:if test="${ sessionScope.id == null}">
-      <a class="navbar-login" href="login.go">로그인</a>
-      <a class="navbar-login" href="join.go">회원가입</a>
-      </c:if>
-      <c:if test="${ sessionScope.id != null}">
-      <a class="navbar-login" href="logout.go"><small>로그아웃</small></a>
-      </c:if>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="information/about.html">호텔소개</a> <!-- About 에 contact map-->
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" aria-haspopup="true" aria-expanded="false">
-              객실소개
-            </a><!--  포트폴리오1 -> single portfolio item -->
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/hotel/reservation/room1detail.html">room1</a>
-              <a class="dropdown-item" href="/hotel/reservation/room2detail.html">room2</a>
-              <a class="dropdown-item" href="/hotel/reservation/room3detail.html">room3</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/hotel/reservation/reservation.html">예약</a> <!-- full width -->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="list.do">고객문의</a> <!--  포트폴리오1 수정 -->
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- ./nav -->
+<jsp:include page="/navigation.jsp"/>
 
   <!-- Page Content -->
   <div class="container" style="min-height:793px">
@@ -342,7 +302,7 @@
 				<td height="300" width = "1000" colspan="6"><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
-			<c:if test="${ sessionScope.id != null && sessionScope.nick == 'god'}">
+			<c:if test="${ sessionScope.id != null && sessionScope.nick == '관리자'}">
 				<tr>
 					<td height="50" width = "1000" colspan="6"> <!-- 원래 pre 있던 자리 -->  <!--  -->
 						<div class="input-group" role="group" aria-label="..." style="margin-top: 10px; width: 100%;">
@@ -376,7 +336,7 @@
 			
 			<tr height ="30">
 				<td colspan="7" align="right" >
-				  <c:if test="${ sessionScope.nick == vo.board_nick || sessionScope.nick == 'god'}">
+				  <c:if test="${ sessionScope.nick == vo.board_nick || sessionScope.nick == '관리자'}">
 					<input type="button" class="btn btn-primary" value="글수정" 
 						   onclick="document.location.href='updateForm.do?board_num=${ vo.board_num }&pageNum=${ pageNum }'"> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -396,14 +356,8 @@
   </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark" id="hotel-footer-fix-boardContent">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
+ 
+  <jsp:include page="/footer.jsp"/>
 
 </body>
 

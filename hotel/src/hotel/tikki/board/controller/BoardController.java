@@ -96,8 +96,6 @@ public class BoardController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} // try end
-		
-		// request.setAttribute("CONTENT", view);
 				
 		RequestDispatcher  dp = request.getRequestDispatcher(view);
 		if(view != null) dp.forward(request, response);
