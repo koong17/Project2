@@ -80,6 +80,9 @@
 									<img src="img/kakao_account_login_btn_medium_wide.png" />
 								</a>
 							</div>
+							<div style="width: 100%;" align="center">
+								<a class="navbar-login" href="find.go" style="color: white;">비밀번호 잊으셨나요?</a>
+							</div>
 						</div>
 								</fieldset>
 							</form>
