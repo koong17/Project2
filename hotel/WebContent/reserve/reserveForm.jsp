@@ -19,6 +19,9 @@
 <!-- hs CSS -->
 <link href="/hotel/css/hs.css?after" rel="stylesheet">
 
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+
 <!-- Bootstrap core CSS -->
 <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
@@ -148,6 +151,7 @@
 		});
 		
 		function show(data) {
+			
 			let html = "";
 			html += '<ol class="breadcrumb"><li class="breadcrumb-item active">현재 이용 가능 객실</li></ol>';
 			
@@ -158,8 +162,8 @@
 					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt="">';
 					html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
 					html += '<a class="btn btn-primary"';
-						if( ${ sessionScope.id == null} ){
-							html += 'href="login.go">예약하기'; // alert("로그인 후 이용해 주십시오.");
+						if( ${ sessionScope.id == null } ){
+							html += 'href="login.go">예약하기';// alert("1 로그인 후 이용해 주십시오.");
 						} else {
 							html += 'href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">예약하기';
 						}
@@ -171,7 +175,7 @@
 					html += '</a></div><div class="col-md-5"><h3>Grand Deluxe</h3><p>그냥 그냥 디럭스</p>';
 					html += '<a class="btn btn-primary"';
 						if( ${ sessionScope.id == null} ){
-							html += 'href="login.go">예약하기'; // alert("로그인 후 이용해 주십시오.");
+							html += 'href="login.go">예약하기'; //alert("2 로그인 후 이용해 주십시오.");
 						} else {
 							html += 'href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=grand">예약하기';
 						}
@@ -183,7 +187,7 @@
 					html += '</a></div><div class="col-md-5"><h3>Suite</h3><p>그냥 그냥 디럭스</p>';
 					html += '<a class="btn btn-primary"';
 						if( ${ sessionScope.id == null} ){
-							html += 'href="login.go">예약하기'; // alert("로그인 후 이용해 주십시오.");
+							html += 'href="login.go">예약하기';// alert("3 로그인 후 이용해 주십시오.");
 						} else {
 							html += 'href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=suite">예약하기';
 						}
@@ -191,6 +195,8 @@
 				}
 				html += '<hr>';
 			});
+			
+			
 			console.log(html);
 			$("#showShow").html(html);
 			
