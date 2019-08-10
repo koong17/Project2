@@ -69,11 +69,11 @@
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<input type="submit"
-									class="btn btn-lg btn-success btn-block" value="로그인">
+									class="btn btn-success btn-block" value="로그인">
 							</div>
 
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="join.go" class="btn btn-lg btn-primary btn-block">회원가입</a>
+								<a href="join.go" class="btn btn-primary btn-block">회원가입</a>
 							</div>
 							<div style="width: 100%; margin-top: 20px;">
 								<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://localhost:8080/hotel/oauth&response_type=code" onclick="kakaologinform()">
