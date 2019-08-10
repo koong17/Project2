@@ -90,7 +90,7 @@
 								<td colspan="2" align="right">
 									<div>
 										 <c:if test="${ list.rsrv_status == 'n' }">
-						  					 <form action="reserveMypage.to">
+						  					 <form action="delete.to">
 												<input type="hidden" name="rsrv_num" value='${ list.rsrv_num }'>
 												<input type="submit" class="button" value="예약 취소">
 											</form>
