@@ -8,7 +8,7 @@
         <servlet-class>hotel.tikki.board.controller.BoardController</servlet-class>
         <init-param>
           <param-name>boardConfig</param-name>
-          <param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandBoard.properties</param-value>
+          <param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandBoard.properties</param-value>
         </init-param>
   </servlet>
   <servlet-mapping>
@@ -22,7 +22,7 @@
   		<servlet-class>hotel.tikki.reserve.controller.ReserveController</servlet-class>
   		<init-param>
   			<param-name>ReserveConfig</param-name>
-  			<param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandReserve.properties</param-value>
+  			<param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandReserve.properties</param-value>
   		</init-param>
   </servlet>
   <servlet-mapping>
@@ -36,7 +36,7 @@
   		<servlet-class>hotel.tikki.member.controller.MemberController</servlet-class>
   		<init-param>
   			<param-name>MemberConfig</param-name>
-  			<param-value>C:\Users\82108\git\Project2\hotel\WebContent\WEB-INF\commandMember.properties</param-value>
+  			<param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandMember.properties</param-value>
   		</init-param>
   </servlet>
   <servlet-mapping>
