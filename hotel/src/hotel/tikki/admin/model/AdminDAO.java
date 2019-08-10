@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dbclose.util.CloseUtil;
+import hotel.tikki.board.model.BoardVO;
 import hotel.tikki.member.model.MemberVO;
 
 public class AdminDAO {  // controller
@@ -197,8 +198,102 @@ public class AdminDAO {  // controller
 		return count;
 	}
 	
-	/* 여기까지 내가 */
+	/* 여기까지 지형이가 */
 	
+
+	// 예약 전체 가져오기
+	public List<RsrvVO> getSelectAllRsrv( int start,  int end ) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List  list = null;
+		try {
+			conn = getConnection();
+			StringBuffer  sb = new StringBuffer();
+			
+			sb.append("select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status, r");
+			sb.append(" from (select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status, rownum r");
+			sb.append(" from (select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status from reservation order by check_in, check_out, rsrv_num))");
+			sb.append(" where r>= ? and r<= ?");
+			
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) {
+				list = new ArrayList(end);
+				
+				do {
+					RsrvVO vo = new RsrvVO();
+					vo.setRoom_num(rs.getInt(1));
+					vo.setRsrv_num(rs.getInt(2));
+					vo.setCheck_in(rs.getTimestamp(3));
+					vo.setCheck_out(rs.getTimestamp(4));
+					vo.setRsrv_ppl(rs.getInt(5));
+					vo.setRsrv_nick(rs.getString(6));
+					vo.setRsrv_status(rs.getString(7));
+					
+					list.add(vo);
+					
+				} while( rs.next() ) ;	
+			} // if end
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}				
+		return list;
+	} // getSelectAll(start, end) end
+	
+	// 예약 상태 변경
+	public void update( int rsrv_num , String rsrv_status_input) {
+		Connection conn = null;
+		PreparedStatement pstmt=null;
+		RsrvVO vo = null;
+		String rsrv_status = (rsrv_status_input.equals("n")? "y" : "n");
+		
+		
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("UPDATE RESERVATION SET RSRV_STATUS=? WHERE RSRV_NUM=?");
+			pstmt.setString(1, rsrv_status);
+			pstmt.setInt(2, rsrv_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}				
+	} // update() end
+	
+	//
+	public int getRsrvAllCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			conn = getConnection();
+			
+			//현재 board 테이블의 레코드 수 구하기
+			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM RESERVATION" );
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) count = rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}	
+		return count;
+	} // getListAllCount() end
 	
 }
 
