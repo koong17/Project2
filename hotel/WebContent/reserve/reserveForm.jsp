@@ -64,7 +64,7 @@
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">TIKKI</a>
+			<a class="navbar-brand" href="index.go">TIKKI</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -81,12 +81,12 @@
 						aria-haspopup="true" aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="room1detail.jsp">room1</a> <a
-								class="dropdown-item" href="room2detail.jsp">room2</a> <a
-								class="dropdown-item" href="room3detail.jsp">room3</a>
+							<a class="dropdown-item" href="room1detail.to">Deluxe</a> <a
+								class="dropdown-item" href="room2detail.to">Grand Deluxe</a> <a
+								class="dropdown-item" href="room3detail.to">Suite</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reserve.jsp">예약</a> <!-- full width --></li>
+						href="reserve.to">예약</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
@@ -189,19 +189,19 @@
 			$.each(data, function(index, roomNum ) {
 				console.log(roomNum);
 				if(roomNum=='1') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt="">';
+					html += '<div class="row"><div class="col-md-7"><a href="room1detail.to"> <img';
+					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt="">';
 					html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
 					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">예약하기';
 					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
 				} else if(roomNum=='2') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room1detail.to"> <img';
+					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/grand.jpg" alt=""></a></div>';
 					html += '<div class="col-md-5"><h3>Grand Deluxe</h3><p>좋은 좋은 디럭스</p>';
 					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=grand">예약하기';
 					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
 				} else if(roomNum=='3') {
-					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room3detail.to"> <img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/suite.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
 				}
 				html += '<hr>';
 			});

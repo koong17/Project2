@@ -28,24 +28,21 @@ public class ConfirmFormAction implements CommandAction {
 		DecimalFormat df = new DecimalFormat("#,##0");
 		
 		if( roomType.equals("deluxe")) {
+			roomNum=1;
 			roomType="Deluxe";
-			price=200000;
-			priceview = df.format(price);
-			total = df.format(price*checkDate*peopleNum);
-			
+			price=200000;		
 		} else if( roomType.equals("grand")) {
+			roomNum=2;
 			roomType="Grand Deluxe";
 			price=300000;
-			priceview = df.format(price);
-			total = df.format(price*checkDate*peopleNum);
-			
 		} else if( roomType.equals("suite")) {
+			roomNum=3;
 			roomType="Suite";
 			price=500000;
-			priceview = df.format(price);
-			total =df.format(price*checkDate*peopleNum);
 		}
 		
+		priceview = df.format(price);
+		total = df.format(price*checkDate);
 		
 		
 		request.setAttribute("checkIn", checkIn);

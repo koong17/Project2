@@ -30,7 +30,7 @@
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">TIKKI</a>
+			<a class="navbar-brand" href="index.go">TIKKI</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -47,12 +47,12 @@
 						aria-haspopup="true" aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="room1detail.jsp">room1</a> <a
-								class="dropdown-item" href="room2detail.jsp">room2</a> <a
-								class="dropdown-item" href="room3detail.jsp">room3</a>
+							<a class="dropdown-item" href="room1detail.to">Deluxe</a> <a
+								class="dropdown-item" href="room2detail.to">Grand Deluxe</a> <a
+								class="dropdown-item" href="room3detail.to">Suite</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
-						href="reserve.to">예약</a> <!-- full width --></li>
+						href="reserve.to">예약</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
 				</ul>
@@ -81,7 +81,7 @@
 		<div class="row">
 
 			<div class="col-md-8">
-				<img class="img-fluid" src="../img/koong.jpg" alt="">
+				<img class="img-fluid" src="/hotel/suite.jpg" alt="">
 			</div>
 
 			<div class="col-md-4">
