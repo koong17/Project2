@@ -199,6 +199,9 @@
 	</script>
 	<!-- 예약 바 끝 -->
 	
+	<!-- 객실정보 -->
+	<div class="container" id="showShow" ></div>
+	
 	<jsp:include page="/footer.jsp"/>
 
 </body>
