@@ -134,7 +134,7 @@ public class BoardDAO {  // controller
 		ResultSet rs = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
-		List  list = null;
+		List list = null;
 		try {
 			conn = getConnection();
 			StringBuffer  sb = new StringBuffer();
