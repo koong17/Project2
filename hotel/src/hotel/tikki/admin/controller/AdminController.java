@@ -1,4 +1,4 @@
-﻿package hotel.tikki.board.controller;
+package hotel.tikki.admin.controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotel.tikki.board.action.CommandAction;
+import hotel.tikki.admin.action.CommandAction;
 
-public class BoardController extends HttpServlet {
+public class AdminController extends HttpServlet {
 	
 	private Map commandMap = new HashMap();
 
@@ -24,7 +24,7 @@ public class BoardController extends HttpServlet {
 	// 명령어와 명령어 처리 클래스가 매핑되어 있는 properties  파일을 읽어 들이는 역할
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		String props = config.getInitParameter("boardConfig");
+		String props = config.getInitParameter("AdminConfig");
 		Properties pr = new Properties();
 		FileInputStream  f = null;
 		
@@ -39,7 +39,7 @@ public class BoardController extends HttpServlet {
 			if( f != null ) try{ f.close(); }catch(Exception e) { e.printStackTrace(); }
 		} //end try
 		
-		Iterator  key = pr.keySet().iterator();  // key 값 추출
+		Iterator key = pr.keySet().iterator();  // key 값 추출
 		
 		while( key.hasNext() ) {
 			String command = (String)key.next();
@@ -96,9 +96,12 @@ public class BoardController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} // try end
+		
+		// request.setAttribute("CONTENT", view);
 				
 		RequestDispatcher  dp = request.getRequestDispatcher(view);
-		if(view != null) dp.forward(request, response);
+		dp.forward(request, response);
 	}
 	
 }
+
