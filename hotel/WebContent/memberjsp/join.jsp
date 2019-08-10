@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -32,6 +32,7 @@
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
+
         <div class="carousel-item active" style="background-image: url('img/koong.jpg');" id="headerheight">
           <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">

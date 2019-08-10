@@ -13,6 +13,7 @@
       <c:if test="${ sessionScope.id != null && sessionScope.kakaonick == null}">
 	      <a class="navbar-login" href="logout.go"><small>로그아웃</small></a> 
 	      <div>
+
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown">
 				<c:if test="${ sessionScope.nick == '관리자' }">
@@ -40,6 +41,7 @@
 				</c:if>
 				</li>
 			</ul>
+
 	      </div>	
       </c:if>
       <c:if test="${ sessionScope.kakaonick != null}">
