@@ -1,5 +1,8 @@
 eclipse.preferences.version=1
 encoding//WebContent/board/boardList.jsp=UTF-8
 encoding//WebContent/board/boardWritePro.jsp=UTF-8
+encoding//WebContent/reserve/hs_dateTest.jsp=UTF-8
 encoding//src/hotel/tikki/member/model/MemberDAO.java=UTF-8
-encoding/<project>=UTF-8
+encoding//src/hotel/tikki/reserve/action/ConfirmProAction.java=UTF-8
+encoding//src/hotel/tikki/reserve/controller/ReserveController.java=UTF-8
+encoding//src/hotel/tikki/reserve/model/ReserveDAO.java=UTF-8

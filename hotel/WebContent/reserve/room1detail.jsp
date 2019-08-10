@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -12,52 +14,18 @@
 <title>HOTEL TIKKI</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../css/modern-business.css" rel="stylesheet">
+<link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
 <!-- minjee.css -->
-<link href="../css/minjee.css" rel="stylesheet">
+<link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
 </head>
 
 <body>
-
-	<!-- Navigation -->
-	<nav
-		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">TIKKI</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="about.html">호텔소개</a>
-						<!-- About 에 contact map--></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#"
-						id="navbarDropdownPortfolio" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> 객실소개 </a> <!--  포트폴리오1 -> single portfolio item -->
-						<div class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="room1detail.html">room1</a> <a
-								class="dropdown-item" href="room2detail.html">room2</a> <a
-								class="dropdown-item" href="room3detail.html">room3</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link"
-						href="reservation.html">예약</a> <!-- full width --></li>
-					<li class="nav-item"><a class="nav-link"
-						href="portfolio-1-col.html">고객문의</a> <!--  포트폴리오1 수정 --></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- ./nav -->
+<jsp:include page="/navigation.jsp"/>
 
 	<!-- Page Content -->
 	<div class="container">
@@ -78,7 +46,7 @@
 		<div class="row">
 
 			<div class="col-md-8">
-				<img class="img-fluid" src="../img/koong.jpg" alt="">
+				<img class="img-fluid" src="/hotel/img/deluxe.jpg" alt="">
 			</div>
 
 			<div class="col-md-4">
@@ -91,7 +59,7 @@
 
 				<div class="aa aa-button reservation-wrap reservation-button"
 					align="center">
-					<a href="reservation_confirm.html" class="button">예약 하기</a>
+					<a href="reserve.to" class="button">예약 하기</a>
 				</div>
 
 				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. -->
@@ -123,14 +91,8 @@
 	</div>
 	<!-- /.container -->
 	<p>
-		<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2019</p>
-		</div>
-		<!-- /.container -->
-	</footer>
+	
+	<jsp:include page="/footer.jsp"/>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
