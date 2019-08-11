@@ -32,26 +32,13 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/hotel/vendor/jquery/jquery.js"></script>
 <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 
 <!-- datePicker -->
-<!-- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="daterangepicker.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css?after" />
-</head>
-
-<!-- 
-<script src="https://code.jquery.com/jquery-3.2.1.js" > </script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" ></script> 
--->
-
 
 <!-- Hyesoo JavaScript -->
 <script src="/hotel/js/hidden.js"></script>
@@ -71,7 +58,8 @@
 		<!-- 예약 바 -->
 		<ul class="breadcrumb">
 		<table><tr>
-			<!-- 체크인 -->
+			<!-- 
+			체크인
 			<div class ='col-md-3'>
             <div class='input-group date ' id='datetimepicker6'>
                 <input type="text" class="form-control" placeholder="체크인" id="checkIn" />
@@ -79,14 +67,21 @@
                		<span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div></div>
-			<!-- 체크아웃 -->
+			체크아웃
 			<div class ='col-md-3'>
             <div class='input-group date' id='datetimepicker7'>
                 <input type='text' class="form-control" placeholder="체크아웃" id="checkOut" />
                  <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
-     	   </div></div>
+     	   </div></div> -->
+     	   
+     	   <td class='m'>
+     	  <div class ='col-md-17'>
+ 			<div class='input-group date '>
+				<input type="text" class="form-control" name="daterange" id="daterange"placeholder="  체크인  -  체크아웃">
+			</div>
+		</div></td>
      	   
      	    
 			<!-- 인원수 -->
@@ -120,14 +115,27 @@
 		$(document).ready(function(){
 			$("#searchbtn").click(function() {
 				// $("#showShow").show();
-				if($("#checkIn").val() != "" && $("#checkOut").val() != "" && $("#peopleNum").val() != "인원수") {
+				/* if($("#checkIn").val() != "" && $("#checkOut").val() != "" && $("#peopleNum").val() != "인원수") { */
+				if($("#daterange").val() != "" && $("#peopleNum").val() != "인원수") {
 					 $.ajax({
 			            url:"/hotel/reserveForm.to",			//"/hotel/cmntUpdate.do"
 			            
 			            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
 			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
-			            	checkIn: $("#checkIn").val(),
-			            	checkOut: $("#checkOut").val(),
+			            	
+			            	/* checkIn: $("#checkIn").val(),
+			            	checkOut: $("#checkOut").val(), */
+			            	
+			            	
+			            	daterange: $("#daterange").val(),
+			            	
+			            	/* $('#daterange').daterangepicker(options, callback)
+			            	checkIn = $('#daterange').data('daterangepicker').startDate,
+			            	$('#daterange').daterangepicker(options, callback)
+			            	checkOut = $('#daterange').data('daterangepicker').endDate, */
+			            	
+			            	/* if(checkIn == checkOut) alert("체크인 날짜와 체크아웃 날짜가 같습니다. 다시 입력해주세요."); */
+			            	
 			            	peopleNum: $("#peopleNum").val()
 			            },
 			            beforeSend:function() {
