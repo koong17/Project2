@@ -28,7 +28,7 @@
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
         <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 800px;">
-          <div class="carousel-join d-none d-md-block">
+          <div class="carousel-pwd d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
