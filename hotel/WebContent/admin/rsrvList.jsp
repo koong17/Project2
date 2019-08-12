@@ -117,7 +117,7 @@
             </td>
             
             <td align="center" width="100">
-               <input type="button" value="확정변경" onclick=
+               <input class="btn btn-secondary" type="button" value="확정변경" onclick=
                	"document.location.href='rsrvUpdate.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }&rsrv_status=${ list.rsrv_status }'">
             </td>
             
