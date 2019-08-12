@@ -87,11 +87,11 @@
       
          <tr height="30">
             
-             <td align="center" width="100">
+            <td align="center" width="100">
                <c:out value="${ list.nickname }" /> <!-- 회원닉네임 -->
             </td>
             
-            <td align="center" width="200" style="color:#007bff;">
+           <td align="center" width="200" style="color:#007bff;">
             	<c:out value="${ list.id }" /><!-- 회원이메일 -->
             </td>
             
@@ -103,14 +103,15 @@
                <c:out value="${ list.password }" /> <!-- 회원비밀번호-->
             </td>
   
-  
          </tr>
          
       </c:forEach>
       
       </table>
    </c:if>
-    
+   
+
+
    
    <!-- 페이지 번호 -->
    <nav aria-label="Page navigation example">
@@ -139,20 +140,17 @@
          
          <c:if test="${startPage >5 }">
 			<li class="page-item"><a class="page-link"
-				href="memberList.admin?pageNum=${ startPage-5  }"> Previous </a></li>
+				href="memberSearchList.admin?searchOption=${ searchOption }&search=${ search }&pageNum=${ startPage-5  }"> Previous </a></li>
 		</c:if>
 
-   
-        
-         <c:forEach var="i" begin="${startPage }" end="${ endPage }">
+        <c:forEach var="i" begin="${startPage }" end="${ endPage }">
 			<li class="page-item"><a class="page-link"
-				href="memberList.admin?pageNum=${i}">${ i } </a></li>
-		 </c:forEach>
-      
+				href="memberSearchList.admin?searchOption=${ searchOption }&search=${ search }&pageNum=${i}">${ i } </a></li>
+		</c:forEach>
       
       	<c:if test="${ endPage < pageCount-1 }">
 			<li class="page-item"><a class="page-link"
-				href="memberList.admin?pageNum=${ startPage+5 }"> Next </a></li>
+				href="memberSearchList.admin?searchOption=${ searchOption }&search=${ search }&pageNum=${ startPage+5 }"> Next </a></li>
 		</c:if>
    </c:if>
    </ul>

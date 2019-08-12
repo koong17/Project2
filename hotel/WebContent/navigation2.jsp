@@ -7,11 +7,11 @@
     <div class="container">
       <a class="navbar-brand" href="../index.go">TIKKI</a>
       <c:if test="${ sessionScope.id == null }">
-      <a class="navbar-login" href="../login.go"><small>로그인</small></a>
+      <a class="navbar-login" href="../login.go" style="margin-right: 15px"><small>로그인</small></a>
       <a class="navbar-login" href="../join.go"><small>회원가입</small></a>
       </c:if>
       <c:if test="${ sessionScope.id != null && sessionScope.kakaonick == null}">
-	      <a class="navbar-login" href="../logout.go"><small>로그아웃</small></a>
+	      <a class="navbar-login" href="../logout.go" style="margin-right: 15px"><small>로그아웃</small></a>
 	      <div>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown">

@@ -13,6 +13,7 @@
       <c:if test="${ sessionScope.id != null && sessionScope.kakaonick == null}">
 	      <a class="navbar-login" href="logout.go"><small>로그아웃</small></a> 
 	      <div>
+
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown">
 				<c:if test="${ sessionScope.nick == '관리자' }">
@@ -35,11 +36,12 @@
 							<a class="dropdown-item" href="update.go">회원수정</a>
 							<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a>  
 							<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							<a class="dropdown-item" href="reserveMypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 				</c:if>
 				</li>
 			</ul>
+
 	      </div>	
       </c:if>
       <c:if test="${ sessionScope.kakaonick != null}">
