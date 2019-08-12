@@ -43,9 +43,13 @@ public class ReserveFormAction implements CommandAction {
 		JSONArray jsonArr = new JSONArray(roomList);
         PrintWriter pw = response.getWriter();
         pw.println(jsonArr);
-		
-		
-		return null;
+		/*
+		 * request.setAttribute("checkIn", checkIn); request.setAttribute("checkOut",
+		 * checkOut);
+		 * 
+		 * return "/hotel/reserve.to";
+		 */
+        return null;
 	}
 
 }

@@ -7,11 +7,15 @@
 	
 }
 
+#wid {
+	width: 220px;
+}
+
 .marginAuto {
 	 margin: 0rem 2rem;
 
 }
-
+/* 
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	.input-group-sm input[type=date], .input-group-sm input[type=time],
@@ -1386,3 +1390,4 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 		bottom: 20px
 	}
 }
+ */
