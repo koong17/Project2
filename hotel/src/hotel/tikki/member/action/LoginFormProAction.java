@@ -19,15 +19,14 @@ public class LoginFormProAction implements MemberAction {
 		int result = dao.memberLoginCheck(id, password);
 		String nick = dao.memberNick(id);
 		
-		if(result == 1) {
+		if(result == 1) {  // result가 1이면 성공
 			session.setAttribute("id", id);
 			session.setAttribute("nick", nick);	
-			return "/memberjsp/loginPro.jsp";
-		} else {
-			request.setAttribute("result", result);
-		}
+		} 
 		
-		return "/memberjsp/login.jsp";
+		request.setAttribute("result", result);
+		System.out.println(result + " ===================================asdfkljasdlkfjasd;lkfj");
+		return "/memberjsp/loginPro.jsp";
 	}
 
 }

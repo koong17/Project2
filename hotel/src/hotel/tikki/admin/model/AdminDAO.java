@@ -163,7 +163,7 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}				
 		return list;
-	} // getSelectAll(start, end) end
+	} // getSearchResult(start, end, search, option) end
 	
 
 	//회원관리테이블에서 총 갯수 가져오기
@@ -197,7 +197,7 @@ public class AdminDAO {  // controller
 		}	
 		return count;
 		
-	}
+	}//getSearchListAllCount(search, option)
 		
 	// 예약 전체 가져오기
 	public List<RsrvVO> getSelectAllRsrv( int start,  int end ) {
@@ -245,7 +245,7 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}				
 		return list;
-	} // getSelectAll(start, end) end
+	} // getSelectAllRsrv(start, end) end
 	
 	// 예약 상태 변경
 	public void update( int rsrv_num , String rsrv_status_input) {
@@ -292,11 +292,9 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}	
 		return count;
-	} // getListAllCount() end
+	} // getRsrvAllCount() end
 	
 
-	
-	/* 여기서부터 지형이가 */
 	// 예약 관리에서 검색 하기
 	public List<MemberVO> getRsrvSearchResult( int start,  int end, String search, String option) {
 		Connection conn = null;
@@ -350,7 +348,7 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}				
 		return list;
-	} // getSelectAll(start, end) end
+	} // getRsrvSearchResult(start, end, search, option) end
 	
 	
 	//예약관리 검색한 결과 총 갯수구하기
@@ -381,13 +379,8 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}	
 		return count;
-	}
-	
-	
-	
-	
-	
-	
+	}//getRsrvSearchListAllCount (search, option) end
+
 }
 
 

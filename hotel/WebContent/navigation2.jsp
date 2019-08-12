@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="vendor/bootstrap/css/inho.css?after" rel="stylesheet">
  <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -57,9 +58,9 @@
               객실소개
             </a><!--  포트폴리오1 -> single portfolio item -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="room1detail.html">room1</a>
-              <a class="dropdown-item" href="room2detail.html">room2</a>
-              <a class="dropdown-item" href="room3detail.html">room3</a>
+              <a class="dropdown-item" href="/hotel/reserve/room1detail.jsp">room1</a>
+              <a class="dropdown-item" href="/hotel/reserve/room2detail.jsp">room2</a>
+              <a class="dropdown-item" href="/hotel/reserve/room3detail.jsp">room3</a>
             </div>
           </li>
             <li class="nav-item">

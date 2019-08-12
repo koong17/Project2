@@ -8,10 +8,8 @@ public class LogoutAction implements MemberAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
-		String referer = request.getHeader("Referer");
-		request.setAttribute("referer", referer);	
-		session.invalidate();
+		request.getSession().invalidate();
+		
 		return "memberjsp/logoutPro.jsp";
 	}
 
