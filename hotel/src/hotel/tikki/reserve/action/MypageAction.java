@@ -1,6 +1,7 @@
 package hotel.tikki.reserve.action;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class MypageAction implements CommandAction {
 		}
 		
 		return "reserve/reserveMypage.jsp";
+
 	}
 
 }

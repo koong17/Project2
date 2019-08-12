@@ -67,7 +67,6 @@
  	    <button type="submit" class="btn btn-primary" id="button-right-fix">제출</button>
 
 		
-		
 	</form>
 	
 

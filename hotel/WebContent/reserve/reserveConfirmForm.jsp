@@ -19,6 +19,9 @@
 <!-- Custom styles for this template -->
 <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+
 <!-- minjee.css -->
 <link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
@@ -66,20 +69,17 @@
 					<hr> <br> <b><h4>총 예약금액 </h4><h5>KRW ${ total }</h5></b><br></li>
 			</ol>
 		</div>
-
-		<!-- 유의사항 등 넣으려면 이쪽에 넣기 -->
-		<br>
 		
 		<!-- 예약저장 버튼 -->
-		<div class="aa aa-button reservation-wrap reservation-button"
-			align="center">
-			<form action="reserveMypage.to">
+		<div align="center" style="margin: 30px 0px;">
+			<form action="reserveMypage.to" style="padding: 10 px 0 px;">
 				<input type="hidden" name="roomNum" value='${ roomNum }'>
 				<input type="hidden" name="checkIn" value='${ checkIn }'>
 				<input type="hidden" name="checkOut" value='${ checkOut }'>
 				<input type="hidden" name="peopleNum" value='${ peopleNum }'>
+				<input type="hidden" name="roomType" value='${ roomType }'>
 				<input type="hidden" name="nickname" value='${ sessionScope.nick }'>
-				<input type="submit" class="button" value="예약 완료">
+				<input type="submit" class="btn btn-outline-primary" value="예약 완료">
 			</form>
 		</div>
 

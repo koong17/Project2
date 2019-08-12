@@ -16,7 +16,7 @@ public class ConfirmFormAction implements CommandAction {
 		int peopleNum= Integer.parseInt(request.getParameter("peopleNum"));
 		String nick= request.getParameter("nick");
 		String roomType= request.getParameter("roomType");
-		String priceview= "", total="" , img="";
+		String priceview= "", total="" , img="", imgname="";
 		int price= 0;
 		int roomNum = 0;
 		
