@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
+<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jstl/fmt_rt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,66 +27,107 @@
   <!-- 모든 페이지에 들어가야 함 -->
   <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
   
-  <!-- footer가 아래에 위치할 수있도록 고정한다. -->
-
   
 </head>
 
 <body>
+
 <jsp:include page="/navigation.jsp"/>
 
   <!-- Page Content -->
   <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">고객문의
-      <small>HOTEL TIKKI에 대해 궁금한 점을 물어보세요.</small>
+    
+	    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">예약 관리
+      <small>모든 예약 내역을 확인할 수 있습니다.</small>
     </h1>
+
+
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index.go">Home</a>
       </li>
-      <li class="breadcrumb-item active">고객문의</li>
+      <li class="breadcrumb-item active">예약 관리</li>
     </ol>
     
-<!-- 본문 -->    
+    <!-- 검색 div -->
     
+    <form class="form-inline" action="memberSearchList.admin" method="get" style="float: right;">
+    		<select name="searchOption" class="form-control">
+     			<option value="id" selected>아이디</option>
+    		</select>
+    		<input type="text" name="search" class="form-control"  value="">&nbsp;
+    		<input type="submit" class="btn btn-success" value="검색"> 
+    		
+    </form>
+    
+	<!-- 본문 -->    
 
-
-   <c:if test="${ count == 0 }">   
-      <h2><center>게시판에 저장된 글이 없습니다.</center></h2>
+   <c:if test="${ count == 0 }">
+      <br><br>
+      <h2><center>예약 내역이 없습니다.</center></h2>
    </c:if>
-      
+   
    <c:if test="${ count > 0 }">   
-      <table width="700" cellpadding="0" cellspacing="0"
+      <br><br>
+      <table width="500" cellpadding="0" cellspacing="0"
          align="center" class="table">
          <tr height="30">
-            <td align="center" width="50">번 호</td>
-            <td align="center" width="50">제 목</td>
-            <td align="center" width="50">작성자</td>
+            <td align="center" >예약 번호</td>
+            <td align="center" >객실 번호</td>
+            <td align="center" >체크인</td>
+            <td align="center" >체크아웃</td>
+            <td align="center" >예약 인원</td>
+            <td align="center" >예약자 닉네임</td>
+            <td align="center" >확정 여부</td>
+          </tr>
             
       <c:forEach var="list"  items="${ list }">          
       
          <tr height="30">
-            <td align="center" width="50">
-               <c:out value="${ list.board_num }" />
+            
+            <td align="center" width="100">
+               <c:out value="${ list.rsrv_num }" /> <!-- 예약 번호 -->
             </td>
-            <td width="250">
-         
-             <a href="content.do?board_num=${list.board_num }&pageNum=${ currentPage }">
-                  ${ list.board_title } <c:if test="${ list.cmnt_count != 0 }">(${ list.cmnt_count })</c:if></a> 
+            
+            <td align="center" width="100">
+               <c:out value="${ list.room_num }" /> <!-- 객실 번호 -->
             </td>
-            <td align="center" width="100">${ list.board_nick }</td>
+            
+            <td align="center" width="100">${ list.check_in } <!-- 체크인 -->
+            </td>
+            
+            <td align="center" width="100">
+               <c:out value="${ list.check_out }" /> <!-- 체크아웃-->
+            </td>
+            
+            <td align="center" width="100">
+               <c:out value="${ list.rsrv_ppl }" /> <!-- 예약 인원-->
+            </td>
+            
+            <td align="center" width="100">
+               <c:out value="${ list.rsrv_nick }" /> <!-- 예약자 닉네임-->
+            </td>
+            
+            <td align="center" width="100">
+               <c:out value="${ list.rsrv_status }" /> <!-- 확정 여부-->
+            </td>
+            
+            <td align="center" width="100">
+               <input type="button" value="확정변경" onclick=
+               	"document.location.href='rsrvUpdate.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }&rsrv_status=${ list.rsrv_status }'">
+            </td>
+            
+            
+  
          </tr>
+         
       </c:forEach>
+      
       </table>
    </c:if>
-   <c:if test="${ sessionScope.nick != null }">
-   <button class="btn btn-primary btn-lg" id="button-right-fix2"
-			onclick="window.location='writeForm.do?pageNum=${ pageNum }'">글쓰기</button>
-   </c:if>
-   
    
    <!-- 페이지 번호 -->
    <nav aria-label="Page navigation example">
@@ -113,21 +155,21 @@
          
          <c:if test="${startPage >5 }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${ startPage-5  }"> Previous </a></li>
+				href="rsrvList.admin?pageNum=${ startPage-5  }"> Previous </a></li>
 		</c:if>
 
    
         
          <c:forEach var="i" begin="${startPage }" end="${ endPage }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${i}">${ i } </a></li>
+				href="rsrvList.admin?pageNum=${i}">${ i } </a></li>
 		 </c:forEach>
       
 
       
-      	<c:if test="${ endPage < pageCount }">
+      	<c:if test="${ endPage < pageCount-1 }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${ startPage+5 }"> Next </a></li>
+				href="rsrvList.admin?pageNum=${ startPage+5 }"> Next </a></li>
 		</c:if>
    </c:if>
    </ul>
@@ -139,7 +181,8 @@
 
 
 
-<jsp:include page="/footer.jsp"/>
+ 
+  <jsp:include page="/footer.jsp"/>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
