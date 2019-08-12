@@ -29,10 +29,10 @@ public class KakaoPay {
 			sb.append("cid=TC0ONETIME");
 			sb.append("&partner_order_id=1001");
 			sb.append("&partner_user_id=aa");
-			sb.append("&item_name=deluxe");
+			sb.append("&item_name=Deluxe Room");
 			sb.append("&quantity=1");
-			sb.append("&total_amount=1000");
-			sb.append("&tax_free_amount=100");
+			sb.append("&total_amount=500000");
+			sb.append("&tax_free_amount=50000");
 			sb.append("&approval_url=http://localhost:8080/hotel/kakaopay/success.jsp");
 			sb.append("&cancel_url=http://localhost:8080/hotel/cancel");
 			sb.append("&fail_url=http://localhost:8080/hotel/fail");

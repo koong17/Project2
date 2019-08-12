@@ -58,7 +58,7 @@
             success : function(res){
                res = JSON.parse(res);
                console.log(res.next_redirect_pc_url);
-               popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200');
+               popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200, left=200');
                timer = setInterval(function(){
                   if(popup.closed){
                      location.href="http://localhost:8080/hotel/index.go"
