@@ -19,6 +19,9 @@
 <!-- Custom styles for this template -->
 <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+
 <!-- minjee.css -->
 <link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
@@ -54,32 +57,30 @@
 					<hr>
 					<div>
 						<table >
-							<tr><td style="text-align:right;"><b>체크 인</b></td> <td width="20"></td><td >${ checkIn }</td></tr>
-							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td>${ checkOut }</td></tr>
-							<tr><td style="text-align:right;"><b>객실금액</b></td> <td width="20"></td><td>KRW ${ priceview }</td></tr>
-							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ checkDate } 박</td></tr>
-							<tr><td style="text-align:right;"><b>투숙인원</b></td> <td width="20"></td><td style="text-align:center;">${ peopleNum } 명</td></tr>
+							<tr><td style="text-align:left;"><b>체크&emsp;인</b></td> <td width="30"></td><td >${ checkIn }</td></tr>
+							<tr><td style="text-align:left;"><b>체크아웃</b></td> <td width="30"></td><td>${ checkOut }</td></tr>
+							<tr><td style="text-align:left;"><b>객실금액</b></td> <td width="30"></td><td>KRW ${ priceview }</td></tr>
+							<tr><td style="text-align:left;"><b>숙박일수</b></td> <td width="30"></td><td style="text-align:left;">${ checkDate } 박</td></tr>
+							<tr><td style="text-align:left;"><b>투숙인원</b></td> <td width="30"></td><td style="text-align:left;">${ peopleNum } 명</td></tr>
 						</table>
 					</div>
-					<hr> <b>객실</b><br> ${ roomType } <br>
+					<hr> 
+					<b>객실</b> ${ roomType } <br>
 					<br> <img src="${ img }" width="600">
 					<hr> <br> <b><h4>총 예약금액 </h4><h5>KRW ${ total }</h5></b><br></li>
 			</ol>
 		</div>
-
-		<!-- 유의사항 등 넣으려면 이쪽에 넣기 -->
-		<br>
 		
 		<!-- 예약저장 버튼 -->
-		<div class="aa aa-button reservation-wrap reservation-button"
-			align="center">
-			<form action="reserveMypage.to">
+		<div align="center" style="margin: 30px 0px;">
+			<form action="reserveMypage.to" style="padding: 10 px 0 px;">
 				<input type="hidden" name="roomNum" value='${ roomNum }'>
 				<input type="hidden" name="checkIn" value='${ checkIn }'>
 				<input type="hidden" name="checkOut" value='${ checkOut }'>
 				<input type="hidden" name="peopleNum" value='${ peopleNum }'>
+				<input type="hidden" name="roomType" value='${ roomType }'>
 				<input type="hidden" name="nickname" value='${ sessionScope.nick }'>
-				<input type="submit" class="button" value="예약 완료">
+				<input type="submit" class="btn btn-outline-primary" value="예약 완료">
 			</form>
 		</div>
 

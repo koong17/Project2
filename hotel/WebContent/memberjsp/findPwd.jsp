@@ -21,41 +21,24 @@
 <link href="css/modern-business.css?after" rel="stylesheet">
 <script src="js/inho.js"></script>
 </head>
-<c:if test="${ sessionScope.id == null}">
-	<c:redirect url="index.go" />
-</c:if>
 <body>
 	<jsp:include page="/navigation.jsp"/>
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 833px;">
+        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 800px;">
           <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="updateform" action="updatePro.go" onsubmit="return updatevalidate();">
+						<form role="form" method="post" name="updateform" action="findpwd.go" onsubmit="return passvalidate();">
 							<fieldset>
-								<h2>회원 수정</h2>
+								<h2>비밀번호 찾기</h2>
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
-								<label name="emaillabel" id="emaillabel"
-										class="form-control input-lg" style="text-align: left;">${ sessionScope.id }</label>
-								<input type="hidden" name="email" id="email"
-										class="form-control input-lg" value="${ sessionScope.id }">
+								<input type="email" name="email" id="email"
+										class="form-control input-lg">
 								</div>
-								<div class="form-group">
-									<input type="text" name="nickname" id="nickname"
-										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()" maxlength="12">
-										<span id="nicknameTag" style="color: white;"></span>
-									<span id="resultNick" style="color: white;"></span>
-								</div>
-								<div class="form-group">
-									<input type="text" name="phone" id="phone"
-										class="form-control input-lg" 
-										placeholder="phone" required="required" onkeyup="phonevalidate()" maxlength="11">
-										<span id="phoneTag" style="color: white;"></span>
-								</div>		
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
 		                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
@@ -65,7 +48,7 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-lg btn-success btn-block"
-											value="회원수정">
+											value="메일 발송">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">

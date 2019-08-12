@@ -16,14 +16,14 @@ public class ConfirmFormAction implements CommandAction {
 		int peopleNum= Integer.parseInt(request.getParameter("peopleNum"));
 		String nick= request.getParameter("nick");
 		String roomType= request.getParameter("roomType");
-		String priceview= "", total="" , img="";
+		String priceview= "", total="" , img="", imgname="";
 		int price= 0;
 		int roomNum = 0;
 		
 		
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-		int checkDate = (int)(sdf.parse(checkOut).getTime()-sdf.parse(checkIn).getTime())/(24*60*60*1000);
+		int checkDate = (int)((sdf.parse(checkOut).getTime()-sdf.parse(checkIn).getTime())/(24*60*60*1000));
 		
 		DecimalFormat df = new DecimalFormat("#,##0");
 		

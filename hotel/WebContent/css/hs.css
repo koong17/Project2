@@ -1,7 +1,7 @@
 @charset "EUC-KR";
 
 .m {
-	    padding-right: 15px;
+	padding-right: 15px;
     padding-left: 15px;
 	display: inline-block;
 	
@@ -12,8 +12,7 @@
 }
 
 .marginAuto {
-	 margin: 0rem 2rem;
-
+	 margin: 0rem 3rem;
 }
 /* 
 

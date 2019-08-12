@@ -22,8 +22,10 @@
 </head>
 
 <body>
+
 <jsp:include page="navigation.jsp"/>
  
+
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">

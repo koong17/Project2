@@ -40,8 +40,13 @@
 <link rel="stylesheet" type="text/css" href="/hotel/css/daterangepicker.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
 
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 <!-- Hyesoo JavaScript -->
 <script src="/hotel/js/hidden.js"></script>
+
+<!-- minjee.css -->
+<link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
 </head>
 
@@ -61,13 +66,13 @@
 		
      	   <td class='m'>
  			<div class='input-group date'>
-				<input type="text" style="width: 220px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃">
-		</div></td>
+				<input type="text" style="width: 250px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃">
+			</div></td>
      	   
      	    
 			<!-- 인원수 -->
 			<td class='m'>
-			<select class="browser-default custom-select" id="peopleNum" required="required">
+			<select class="browser-default custom-select" style="width: 120px;" id="peopleNum" required="required">
 					<option selected >인원수</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -78,7 +83,8 @@
 			<!-- 검색 submit 버튼 -->
 			<td class='m'><div>
  			<button class="btn btn-primary" id="searchbtn">검색</button></div></td>
- 		</tr></table>
+ 			</tr>
+ 		</table>
 		</ul> 
 		<!-- </form> -->
 	</div>
@@ -136,36 +142,36 @@
 			$.each(data, function(index, roomNum ) {
 				console.log(roomNum);
 				if(roomNum=='1') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt="">';
+					html += '<div class="row"><div class="col-md-7"><a href="room1detail.to">' ;
+					html += '<img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt="">';
 					html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
 				    if( ${ sessionScope.id == null} ){
 	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("1 로그인 후 이용해 주십시오.");
 	                } else {
-					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">예약하기';
-					html += '<span class="glyphicon glyphicon-chevron-right"></span>';
+					html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe"><button type="button" class="btn btn-primary">예약하기</button>';
 	                }
 					html += '</a></div></div>';
 				} else if(roomNum=='2') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room2detail.to"> <img';
+					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/grand.jpg" alt=""></a></div>';
 					html += '<div class="col-md-5"><h3>Grand Deluxe</h3><p>좋은 좋은 디럭스</p>';
-					 if( ${ sessionScope.id == null} ){
-	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("2 로그인 후 이용해 주십시오.");
-	                } else {
-					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=grand">예약하기';
-					html += '<span class="glyphicon glyphicon-chevron-right"></span>';
-	                }
+						if( ${ sessionScope.id == null} ){
+							html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>';// alert("2 로그인 후 이용해 주십시오.");
+						} else {
+							html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=grand"><button type="button" class="btn btn-primary">예약하기</button>';
+						}
 					html += '</a></div></div>';
 				} else if(roomNum=='3') {
-					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <img class="img-fluid rounded mb-3 mb-md-0"'; 
-					html += 'src="/hotel/img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p>';
-				  	if( ${ sessionScope.id == null} ){
-	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("3 로그인 후 이용해 주십시오.");
-	                } else {
-						html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span>';
-	                }
-				  	html += '</a></div></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room3detail.to"> <img';
+					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/suite.jpg" alt="">';
+					html += '</a></div><div class="col-md-5"><h3>Suite</h3><p>제일 좋은 방</p>';
+						if( ${ sessionScope.id == null} ){
+							html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>';// alert("3 로그인 후 이용해 주십시오.");
+						} else {
+							html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=suite"><button type="button" class="btn btn-primary">예약하기</button>';
+						}
+					html += '</a></div></div>';
+
 				}
 				html += '<hr>';
 			});
