@@ -50,11 +50,6 @@ public class KakaoAPI {
 
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode : " + responseCode);
- 
-
-            
-            int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
