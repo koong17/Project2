@@ -62,7 +62,7 @@
 		<h1 class="mt-4 mb-3">예약 Reservation</h1>
 		<!-- 예약 바 -->
 		<ul class="breadcrumb">
-		<table><tr>
+		<table class="marginAuto"><tr>
 		
      	   <td class='m'>
  			<div class='input-group date'>
@@ -74,7 +74,6 @@
 			<td class='m'>
 			<select class="browser-default custom-select" style="width: 120px;" id="peopleNum" required="required">
 					<option selected >인원수</option>
-					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
@@ -113,7 +112,6 @@
 			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
 			            	
 			            	daterange: $("#daterange").val(),
-			            	
 			            	peopleNum: $("#peopleNum").val()
 			            },
 			            beforeSend:function() {
