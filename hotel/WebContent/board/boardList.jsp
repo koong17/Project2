@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
+
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,11 +67,11 @@
             <td align="center" width="50">제 목</td>
             <td align="center" width="50">작성자</td>
             
-      <c:forEach var="list"  items="${ list }">          
+      <c:forEach var="list" items="${ list }">          
       
          <tr height="30">
             <td align="center" width="50">
-               <c:out value="${ list.board_num }" />
+               <c:out value="${list.board_num}" />
             </td>
             <td width="250">
          

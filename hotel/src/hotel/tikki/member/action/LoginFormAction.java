@@ -13,7 +13,12 @@ public class LoginFormAction implements MemberAction{
 		HttpSession session = request.getSession();
 		String referer = request.getHeader("Referer");
 		System.out.println(referer + " ============================");
-		if (!referer.contains("joinPro.go")) { // 회원가입 완료 후에는 이전 세션이 아니라 무조건 loginform으로
+		if (!referer.contains("joinPro.go")) { 
+			session.setAttribute("referer", referer);
+	
+		} else if (!referer.contains(".admin")) { 
+			session.setAttribute("referer", referer);
+		} else if (!referer.contains(".findpwd.go")) { 
 			session.setAttribute("referer", referer);
 		} else {
 			session.setAttribute("referer", "index.go");
