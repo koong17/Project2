@@ -35,7 +35,7 @@
 							<a class="dropdown-item" href="update.go">회원수정</a>
 							<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a>  
 							<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
-							<a class="dropdown-item" href="reserveMypage.to?nickname=${ sessionScope.nick }">예약확인</a>
+							<a class="dropdown-item" href="mypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 				</c:if>
 				</li>
