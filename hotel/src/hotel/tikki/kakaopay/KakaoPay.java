@@ -1,71 +1,64 @@
 package hotel.tikki.kakaopay;
 
-import java.net.URI;
-import java.net.URISyntaxException;
- 
-import org.salem.domain.KakaoPayApprovalVO;
-import org.salem.domain.KakaoPayReadyVO;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
- 
-import lombok.extern.java.Log;
- 
-@Service
-@Log
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+@RequestMapping("/kakao")
 public class KakaoPay {
- 
-    private static final String HOST = "https://kapi.kakao.com";
+   
+   // 카카오페이 결제 준비
+   public ResponseEntity<String> kakaopay(HttpSession session, HttpServletRequest request) throws Exception{
+      
+      int cseq = Integer.parseInt(request.getParameter("cseq"));
+      int rseq = Integer.parseInt(request.getParameter("rseq"));
+      String uid = (String)session.getAttribute("uid");
+      
+      CourseVO course = cService.read(cseq);
+      
+      String params = "?cid=TC0ONETIME"
+            + "&partner_order_id=TEAM150"
+            + "&partner_user_id=" + uid
+            + "&item_name=" + course.getCname().replaceAll(" ", "")
+            + "&quantity=1"
+            + "&total_amount=" + course.getCprice()
+            + "&tax_free_amount=" + (Integer.parseInt(course.getCprice()) / 10 * 9)
+            + "&approval_url=http://localhost/payment/success?rseq=" + rseq
+            + "&cancel_url=http://localhost/payment/fail"
+            + "&fail_url=http://localhost/payment/fail"; 
+      
+      String response = "";
+      
+      try {
+         URL url = new URL("https://kapi.kakao.com/v1/payment/ready" + params);
+         URLConnection conn = url.openConnection();
+         conn.setRequestProperty("Authorization", "KakaoAK df38a1f49cee7fd61e93b9c0164a5c12");
+         conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+         ((HttpURLConnection)conn).setRequestMethod("POST");
+         conn.setDoInput(true);
+            conn.setDoOutput(true);
+         
+         
+         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+          
+           String inputLine;
+           while((inputLine = in.readLine()) != null) { // response 출력
+               response += inputLine;
+           }
     
-    private KakaoPayReadyVO kakaoPayReadyVO;
-    
-    public String kakaoPayReady() {
- 
-        RestTemplate restTemplate = new RestTemplate();
- 
-        // 서버로 요청할 Header
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "KakaoAK " + "admin key를 넣어주세요~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!");
-        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
-        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
-        
-        // 서버로 요청할 Body
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-        params.add("cid", "TC0ONETIME");
-        params.add("partner_order_id", "1001");
-        params.add("partner_user_id", "gorany");
-        params.add("item_name", "갤럭시S9");
-        params.add("quantity", "1");
-        params.add("total_amount", "2100");
-        params.add("tax_free_amount", "100");
-        params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
-        params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
- 
-         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
- 
-        try {
-            kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
-            
-            log.info("" + kakaoPayReadyVO);
-            
-            return kakaoPayReadyVO.getNext_redirect_pc_url();
- 
-        } catch (RestClientException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        return "/pay";
-        
-    }
-    
+           in.close();
+
+
+      } catch (Exception e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      
+      return new ResponseEntity<String>(response, HttpStatus.OK);
+   }
 }
