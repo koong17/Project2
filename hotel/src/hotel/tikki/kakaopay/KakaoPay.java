@@ -1,33 +1,46 @@
 package hotel.tikki.kakaopay;
 
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
- 
-import org.salem.domain.KakaoPayApprovalVO;
-import org.salem.domain.KakaoPayReadyVO;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
- 
-import lombok.extern.java.Log;
- 
-@Service
-@Log
+import java.net.URL;
+
 public class KakaoPay {
  
     private static final String HOST = "https://kapi.kakao.com";
     
-    private KakaoPayReadyVO kakaoPayReadyVO;
     
-    public String kakaoPayReady() {
- 
-        RestTemplate restTemplate = new RestTemplate();
- 
+    public String kakaoPayReady(String authorize_code) {
+    	String access_Token = "";
+    	String refresh_Token = "";
+        String reqURL = "https://kauth.kakao.com/v1/payment/ready";
+        
+        try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+            StringBuilder sb = new StringBuilder();
+            sb.append("cid=authorization_code");
+            sb.append("&client_id=ec92d2854a2481b9f4735c5c1164cc8b");
+            sb.append("&redirect_uri=http://10.10.10.177:8080/hotel/oauth");
+            sb.append("&code=" + authorize_code);
+            System.out.println(sb.toString());
+            bw.write(sb.toString());
+            bw.flush();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+		}
+        
+        
+        
+        
         // 서버로 요청할 Header
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + "admin key를 넣어주세요~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!");

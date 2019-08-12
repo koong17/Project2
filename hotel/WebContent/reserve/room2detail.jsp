@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<jsp:include page="/navigation.jsp"/>
+<jsp:include page="/navigation2.jsp"/>
 
 
 	<!-- Page Content -->
@@ -57,9 +57,8 @@
 				콘셉트로 구성한 프라이빗 바와 세계적인 수준의 침구류와 함께 생애 최고의 휴식을 경험해보시기 바랍니다.<br> <br>
 				<b>문의전화</b> | 02-1234-5678<br> <br>
 
-				<div class="aa aa-button reservation-wrap reservation-button"
-					align="center">
-					<a href="reserve.to" class="button">예약 하기</a>
+				<div align="center">
+					<a href="reserve.to" class="btn btn-outline-primary btn-block">예약 하기</a>
 				</div>
 
 				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. 아래 내용은 룸1 인포라 다시 넣든지 말든지 해야함 -->

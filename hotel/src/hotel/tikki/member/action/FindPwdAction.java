@@ -27,9 +27,17 @@ public class FindPwdAction implements MemberAction {
 		dao.memberUpdatePass(vo);
 
 		session.setAttribute("keyCode", keyCode);
-		MemberDAO.sendMail(email, subject, msg);
+		int result = dao.joinConfirmID(email); // 아이디가 있으면 1, 없으면 -1
 		
-		return "memberjsp/login.jsp";
+		request.setAttribute("result", result);
+		if (result==1) {
+			MemberDAO.sendMail(email, subject, msg);
+			
+		} 
+			
+		return "memberjsp/findPwdPro.jsp";
+		
+		
 	}
 
 }

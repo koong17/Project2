@@ -35,24 +35,21 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg')">
+        <div class="carousel-item active" style="background-image: url('img/hotel1.jpg')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>사진소개</h3>
-            <p>어쩌구저쩌구~~~</p>
+            <h3>TIKKI</h3>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item" style="background-image: url('img/hotel2.jpg')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Second Slide</h3>
-            <p>This is a description for the second slide.</p>
+          <h3>TIKKI</h3>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item" style="background-image: url('img/hotel3.jpg')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Third Slide</h3>
-            <p>This is a description for the third slide.</p>
+            <h3>TIKKI</h3>
           </div>
         </div>
       </div>
@@ -70,10 +67,10 @@
   <p>
   <!-- Page Content -->
   <div class="container">
-	<h1> kakaoPay api 이용하기 </h1>
+	<!-- <h1> kakaoPay api 이용하기 </h1>
 		<form method="post" action="/kakaoPay">
 		    <button>카카오페이로 결제하기</button>
-		</form>
+		</form> -->
 		
     <!-- Features Section -->
     <div class="row">

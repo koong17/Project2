@@ -12,13 +12,12 @@ public class LoginFormAction implements MemberAction{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String referer = request.getHeader("Referer");
-		System.out.println(referer + " ============================");
-		if (!referer.contains("joinPro.go")) { // 회원가입 완료 후에는 이전 세션이 아니라 무조건 loginform으로
-			session.setAttribute("referer", referer);
+		if (referer.contains("Pro.go")|| referer.contains(".admin") || referer.contains("find")) { 
+			session.setAttribute("referer", "index.go");
 		} else {
-			session.setAttribute("referer", "http://localhost:8080/hotel/index.go");
+			session.setAttribute("referer", referer);
 		}
-		
+		System.out.println(" ============================" + referer + " ============================");
 		return "memberjsp/login.jsp";
 	} 
 	
