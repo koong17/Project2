@@ -41,9 +41,7 @@ public class KakaoAPI {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=ec92d2854a2481b9f4735c5c1164cc8b");
-
             sb.append("&redirect_uri=http://10.10.10.178:8080/hotel/oauth");
-
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -51,10 +49,6 @@ public class KakaoAPI {
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode : " + responseCode);
  
-
-            
-            int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
