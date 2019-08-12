@@ -57,9 +57,8 @@
 				※스위트룸은 전화 예약만 가능합니다. <br>
 				<br> <b>문의전화</b> | 02-1234-5678<br> <br>
 
-				<div class="aa aa-button reservation-wrap reservation-button"
-					align="center">
-					<a href="reserve.to" class="button">예약 하기</a>
+				<div align="center">
+					<a href="reserve.to" class="btn btn-outline-primary btn-block">예약 하기</a>
 				</div>
 
 				<!-- Room info 넣어야하면 주석 풀어서 쓰기.. 아래 내용은 룸1 인포라 다시 넣든지 말든지 해야함 -->

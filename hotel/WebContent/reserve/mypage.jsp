@@ -66,9 +66,15 @@
 		<c:forEach var="list"  items="${ list }">
 			<div class="row">
 				<div class="col-md-7">
-					<a href="room1detail.jsp"> <img
-						class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">
-					</a>
+					<c:if test="${ list.room_type eq 'Deluxe' }">
+						<a href="room1detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt=""></a>
+					</c:if>
+					<c:if test="${ list.room_type eq 'Grand Deluxe' }">
+						<a href="room2detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/grand.jpg" alt=""></a>
+					</c:if>
+					<c:if test="${ list.room_type eq 'Suite' }">
+						<a href="room3detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/suite.jpg" alt=""></a>
+					</c:if>
 				</div>
 				<div class="col-md-5">
 				<table >
