@@ -54,9 +54,10 @@
     
     <!-- 검색 div -->
     
-    <form class="form-inline" action="memberSearchList.admin" method="get" style="float: right;">
-    		<select name="searchOption" class="form-control">
-     			<option value="id" selected>아이디</option>
+    <form class="form-inline" action="rsrvSearchList.admin" method="get" style="float: right;">
+    		<select name="rsrvOption" class="form-control">
+    			<option value="rsrv_nick" selected>닉네임</option>
+    			<option value="rsrv_num">예약번호</option>
     		</select>
     		<input type="text" name="search" class="form-control"  value="">&nbsp;
     		<input type="submit" class="btn btn-success" value="검색"> 
@@ -116,7 +117,7 @@
             </td>
             
             <td align="center" width="100">
-               <input type="button" value="확정변경" onclick=
+               <input class="btn btn-secondary" type="button" value="확정변경" onclick=
                	"document.location.href='rsrvUpdate.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }&rsrv_status=${ list.rsrv_status }'">
             </td>
             

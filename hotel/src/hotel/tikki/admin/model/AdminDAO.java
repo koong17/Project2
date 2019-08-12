@@ -107,9 +107,7 @@ public class AdminDAO {  // controller
 	} // getListAllCount() end
 	
 	
-	/* 여기서부터 내가 */
-	
-	
+
 	// 회원정보 관리에서 검색 하기
 	public List<MemberVO> getSearchResult( int start,  int end, String search, String option) {
 		Connection conn = null;
@@ -165,8 +163,10 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}				
 		return list;
-	} // getSelectAll(start, end) end
+	} // getSearchResult(start, end, search, option) end
+	
 
+	//회원관리테이블에서 총 갯수 가져오기
 	public int getSearchListAllCount(String search, String option) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -196,11 +196,9 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}	
 		return count;
-	}
-	
-	/* 여기까지 지형이가 */
-	
-
+		
+	}//getSearchListAllCount(search, option)
+		
 	// 예약 전체 가져오기
 	public List<RsrvVO> getSelectAllRsrv( int start,  int end ) {
 		Connection conn = null;
@@ -214,7 +212,8 @@ public class AdminDAO {  // controller
 			
 			sb.append("select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status, r");
 			sb.append(" from (select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status, rownum r");
-			sb.append(" from (select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status from reservation order by check_in, check_out, rsrv_num))");
+			sb.append(" from (select room_num, rsrv_num, check_in, check_out, rsrv_ppl, rsrv_nick, rsrv_status");
+			sb.append(" from reservation order by check_in, check_out, rsrv_num))");
 			sb.append(" where r>= ? and r<= ?");
 			
 			pstmt = conn.prepareStatement(sb.toString());
@@ -246,7 +245,7 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}				
 		return list;
-	} // getSelectAll(start, end) end
+	} // getSelectAllRsrv(start, end) end
 	
 	// 예약 상태 변경
 	public void update( int rsrv_num , String rsrv_status_input) {
@@ -293,8 +292,95 @@ public class AdminDAO {  // controller
 			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
 		}	
 		return count;
-	} // getListAllCount() end
+	} // getRsrvAllCount() end
 	
+
+	// 예약 관리에서 검색 하기
+	public List<MemberVO> getRsrvSearchResult( int start,  int end, String search, String option) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List  list = null;
+		try {
+			conn = getConnection();
+			StringBuffer  sb = new StringBuffer();
+			
+			if(option.equalsIgnoreCase("rsrv_nick")) {
+						
+				sb.append("SELECT ROOM_NUM, RSRV_NUM , CHECK_IN , CHECK_OUT, RSRV_PPL, RSRV_NICK, RSRV_STATUS, R");
+				sb.append(" FROM (SELECT ROOM_NUM, RSRV_NUM , CHECK_IN , CHECK_OUT, RSRV_PPL, RSRV_NICK, RSRV_STATUS, ROWNUM R");
+				sb.append(" FROM (SELECT ROOM_NUM, RSRV_NUM , CHECK_IN , CHECK_OUT, RSRV_PPL, RSRV_NICK, RSRV_STATUS FROM RESERVATION WHERE RSRV_NICK LIKE ? ORDER BY CHECK_IN, check_out, rsrv_num))");
+				sb.append(" WHERE R>= ? AND R<= ?");
+			} else if (option.equalsIgnoreCase("rsrv_num")) {
+				sb.append("select ROOM_NUM, RSRV_NUM , CHECK_IN , CHECK_OUT, RSRV_PPL, RSRV_NICK, RSRV_STATUS, r");
+				sb.append(" FROM (SELECT ROOM_NUM, RSRV_NUM , CHECK_IN , CHECK_OUT, RSRV_PPL, RSRV_NICK, RSRV_STATUS, ROWNUM R");
+				sb.append(" FROM (SELECT ROOM_NUM, RSRV_NUM , CHECK_IN , CHECK_OUT, RSRV_PPL, RSRV_NICK, RSRV_STATUS FROM RESERVATION WHERE RSRV_NUM LIKE ? ORDER BY CHECK_IN, check_out, rsrv_num))");
+				sb.append(" WHERE R>= ? AND R<= ?");
+			}
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+				
+			if( rs.next() ) {
+				list = new ArrayList(end);
+				
+				do {
+					RsrvVO vo = new RsrvVO();
+					vo.setRoom_num(rs.getInt(1));
+					vo.setRsrv_num(rs.getInt(2));
+					vo.setCheck_in(rs.getTimestamp(3));
+					vo.setCheck_out(rs.getTimestamp(4));
+					vo.setRsrv_ppl(rs.getInt(5));
+					vo.setRsrv_nick(rs.getString(6));
+					vo.setRsrv_status(rs.getString(7));
+					
+					list.add(vo);
+					
+				} while( rs.next() ) ;	
+			} // if end
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}				
+		return list;
+	} // getRsrvSearchResult(start, end, search, option) end
+	
+	
+	//예약관리 검색한 결과 총 갯수구하기
+	public int getRsrvSearchListAllCount(String search, String option) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			conn = getConnection();
+			
+			//현재 member 테이블의 레코드 수 구하기
+			if(option.equalsIgnoreCase("rsrv_nick")) {
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM RESERVATION WHERE RSRV_NICK LIKE ?" );
+			} else if (option.equalsIgnoreCase("rsrv_num")) {
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM RESERVATION WHERE RSRV_NUM LIKE ?" );
+			}
+			System.out.println(search);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) count = rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}	
+		return count;
+	}//getRsrvSearchListAllCount (search, option) end
+
 }
 
 

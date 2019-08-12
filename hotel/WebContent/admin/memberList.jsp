@@ -87,20 +87,22 @@
       
          <tr height="30">
             
-            <td align="center" width="100">
+             <td align="center" width="100">
                <c:out value="${ list.nickname }" /> <!-- 회원닉네임 -->
             </td>
             
-            <td align="center" width="200">
-            	<a href="memberList.do?id=${list.id }&pageNum=${ currentPage }">${ list.id } <!-- 회원이메일 --></a> 
+            <td align="center" width="200" style="color:#007bff;">
+            	<c:out value="${ list.id }" /><!-- 회원이메일 -->
             </td>
             
-            <td align="center" width="100">${ list.phone } <!-- 회원전화번호 -->
+            <td align="center" width="100">
+            	<c:out value="${ list.phone }" /><!-- 회원전화번호 -->
             </td>
             
             <td align="center" width="100">
                <c:out value="${ list.password }" /> <!-- 회원비밀번호-->
             </td>
+  
   
          </tr>
          
@@ -108,55 +110,49 @@
       
       </table>
    </c:if>
-   
-   <!-- 글쓰기 버튼 필요한지 안한지 모름 -->
-<%--    <c:if test="${ sessionScope.nick != null }">
-   <button class="btn btn-primary btn-lg" id="button-right-fix2"
-			onclick="window.location='writeForm.do?pageNum=${ pageNum }'">글쓰기</button>
-   </c:if> --%>
-   
+    
    
    <!-- 페이지 번호 -->
    <nav aria-label="Page navigation example">
 	<ul class="pagination">
     <c:if test="${ count > 0 }"> <!--  전체 페이지의 수를 연산 -->
-          <c:set  var="pageCount"  value="${ count / pageSize + (count % pageSize ==0 ? 0 : 1) }" />
+     
+          <c:set  var="pageCount"  value="${ count / pageSize + (count % pageSize ==0 ? 0 : 1) }" />  <!-- 5 -->
          <c:set  var="startPage"  value="${ 1 }" />  <!-- 차후 수정!! -->
          <c:set  var="pageBlock"  value="${ 5 }" />
          
          
-         <fmt:parseNumber var="result"  value="${ currentPage / pageBlock }" integerOnly="true" />
+         <fmt:parseNumber var="result"  value="${ currentPage / pageBlock }" integerOnly="true" /> <!-- 1 -->
          <c:if  test="${ currentPage % pageBlock != 0 }" > 
-            <c:set var="startPage" value="${ result * pageBlock + 1 }" />
+            <c:set var="startPage" value="${ result * pageBlock + 1}" /> <!-- 1 * 6 -->
          </c:if>
          
-         <c:if  test="${ currentPage % pageBlock == 0 }" > 
-            <c:set var="startPage" value="${ (result - 1) * pageBlock + 1 }" />
+         <c:if  test="${ currentPage % pageBlock == 0 }" >  
+            <c:set var="startPage" value="${ (result - 1) * pageBlock + 1 }" />  <!-- -1 * --> 
          </c:if>
       
          <c:set  var="endPage"  value="${ startPage + pageBlock -1 }" />
-   
-         <c:if test="${ endPage > pageCount }" >
+
+         <c:if test="${ endPage > pageCount }" > 
             <c:set  var="endPage"  value="${ pageCount }" />
          </c:if>
          
          <c:if test="${startPage >5 }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${ startPage-5  }"> Previous </a></li>
+				href="memberList.admin?pageNum=${ startPage-5  }"> Previous </a></li>
 		</c:if>
 
    
         
          <c:forEach var="i" begin="${startPage }" end="${ endPage }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${i}">${ i } </a></li>
+				href="memberList.admin?pageNum=${i}">${ i } </a></li>
 		 </c:forEach>
       
-
       
-      	<c:if test="${ endPage < pageCount }">
+      	<c:if test="${ endPage < pageCount-1 }">
 			<li class="page-item"><a class="page-link"
-				href="list.do?pageNum=${ startPage+5 }"> Next </a></li>
+				href="memberList.admin?pageNum=${ startPage+5 }"> Next </a></li>
 		</c:if>
    </c:if>
    </ul>

@@ -1,3 +1,9 @@
+$(document).ready(function() {
+	$('#headerheight').height(window.innerHeight-176);
+	console.log(window.innerHeight-176);
+});
+
+
 function emailvalidate() {
 	var email = document.getElementById("email").value;
 	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
@@ -37,7 +43,7 @@ function password2validate() {
 
 function nicknamevalidate() {
 	var nickname = document.getElementById("nickname").value;
-	var re =  /[a-z0-9가-힣]{2,12}/; // 닉네임 적합한지 검사할 정규식
+	var re =  /^[a-z0-9가-힣]{2,12}$/; // 닉네임 적합한지 검사할 정규식
 	var nicknameTag = document.getElementById("nicknameTag");
 	var result = false;
 	if (!re.test(nickname)) {
@@ -63,7 +69,7 @@ function phonevalidate() {
 }
 
 function validate() {
-       var re =  /[a-z0-9가-힣]{2,12}/; // 닉네임 적합한지 검사할 정규식
+       var re =  /^[a-z0-9가-힣]{2,12}$/; // 닉네임 적합한지 검사할 정규식
        var pass = /([^\s\w]|[A-z0-9]){8,16}/; // 패스워드 적합한지 검사할 정규식
        var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
        var re3 = /^[0-9]{9,11}$/; // 전화번호 적합한지 검사할 정규식
@@ -148,7 +154,7 @@ function createAjax() {
 //Ajax 객체를 이용한 데이터 전송 과정
 function ajaxIdSend() {
 	var check = emailvalidate();
-	if(check ) { // -1이 나오면 검색값 없음
+	if(check ) {
 		createAjax();
 		var email = document.getElementById("email").value;
 		xmlReq.onreadystatechange = callBack;

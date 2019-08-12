@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -20,7 +20,9 @@
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
 <link href="/hotel/css/boardForm.css?after" rel="stylesheet">
-<script src="js/inho.js"></script>
+<script src="vendor/jquery/jquery.min.js?after"></script>
+<script src="js/inho.js?after"></script>
+
 </head>
 <c:if test="${ sessionScope.id != null}">
 	<c:redirect url="index.go" />
@@ -30,7 +32,8 @@
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 761px;">
+
+        <div class="carousel-item active" style="background-image: url('img/koong.jpg');" id="headerheight">
           <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
@@ -42,25 +45,25 @@
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 									<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()">
+										class="form-control input-lg" placeholder="Email Address" required="required" onkeyup="ajaxIdSend()" maxlength="20">
 									<span id="emailTag" style="color: white;"></span>
 									<span id="resultId" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()">
+										class="form-control input-lg" placeholder="Password" required="required"  onkeyup="passwordvalidate()" maxlength="16">
 									<span id="passwordTag" style="color: white;"></span>	
 								</div>
 								<div class="form-group">
 									<input type="text" name="nickname" id="nickname"
-										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()">
+										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()" maxlength="12">
 										<span id="nicknameTag" style="color: white;"></span>
 									<span id="resultNick" style="color: white;"></span>
 								</div>
 								<div class="form-group">
 									<input type="text" name="phone" id="phone"
 										class="form-control input-lg" 
-										placeholder="phone" required="required" onkeyup="phonevalidate()">
+										placeholder="phone" required="required" onkeyup="phonevalidate()" maxlength="11">
 										<span id="phoneTag" style="color: white;"></span>
 								</div>		
 								<!-- <span class="button-checkbox">

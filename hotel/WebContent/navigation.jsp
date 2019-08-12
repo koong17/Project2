@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="vendor/bootstrap/css/inho.css?after" rel="stylesheet">
  <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -12,6 +13,7 @@
       <c:if test="${ sessionScope.id != null && sessionScope.kakaonick == null}">
 	      <a class="navbar-login" href="logout.go"><small>로그아웃</small></a> 
 	      <div>
+
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown">
 				<c:if test="${ sessionScope.nick == '관리자' }">
@@ -34,11 +36,12 @@
 							<a class="dropdown-item" href="update.go">회원수정</a>
 							<a class="dropdown-item" href="updatePassword.go">비밀번호수정</a>  
 							<a class="dropdown-item" href="delete.go">회원탈퇴</a> 
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							<a class="dropdown-item" href="reserveMypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 				</c:if>
 				</li>
 			</ul>
+
 	      </div>	
       </c:if>
       <c:if test="${ sessionScope.kakaonick != null}">
@@ -70,9 +73,9 @@
               객실소개
             </a><!--  포트폴리오1 -> single portfolio item -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="room1detail.html">room1</a>
-              <a class="dropdown-item" href="room2detail.html">room2</a>
-              <a class="dropdown-item" href="room3detail.html">room3</a>
+              <a class="dropdown-item" href="reserve/room1detail.jsp">room1</a>
+              <a class="dropdown-item" href="reserve/room2detail.jsp">room2</a>
+              <a class="dropdown-item" href="reserve/room3detail.jsp">room3</a>
             </div>
           </li>
             <li class="nav-item">

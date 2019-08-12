@@ -29,7 +29,7 @@
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 765px;">
+        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 833px;">
           <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
@@ -51,12 +51,12 @@
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password"
-										class="form-control input-lg" placeholder="Current Password" required="required"  onkeyup="passwordvalidate()">
+										class="form-control input-lg" placeholder="Current Password" required="required"  onkeyup="passwordvalidate()" maxlength="16">
 									<!-- <span id="passwordTag" style="color: white;"></span> -->	
 								</div>
 								<div class="form-group">
 									<input type="password" name="password2" id="password2"
-										class="form-control input-lg" placeholder="Reset Password" required="required" onkeyup="password2validate()">
+										class="form-control input-lg" placeholder="Reset Password" required="required" onkeyup="password2validate()" maxlength="16">
 									<span id="password2Tag" style="color: white;"></span>	
 								</div>
 								<!-- <span class="button-checkbox">

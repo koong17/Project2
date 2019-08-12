@@ -34,7 +34,11 @@ public class MemberListAction implements CommandAction {
 		} else {
 			list = Collections.EMPTY_LIST ;
 		}
-		
+		System.out.println("===================================");
+		System.out.println(count);
+		System.out.println(currentPage);
+		System.out.println(pageSize);
+		System.out.println("===================================");
 		// 글목록에 표시 할 글번호 
 		number = count - (currentPage - 1) * pageSize ;		 // ex) 9
 		
@@ -47,7 +51,7 @@ public class MemberListAction implements CommandAction {
 		request.setAttribute("pageSize", new Integer(pageSize));
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("list", list);
-				
+		
 		return "/admin/memberList.jsp";
 	}
 }
