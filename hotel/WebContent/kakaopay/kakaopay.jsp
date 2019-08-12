@@ -54,7 +54,7 @@
          var cseq = $('#cseq').val();
          var rseq = $('#rseq').val();
          $.ajax({
-            url : 'http://localhost:8080/kakao?cseq=' + cseq + '&rseq=' + rseq,
+            url : 'http://localhost:8080/pay?cseq=' + cseq + '&rseq=' + rseq,
             type : 'GET',
             success : function(res){
                res = JSON.parse(res);
