@@ -1,6 +1,7 @@
 package hotel.tikki.reserve.action;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ public class MypageAction implements CommandAction {
 		ReserveVO vo = new ReserveVO();
 		String nickname = request.getParameter("nickname");
 		String roomNum = request.getParameter("roomNum");
+		String roomType = request.getParameter("roomType");
 		if(roomNum != null) {
 			vo.setRoom_num(Integer.parseInt(roomNum));
 			vo.setCheck_in(request.getParameter("checkIn"));
@@ -43,6 +45,7 @@ public class MypageAction implements CommandAction {
 		}
 		
 		request.setAttribute("list", list);
+		
 		return "reserve/mypage.jsp";
 	}
 
