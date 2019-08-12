@@ -13,7 +13,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
-  <link href="vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+  <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
@@ -109,8 +109,8 @@
   <jsp:include page="/footer.jsp"/>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
+  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

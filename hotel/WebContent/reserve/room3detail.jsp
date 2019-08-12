@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<jsp:include page="/navigation.jsp"/>
+<jsp:include page="/navigation2.jsp"/>
 
 	<!-- Page Content -->
 	<div class="container">
