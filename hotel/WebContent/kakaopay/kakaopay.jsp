@@ -31,16 +31,17 @@
 
   
   <!--  kakao api -->
+  <script src="/hotel/vendor/jquery/jquery.min.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 
 <body>
 
-<jsp:include page="/navigation.jsp"/>
-
+<jsp:include page="/navigation2.jsp"/>
+	
   <!-- Page Content -->
-  <div class="container">
-  <a id="kakaopay-btn"></a>
+  <div class="container" style="height: 500px; text-align: center;">
+  <a id="kakaopay-btn" style="cursor: pointer; width: 200px; height: 83px; display: inline-block; margin-top: 200px; background-image: url(/hotel/img/payment_large.png);"></a>
 	<script>
       $(document).ready(function(){
          $('#kakaopay-btn').on('click', kakaopay);
@@ -51,24 +52,20 @@
       
       function kakaopay(e){
          e.preventDefault();
-         var cseq = $('#cseq').val();
-         var rseq = $('#rseq').val();
          $.ajax({
-            url : 'http://localhost:8080/pay?cseq=' + cseq + '&rseq=' + rseq,
+            url : 'http://localhost:8080/hotel/pay',
             type : 'GET',
             success : function(res){
                res = JSON.parse(res);
                console.log(res.next_redirect_pc_url);
-               popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=400, height=600, status=no, toolbar=no, location=no, top=200');
+               popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200');
                timer = setInterval(function(){
                   if(popup.closed){
-                     location.href="http://localhost/user/reserve/myreserve"
+                     location.href="http://localhost:8080/hotel/index.go"
                   }
                }, 1000)
             }
          })
-         
-         
       }
       </script>
   </div>
@@ -80,8 +77,7 @@
 <jsp:include page="/footer.jsp"/>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
