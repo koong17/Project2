@@ -12,18 +12,12 @@ public class LoginFormAction implements MemberAction{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String referer = request.getHeader("Referer");
-		System.out.println(referer + " ============================");
-		if (!referer.contains("joinPro.go")) { 
-			session.setAttribute("referer", referer);
-	
-		} else if (!referer.contains(".admin")) { 
-			session.setAttribute("referer", referer);
-		} else if (!referer.contains(".findpwd.go")) { 
+		if (!(referer.contains("joinPro.go")|| referer.contains(".admin") || referer.contains("find"))) { 
 			session.setAttribute("referer", referer);
 		} else {
 			session.setAttribute("referer", "index.go");
 		}
-		
+		System.out.println(" ============================" + referer + " ============================");
 		return "memberjsp/login.jsp";
 	} 
 	
