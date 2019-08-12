@@ -41,7 +41,6 @@ public class MemberKakaoController extends HttpServlet{
 		
 		System.out.println("login Controller : " + userInfo);
 		    
-		    // 클라이언트의 닉네임이 존재할 때 세션에 닉네임과 토큰등록
 		    if (userInfo.get("nickname") != null) {
 		    	session.setAttribute("kakaonick", userInfo.get("nickname"));
 		        session.setAttribute("nick", userInfo.get("nickname"));
