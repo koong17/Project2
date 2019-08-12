@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 function emailvalidate() {
 	var email = document.getElementById("email").value;
-	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
+	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식*
 	var emailTag = document.getElementById("emailTag");
 	var result = false;
 	if (!re.test(email)) {
