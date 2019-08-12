@@ -22,7 +22,7 @@
 							<a class="dropdown-item" href="../update.go">회원수정</a>
 							<a class="dropdown-item" href="../updatePassword.go">비밀번호수정</a>  
 							<a class="dropdown-item" href="../delete.go">회원탈퇴</a> 
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							<a class="dropdown-item" href="../mypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 					</li>
 				</ul>

@@ -139,16 +139,33 @@
 					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
 					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt="">';
 					html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
+				    if( ${ sessionScope.id == null} ){
+	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("1 로그인 후 이용해 주십시오.");
+	                } else {
 					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">예약하기';
-					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+					html += '<span class="glyphicon glyphicon-chevron-right"></span>';
+	                }
+					html += '</a></div></div>';
 				} else if(roomNum=='2') {
 					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
 					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div>';
 					html += '<div class="col-md-5"><h3>Grand Deluxe</h3><p>좋은 좋은 디럭스</p>';
+					 if( ${ sessionScope.id == null} ){
+	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("2 로그인 후 이용해 주십시오.");
+	                } else {
 					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=grand">예약하기';
-					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+					html += '<span class="glyphicon glyphicon-chevron-right"></span>';
+	                }
+					html += '</a></div></div>';
 				} else if(roomNum=='3') {
-					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <img class="img-fluid rounded mb-3 mb-md-0"'; 
+					html += 'src="/hotel/img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p>';
+				  	if( ${ sessionScope.id == null} ){
+	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("3 로그인 후 이용해 주십시오.");
+	                } else {
+						html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span>';
+	                }
+				  	html += '</a></div></div>';
 				}
 				html += '<hr>';
 			});

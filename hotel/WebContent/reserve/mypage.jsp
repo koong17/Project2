@@ -72,31 +72,39 @@
 					</a>
 				</div>
 				<div class="col-md-5">
-					<h3>예약 번호&nbsp;&nbsp;<c:out value="${ list.rsrv_num }" /></h3>
+				<table >
+				<tr>
+					<td><h5>예약 번호</h5></td><td width="10"></td><td><h3><c:out value="${ list.rsrv_num }" /></h3></td>
+				</tr>
 					<p>
-						<table >
-							<tr><td style="text-align:left;"><b>룸타입</b></td> <td width="20"></td><td style="text-align:center;">${ list.room_type }</td></tr>
-							<tr><td style="text-align:left;"><b>체크 인</b></td> <td width="20"></td><td >${ list.check_in }</td></tr>
-							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td>${ list.check_out }</td></tr>
+							<tr><td style="text-align:right;"><b>룸타입</b></td> <td width="20"></td><td style="text-align:center;">${ list.room_type }</td></tr>
+							<tr><td style="text-align:right;"><b>체크 인</b></td> <td width="20"></td><td style="text-align:center;">${ list.check_in }</td></tr>
+							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td style="text-align:center;">${ list.check_out }</td></tr>
 							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ list.check_date } 박</td></tr>
 							<tr><td style="text-align:right;"><b>투숙인원</b></td> <td width="20"></td><td style="text-align:center;">${ list.rsrv_ppl } 명</td></tr>
-							<tr><td style="text-align:right;"><b>객실금액</b></td> <td width="20"></td><td >KRW ${ list.price }</td></tr>
+							<tr><td style="text-align:right;"><b>객실금액</b></td> <td width="20"></td><td style="text-align:center;">KRW ${ list.price }</td></tr>
 							<tr><td style="text-align:right;"><b>예약현황</b></td> <td width="20"></td>
 								<td style="text-align:center;"> 
 									<c:if test="${ list.rsrv_status == 'n' }"> 예약대기</c:if>
 									<c:if test="${ list.rsrv_status == 'y' }"> 예약완료</c:if>
 								</td>
 							</tr>
-							<tr>
-								<td colspan="2" align="right">
-									<div>
-										 <c:if test="${ list.rsrv_status == 'n' }">
+							<c:if test="${ list.rsrv_status == 'n' }">
+								<tr>
+									<td align="right"><b>예금주</b></td><td width="20"></td><td style="text-align:center;">TIKKI</td>
+								</tr>
+								<tr>
+								<td align="right"><b>계좌번호</b></td><td width="20"></td><td style="text-align:center;">3333-12-5459545</td>
+								</tr>
+								<tr>
+									<td colspan="3" align="right">
+										<div>
 						  					  <input type="button" value="예약취소" onclick=
-               									"document.location.href='reserveDelete.to?rsrv_num=${ list.rsrv_num }'">
-										</c:if>
-  					 				</div>
-								</td>
-							</tr>
+	              									"document.location.href='reserveDelete.to?rsrv_num=${ list.rsrv_num }'">
+	  					 				</div>
+									</td>
+								</tr>
+							</c:if>
 						</table>
 					</div>
 					
