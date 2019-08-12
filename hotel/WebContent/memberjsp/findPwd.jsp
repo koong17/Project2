@@ -32,7 +32,7 @@
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="passwordfindform" action="findpwd.go" onsubmit="return passvalidate();">
+						<form role="form" method="post" name="passwordfindform" action="findpwd.go">
 							<fieldset>
 								<h2>비밀번호 찾기</h2>
 								<!-- <hr class="colorgraph"> -->
