@@ -23,7 +23,7 @@ public class ConfirmFormAction implements CommandAction {
 		
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-		int checkDate = (int)(sdf.parse(checkOut).getTime()-sdf.parse(checkIn).getTime())/(24*60*60*1000);
+		int checkDate = (int)((sdf.parse(checkOut).getTime()-sdf.parse(checkIn).getTime())/(24*60*60*1000));
 		
 		DecimalFormat df = new DecimalFormat("#,##0");
 		

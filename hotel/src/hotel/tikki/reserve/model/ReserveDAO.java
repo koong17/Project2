@@ -99,7 +99,7 @@ public class ReserveDAO {
  							case 3: price = 500000; room_type="Suite"; break;
 						}
  						
- 						int checkDate = (int)(sdf.parse(check_out).getTime()-sdf.parse(check_in).getTime())/(24*60*60*1000);
+ 						int checkDate = (int)((sdf.parse(check_out).getTime()-sdf.parse(check_in).getTime())/(24*60*60*1000));
  						
  						vo.setCheck_date(Integer.toString(checkDate));
  						vo.setPrice(df.format(price * checkDate));

@@ -106,7 +106,6 @@
 							</c:if>
 						</table>
 					</div>
-					
 				</div>
 				<hr>
 			</c:forEach>

@@ -57,14 +57,15 @@
 					<hr>
 					<div>
 						<table >
-							<tr><td style="text-align:left;"><b>체크&emsp;인</b></td> <td width="50"></td><td >${ checkIn }</td></tr>
-							<tr><td style="text-align:left;"><b>체크아웃</b></td> <td width="50"></td><td>${ checkOut }</td></tr>
-							<tr><td style="text-align:left;"><b>객실금액</b></td> <td width="50"></td><td>KRW ${ priceview }</td></tr>
-							<tr><td style="text-align:left;"><b>숙박일수</b></td> <td width="50"></td><td style="text-align:left;">${ checkDate } 박</td></tr>
-							<tr><td style="text-align:left;"><b>투숙인원</b></td> <td width="50"></td><td style="text-align:left;">${ peopleNum } 명</td></tr>
+							<tr><td style="text-align:left;"><b>체크&emsp;인</b></td> <td width="30"></td><td >${ checkIn }</td></tr>
+							<tr><td style="text-align:left;"><b>체크아웃</b></td> <td width="30"></td><td>${ checkOut }</td></tr>
+							<tr><td style="text-align:left;"><b>객실금액</b></td> <td width="30"></td><td>KRW ${ priceview }</td></tr>
+							<tr><td style="text-align:left;"><b>숙박일수</b></td> <td width="30"></td><td style="text-align:left;">${ checkDate } 박</td></tr>
+							<tr><td style="text-align:left;"><b>투숙인원</b></td> <td width="30"></td><td style="text-align:left;">${ peopleNum } 명</td></tr>
 						</table>
 					</div>
-					<hr> <b>객실</b><br> ${ roomType } <br>
+					<hr> 
+					<b>객실</b> ${ roomType } <br>
 					<br> <img src="${ img }" width="600">
 					<hr> <br> <b><h4>총 예약금액 </h4><h5>KRW ${ total }</h5></b><br></li>
 			</ol>
