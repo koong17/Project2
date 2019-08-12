@@ -46,11 +46,6 @@
 						<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
 						<p>
 						<!-- <hr class="colorgraph"> -->
-						<c:if test="${ result == -1 }">
-							<script type="text/javascript">
-								alert("아이디나 비밀번호가 틀렸습니다.");
-							</script>
-						</c:if>
 						<div class="form-group">
 							<input type="email" name="email" id="email"
 								class="form-control input-lg" placeholder="Email Address"
