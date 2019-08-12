@@ -69,7 +69,7 @@
   <!-- error 를 처리하는 페이지를 만들어서 처리 -->
   <error-page>
   		<error-code>404</error-code>
-  		<location>/404.html</location>
+  		<location>/404.jsp</location>
   </error-page>
   
   <welcome-file-list>

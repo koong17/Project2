@@ -16,7 +16,7 @@ public class LoginFormAction implements MemberAction{
 		if (!referer.contains("joinPro.go")) { // 회원가입 완료 후에는 이전 세션이 아니라 무조건 loginform으로
 			session.setAttribute("referer", referer);
 		} else {
-			session.setAttribute("referer", "http://localhost:8080/hotel/index.go");
+			session.setAttribute("referer", "index.go");
 		}
 		
 		return "memberjsp/login.jsp";
