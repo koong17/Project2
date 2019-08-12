@@ -123,10 +123,10 @@ public class ReserveDAO {
       ResultSet rs = null;
       ArrayList<Integer> roomList = new ArrayList<Integer>();
       
-      String sql = 	"SELECT R.ROOM_NUM FROM ROOMS R WHERE r.max_ppl>=? and r.room_num NOT IN" + 
+      String sql = 	"SELECT R.ROOM_NUM FROM ROOMS R WHERE R.MAX_PPL>=? AND R.ROOM_NUM NOT IN" + 
       				" (SELECT B.ROOM_NUM FROM RESERVATION B WHERE NOT" + 
       				" (B.CHECK_IN>TO_DATE(?, 'YYYY-MM-DD') OR B.CHECK_OUT-1<TO_DATE(?, 'YYYY-MM-DD')))" + 
-      				" ORDER BY R.ROOM_num";
+      				" ORDER BY R.ROOM_NUM";
       
       try {
          conn = getConnection();
