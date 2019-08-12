@@ -9,7 +9,7 @@ import java.net.URLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@RequestMapping("/kakao")
+@RequestMapping("/kakao") // java로 바꾸기
 public class KakaoPay {
    
    // 카카오페이 결제 준비
