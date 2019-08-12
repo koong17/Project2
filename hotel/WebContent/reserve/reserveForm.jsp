@@ -141,13 +141,13 @@
 			$.each(data, function(index, roomNum ) {
 				console.log(roomNum);
 				if(roomNum=='1') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.to"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt="">';
+					html += '<div class="row"><div class="col-md-7"><a href="room1detail.to">' ;
+					html += '<img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt="">';
 					html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
 				    if( ${ sessionScope.id == null} ){
 	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("1 로그인 후 이용해 주십시오.");
 	                } else {
-					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">class="btn btn-primary">예약하기</button>';
+					html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe"><button type="button" class="btn btn-primary">예약하기</button>';
 	                }
 					html += '</a></div></div>';
 				} else if(roomNum=='2') {

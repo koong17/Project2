@@ -83,17 +83,17 @@
 							<tr><td style="text-align:left;"><b>투숙인원</b></td> <td width="30"></td><td style="text-align:left;">${ list.rsrv_ppl } 명</td></tr>
 							<tr><td style="text-align:left;"><b>객실금액</b></td> <td width="30"></td><td style="text-align:left;">KRW ${ list.price }</td></tr>
 							<tr><td style="text-align:left;"><b>예약현황</b></td> <td width="30"></td>
-								<td style="text-align:center;"> 
+								<td style="text-align:left;"> 
 									<c:if test="${ list.rsrv_status == 'n' }"> 예약대기</c:if>
 									<c:if test="${ list.rsrv_status == 'y' }"> 예약완료</c:if>
 								</td>
 							</tr>
 							<c:if test="${ list.rsrv_status == 'n' }">
 								<tr>
-									<td align="right"><b>예금주</b></td><td width="20"></td><td style="text-align:center;">TIKKI</td>
+									<td align="left"><b>예금주</b></td><td width="20"></td><td style="text-align:left;">TIKKI</td>
 								</tr>
 								<tr>
-								<td align="right"><b>계좌번호</b></td><td width="20"></td><td style="text-align:center;">3333-12-5459545</td>
+								<td align="left"><b>계좌번호</b></td><td width="20"></td><td style="text-align:left;">3333-12-5459545</td>
 								</tr>
 								<tr>
 									<td colspan="3" align="right">
