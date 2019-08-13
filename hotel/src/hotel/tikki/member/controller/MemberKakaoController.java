@@ -37,18 +37,18 @@ public class MemberKakaoController extends HttpServlet{
 	public String login(HttpServletRequest request, HttpServletResponse response, String code, HttpSession session) {
 		KakaoAPI kakaoapi = new KakaoAPI();
 		String access_Token = kakaoapi.getAccessToken(code);
+		System.out.println(access_Token);
 		HashMap<String, Object> userInfo = kakaoapi.getUserInfo(access_Token);
 		
 		System.out.println("login Controller : " + userInfo);
 		    
-		    // 클라이언트의 닉네임이 존재할 때 세션에 닉네임과 토큰등록
 		    if (userInfo.get("nickname") != null) {
 		    	session.setAttribute("kakaonick", userInfo.get("nickname"));
 		        session.setAttribute("nick", userInfo.get("nickname"));
 		        session.setAttribute("id", userInfo.get("nickname"));
 		        session.setAttribute("access_Token", access_Token);
 		    }
-		return "index.jsp";
+		return "/memberjsp/loginkakao.jsp";
 	}
 	
 }
