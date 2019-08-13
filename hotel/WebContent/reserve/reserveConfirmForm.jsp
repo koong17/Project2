@@ -101,7 +101,7 @@
       function kakaopay(e){
          e.preventDefault();
          $.ajax({
-            url : 'http://localhost:8080/hotel/pay',
+            url : 'http://10.10.10.178:8080/hotel/pay',
             type : 'GET',
             data : {
             	roomNum: '${ roomNum }',
@@ -110,7 +110,7 @@
             	peopleNum:'${ peopleNum }',
             	roomType: '${ roomType }',
             	nickname: '${ sessionScope.nick }',
-            	priceview: '${ priceview }'
+            	priceview: '${ total }'
             },
             success : function(res){
                res = JSON.parse(res);
@@ -118,7 +118,7 @@
                popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200, left=200');
                timer = setInterval(function(){
                   if(popup.closed){
-                     location.href="http://localhost:8080/hotel/mypage.to?nickname=${sessionScope.nick}"
+                     location.href="http://10.10.10.178:8080/hotel/mypage.to?nickname=${sessionScope.nick}"
                   }
                }, 1000);
             }
