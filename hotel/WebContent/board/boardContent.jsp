@@ -299,7 +299,7 @@
 			<!-- ---------------------------------------------------------------------------------------- -->
 
 			<tr>
-				<td height="300" width = "1000" colspan="6"><pre>${ vo.board_content }</pre></td>
+				<td height="300" width = "1000" colspan="6">${ vo.board_content }</td>
 			</tr>
 			
 			<c:if test="${ sessionScope.id != null && sessionScope.nick == '관리자'}">
