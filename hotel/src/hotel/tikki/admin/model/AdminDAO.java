@@ -381,6 +381,43 @@ public class AdminDAO {  // controller
 		return count;
 	}//getRsrvSearchListAllCount (search, option) end
 
+	public void memberListDelete(String nickname) {
+		Connection conn = null;
+		PreparedStatement pstmt=null;
+				
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("DELETE FROM MEMBER WHERE NICKNAME = ?");
+			pstmt.setString(1, nickname);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}				
+		
+	}
+	
+	public void rsrvListDelete(int rsrv_num) {
+		Connection conn = null;
+		PreparedStatement pstmt=null;
+				
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("DELETE FROM RESERVATION WHERE RSRV_NUM = ?");
+			pstmt.setInt(1, rsrv_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);			CloseUtil.close(conn);
+		}				
+		
+	}
+	
+
 }
 
 
