@@ -82,7 +82,8 @@
             <td align="center" >체크아웃</td>
             <td align="center" >예약 인원</td>
             <td align="center" >예약자 닉네임</td>
-            <td align="center" >확정 여부</td>
+            <td align="center" >예약 확정</td>
+            <td align="center">삭제</td>
           </tr>
             
       <c:forEach var="list"  items="${ list }">          
@@ -111,16 +112,17 @@
             <td align="center" width="100">
                <c:out value="${ list.rsrv_nick }" /> <!-- 예약자 닉네임-->
             </td>
+
             
             <td align="center" width="100">
-               <c:out value="${ list.rsrv_status }" /> <!-- 확정 여부-->
-            </td>
-            
-            <td align="center" width="100">
-               <input class="btn btn-secondary" type="button" value="확정변경" onclick=
+               <input class="btn btn-secondary" type="button" value="${ list.rsrv_status }" onclick=
                	"document.location.href='rsrvUpdate.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }&rsrv_status=${ list.rsrv_status }'">
             </td>
             
+            <td align="center" width="100">
+            	<input type='button' value='삭제' class='btn btn-secondary' 
+            		  onclick="document.location.href='rsrvListDeleteForm.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }'">
+            </td>
             
   
          </tr>
