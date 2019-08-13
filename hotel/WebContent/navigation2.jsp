@@ -23,7 +23,7 @@
 							<a class="dropdown-item" href="../update.go">회원수정</a>
 							<a class="dropdown-item" href="../updatePassword.go">비밀번호수정</a>  
 							<a class="dropdown-item" href="../delete.go">회원탈퇴</a> 
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							<a class="dropdown-item" href="../mypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 					</li>
 				</ul>
@@ -58,9 +58,9 @@
               객실소개
             </a><!--  포트폴리오1 -> single portfolio item -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/hotel/reserve/room1detail.jsp">room1</a>
-              <a class="dropdown-item" href="/hotel/reserve/room2detail.jsp">room2</a>
-              <a class="dropdown-item" href="/hotel/reserve/room3detail.jsp">room3</a>
+              <a class="dropdown-item" href="/hotel/room1detail.to">Deluxe</a>
+              <a class="dropdown-item" href="/hotel/room2detail.to">Grand Deluxe</a>
+              <a class="dropdown-item" href="/hotel/room3detail.to">Suite</a>
             </div>
           </li>
             <li class="nav-item">

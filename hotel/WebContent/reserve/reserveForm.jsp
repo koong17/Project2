@@ -32,29 +32,21 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/hotel/vendor/jquery/jquery.js"></script>
 <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 
 <!-- datePicker -->
-<!-- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="/hotel/js/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="/hotel/css/daterangepicker.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css?after" />
-</head>
 
-<!-- 
-<script src="https://code.jquery.com/jquery-3.2.1.js" > </script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" ></script> 
--->
-
-
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 <!-- Hyesoo JavaScript -->
 <script src="/hotel/js/hidden.js"></script>
+
+<!-- minjee.css -->
+<link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
 </head>
 
@@ -70,28 +62,17 @@
 		<h1 class="mt-4 mb-3">예약 Reservation</h1>
 		<!-- 예약 바 -->
 		<ul class="breadcrumb">
-		<table><tr>
-			<!-- 체크인 -->
-			<div class ='col-md-3'>
-            <div class='input-group date ' id='datetimepicker6'>
-                <input type="text" class="form-control" placeholder="체크인" id="checkIn" />
-                <span class="input-group-addon">
-               		<span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div></div>
-			<!-- 체크아웃 -->
-			<div class ='col-md-3'>
-            <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" placeholder="체크아웃" id="checkOut" />
-                 <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-     	   </div></div>
+		<table class="marginAuto"><tr>
+		
+     	   <td class='m'>
+ 			<div class='input-group date'>
+				<input type="text" style="width: 250px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃">
+			</div></td>
      	   
      	    
 			<!-- 인원수 -->
 			<td class='m'>
-			<select class="browser-default custom-select" id="peopleNum" required="required">
+			<select class="browser-default custom-select" style="width: 120px;" id="peopleNum" required="required">
 					<option selected >인원수</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -102,7 +83,8 @@
 			<!-- 검색 submit 버튼 -->
 			<td class='m'><div>
  			<button class="btn btn-primary" id="searchbtn">검색</button></div></td>
- 		</tr></table>
+ 			</tr>
+ 		</table>
 		</ul> 
 		<!-- </form> -->
 	</div>
@@ -119,15 +101,18 @@
 	
 		$(document).ready(function(){
 			$("#searchbtn").click(function() {
-				// $("#showShow").show();
-				if($("#checkIn").val() != "" && $("#checkOut").val() != "" && $("#peopleNum").val() != "인원수") {
+				console.log($( '#daterange' ).val().substr(0,10));
+				console.log($( '#daterange' ).val().substr(13,23));
+				if($( '#daterange' ).val().substr(0,10) == $( '#daterange' ).val().substr(13,23)) {
+					alert("체크인 날짜와 체크아웃 날짜가 같습니다. 다시 선택해주세요.");
+            	} else if($("#daterange").val() != "" && $("#peopleNum").val() != "인원수") {
 					 $.ajax({
 			            url:"/hotel/reserveForm.to",			//"/hotel/cmntUpdate.do"
 			            
 			            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
 			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
-			            	checkIn: $("#checkIn").val(),
-			            	checkOut: $("#checkOut").val(),
+			            	
+			            	daterange: $("#daterange").val(),
 			            	peopleNum: $("#peopleNum").val()
 			            },
 			            beforeSend:function() {
@@ -156,19 +141,36 @@
 			$.each(data, function(index, roomNum ) {
 				console.log(roomNum);
 				if(roomNum=='1') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt="">';
+					html += '<div class="row"><div class="col-md-7"><a href="room1detail.to">' ;
+					html += '<img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt="">';
 					html += '</a></div><div class="col-md-5"><h3>Deluxe</h3><p>그냥 그냥 디럭스</p>';
-					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe">예약하기';
-					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+				    if( ${ sessionScope.id == null} ){
+	                     html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>'; //alert("1 로그인 후 이용해 주십시오.");
+	                } else {
+					html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=deluxe"><button type="button" class="btn btn-primary">예약하기</button>';
+	                }
+					html += '</a></div></div>';
 				} else if(roomNum=='2') {
-					html += '<div class="row"><div class="col-md-7"><a href="room1detail.jsp"> <img';
-					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room2detail.to"> <img';
+					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/grand.jpg" alt=""></a></div>';
 					html += '<div class="col-md-5"><h3>Grand Deluxe</h3><p>좋은 좋은 디럭스</p>';
-					html += '<a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=grand">예약하기';
-					html += '<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+						if( ${ sessionScope.id == null} ){
+							html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>';// alert("2 로그인 후 이용해 주십시오.");
+						} else {
+							html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=grand"><button type="button" class="btn btn-primary">예약하기</button>';
+						}
+					html += '</a></div></div>';
 				} else if(roomNum=='3') {
-					html += '<div class="row"><div class="col-md-7"><a href="room3detail.jsp"> <img class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/koong.jpg" alt=""></a></div><div class="col-md-5"><h3>Suite Room</h3><p>제일 제일 좋은 룸</p><a class="btn btn-primary" href="confirmForm.to?checkIn='+$( '#checkIn' ).val()+'&checkOut='+$( "#checkOut" ).val()+'&peopleNum='+$( "#peopleNum" ).val()+'&nick='+'${ sessionScope.nick}'+'&roomType=suite">예약하기<span class="glyphicon glyphicon-chevron-right"></span></a></div></div>';
+					html += '<div class="row"><div class="col-md-7"><a href="room3detail.to"> <img';
+					html += ' class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/suite.jpg" alt="">';
+					html += '</a></div><div class="col-md-5"><h3>Suite</h3><p>제일 좋은 방</p>';
+						if( ${ sessionScope.id == null} ){
+							html += '<a href="/hotel/login.go"><button type="button" class="btn btn-primary">예약하기</button></a></div></div>';// alert("3 로그인 후 이용해 주십시오.");
+						} else {
+							html += '<a href="confirmForm.to?checkIn='+$( '#daterange' ).val().substr(0,10)+'&checkOut='+$( '#daterange' ).val().substr(13,23)+'&peopleNum='+$("#peopleNum").val()+'&nick='+'${ sessionScope.nick }'+'&roomType=suite"><button type="button" class="btn btn-primary">예약하기</button>';
+						}
+					html += '</a></div></div>';
+
 				}
 				html += '<hr>';
 			});
