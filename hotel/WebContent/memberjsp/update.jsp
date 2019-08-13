@@ -19,6 +19,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
+<script src="vendor/jquery/jquery.min.js?after"></script>
 <script src="js/inho.js"></script>
 </head>
 <c:if test="${ sessionScope.id == null}">
