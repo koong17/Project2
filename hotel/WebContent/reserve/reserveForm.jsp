@@ -16,9 +16,6 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet">
 
-<!-- hs CSS -->
-<link href="/hotel/css/hs.css?after" rel="stylesheet">
-
 <!-- Bootstrap core CSS -->
 <link href="/hotel/vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 
@@ -33,6 +30,9 @@
 <script src="/hotel/vendor/jquery/jquery.js"></script>
 <script src="/hotel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<!-- hs CSS -->
+<link href="/hotel/css/hs.css?after" rel="stylesheet">
+
 <!-- datePicker -->
 <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -40,10 +40,11 @@
 <link rel="stylesheet" type="text/css" href="/hotel/css/daterangepicker.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
 
-<!-- inho CSS -->
-<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 <!-- Hyesoo JavaScript -->
 <script src="/hotel/js/hidden.js"></script>
+
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
 
 <!-- minjee.css -->
 <link href="/hotel/css/minjee.css?after" rel="stylesheet">
@@ -87,7 +88,7 @@
  		</table>
 			
 		</ul> 
-		<!-- </form> -->
+		<!-- </form> 예약바 끝 -->
  	<!-- 객실정보 -->
 			<div id="showShow" ></div>
 	</div>
@@ -103,6 +104,8 @@
 	    });
 	
 		$(document).ready(function(){
+			
+			
 			$("#searchbtn").click(function() {
 				console.log($( '#daterange' ).val().substr(0,10));
 				console.log($( '#daterange' ).val().substr(13,23));

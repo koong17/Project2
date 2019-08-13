@@ -20,6 +20,23 @@
 	<!-- Custom styles for this template -->
 	<link href="css/modern-business.css?after" rel="stylesheet">
 	
+	<!-- hs CSS -->
+	<link href="/hotel/css/hs.css?after" rel="stylesheet">
+	
+	
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<!-- datePicker -->
+	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="/hotel/js/daterangepicker.js"></script>
+	<link rel="stylesheet" type="text/css" href="/hotel/css/daterangepicker.css?after" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
+	
+	<!-- Hyesoo JavaScript -->
+	<script src="/hotel/js/hidden.js"></script>
 </head>
 
 <body>
@@ -72,6 +89,34 @@
     <!-- Features Section -->
     <div class="row">
       <div class="col-lg-6">
+      	<!-- 예약 바 -->
+		<ul class="breadcrumb">
+		<table><tr>
+		
+     	   <td class='m'>
+ 			<div class='input-group date'>
+				<input type="text" style="width: 250px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃">
+			</div></td>
+     	   
+     	    
+			<!-- 인원수 -->
+			<td class='m'>
+			<select class="browser-default custom-select" style="width: 120px;" id="peopleNum" required="required">
+					<option selected >인원수</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+			</select></td>
+			
+			<!-- 검색 submit 버튼 -->
+			<td class='m'><div>
+ 			<button class="btn btn-primary" id="searchbtn" onclick="">검색</button></div></td>
+ 			</tr>
+ 		</table>
+			
+		</ul> 
+		<!-- </form> 예약바 끝 -->
         <h2>팀4</h2>
         <p>테스트임니다</p>
         <ul>
@@ -95,9 +140,6 @@
 
   <jsp:include page="footer.jsp"/>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
   <!--  kakaologout js -->
   <script src="js/inho.js"></script>
