@@ -71,7 +71,7 @@
 			</ol>
 		</div>
 		
-		<!-- 예약저장 버튼 -->
+		<!-- 무통장입금 버튼 -->
 		<div align="center" style="margin: 30px 0px;">
 			<form action="reserveMypage.to" style="padding: 10 px 0 px;">
 				<input type="hidden" name="roomNum" value='${ roomNum }'>
@@ -80,7 +80,7 @@
 				<input type="hidden" name="peopleNum" value='${ peopleNum }'>
 				<input type="hidden" name="roomType" value='${ roomType }'>
 				<input type="hidden" name="nickname" value='${ sessionScope.nick }'>
-				<input type="submit" class="btn btn-outline-primary" value="예약 완료">
+				<input type="submit" class="btn btn-outline-primary" value="무통장 입금">
 			</form>
 		</div>
 
