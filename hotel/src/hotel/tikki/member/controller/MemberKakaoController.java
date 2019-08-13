@@ -48,7 +48,7 @@ public class MemberKakaoController extends HttpServlet{
 		        session.setAttribute("id", userInfo.get("nickname"));
 		        session.setAttribute("access_Token", access_Token);
 		    }
-		return "index.jsp";
+		return "/memberjsp/loginkakao.jsp";
 	}
 	
 }
