@@ -125,7 +125,7 @@ public class MemberDAO {
 		return result;
 	} // memberLoginCheck() end
 	
-	public void memberUpdate(MemberVO vo) throws Exception {
+	public void memberUpdate(MemberVO vo, String sessionNick) throws Exception {
 		String sql = "UPDATE MEMBER SET NICKNAME=?, PHONE=? WHERE ID = ?";
 		Connection conn = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -133,6 +133,18 @@ public class MemberDAO {
 		pstmt.setString(1, vo.getNickname());
 		pstmt.setString(2, vo.getPhone());
 		pstmt.setString(3, vo.getId());
+		pstmt.executeUpdate();
+		
+		sql = "UPDATE RESERVATION SET RSRV_NICK=? WHERE RSRV_NICK=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getNickname() );
+		pstmt.setString(2, sessionNick);
+		pstmt.executeUpdate();
+		
+		sql = "UPDATE BOARD SET BOARD_NICK=? WHERE BOARD_NICK=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getNickname() );
+		pstmt.setString(2, sessionNick);
 		pstmt.executeUpdate();
 		
 		CloseUtil.close(pstmt);  CloseUtil.close(conn);

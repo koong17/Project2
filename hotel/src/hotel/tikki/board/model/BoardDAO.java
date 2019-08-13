@@ -268,6 +268,10 @@ public class BoardDAO {  // controller
 			pstmt.setInt(1, board_num);
 			pstmt.executeUpdate();
 			
+			pstmt = conn.prepareStatement("DELETE FROM COMMENTS WHERE BOARD_NUM = ?");
+			pstmt.setInt(1, board_num);
+			pstmt.executeUpdate();
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

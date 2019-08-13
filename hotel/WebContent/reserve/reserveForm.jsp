@@ -56,7 +56,7 @@
 
 
 	<!-- Page Content -->
-	<div class="container" id="f" style="min-height: 760px;">
+	<div class="container" id="f" style="min-height: 750px;">
 
 		<!-- Page Head -->
 		<h1 class="mt-4 mb-3">예약 Reservation</h1>
@@ -184,9 +184,6 @@
 			
 	</script>
 	<!-- 예약 바 끝 -->
-	
-	<!-- 객실정보 -->
-	<div class="container" id="showShow" ></div>
 
 	<jsp:include page="/footer.jsp"/>
 
