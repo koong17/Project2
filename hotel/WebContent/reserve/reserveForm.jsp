@@ -74,6 +74,7 @@
 			<td class='m'>
 			<select class="browser-default custom-select" style="width: 120px;" id="peopleNum" required="required">
 					<option selected >인원수</option>
+					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
