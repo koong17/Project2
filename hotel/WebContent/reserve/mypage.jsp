@@ -9,14 +9,14 @@
 
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <title>HOTEL TIKKI</title>
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet">
+   rel="stylesheet">
 
 <!-- hs CSS -->
 <link href="/hotel/css/hs.css?after" rel="stylesheet">
@@ -29,7 +29,7 @@
 
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet"
-	href="/hotel/vendor/bootstrap/css/style.css?after" />
+   href="/hotel/vendor/bootstrap/css/style.css?after" />
 
 <!-- Bootstrap core JavaScript -->
 <script src="/hotel/vendor/jquery/jquery.js"></script>
@@ -43,7 +43,6 @@
 </head>
 
 <body>
-
 	<jsp:include page="/navigation.jsp"/>
 
 
@@ -67,39 +66,52 @@
 		<c:forEach var="list"  items="${ list }">
 			<div class="row">
 				<div class="col-md-7">
-					<a href="room1detail.jsp"> <img
-						class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">
-					</a>
+					<c:if test="${ list.room_type eq 'Deluxe' }">
+						<a href="room1detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt=""></a>
+					</c:if>
+					<c:if test="${ list.room_type eq 'Grand Deluxe' }">
+						<a href="room2detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/grand.jpg" alt=""></a>
+					</c:if>
+					<c:if test="${ list.room_type eq 'Suite' }">
+						<a href="room3detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/suite.jpg" alt=""></a>
+					</c:if>
 				</div>
 				<div class="col-md-5">
-					<h3>예약 번호&nbsp;&nbsp;<c:out value="${ list.rsrv_num }" /></h3>
+				<table >
+				<tr>
+					<td><h5>예약 번호</h5></td><td width="10"></td><td><h3><c:out value="${ list.rsrv_num }" /></h3></td>
+				</tr>
 					<p>
-						<table >
-							<tr><td style="text-align:left;"><b>룸타입</b></td> <td width="20"></td><td style="text-align:center;">${ list.room_type }</td></tr>
-							<tr><td style="text-align:left;"><b>체크 인</b></td> <td width="20"></td><td >${ list.check_in }</td></tr>
-							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td>${ list.check_out }</td></tr>
-							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ list.check_date } 박</td></tr>
-							<tr><td style="text-align:right;"><b>투숙인원</b></td> <td width="20"></td><td style="text-align:center;">${ list.rsrv_ppl } 명</td></tr>
-							<tr><td style="text-align:right;"><b>객실금액</b></td> <td width="20"></td><td >KRW ${ list.price }</td></tr>
-							<tr><td style="text-align:right;"><b>예약현황</b></td> <td width="20"></td>
-								<td style="text-align:center;"> 
+							<tr><td style="text-align:left;"><b>룸타입</b></td> <td width="30"></td><td style="text-align:left;">${ list.room_type }</td></tr>
+							<tr><td style="text-align:left;"><b>체크 인</b></td> <td width="30"></td><td style="text-align:left;">${ list.check_in }</td></tr>
+							<tr><td style="text-align:left;"><b>체크아웃</b></td> <td width="30"></td><td style="text-align:left;">${ list.check_out }</td></tr>
+							<tr><td style="text-align:left;"><b>숙박일수</b></td> <td width="30"></td><td style="text-align:left;">${ list.check_date } 박</td></tr>
+							<tr><td style="text-align:left;"><b>투숙인원</b></td> <td width="30"></td><td style="text-align:left;">${ list.rsrv_ppl } 명</td></tr>
+							<tr><td style="text-align:left;"><b>객실금액</b></td> <td width="30"></td><td style="text-align:left;">KRW ${ list.price }</td></tr>
+							<tr><td style="text-align:left;"><b>예약현황</b></td> <td width="30"></td>
+								<td style="text-align:left;"> 
 									<c:if test="${ list.rsrv_status == 'n' }"> 예약대기</c:if>
 									<c:if test="${ list.rsrv_status == 'y' }"> 예약완료</c:if>
 								</td>
 							</tr>
-							<tr>
-								<td colspan="2" align="right">
-									<div>
-										 <c:if test="${ list.rsrv_status == 'n' }">
-						  					  <input type="button" value="예약취소" onclick=
-               									"document.location.href='reserveDelete.to?rsrv_num=${ list.rsrv_num }'">
-										</c:if>
-  					 				</div>
-								</td>
-							</tr>
+							<c:if test="${ list.rsrv_status == 'n' }">
+								<tr>
+									<td align="left"><b>예금주</b></td><td width="20"></td><td style="text-align:left;">TIKKI</td>
+								</tr>
+								<tr>
+								<td align="left"><b>계좌번호</b></td><td width="20"></td><td style="text-align:left;">3333-12-5459545</td>
+								</tr>
+								<tr>
+									<td colspan="3" align="right">
+										<div>
+						  					  <input type="button" value="예약취소" class="btn btn-outline-danger btn-block" onclick="document.location.href='reserveDelete.to?rsrv_num=${ list.rsrv_num }'">
+
+	  					 				</div>
+									</td>
+								</tr>
+							</c:if>
 						</table>
 					</div>
-					
 				</div>
 				<hr>
 			</c:forEach>

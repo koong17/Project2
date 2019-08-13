@@ -1,3 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<meta http-equiv="Refresh"  content="0; url=mypage.to?nickname=${ sessionScope.nick }">
+
+    
+<meta http-equiv="Refresh" content="0; url=${ pay_url }" />

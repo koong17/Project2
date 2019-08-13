@@ -16,21 +16,25 @@ public class ReserveFormAction implements CommandAction {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		request.setCharacterEncoding("utf-8");
-		String checkIn = request.getParameter("checkIn");
-		String checkOut = request.getParameter("checkOut");
-		String peopleNum = request.getParameter("peopleNum");
+		
+	    String daterange = request.getParameter("daterange"); 
+	    String checkIn = daterange.substring(0, 10); 
+	    String checkOut = daterange.substring(13, 23);
+
+		int peopleNum = Integer.parseInt(request.getParameter("peopleNum"));
 		
 		ReserveDAO dao = ReserveDAO.getInstance();
 		ArrayList<Integer> roomList = new ArrayList<>();
 		
-		roomList = dao.select(checkIn, checkOut);
+		roomList = dao.select(checkIn, checkOut, peopleNum);
 		
 		JSONArray jsonArr = new JSONArray(roomList);
         PrintWriter pw = response.getWriter();
         pw.println(jsonArr);
-		
-		
-		return null;
+        
+        System.out.println(peopleNum);
+        System.out.println(jsonArr);
+        return null;
 	}
 
 }
