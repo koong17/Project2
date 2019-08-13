@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonElement;
 
+import hotel.tikki.reserve.model.ReserveDAO;
+import hotel.tikki.reserve.model.ReserveVO;
+
 @WebServlet("/pay")
 public class KakaopayController extends HttpServlet{
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,9 +36,18 @@ public class KakaopayController extends HttpServlet{
 		String checkOut = request.getParameter("checkOut");
 		int peopleNum = Integer.parseInt(request.getParameter("peopleNum"));
 		String roomType = request.getParameter("roomType");
-		int priceView = Integer.parseInt(request.getParameter("priceView"));
+		int priceview = Integer.parseInt(request.getParameter("priceview").replace(",", ""));
 		
-		JsonElement je = KakaoPay.payRequest(roomType, priceView);
+		ReserveVO vo = new ReserveVO();
+		
+		vo.setRoom_num(Integer.parseInt(roomNum));
+		vo.setCheck_in(checkIn);
+		vo.setCheck_out(checkOut);
+		vo.setRsrv_ppl(peopleNum);
+		vo.setRsrv_nick(nickname);
+		vo.setRsrv_num(ReserveDAO.getInstance().insert(vo));
+		
+		JsonElement je = KakaoPay.payRequest(roomType, priceview, vo.getRsrv_num());
 		
 		PrintWriter pw = response.getWriter();
 	    pw.println(je);

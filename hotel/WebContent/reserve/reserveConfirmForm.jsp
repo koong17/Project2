@@ -104,13 +104,13 @@
             url : 'http://localhost:8080/hotel/pay',
             type : 'GET',
             data : {
-            	roomNum: ${ roomNum },
-            	checkIn: ${ checkIn },
-            	checkOut: ${ checkOut },
-            	peopleNum: ${ peopleNum },
-            	roomType: ${ roomType },
-            	nickname: ${ sessionScope.nick },
-            	priceView: ${ priceView }
+            	roomNum: '${ roomNum }',
+            	checkIn: '${ checkIn }',
+            	checkOut: '${ checkOut }',
+            	peopleNum:'${ peopleNum }',
+            	roomType: '${ roomType }',
+            	nickname: '${ sessionScope.nick }',
+            	priceview: '${ priceview }'
             },
             success : function(res){
                res = JSON.parse(res);

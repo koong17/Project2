@@ -86,7 +86,7 @@
         <p>내용</p>
       </div>
       <div class="col-lg-6">
-        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        <img class="img-fluid rounded" src="/hotel/img/tikki.png" alt="">
       </div>
     </div>
   </div>
