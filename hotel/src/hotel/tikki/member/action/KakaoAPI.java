@@ -28,7 +28,6 @@ public class KakaoAPI {
             
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
-
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");

@@ -117,22 +117,23 @@ public class ReserveDAO {
  			return list;
  		} // getSelectAll(startRow, endRow) end
  		
-   public ArrayList<Integer> select(String checkIn, String checkOut) { //고객이 검색한 정보에 상응하는 방 정보를 불러오는 기능
+   public ArrayList<Integer> select(String checkIn, String checkOut, int peopleNum) { //고객이 검색한 정보에 상응하는 방 정보를 불러오는 기능
       Connection conn = null ;
       PreparedStatement pstmt = null;
       ResultSet rs = null;
       ArrayList<Integer> roomList = new ArrayList<Integer>();
       
-      String sql = "SELECT R.ROOM_NUM FROM ROOMS R WHERE r.room_num NOT IN" + 
-      		" (SELECT B.ROOM_NUM FROM RESERVATION B WHERE NOT" + 
-      		" (B.CHECK_IN>TO_DATE(?, 'YYYY-MM-DD') OR B.CHECK_OUT-1<TO_DATE(?, 'YYYY-MM-DD')))" + 
-      		" ORDER BY R.ROOM_num" ;
+      String sql = 	"SELECT R.ROOM_NUM FROM ROOMS R WHERE R.MAX_PPL>=? AND R.ROOM_NUM NOT IN" + 
+      				" (SELECT B.ROOM_NUM FROM RESERVATION B WHERE NOT" + 
+      				" (B.CHECK_IN>TO_DATE(?, 'YYYY-MM-DD') OR B.CHECK_OUT-1<TO_DATE(?, 'YYYY-MM-DD')))" + 
+      				" ORDER BY R.ROOM_NUM";
       
       try {
          conn = getConnection();
          pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1, checkOut);
-         pstmt.setString(2, checkIn);
+         pstmt.setInt(1, peopleNum);
+         pstmt.setString(2, checkOut);
+         pstmt.setString(3, checkIn);
          rs = pstmt.executeQuery();
          
          while(rs.next()) {

@@ -56,13 +56,13 @@
 
 
 	<!-- Page Content -->
-	<div class="container" id="f">
+	<div class="container" id="f" style="min-height: 750px;">
 
 		<!-- Page Head -->
 		<h1 class="mt-4 mb-3">예약 Reservation</h1>
 		<!-- 예약 바 -->
 		<ul class="breadcrumb">
-		<table><tr>
+		<table class="marginAuto"><tr>
 		
      	   <td class='m'>
  			<div class='input-group date'>
@@ -87,6 +87,9 @@
  		</table>
 		</ul> 
 		<!-- </form> -->
+			
+	<!-- 객실정보 -->
+	<div class="container" id="showShow" ></div>
 	</div>
 	
 	<script>
@@ -113,7 +116,6 @@
 			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
 			            	
 			            	daterange: $("#daterange").val(),
-			            	
 			            	peopleNum: $("#peopleNum").val()
 			            },
 			            beforeSend:function() {
@@ -182,69 +184,7 @@
 			
 	</script>
 	<!-- 예약 바 끝 -->
-	
-	<!-- 객실정보 -->
-	<div class="container" id="showShow" >
-<!-- 
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item active">현재 이용 가능 객실</li>
-		</ol>
 
-		room1
-		<div class="row">
-			<div class="col-md-7">
-				<a href="room1detail.jsp"> <img
-					class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">
-				</a>
-			</div>
-			<div class="col-md-5">
-				<h3>Deluxe</h3>
-				<p>그냥 그냥 디럭스</p>
-				<a class="btn btn-primary" href="reserveConfirmForm.jsp">예약하기
-					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
-			</div>
-		</div>
-		/.row
-
-		<hr>
-
-		room2
-		<div class="row">
-			<div class="col-md-7">
-				<a href="room2detail.jsp"> <img
-					class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">
-				</a>
-			</div>
-			<div class="col-md-5">
-				<h3>Grand Deluxe</h3>
-				<p>좋은 좋은 디럭스</p>
-				<a class="btn btn-primary" href="reserveConfirmForm.jsp">예약하기
-					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
-			</div>
-		</div>
-		/.row
-
-		<hr>
-
-		room3
-		<div class="row">
-			<div class="col-md-7">
-				<a href="room3detail.jsp"> <img
-					class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">
-				</a>
-			</div>
-			<div class="col-md-5">
-				<h3>Suite Room</h3>
-				<p>제일 제일 좋은 룸</p>
-				<a class="btn btn-primary" href="reserveConfirmForm.jsp">예약하기
-					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
-			</div>
-		</div> -->
-	</div>
-	<!-- 객실정보 끝-->
 
 	<jsp:include page="/footer.jsp"/>
 
