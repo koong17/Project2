@@ -41,7 +41,7 @@
 	
   <!-- Page Content -->
   <div class="container" style="height: 500px; text-align: center;">
-  <a id="kakaopay-btn" style="cursor: pointer; width: 200px; height: 83px; display: inline-block; margin-top: 200px; background-image: url(/hotel/img/payment_large.png);"></a>
+  <a id="kakaopay-btn" style="cursor: pointer; width: 120px; height: 51px; display: inline-block; margin-top: 200px; background-image: url(/hotel/img/payment_medium.png);"></a>
 	<script>
       $(document).ready(function(){
          $('#kakaopay-btn').on('click', kakaopay);

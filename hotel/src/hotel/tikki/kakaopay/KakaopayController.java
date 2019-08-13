@@ -23,7 +23,16 @@ public class KakaopayController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		JsonElement je = KakaoPay.payRequest();
+		
+		String nickname = request.getParameter("nickname");
+		String roomNum = request.getParameter("roomNum");
+		String checkIn = request.getParameter("checkIn");
+		String checkOut = request.getParameter("checkOut");
+		int peopleNum = Integer.parseInt(request.getParameter("peopleNum"));
+		String roomType = request.getParameter("roomType");
+		int priceView = Integer.parseInt(request.getParameter("priceView"));
+		
+		JsonElement je = KakaoPay.payRequest(roomType, priceView);
 		
 		PrintWriter pw = response.getWriter();
 	    pw.println(je);

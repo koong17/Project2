@@ -43,3 +43,7 @@ a:hover {text-decoration: underline; color: white;}
 	color: rgba(255, 255, 255, 0.85);
 	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
 }
+
+.kakaobtn{
+	margin-bottom: -20 px;
+}

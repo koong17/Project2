@@ -12,7 +12,7 @@ import com.google.gson.JsonParser;
 
 public class KakaoPay {
 	
-	public static JsonElement payRequest() {
+	public static JsonElement payRequest(String roomType, int priceView) {
 		String reqURL = "https://kapi.kakao.com/v1/payment/ready";
 		JsonElement element = null;
 		try {
@@ -29,11 +29,11 @@ public class KakaoPay {
 			sb.append("cid=TC0ONETIME");
 			sb.append("&partner_order_id=1001");
 			sb.append("&partner_user_id=aa");
-			sb.append("&item_name=Deluxe Room");
+			sb.append("&item_name= "+roomType);
 			sb.append("&quantity=1");
-			sb.append("&total_amount=500000");
-			sb.append("&tax_free_amount=50000");
-			sb.append("&approval_url=http://localhost:8080/hotel/kakaopay/success.jsp");
+			sb.append("&total_amount="+priceView);
+			sb.append("&tax_free_amount="+(priceView/10));
+			sb.append("&approval_url=http://localhost:8080/hotel/success.pay");
 			sb.append("&cancel_url=http://localhost:8080/hotel/cancel");
 			sb.append("&fail_url=http://localhost:8080/hotel/fail");
 			
