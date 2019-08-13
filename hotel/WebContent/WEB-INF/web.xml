@@ -6,12 +6,12 @@
   <!-- AdminController.java -->
 
   <servlet>
-        <servlet-name>AdminController</servlet-name>
-        <servlet-class>hotel.tikki.admin.controller.AdminController</servlet-class>
-        <init-param>
-            <param-name>AdminConfig</param-name>
-            <param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandAdmin.properties</param-value>
-        </init-param>
+  		<servlet-name>AdminController</servlet-name>
+  		<servlet-class>hotel.tikki.admin.controller.AdminController</servlet-class>
+  		<init-param>
+  			 <param-name>AdminConfig</param-name>
+  			 <param-value>C:\Users\5CLASS-184\Documents\GitHub\Project2\hotel\WebContent\WEB-INF\commandAdmin.properties</param-value>
+  		</init-param>
   </servlet>
   <servlet-mapping>
         <servlet-name>AdminController</servlet-name>

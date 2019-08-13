@@ -19,8 +19,18 @@
 <!-- Custom styles for this template -->
 <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
+<!-- inho CSS -->
+<link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+
 <!-- minjee.css -->
 <link href="/hotel/css/minjee.css?after" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!--  kakao api -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <style>
 #f {
@@ -54,43 +64,73 @@
 					<hr>
 					<div>
 						<table >
-							<tr><td style="text-align:right;"><b>체크 인</b></td> <td width="20"></td><td >${ checkIn }</td></tr>
-							<tr><td style="text-align:right;"><b>체크아웃</b></td> <td width="20"></td><td>${ checkOut }</td></tr>
-							<tr><td style="text-align:right;"><b>객실금액</b></td> <td width="20"></td><td>KRW ${ priceview }</td></tr>
-							<tr><td style="text-align:right;"><b>숙박일수</b></td> <td width="20"></td><td style="text-align:center;">${ checkDate } 박</td></tr>
-							<tr><td style="text-align:right;"><b>투숙인원</b></td> <td width="20"></td><td style="text-align:center;">${ peopleNum } 명</td></tr>
+							<tr><td style="text-align:left;"><b>체크&emsp;인</b></td> <td width="30"></td><td >${ checkIn }</td></tr>
+							<tr><td style="text-align:left;"><b>체크아웃</b></td> <td width="30"></td><td>${ checkOut }</td></tr>
+							<tr><td style="text-align:left;"><b>객실금액</b></td> <td width="30"></td><td>KRW ${ priceview }</td></tr>
+							<tr><td style="text-align:left;"><b>숙박일수</b></td> <td width="30"></td><td style="text-align:left;">${ checkDate } 박</td></tr>
+							<tr><td style="text-align:left;"><b>투숙인원</b></td> <td width="30"></td><td style="text-align:left;">${ peopleNum } 명</td></tr>
 						</table>
 					</div>
-					<hr> <b>객실</b><br> ${ roomType } <br>
+					<hr> 
+					<b>객실</b> ${ roomType } <br>
 					<br> <img src="${ img }" width="600">
 					<hr> <br> <b><h4>총 예약금액 </h4><h5>KRW ${ total }</h5></b><br></li>
 			</ol>
 		</div>
-
-		<!-- 유의사항 등 넣으려면 이쪽에 넣기 -->
-		<br>
 		
-		<!-- 예약저장 버튼 -->
-		<div class="aa aa-button reservation-wrap reservation-button"
-			align="center">
+		<!-- 결제 버튼 -->
+		<div align="center" style="margin: 30px 0px;">
 			<form action="reserveMypage.to">
 				<input type="hidden" name="roomNum" value='${ roomNum }'>
 				<input type="hidden" name="checkIn" value='${ checkIn }'>
 				<input type="hidden" name="checkOut" value='${ checkOut }'>
 				<input type="hidden" name="peopleNum" value='${ peopleNum }'>
+				<input type="hidden" name="roomType" value='${ roomType }'>
 				<input type="hidden" name="nickname" value='${ sessionScope.nick }'>
-				<input type="submit" class="button" value="예약 완료">
+			  	<a id="kakaopay-btn" style="cursor: pointer; width: 120px; height: 51px; display: inline-block; margin-bottom: -20px; margin-right: 30px; background-image: url(/hotel/img/payment_medium.png);"></a>
+				<input type="submit" class="btn btn-outline-primary btn-lg" value="무통장입금">
 			</form>
+	<script>
+      $(document).ready(function(){
+         $('#kakaopay-btn').on('click', kakaopay);
+      })
+      
+      let popup;
+      let timer;
+      
+      function kakaopay(e){
+         e.preventDefault();
+         $.ajax({
+            url : 'http://localhost:8080/hotel/pay',
+            type : 'GET',
+            data : {
+            	roomNum: ${ roomNum },
+            	checkIn: ${ checkIn },
+            	checkOut: ${ checkOut },
+            	peopleNum: ${ peopleNum },
+            	roomType: ${ roomType },
+            	nickname: ${ sessionScope.nick },
+            	priceView: ${ priceView }
+            },
+            success : function(res){
+               res = JSON.parse(res);
+               console.log(res.next_redirect_pc_url);
+               popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200, left=200');
+               timer = setInterval(function(){
+                  if(popup.closed){
+                     location.href="http://localhost:8080/hotel/mypage.to?nickname=${sessionScope.nick}"
+                  }
+               }, 1000);
+            }
+         })
+      }
+      </script>
 		</div>
 
 	</div>
 	<!-- /.container -->
 
 <jsp:include page="/footer.jsp"/>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

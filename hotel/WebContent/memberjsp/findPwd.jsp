@@ -27,12 +27,12 @@
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 800px;">
+        <div class="carousel-item active" style="background-image: url('img/hotel.jpg'); height: 800px;">
           <div class="carousel-pwd d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="updateform" action="findpwd.go" onsubmit="return passvalidate();">
+						<form role="form" method="post" name="passwordfindform" action="findpwd.go">
 							<fieldset>
 								<h2>비밀번호 찾기</h2>
 								<!-- <hr class="colorgraph"> -->
