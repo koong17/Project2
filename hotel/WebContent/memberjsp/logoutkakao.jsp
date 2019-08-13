@@ -4,7 +4,4 @@
 
 
  <c:redirect url="index.go" />
- 
- <%
- 	session.invalidate();
- %>
+
