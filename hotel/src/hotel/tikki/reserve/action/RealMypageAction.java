@@ -23,6 +23,7 @@ public class RealMypageAction implements CommandAction {
 			list = Collections.EMPTY_LIST ;
 		}
 		
+		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		return "/reserve/mypage.jsp";
 	}
