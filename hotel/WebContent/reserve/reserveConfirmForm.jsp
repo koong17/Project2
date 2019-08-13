@@ -25,6 +25,13 @@
 <!-- minjee.css -->
 <link href="/hotel/css/minjee.css?after" rel="stylesheet">
 
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!--  kakao api -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <style>
 #f {
 	min-height: 1000px;
@@ -71,27 +78,59 @@
 			</ol>
 		</div>
 		
-		<!-- 예약저장 버튼 -->
+		<!-- 결제 버튼 -->
 		<div align="center" style="margin: 30px 0px;">
-			<form action="reserveMypage.to" style="padding: 10 px 0 px;">
+			<form action="reserveMypage.to">
 				<input type="hidden" name="roomNum" value='${ roomNum }'>
 				<input type="hidden" name="checkIn" value='${ checkIn }'>
 				<input type="hidden" name="checkOut" value='${ checkOut }'>
 				<input type="hidden" name="peopleNum" value='${ peopleNum }'>
 				<input type="hidden" name="roomType" value='${ roomType }'>
 				<input type="hidden" name="nickname" value='${ sessionScope.nick }'>
-				<input type="submit" class="btn btn-outline-primary" value="예약 완료">
+			  	<a id="kakaopay-btn" style="cursor: pointer; width: 120px; height: 51px; display: inline-block; margin-bottom: -20px; margin-right: 30px; background-image: url(/hotel/img/payment_medium.png);"></a>
+				<input type="submit" class="btn btn-outline-primary btn-lg" value="무통장입금">
 			</form>
+	<script>
+      $(document).ready(function(){
+         $('#kakaopay-btn').on('click', kakaopay);
+      })
+      
+      let popup;
+      let timer;
+      
+      function kakaopay(e){
+         e.preventDefault();
+         $.ajax({
+            url : 'http://localhost:8080/hotel/pay',
+            type : 'GET',
+            data : {
+            	roomNum: ${ roomNum },
+            	checkIn: ${ checkIn },
+            	checkOut: ${ checkOut },
+            	peopleNum: ${ peopleNum },
+            	roomType: ${ roomType },
+            	nickname: ${ sessionScope.nick },
+            	priceView: ${ priceView }
+            },
+            success : function(res){
+               res = JSON.parse(res);
+               console.log(res.next_redirect_pc_url);
+               popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200, left=200');
+               timer = setInterval(function(){
+                  if(popup.closed){
+                     location.href="http://localhost:8080/hotel/mypage.to?nickname=${sessionScope.nick}"
+                  }
+               }, 1000);
+            }
+         })
+      }
+      </script>
 		</div>
 
 	</div>
 	<!-- /.container -->
 
 <jsp:include page="/footer.jsp"/>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

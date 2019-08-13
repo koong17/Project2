@@ -37,8 +37,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 
-<!-- Hyesoo JavaScript -->
-<script src="/hotel/js/hidden.js"></script>
 
 </head>
 
