@@ -33,7 +33,6 @@ public class MemberKakaoLogoutController extends HttpServlet{
 	}
 
 	public String logout(HttpSession session, HttpServletRequest request) {
-		String referer = request.getHeader("Referer");
 		KakaoAPI kakaoapi = new KakaoAPI();
 	    kakaoapi.kakaoLogout((String)session.getAttribute("access_Token"));
 	    
@@ -41,7 +40,8 @@ public class MemberKakaoLogoutController extends HttpServlet{
 	    session.removeAttribute("id");
 	    session.removeAttribute("kakaonick");
 	    session.removeAttribute("nick"); 
-		request.setAttribute("referer", referer);	
+		
+	    session.invalidate();
  
 	    return "/memberjsp/logoutkakao.jsp";
 	}
