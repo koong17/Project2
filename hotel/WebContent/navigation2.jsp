@@ -39,7 +39,7 @@
 						aria-expanded="false"><small>${sessionScope.kakaonick}님 페이지 </small> </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							<a class="dropdown-item" href="mypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 					</li>
 				</ul>

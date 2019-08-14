@@ -54,7 +54,7 @@
 		<!--  --------------------------------------------------------------------------------------------- -->
 		<tr>
 			<td width="70" align = "center"> 내  용</td>
-			<td width="730"><textarea class="form-control" rows="15" cols="80" name ="board_content" ></textarea>
+			<td width="730"><textarea class="form-control" rows="15" cols="80" name ="board_content" maxlength="650"></textarea>
 			</td>
 		</tr>
 	</table>

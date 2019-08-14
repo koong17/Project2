@@ -34,7 +34,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="../index.go">Home</a>
       </li>
       <li class="breadcrumb-item active">호텔소개</li>
     </ol>
@@ -63,11 +63,11 @@
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100 text-center">
-          <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+          <img class="card-img-top" src="/hotel/img/inho.jpg" alt="">
           <div class="card-body">
             <h4 class="card-title">황인호사진</h4>
             <h6 class="card-subtitle mb-2 text-muted">가짜사장</h6>
-            <p class="card-text">어쩌구저쩌구~!~!~!~!~!~!~!~!~!</p>
+            <p class="card-text">정말로 닮았습니다</p>
           </div>
           <div class="card-footer">
             <a href="#">ino@example.com</a>
@@ -76,27 +76,27 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100 text-center">
-          <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+          <img class="card-img-top" src="/hotel/img/hs2.jpg" alt="">
           <div class="card-body">
-            <h4 class="card-title">xxx사진</h4>
+            <h4 class="card-title">HS사진</h4>
             <h6 class="card-subtitle mb-2 text-muted">사장</h6>
             <p class="card-text">어쩌구저쩌구~!~!~!~!~!~!~!~!~!</p>
           </div>
           <div class="card-footer">
-            <a href="#">xxx@example.com</a>
+            <a href="#">hs@example.com</a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100 text-center">
-          <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+          <img class="card-img-top" src="/hotel/img/hs1.jpg" alt="">
           <div class="card-body">
-            <h4 class="card-title">yyy사진</h4>
+            <h4 class="card-title">쿼카사진</h4>
             <h6 class="card-subtitle mb-2 text-muted">부사장</h6>
-            <p class="card-text">어쩌구저쩌구~!~!~!~!~!~!~!~!~!</p>
+            <p class="card-text">HOTEL TIKKI에서만 만날 수 있는 희귀동물 쿼카를 만나보세요!</p>
           </div>
           <div class="card-footer">
-            <a href="#">yyy@example.com</a>
+            <a href="#">qk@example.com</a>
           </div>
         </div>
       </div>

@@ -35,9 +35,9 @@ public class KakaoPay {
 			sb.append("&quantity=1");
 			sb.append("&total_amount="+priceview);
 			sb.append("&tax_free_amount="+(priceview/10));
-			sb.append("&approval_url=http://localhost:8080/hotel/successpay?rsrv_num="+rsrv_num);
-			sb.append("&cancel_url=http://localhost:8080/hotel/cancelpay?rsrv_num="+rsrv_num);
-			sb.append("&fail_url=http://localhost:8080/hotel/failpay?rsrv_num="+rsrv_num);
+			sb.append("&approval_url=http://10.10.10.178:8080/hotel/successpay?rsrv_num="+rsrv_num);
+			sb.append("&cancel_url=http://10.10.10.178:8080/hotel/cancelpay?rsrv_num="+rsrv_num);
+			sb.append("&fail_url=http://10.10.10.178:8080/hotel/failpay?rsrv_num="+rsrv_num);
 			
 			bw.write(sb.toString());
 			bw.flush();
