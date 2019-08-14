@@ -233,5 +233,34 @@ public class MemberDAO {
 		
 		return key.toString();		
 	}
-
+	public int memberCodeCheck(String code) throws Exception {  // 임시 코드 일치 체크 (일치하면 1, 일치하지 않으면 -1)
+		String sql = "SELECT PASSWORD FROM MEMBER WHERE PASSWORD = ?";
+		int result = -1;
+		
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, code);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if( rs.next() ) result = 1;
+		else result = -1;  
+		
+		CloseUtil.close(rs);  CloseUtil.close(pstmt); CloseUtil.close(conn);
+		return result;
+	}
+	
+	
+	public void memberCodePass(String password, String code) throws Exception {
+		String sql = "UPDATE MEMBER SET PASSWORD=? WHERE PASSWORD = ?";
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		System.out.println(password);
+		System.out.println(code);
+		pstmt.setString(1, password);
+		pstmt.setString(2, code);
+		pstmt.executeUpdate();
+		
+		CloseUtil.close(pstmt);  CloseUtil.close(conn);
+	}
+	
 }

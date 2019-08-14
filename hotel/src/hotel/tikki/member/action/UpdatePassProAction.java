@@ -19,13 +19,12 @@ public class UpdatePassProAction implements MemberAction {
 		MemberDAO dao = MemberDAO.getInstance();
 		
 		int result = dao.memberLoginCheck(id, password); 
-		System.out.println("============================\n" + result);
+		
 		request.setAttribute("result", result);
 		if(result == 1) {
 			vo.setId(id);
 			vo.setPassword(request.getParameter("password2"));
 			dao.memberUpdatePass(vo);
-			System.out.println(vo.getPassword());
 			return "/memberjsp/updatePasswordPro.jsp";
 		} 
 		

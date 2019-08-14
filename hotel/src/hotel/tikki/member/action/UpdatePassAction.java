@@ -11,7 +11,6 @@ public class UpdatePassAction implements MemberAction {
 		HttpSession session = request.getSession();
 		String referer = request.getHeader("Referer");
 		session.setAttribute("referer", referer);
-		System.out.println(referer);
 		
 		return "memberjsp/updatePassword.jsp";
 	}
