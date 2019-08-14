@@ -11,8 +11,15 @@ public class CodePasswordProAction implements MemberAction {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String code = request.getParameter("code");
 		String password = request.getParameter("password2");
+		String passwordcheck = request.getParameter("password");
+		int result = -1;
 		
-		MemberDAO.getInstance().memberCodePass(password, code);
+		if(password.equals(passwordcheck)) {
+			MemberDAO.getInstance().memberCodePass(password, code);
+			result = 1;
+		} 
+		request.setAttribute("code", code);
+		request.setAttribute("result", result);
 		return "/memberjsp/codepassPro.jsp";
 	}
 
