@@ -104,36 +104,6 @@
 	    });
 	
 		$(document).ready(function(){
-			if( daterange != null && peopleNum != "인원수" ) {
-                $('#daterange').val("${daterange}");
-                $('#peopleNum').val("${peopleNum}");
-                if($( '#daterange' ).val().substr(0,10) == $( '#daterange' ).val().substr(13,23)) {
-					alert("체크인 날짜와 체크아웃 날짜가 같습니다. 다시 선택해주세요.");
-            	} else if( $("#peopleNum").val() == 1 || $("#peopleNum").val() == 2 || $("#peopleNum").val() == 3 || $("#peopleNum").val() == 4 ) {
-					$.ajax({
-			            url:"/hotel/reserveForm.to",			//"/hotel/cmntUpdate.do"
-			            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
-			            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
-			            	
-			            	daterange: "${daterange}",
-			            	peopleNum: "${peopleNum}"
-			            },
-			            beforeSend:function() {
-			                console.log("시작 전...");
-			            },
-			            complete:function() {
-			                console.log("완료 후...");
-			            },
-			            success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
-			                console.log("comment가 정상적으로 수정되었습니다.");
-			                show(data);
-			            	// view 영역의 것들
-			            }
-			        });
-            	} else {
-					alert("인원수를 입력해야 합니다.");
-				}
-			}
 			
 			$("#searchbtn").click(function() {
 				console.log($( '#daterange' ).val().substr(0,10));
@@ -165,7 +135,14 @@
 					alert("정보를 전부 입력해야 합니다.");
 				}
 			});
+			
+			if( "${daterange}" != "" ) {
+	               $('#daterange').val("${daterange}");
+	               $('#peopleNum').val("${peopleNum}");
+	               $('#searchbtn').trigger("click");
+			}
 		});
+		
 		
 		function show(data) {
 			let html = "";
