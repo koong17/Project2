@@ -46,6 +46,8 @@
 										class="form-control input-lg" value="${ sessionScope.id }">
 								</div>
 								<div class="form-group">
+									<input type="hidden" name="sessionNick" id="sessionNick"
+										class="form-control input-lg" value="${ sessionScope.nick }">
 									<input type="text" name="nickname" id="nickname"
 										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()" maxlength="12">
 										<span id="nicknameTag" style="color: white;"></span>

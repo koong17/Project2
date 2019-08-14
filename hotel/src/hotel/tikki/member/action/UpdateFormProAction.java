@@ -14,13 +14,14 @@ public class UpdateFormProAction implements MemberAction {
 		request.setCharacterEncoding("utf-8");
 		MemberVO vo = new MemberVO();
 		HttpSession session = request.getSession();
+		String sessionNick = request.getParameter("sessionNick");
 		
 		vo.setId(request.getParameter("email"));
-		vo.setNickname(request.getParameter("nickname"));
+		vo.setNickname(request.getParameter("nickname")); // 바꿀 닉네임 
 		vo.setPhone(request.getParameter("phone"));
 	
 		MemberDAO dao = MemberDAO.getInstance();
-		dao.memberUpdate(vo);
+		dao.memberUpdate(vo, sessionNick);
 		
 		String nick = vo.getNickname();
 		session.setAttribute("nick", nick);
