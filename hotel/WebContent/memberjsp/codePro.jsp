@@ -31,11 +31,6 @@
 	<meta http-equiv="Refresh" content="0; url=code.go" />
 </c:if>
 <c:if test="${result == 1 }">
-<script type="text/javascript">
-	<!--
-		alert('비밀번호를 변경해주세요.');
-	//-->
-	</script>
 <body>
 	<jsp:include page="/navigation.jsp"/>
 	<header>
@@ -54,7 +49,12 @@
 									<input type="hidden" name="code" value="${ code }">
 									<input type="password" name="password2" id="password2"
 										class="form-control input-lg" placeholder="Reset Password" required="required" onkeyup="password2validate()" maxlength="16">
-									<span id="password2Tag" style="color: white;"></span>	
+									<span id="password2Tag" style="color: white;"></span>
+								</div>
+								<div class="form-group">
+									<input type="password" name="password" id="password"
+										class="form-control input-lg" placeholder="Confirm Password" required="required" onkeyup="passwordvalidate()" maxlength="16">
+									<span id="passwordTag" style="color: white;"></span>		
 								</div>
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
