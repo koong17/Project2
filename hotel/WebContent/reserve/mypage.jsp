@@ -56,8 +56,8 @@
 			<li class="breadcrumb-item"><a href="index.go">Home</a></li>
 			<li class="breadcrumb-item active">나의 예약 현황 목록</li>
 		</ol>
-		<c:if test="${ count == 0 }">   
-	      <h2>예약 내역이 존재하지 않습니다.</h2>
+		<c:if test="${ count == 0 }">
+	      <h2><center>예약 내역이 존재하지 않습니다.</center></h2>
 	    </c:if>
 		<c:forEach var="list"  items="${ list }">
 			<div class="row">

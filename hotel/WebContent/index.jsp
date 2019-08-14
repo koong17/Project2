@@ -93,15 +93,15 @@
 		<ul class="breadcrumb">
 		<form action="reserve.to"  method="post">
 			<table><tr>
-	     	   <td class='m'>
+	     	   <td>
 	 			<div class='input-group date'>
-					<input type="text" style="width: 250px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃" required="required">
+					<input type="text" style="width: 250px; margin-left: 22px; margin-right: 12px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃" required="required">
 				</div></td>
 	     	   
 	     	    
 				<!-- 인원수 -->
-				<td class='m'>
-				<select class="browser-default custom-select" style="width: 120px;" name="peopleNum" required="required">
+				<td>
+				<select class="browser-default custom-select" style="width: 120px; margin-right: 12px;" name="peopleNum" required="required">
 						<option selected >인원수</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -110,7 +110,7 @@
 				</select></td>
 				
 				<!-- 검색 submit 버튼 -->
-				<td class='m'><div>
+				<td><div>
 	 			<input type="submit" class="btn btn-primary" value="검색"></div></td>
 	 			</tr>
 	 		</table>
