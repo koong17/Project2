@@ -11,7 +11,7 @@ public class ReserveAction implements CommandAction {
 		String peopleNum = request.getParameter("peopleNum");
 		
 		
-		if( daterange != null && peopleNum != "인원수") {
+		if( daterange != null ) {
 			request.setAttribute("daterange", daterange);
 			request.setAttribute("peopleNum", peopleNum);
 			
