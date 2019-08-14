@@ -15,7 +15,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class KakaoAPI {
+public class KakaoLogin {
 
 	public String getAccessToken(String authorize_code) {
 		String access_Token = "";
