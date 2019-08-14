@@ -269,7 +269,7 @@
 			
 			<tr height="30" width = "1000">
 				<td align="center" width = "20" >글번호</td>
-				<td align="center" width = "10"> ${ vo.board_num }</td>
+				<td align="center" width = "10" > ${ vo.board_num }</td>
 				<td align="center" width = "20" >글제목</td>
 				<td align="center" width = "150">${ vo.board_title } </td>
 				<td align="center" width = "20" >작성자</td>
@@ -279,7 +279,9 @@
 			<!-- ---------------------------------------------------------------------------------------- -->
 
 			<tr>
-				<td height="300" width = "1000" colspan="6" ><pre>${ vo.board_content }</pre></td>
+
+				<td height="300" width = "1000" colspan="6" style="word-break: break-all;">${ vo.board_content }</td>
+
 			</tr>
 			
 			<c:if test="${ sessionScope.id != null && sessionScope.nick == '관리자'}">

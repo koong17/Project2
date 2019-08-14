@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import hotel.tikki.member.action.KakaoAPI;
+import hotel.tikki.member.action.KakaoLogin;
 
 @WebServlet("/oauth")
 public class MemberKakaoController extends HttpServlet{
@@ -27,6 +27,7 @@ public class MemberKakaoController extends HttpServlet{
 		
 		RequestDispatcher dp = request.getRequestDispatcher(page);
 		dp.forward(request, response);
+		
 	}
 
 	@Override
@@ -35,10 +36,10 @@ public class MemberKakaoController extends HttpServlet{
 	}
 
 	public String login(HttpServletRequest request, HttpServletResponse response, String code, HttpSession session) {
-		KakaoAPI kakaoapi = new KakaoAPI();
-		String access_Token = kakaoapi.getAccessToken(code);
+		KakaoLogin kakaologin = new KakaoLogin();
+		String access_Token = kakaologin.getAccessToken(code);
 		System.out.println(access_Token);
-		HashMap<String, Object> userInfo = kakaoapi.getUserInfo(access_Token);
+		HashMap<String, Object> userInfo = kakaologin.getUserInfo(access_Token);
 		
 		System.out.println("login Controller : " + userInfo);
 		    

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,12 +97,13 @@
             <td align="center" width="100">
                <c:out value="${ list.room_num }" /> <!-- 객실 번호 -->
             </td>
-            
-            <td align="center" width="100">${ list.check_in } <!-- 체크인 -->
+	
+            <td align="center" width="100">
+            	${ fn:substring( list.check_in, 0, 10) }<!-- 체크인 -->
             </td>
             
             <td align="center" width="100">
-               <c:out value="${ list.check_out }" /> <!-- 체크아웃-->
+               <c:out value="${ fn:substring( list.check_out, 0, 10) }" /> <!-- 체크아웃-->
             </td>
             
             <td align="center" width="100">

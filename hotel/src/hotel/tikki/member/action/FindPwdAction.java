@@ -16,7 +16,7 @@ public class FindPwdAction implements MemberAction {
 		
 		String keyCode = MemberDAO.createKey();
 		String subject = "[TIKKI] 비밀번호 찾기 인증코드 안내";
-		String msg = "임시 비밀번호는 " + keyCode + " 입니다.";
+		String msg = "인증 코드는 " + keyCode + " 입니다.";
 		String email = request.getParameter("email");
 		
 		vo.setId(email);
@@ -34,7 +34,7 @@ public class FindPwdAction implements MemberAction {
 			MemberDAO.sendMail(email, subject, msg);
 			
 		} 
-			
+		request.setAttribute("id", email);
 		return "memberjsp/findPwdPro.jsp";
 		
 		

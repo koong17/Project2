@@ -22,23 +22,39 @@
 <script src="vendor/jquery/jquery.min.js?after"></script>
 <script src="js/inho.js"></script>
 </head>
+<c:if test="${result == -1 }">
+	<script type="text/javascript">
+	<!--
+		alert('인증 코드가 일치하지 않습니다.');
+	//-->
+	</script>
+	<meta http-equiv="Refresh" content="0; url=code.go" />
+</c:if>
+<c:if test="${result == 1 }">
 <body>
 	<jsp:include page="/navigation.jsp"/>
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/hotel.jpg'); height: 800px;">
+        <div class="carousel-item active" style="background-image: url('img/hotel.jpg'); height: 833px;">
           <div class="carousel-pwd d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
 					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-						<form role="form" method="post" name="passwordfindform" action="findpwd.go">
+						<form role="form" method="post" name="codePasswordform" action="codePasswordPro.go" onsubmit="return passvalidate();">
 							<fieldset>
-								<h2>비밀번호 찾기</h2>
+								<h2>비밀번호 수정</h2>
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
-								<input type="email" name="email" id="email"
-										class="form-control input-lg" placeholder="Email">
+									<input type="hidden" name="code" value="${ code }">
+									<input type="password" name="password2" id="password2"
+										class="form-control input-lg" placeholder="Reset Password" required="required" onkeyup="password2validate()" maxlength="16">
+									<span id="password2Tag" style="color: white;"></span>
+								</div>
+								<div class="form-group">
+									<input type="password" name="password" id="password"
+										class="form-control input-lg" placeholder="Confirm Password" required="required" onkeyup="passwordvalidate()" maxlength="16">
+									<span id="passwordTag" style="color: white;"></span>		
 								</div>
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
@@ -49,10 +65,10 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-lg btn-success btn-block"
-											value="메일 발송">
+											value="수정">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
-										<input type="reset" class="btn btn-lg btn-primary btn-block" value="지우기">
+										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">
 									</div>
 								</div>
 							</fieldset>
@@ -67,4 +83,5 @@
   
   <jsp:include page="/footer.jsp"/>
 </body>
+</c:if>
 </html>

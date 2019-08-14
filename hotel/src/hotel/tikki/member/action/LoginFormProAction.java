@@ -25,7 +25,6 @@ public class LoginFormProAction implements MemberAction {
 		} 
 		
 		request.setAttribute("result", result);
-		System.out.println(result + " ===================================asdfkljasdlkfjasd;lkfj");
 		return "/memberjsp/loginPro.jsp";
 	}
 
