@@ -24,9 +24,6 @@
 <script src="vendor/jquery/jquery.min.js?after"></script>
 <script src="js/inho.js?after"></script>
 </head>
-<c:if test="${ sessionScope.id != null}">
-	<c:redirect url="index.go" />
-</c:if>
 <body>
 <jsp:include page="/navigation.jsp"/>
 <header>
@@ -40,20 +37,15 @@
 		<div class="rows" style="margin-top: 20px;">
 			<div
 				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form" action="loginPro.go" name="loginform"
+				<form role="form" action="codePro.go" name="codeform"
 					method="post">
 					<fieldset>
-						<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
+						<h2>인증 코드를 <br> 입력해주세요.</h2>
 						<p>
 						<!-- <hr class="colorgraph"> -->
 						<div class="form-group">
-							<input type="email" name="email" id="email"
-								class="form-control input-lg" placeholder="Email Address"
-								required="required">
-						</div>
-						<div class="form-group">
-							<input type="password" name="password" id="password"
-								class="form-control input-lg" placeholder="Password"
+							<input type="text" name="code" id="code"
+								class="form-control input-lg" placeholder="code"
 								required="required">
 						</div>
 						<!-- <span class="button-checkbox">
@@ -65,20 +57,11 @@
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<input type="submit"
-									class="btn btn-success btn-lg btn-block" value="로그인">
+									class="btn btn-success btn-lg btn-block" value="확인">
 							</div>
 
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="join.go" class="btn btn-primary btn-lg btn-block">회원가입</a>
-							</div>
-							<div style="width: 100%; margin-top: 20px;">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://10.10.10.178:8080/hotel/oauth&response_type=code">
-
-									<img src="img/kakao_account_login_btn_medium_wide.png" />
-								</a>
-							</div>
-							<div style="width: 100%;" align="center">
-								<a class="navbar-login" href="find.go" style="color: white;">비밀번호 잊으셨나요?</a>
+										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">
 							</div>
 						</div>
 								</fieldset>
@@ -92,6 +75,5 @@
 </header>
 <jsp:include page="/footer.jsp"/>
 	<script src="js/inho.js"></script>
-    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ function emailvalidate() {
 	var emailTag = document.getElementById("emailTag");
 	var result = false;
 	if (!re.test(email)) {
-		emailTag.innerHTML = "적합하지 않은 이메일 형식입니다.";
+		emailTag.innerHTML = "3자이상 영문자,숫자를 입력하시거나 적합하지 않은 이메일 형식입니다.";
 		result = false;
 	} else {
 		emailTag.innerHTML = "";
@@ -81,7 +81,7 @@ function validate() {
        var phone = document.getElementById("phone");
       
 
-       if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+       if(!check(re2, email, "3자이상 영문자,숫자를 입력하거나 적합하지 않은 이메일 형식입니다.")) {
            return false;
        }
        
