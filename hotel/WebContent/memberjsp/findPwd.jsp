@@ -38,7 +38,7 @@
 								<!-- <hr class="colorgraph"> -->
 								<div class="form-group">
 								<input type="email" name="email" id="email"
-										class="form-control input-lg">
+										class="form-control input-lg" placeholder="Email">
 								</div>
 								<!-- <span class="button-checkbox">
 							<button type="button" class="btn" data-color="info">Remember Me</button>
@@ -52,7 +52,7 @@
 											value="메일 발송">
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
-										<input type="reset" class="btn btn-lg btn-primary btn-block" value="취소">
+										<input type="reset" class="btn btn-lg btn-primary btn-block" value="지우기">
 									</div>
 								</div>
 							</fieldset>

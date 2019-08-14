@@ -79,7 +79,8 @@
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
-			</select></td>
+			</select>
+			</td>
 			
 			<!-- 검색 submit 버튼 -->
 			<td class='m'><div>
