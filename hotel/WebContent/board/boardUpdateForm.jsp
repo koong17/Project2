@@ -68,7 +68,7 @@
   		<input type="button" class="btn btn-primary" 
   			   onclick="document.location.href='list.do?pageNum=${ pageNum }'" value="목록가기"></input>
   		
- 	    <input type="submit" class="btn btn-primary" id="button-right-fix" value="수정"/>
+ 	    <input type="submit" class="btn btn-primary" id="button-right-update" value="수정"/>
 
 		
 		

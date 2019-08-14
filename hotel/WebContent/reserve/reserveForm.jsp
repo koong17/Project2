@@ -42,6 +42,7 @@
 
 <!-- inho CSS -->
 <link href="/hotel/vendor/bootstrap/css/inho.css?after" rel="stylesheet">
+
 <!-- Hyesoo JavaScript -->
 <script src="/hotel/js/hidden.js"></script>
 
@@ -62,7 +63,7 @@
 		<h1 class="mt-4 mb-3">예약 Reservation</h1>
 		<!-- 예약 바 -->
 		<ul class="breadcrumb">
-		<table class="marginAuto"><tr>
+		<table><tr>
 		
      	   <td class='m'>
  			<div class='input-group date'>

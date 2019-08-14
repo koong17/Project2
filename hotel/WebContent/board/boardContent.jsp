@@ -228,27 +228,7 @@
         });
     }
 
-    /* function getComment(event) {
-        $.ajax({
-            url:"/hotel/cmntReadForm.do",
-            data:{
-                board_num:"${ vo.board_num }"
-            },
-            beforeSend:function() {
-                console.log("읽어오기 시작 전...");
-            },
-            complete:function() {
-                console.log("읽어오기 완료 후...");
-            },
-            success:function(data) {
-                console.log("comment를 정상적으로 조회하였습니다.");
-                showHtml(data);
-                
-                let position = $("#showComment table tr:last").position();
-                $('html, body').animate({scrollTop : position.top}, 400);  // 두 번째 param은 스크롤 이동하는 시간
-            }
-        })
-    } */
+
 </script>
 <link href="/hotel/css/modern-business.css?after" rel="stylesheet">
 
@@ -263,20 +243,20 @@
 <jsp:include page="/navigation.jsp"/>
 
   <!-- Page Content -->
-  <div class="container" style="min-height:793px">
+  <div class="container">
 
 	<center>
 	
 	  
-      <!-- Page Heading/Breadcrumbs -->
-    <br><br>
-    <ol class="breadcrumb2">
-      <li class="breadcrumb-item active">Home /</li>
-      </li>
-      <li class="breadcrumb2-item">
-      	<a href="list.do"> &nbsp;고객문의</a>
-      </li>
-    </ol>
+	      <!-- Page Heading/Breadcrumbs -->
+	    <br><br>
+	    <ol class="breadcrumb2">
+	      <li class="breadcrumb-item active">Home /</li>
+	      </li>
+	      <li class="breadcrumb2-item">
+	      	<a href="list.do"> &nbsp;고객문의</a>
+	      </li>
+	    </ol>
 	
 
 	<form>
@@ -299,7 +279,7 @@
 			<!-- ---------------------------------------------------------------------------------------- -->
 
 			<tr>
-				<td height="300" width = "1000" colspan="6"><pre>${ vo.board_content }</pre></td>
+				<td height="300" width = "1000" colspan="6" ><pre>${ vo.board_content }</pre></td>
 			</tr>
 			
 			<c:if test="${ sessionScope.id != null && sessionScope.nick == '관리자'}">
@@ -331,6 +311,7 @@
 					</td>
 				</tr>
 			</c:if>
+			
 			<!-- ---------------------------------------------------------------------------------------- -->
 			<!-- 글수정 글삭제 목록보기 버튼 -->
 			
@@ -346,18 +327,16 @@
 			      </c:if>
 					<input type = "button" class="btn btn-primary" value ="목록 보기" onclick="document.location.href='list.do?pageNum=${ pageNum }'"> 
 				</td>
-			</tr>
-			
+			</tr>	
 		</table>
 	</form>
 	</center>
-	
-	
   </div>
-  <!-- /.container -->
-
- 
+	
+  
   <jsp:include page="/footer.jsp"/>
+
+
 
 </body>
 

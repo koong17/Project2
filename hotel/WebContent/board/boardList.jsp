@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>  
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/minjee
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +37,7 @@
 <jsp:include page="/navigation.jsp"/>
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container" style="height:767px;">
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">고객문의
@@ -63,7 +60,7 @@
    </c:if>
       
    <c:if test="${ count > 0 }">   
-      <table width="700" cellpadding="0" cellspacing="0"
+      <table width="700" cellpadding="0" cellspacing="0" 
          align="center" class="table">
          <tr height="30">
             <td align="center" width="50">번 호</td>

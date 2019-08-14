@@ -35,7 +35,7 @@
 <jsp:include page="/navigation.jsp"/>
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container" style="height:950px;">
 
     
 	    <!-- Page Heading/Breadcrumbs -->

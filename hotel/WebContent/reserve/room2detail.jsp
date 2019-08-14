@@ -29,7 +29,7 @@
 
 
 	<!-- Page Content -->
-	<div class="container">
+	<div class="container" style="height:750px;">
 
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">
