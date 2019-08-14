@@ -27,6 +27,7 @@ public class MemberKakaoController extends HttpServlet{
 		
 		RequestDispatcher dp = request.getRequestDispatcher(page);
 		dp.forward(request, response);
+		
 	}
 
 	@Override
