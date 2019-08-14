@@ -15,5 +15,5 @@
 		alert('메일이 발송되었습니다.');
 	//-->
 	</script>
-	<meta http-equiv="Refresh" content="0; url=login.go" />
+	<meta http-equiv="Refresh" content="0; url=code.go" />
 </c:if>
