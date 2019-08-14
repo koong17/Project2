@@ -50,7 +50,7 @@
 		<h1 class="mt-4 mb-3">예약 확인</h1>
 	
 	<!-- 객실정보 -->
-	<div class="container" id="showShow" style="min-height: 750px;">
+	<div class="container" id="showShow" style="min-height: 700px;">
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index.go">Home</a></li>
