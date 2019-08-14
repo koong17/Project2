@@ -104,7 +104,30 @@
 	    });
 	
 		$(document).ready(function(){
-			
+			if( daterange != null && peopleNum != "인원수") {
+                $('#daterange').val("${daterange}");
+                $('#peopleNum').val("${peopleNum}");
+				$.ajax({
+		            url:"/hotel/reserveForm.to",			//"/hotel/cmntUpdate.do"
+		            				// data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+		            data:{ 			// 사용할 data 다 넣기 ex)cmnt_num: input_cmnt_num, board_num: "${ vo.board_num }", cmnt_content: $("#cmnt_update_content").val()
+		            	
+		            	daterange: "${daterange}",
+		            	peopleNum: "${peopleNum}"
+		            },
+		            beforeSend:function() {
+		                console.log("시작 전...");
+		            },
+		            complete:function() {
+		                console.log("완료 후...");
+		            },
+		            success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
+		                console.log("comment가 정상적으로 수정되었습니다.");
+		                show(data);
+		            	// view 영역의 것들
+		            }
+		        });
+			}
 			
 			$("#searchbtn").click(function() {
 				console.log($( '#daterange' ).val().substr(0,10));
