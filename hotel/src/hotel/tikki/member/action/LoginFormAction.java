@@ -17,7 +17,6 @@ public class LoginFormAction implements MemberAction{
 		} else {
 			session.setAttribute("referer", referer);
 		}
-		System.out.println(" ============================" + referer + " ============================");
 		return "memberjsp/login.jsp";
 	} 
 	

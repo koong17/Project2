@@ -91,29 +91,30 @@
       <div class="col-lg-6">
       	<!-- 예약 바 -->
 		<ul class="breadcrumb">
-		<table><tr>
-		
-     	   <td class='m'>
- 			<div class='input-group date'>
-				<input type="text" style="width: 250px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃">
-			</div></td>
-     	   
-     	    
-			<!-- 인원수 -->
-			<td class='m'>
-			<select class="browser-default custom-select" style="width: 120px;" id="peopleNum" required="required">
-					<option selected >인원수</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-			</select></td>
-			
-			<!-- 검색 submit 버튼 -->
-			<td class='m'><div>
- 			<button class="btn btn-primary" id="searchbtn" onclick="">검색</button></div></td>
- 			</tr>
- 		</table>
+		<form action="reserve.to"  method="post">
+			<table><tr>
+	     	   <td class='m'>
+	 			<div class='input-group date'>
+					<input type="text" style="width: 250px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃" required="required">
+				</div></td>
+	     	   
+	     	    
+				<!-- 인원수 -->
+				<td class='m'>
+				<select class="browser-default custom-select" style="width: 120px;" name="peopleNum" required="required">
+						<option selected >인원수</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+				</select></td>
+				
+				<!-- 검색 submit 버튼 -->
+				<td class='m'><div>
+	 			<input type="submit" class="btn btn-primary" value="검색"></div></td>
+	 			</tr>
+	 		</table>
+ 		</form>
 			
 		</ul> 
 		<!-- </form> 예약바 끝 -->
