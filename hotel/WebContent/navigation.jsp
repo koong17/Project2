@@ -54,7 +54,7 @@
 						aria-expanded="false"><small>${sessionScope.kakaonick}님 페이지 </small> </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="portfolio-item.html">예약확인</a>
+							<a class="dropdown-item" href="mypage.to?nickname=${ sessionScope.nick }">예약확인</a>
 						</div>
 					</li>
 				</ul>
@@ -73,9 +73,9 @@
               객실소개
             </a><!--  포트폴리오1 -> single portfolio item -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="room1detail.html">room1</a>
-              <a class="dropdown-item" href="room2detail.html">room2</a>
-              <a class="dropdown-item" href="room3detail.html">room3</a>
+              <a class="dropdown-item" href="/hotel/room1detail.to">Deluxe</a>
+              <a class="dropdown-item" href="/hotel/room2detail.to">Grand Deluxe</a>
+              <a class="dropdown-item" href="/hotel/room3detail.to">Suite</a>
             </div>
           </li>
             <li class="nav-item">

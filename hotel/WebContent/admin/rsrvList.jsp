@@ -3,6 +3,7 @@
     
 <%@ taglib prefix="c"  uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,7 +83,8 @@
             <td align="center" >체크아웃</td>
             <td align="center" >예약 인원</td>
             <td align="center" >예약자 닉네임</td>
-            <td align="center" >확정 여부</td>
+            <td align="center" >예약 확정</td>
+            <td align="center">삭제</td>
           </tr>
             
       <c:forEach var="list"  items="${ list }">          
@@ -96,12 +98,13 @@
             <td align="center" width="100">
                <c:out value="${ list.room_num }" /> <!-- 객실 번호 -->
             </td>
-            
-            <td align="center" width="100">${ list.check_in } <!-- 체크인 -->
+	
+            <td align="center" width="100">
+            	${ fn:substring( list.check_in, 0, 10) }<!-- 체크인 -->
             </td>
             
             <td align="center" width="100">
-               <c:out value="${ list.check_out }" /> <!-- 체크아웃-->
+               <c:out value="${ fn:substring( list.check_out, 0, 10) }" /> <!-- 체크아웃-->
             </td>
             
             <td align="center" width="100">
@@ -111,16 +114,17 @@
             <td align="center" width="100">
                <c:out value="${ list.rsrv_nick }" /> <!-- 예약자 닉네임-->
             </td>
+
             
             <td align="center" width="100">
-               <c:out value="${ list.rsrv_status }" /> <!-- 확정 여부-->
-            </td>
-            
-            <td align="center" width="100">
-               <input type="button" value="확정변경" onclick=
+               <input class="btn btn-secondary" type="button" value="${ list.rsrv_status }" onclick=
                	"document.location.href='rsrvUpdate.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }&rsrv_status=${ list.rsrv_status }'">
             </td>
             
+            <td align="center" width="100">
+            	<input type='button' value='삭제' class='btn btn-secondary' 
+            		  onclick="document.location.href='rsrvListDeleteForm.admin?rsrv_num=${ list.rsrv_num }&pageNum=${ pageNum }'">
+            </td>
             
   
          </tr>

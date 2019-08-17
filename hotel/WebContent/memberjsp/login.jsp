@@ -34,7 +34,7 @@
 		<!-- Slide One - Set the background image for this slide in the line below -->
 
 <div class="carousel-item active" id="headerheight"
-	style="background-image: url('img/koong.jpg');">
+	style="background-image: url('img/hotel.jpg');">
 <div class="carousel-login d-none d-md-block">
 	<div class="container" align="center">
 		<div class="rows" style="margin-top: 20px;">
@@ -46,11 +46,6 @@
 						<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
 						<p>
 						<!-- <hr class="colorgraph"> -->
-						<c:if test="${ result == -1 }">
-							<script type="text/javascript">
-								alert("아이디나 비밀번호가 틀렸습니다.");
-							</script>
-						</c:if>
 						<div class="form-group">
 							<input type="email" name="email" id="email"
 								class="form-control input-lg" placeholder="Email Address"
@@ -77,7 +72,8 @@
 								<a href="join.go" class="btn btn-primary btn-lg btn-block">회원가입</a>
 							</div>
 							<div style="width: 100%; margin-top: 20px;">
-								<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://localhost:8080/hotel/oauth&response_type=code" onclick="kakaologinform()">
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://10.10.10.178:8080/hotel/oauth&response_type=code">
+
 									<img src="img/kakao_account_login_btn_medium_wide.png" />
 								</a>
 							</div>

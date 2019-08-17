@@ -81,6 +81,7 @@
             <td align="center" >회원 이메일</td>
             <td align="center" >회원 전화번호</td>
             <td align="center" >회원 비밀번호</td>
+            <td align="center">회원 삭제</td>
           </tr>
             
       <c:forEach var="list"  items="${ list }">          
@@ -101,6 +102,11 @@
             
             <td align="center" width="100">
                <c:out value="${ list.password }" /> <!-- 회원비밀번호-->
+            </td>
+            
+            <td align="center" width="100">
+            	<input type='button' value='삭제' class='btn btn-secondary' 
+            		  onclick="document.location.href='memberListDeleteForm.admin?nickname=${ list.nickname }&pageNum=${ pageNum }'">
             </td>
   
   
@@ -165,7 +171,7 @@
 
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark" id="hotel-footer-fix">
+  <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

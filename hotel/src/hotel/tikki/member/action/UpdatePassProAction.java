@@ -14,18 +14,17 @@ public class UpdatePassProAction implements MemberAction {
 		request.setCharacterEncoding("utf-8");
 		MemberVO vo = new MemberVO();
 		String id = request.getParameter("email");
-		String password = request.getParameter("password"); // 현재 비밀번호
+		String password = request.getParameter("password"); 
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		
-		int result = dao.memberLoginCheck(id, password); // 현재 비밀번호 일치 시 값 1 리턴
-		System.out.println("============================\n" + result);
+		int result = dao.memberLoginCheck(id, password); 
+		
 		request.setAttribute("result", result);
 		if(result == 1) {
 			vo.setId(id);
 			vo.setPassword(request.getParameter("password2"));
 			dao.memberUpdatePass(vo);
-			System.out.println(vo.getPassword());
 			return "/memberjsp/updatePasswordPro.jsp";
 		} 
 		

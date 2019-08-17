@@ -16,9 +16,27 @@
   <!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css?after" rel="stylesheet">
 	<link href="vendor/bootstrap/css/inho.css?after" rel="stylesheet">
-
+	
 	<!-- Custom styles for this template -->
 	<link href="css/modern-business.css?after" rel="stylesheet">
+	
+	<!-- hs CSS -->
+	<link href="/hotel/css/hs.css?after" rel="stylesheet">
+	
+	
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<!-- datePicker -->
+	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="/hotel/js/daterangepicker.js"></script>
+	<link rel="stylesheet" type="text/css" href="/hotel/css/daterangepicker.css?after" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
+	
+	<!-- Hyesoo JavaScript -->
+	<script src="/hotel/js/hidden.js"></script>
 </head>
 
 <body>
@@ -35,24 +53,21 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg')">
+        <div class="carousel-item active" style="background-image: url('img/hotel1.jpg')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>사진소개</h3>
-            <p>어쩌구저쩌구~~~</p>
+            <h3>TIKKI</h3>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item" style="background-image: url('img/hotel2.jpg')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Second Slide</h3>
-            <p>This is a description for the second slide.</p>
+          <h3>TIKKI</h3>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item" style="background-image: url('img/hotel3.jpg')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Third Slide</h3>
-            <p>This is a description for the third slide.</p>
+            <h3>TIKKI</h3>
           </div>
         </div>
       </div>
@@ -70,14 +85,39 @@
   <p>
   <!-- Page Content -->
   <div class="container">
-	<h1> kakaoPay api 이용하기 </h1>
-		<form method="post" action="/kakaoPay">
-		    <button>카카오페이로 결제하기</button>
-		</form>
-		
+        
     <!-- Features Section -->
     <div class="row">
       <div class="col-lg-6">
+      	<!-- 예약 바 -->
+		<ul class="breadcrumb">
+		<form action="reserve.to"  method="post">
+			<table><tr>
+	     	   <td>
+	 			<div class='input-group date'>
+					<input type="text" style="width: 250px; margin-left: 22px; margin-right: 12px;" class="form-control" name="daterange" id="daterange" placeholder="  체크인  -  체크아웃" required="required">
+				</div></td>
+	     	   
+	     	    
+				<!-- 인원수 -->
+				<td>
+				<select class="browser-default custom-select" style="width: 120px; margin-right: 12px;" name="peopleNum" required="required">
+						<option selected >인원수</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+				</select></td>
+				
+				<!-- 검색 submit 버튼 -->
+				<td><div>
+	 			<input type="submit" class="btn btn-primary" value="검색"></div></td>
+	 			</tr>
+	 		</table>
+ 		</form>
+			
+		</ul> 
+		<!-- </form> 예약바 끝 -->
         <h2>팀4</h2>
         <p>테스트임니다</p>
         <ul>
@@ -92,7 +132,7 @@
         <p>내용</p>
       </div>
       <div class="col-lg-6">
-        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        <img class="img-fluid rounded" src="/hotel/img/tikki.png" alt="">
       </div>
     </div>
   </div>
@@ -101,9 +141,6 @@
 
   <jsp:include page="footer.jsp"/>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
   <!--  kakaologout js -->
   <script src="js/inho.js"></script>

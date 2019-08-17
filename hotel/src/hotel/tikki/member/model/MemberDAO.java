@@ -125,7 +125,7 @@ public class MemberDAO {
 		return result;
 	} // memberLoginCheck() end
 	
-	public void memberUpdate(MemberVO vo) throws Exception {
+	public void memberUpdate(MemberVO vo, String sessionNick) throws Exception {
 		String sql = "UPDATE MEMBER SET NICKNAME=?, PHONE=? WHERE ID = ?";
 		Connection conn = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -133,6 +133,18 @@ public class MemberDAO {
 		pstmt.setString(1, vo.getNickname());
 		pstmt.setString(2, vo.getPhone());
 		pstmt.setString(3, vo.getId());
+		pstmt.executeUpdate();
+		
+		sql = "UPDATE RESERVATION SET RSRV_NICK=? WHERE RSRV_NICK=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getNickname() );
+		pstmt.setString(2, sessionNick);
+		pstmt.executeUpdate();
+		
+		sql = "UPDATE BOARD SET BOARD_NICK=? WHERE BOARD_NICK=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, vo.getNickname() );
+		pstmt.setString(2, sessionNick);
 		pstmt.executeUpdate();
 		
 		CloseUtil.close(pstmt);  CloseUtil.close(conn);
@@ -221,5 +233,34 @@ public class MemberDAO {
 		
 		return key.toString();		
 	}
-
+	public int memberCodeCheck(String code) throws Exception {  // 임시 코드 일치 체크 (일치하면 1, 일치하지 않으면 -1)
+		String sql = "SELECT PASSWORD FROM MEMBER WHERE PASSWORD = ?";
+		int result = -1;
+		
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, code);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if( rs.next() ) result = 1;
+		else result = -1;  
+		
+		CloseUtil.close(rs);  CloseUtil.close(pstmt); CloseUtil.close(conn);
+		return result;
+	}
+	
+	
+	public void memberCodePass(String password, String code) throws Exception {
+		String sql = "UPDATE MEMBER SET PASSWORD=? WHERE PASSWORD = ?";
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		System.out.println(password);
+		System.out.println(code);
+		pstmt.setString(1, password);
+		pstmt.setString(2, code);
+		pstmt.executeUpdate();
+		
+		CloseUtil.close(pstmt);  CloseUtil.close(conn);
+	}
+	
 }

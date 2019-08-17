@@ -68,7 +68,7 @@ public class BoardDAO {  // controller
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, number);
 			pstmt.setString(2, vo.getBoard_nick());
-			pstmt.setString(3, vo.getBoard_content());
+			pstmt.setString(3, vo.getBoard_content().replaceAll("(?i)<", "&lt;"));
 			pstmt.setString(4, vo.getBoard_title());	
 			
 			pstmt.executeUpdate();
@@ -110,7 +110,7 @@ public class BoardDAO {  // controller
 		ResultSet rs = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
-		List  list = null;
+		List list = null;
 		try {
 			conn = getConnection();
 			StringBuffer  sb = new StringBuffer();
@@ -268,6 +268,10 @@ public class BoardDAO {  // controller
 			pstmt.setInt(1, board_num);
 			pstmt.executeUpdate();
 			
+			pstmt = conn.prepareStatement("DELETE FROM COMMENTS WHERE BOARD_NUM = ?");
+			pstmt.setInt(1, board_num);
+			pstmt.executeUpdate();
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

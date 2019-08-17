@@ -37,9 +37,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
 
-<!-- Hyesoo JavaScript -->
-<script src="/hotel/js/hidden.js"></script>
-
 </head>
 
 <body>
@@ -47,7 +44,7 @@
 
 
 	<!-- Page Content -->
-	<div class="container" id="f">
+	<div class="container" id="f" >
 
 		<!-- Page Head -->
 		<h1 class="mt-4 mb-3">예약 확인</h1>
@@ -59,16 +56,21 @@
 			<li class="breadcrumb-item"><a href="index.go">Home</a></li>
 			<li class="breadcrumb-item active">나의 예약 현황 목록</li>
 		</ol>
-			
-		<%-- <c:if test="${ count == 0 }">   
+		<c:if test="${ count == 0 }">
 	      <h2><center>예약 내역이 존재하지 않습니다.</center></h2>
-	   </c:if> --%>
+	    </c:if>
 		<c:forEach var="list"  items="${ list }">
 			<div class="row">
 				<div class="col-md-7">
-					<a href="room1detail.jsp"> <img
-						class="img-fluid rounded mb-3 mb-md-0" src="../img/koong.jpg" alt="">
-					</a>
+					<c:if test="${ list.room_type eq 'Deluxe' }">
+						<a href="room1detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/deluxe.jpg" alt=""></a>
+					</c:if>
+					<c:if test="${ list.room_type eq 'Grand Deluxe' }">
+						<a href="room2detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/grand.jpg" alt=""></a>
+					</c:if>
+					<c:if test="${ list.room_type eq 'Suite' }">
+						<a href="room3detail.to"> <img	class="img-fluid rounded mb-3 mb-md-0" src="/hotel/img/suite.jpg" alt=""></a>
+					</c:if>
 				</div>
 				<div class="col-md-5">
 				<table >

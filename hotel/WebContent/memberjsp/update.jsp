@@ -19,6 +19,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css?after" rel="stylesheet">
+<script src="vendor/jquery/jquery.min.js?after"></script>
 <script src="js/inho.js"></script>
 </head>
 <c:if test="${ sessionScope.id == null}">
@@ -29,7 +30,7 @@
 	<header>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('img/koong.jpg'); height: 833px;">
+        <div class="carousel-item active" style="background-image: url('img/hotel.jpg'); height: 833px;">
           <div class="carousel-join d-none d-md-block">
           	<div class="container" align="center">
 				<div class="rows" style="margin-top: 20px;" >
@@ -45,6 +46,8 @@
 										class="form-control input-lg" value="${ sessionScope.id }">
 								</div>
 								<div class="form-group">
+									<input type="hidden" name="sessionNick" id="sessionNick"
+										class="form-control input-lg" value="${ sessionScope.nick }">
 									<input type="text" name="nickname" id="nickname"
 										class="form-control input-lg" placeholder="nickname" required="required" onkeyup="ajaxNickSend()" maxlength="12">
 										<span id="nicknameTag" style="color: white;"></span>

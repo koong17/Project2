@@ -17,21 +17,23 @@ public class ReserveFormAction implements CommandAction {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		  String daterange = request.getParameter("daterange"); 
-		  String checkIn = daterange.substring(0, 10); 
-		  String checkOut = daterange.substring(13, 23);
+	    String daterange = request.getParameter("daterange"); 
+	    String checkIn = daterange.substring(0, 10); 
+	    String checkOut = daterange.substring(13, 23);
 
-		String peopleNum = request.getParameter("peopleNum");
+		int peopleNum = Integer.parseInt(request.getParameter("peopleNum"));
 		
 		ReserveDAO dao = ReserveDAO.getInstance();
 		ArrayList<Integer> roomList = new ArrayList<>();
 		
-		roomList = dao.select(checkIn, checkOut);
+		roomList = dao.select(checkIn, checkOut, peopleNum);
 		
 		JSONArray jsonArr = new JSONArray(roomList);
         PrintWriter pw = response.getWriter();
         pw.println(jsonArr);
         
+        System.out.println(peopleNum);
+        System.out.println(jsonArr);
         return null;
 	}
 
