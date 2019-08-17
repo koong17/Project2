@@ -45,7 +45,6 @@
 					<fieldset>
 						<h2>TIKKI에 오신 것을 <br> 환영합니다.</h2>
 						<p>
-						<!-- <hr class="colorgraph"> -->
 						<div class="form-group">
 							<input type="email" name="email" id="email"
 								class="form-control input-lg" placeholder="Email Address"
@@ -56,12 +55,7 @@
 								class="form-control input-lg" placeholder="Password"
 								required="required">
 						</div>
-						<!-- <span class="button-checkbox">
-			<button type="button" class="btn" data-color="info">Remember Me</button>
-                  <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
-			<a href="" class="btn btn-link pull-right">Forgot Password?</a>
-		</span> -->
-						<!-- <hr class="colorgraph"> -->
+					
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<input type="submit"
@@ -72,7 +66,7 @@
 								<a href="join.go" class="btn btn-primary btn-lg btn-block">회원가입</a>
 							</div>
 							<div style="width: 100%; margin-top: 20px;">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://10.10.10.178:8080/hotel/oauth&response_type=code">
+								<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec92d2854a2481b9f4735c5c1164cc8b&redirect_uri=http://10.10.10.178:8080/hotel/oauth&response_type=code">
 
 									<img src="img/kakao_account_login_btn_medium_wide.png" />
 								</a>

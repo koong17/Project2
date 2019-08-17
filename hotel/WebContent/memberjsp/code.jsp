@@ -32,7 +32,7 @@
 
 <div class="carousel-item active" id="headerheight"
 	style="background-image: url('img/hotel.jpg');">
-<div class="carousel-login d-none d-md-block">
+<div class="carousel-pwd d-none d-md-block">
 	<div class="container" align="center">
 		<div class="rows" style="margin-top: 20px;">
 			<div

@@ -69,7 +69,7 @@ public class BoardDAO {  // controller
 			pstmt.setInt(1, number);
 			pstmt.setString(2, vo.getBoard_nick());
 			pstmt.setString(3, vo.getBoard_content().replaceAll("(?i)<", "&lt;"));
-			pstmt.setString(4, vo.getBoard_title());	
+			pstmt.setString(4, vo.getBoard_title().replaceAll("(?i)<", "&lt;"));	
 			
 			pstmt.executeUpdate();
 		} catch(Exception e) {

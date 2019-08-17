@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import hotel.tikki.member.action.KakaoAPI;
+import hotel.tikki.member.action.KakaoLogin;
 
 @WebServlet("/logout.kakao")
 public class MemberKakaoLogoutController extends HttpServlet{
@@ -33,7 +33,7 @@ public class MemberKakaoLogoutController extends HttpServlet{
 	}
 
 	public String logout(HttpSession session, HttpServletRequest request) {
-		KakaoAPI kakaoapi = new KakaoAPI();
+		KakaoLogin kakaoapi = new KakaoLogin();
 	    kakaoapi.kakaoLogout((String)session.getAttribute("access_Token"));
 	    
 	    session.removeAttribute("access_Token");
