@@ -10,5 +10,4 @@ public class InsertFormAction implements CommandAction {
 		
 		return "/hotel/reserveForm.jsp";
 	}
-
 }
