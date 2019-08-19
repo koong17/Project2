@@ -34,7 +34,7 @@ public class ReserveDAO {
    
    
  //getListAllCount() : list.jsp 페이지에서 사용할 레코드 갯수 얻어오는 메소드
- 	public int getListAllCount() {
+ 	public int getListAllCount(String nickname) {
  		Connection conn = null;
  		PreparedStatement pstmt = null;
  		ResultSet rs = null;
@@ -44,7 +44,8 @@ public class ReserveDAO {
  			conn = getConnection();
  			
  			//현재 board 테이블의 레코드 수 구하기
- 			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM RESERVATION" );
+ 			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM RESERVATION WHERE RSRV_NICK=?" );
+ 			pstmt.setString(1, nickname);
  			rs = pstmt.executeQuery();
  			
  			if( rs.next() ) count = rs.getInt(1);

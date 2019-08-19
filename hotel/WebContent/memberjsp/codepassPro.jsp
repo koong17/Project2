@@ -7,7 +7,7 @@
 		alert('비밀번호가 변경되었습니다.');
 	//-->
 </script>
-<meta http-equiv="Refresh" content="0; url=index.go" />
+<meta http-equiv="Refresh" content="0; url=login.go" />
 </c:if>
 
 <c:if test="${ result == -1 }">

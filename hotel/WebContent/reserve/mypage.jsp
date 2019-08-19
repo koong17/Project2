@@ -50,14 +50,14 @@
 		<h1 class="mt-4 mb-3">예약 확인</h1>
 	
 	<!-- 객실정보 -->
-	<div class="container" id="showShow" >
+	<div class="container" id="showShow" style="min-height: 700px;">
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index.go">Home</a></li>
 			<li class="breadcrumb-item active">나의 예약 현황 목록</li>
 		</ol>
-		<c:if test="${ count == 0 }">   
-	      <h2>예약 내역이 존재하지 않습니다.</h2>
+		<c:if test="${ count == 0 }">
+	      <h2><center>예약 내역이 존재하지 않습니다.</center></h2>
 	    </c:if>
 		<c:forEach var="list"  items="${ list }">
 			<div class="row">

@@ -36,10 +36,10 @@ public class MemberKakaoController extends HttpServlet{
 	}
 
 	public String login(HttpServletRequest request, HttpServletResponse response, String code, HttpSession session) {
-		KakaoLogin kakaoapi = new KakaoLogin();
-		String access_Token = kakaoapi.getAccessToken(code);
+		KakaoLogin kakaologin = new KakaoLogin();
+		String access_Token = kakaologin.getAccessToken(code);
 		System.out.println(access_Token);
-		HashMap<String, Object> userInfo = kakaoapi.getUserInfo(access_Token);
+		HashMap<String, Object> userInfo = kakaologin.getUserInfo(access_Token);
 		
 		System.out.println("login Controller : " + userInfo);
 		    

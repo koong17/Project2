@@ -43,7 +43,7 @@ function password2validate() {
 
 function nicknamevalidate() {
 	var nickname = document.getElementById("nickname").value;
-	var re =  /^[a-z0-9가-힣]{2,12}$/; // 닉네임 적합한지 검사할 정규식
+	var re =  /^[A-z0-9가-힣]{2,12}$/; // 닉네임 적합한지 검사할 정규식
 	var nicknameTag = document.getElementById("nicknameTag");
 	var result = false;
 	if (!re.test(nickname)) {
@@ -69,7 +69,7 @@ function phonevalidate() {
 }
 
 function validate() {
-       var re =  /^[a-z0-9가-힣]{2,12}$/; // 닉네임 적합한지 검사할 정규식
+       var re =  /^[A-z0-9가-힣]{2,12}$/; // 닉네임 적합한지 검사할 정규식
        var pass = /([^\s\w]|[A-z0-9]){8,16}/; // 패스워드 적합한지 검사할 정규식
        var re2 = /^[0-9a-zA-Z][0-9a-zA-Z\_\-\.\+]+[0-9a-zA-Z]@[0-9a-zA-Z][0-9a-zA-Z\_\-]*[0-9a-zA-Z](\.[a-zA-Z]{2,6}){1,2}$/; // 이메일이 적합한지 검사할 정규식
        var re3 = /^[0-9]{9,11}$/; // 전화번호 적합한지 검사할 정규식

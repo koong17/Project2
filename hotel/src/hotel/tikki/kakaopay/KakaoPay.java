@@ -73,8 +73,4 @@ public class KakaoPay {
 		}
 		return element;
 	}
-	
-	public static void paySuccess(ReserveVO vo) {
-		
-	}
 }

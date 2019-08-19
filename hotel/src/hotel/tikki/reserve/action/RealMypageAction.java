@@ -15,7 +15,7 @@ public class RealMypageAction implements CommandAction {
 		String nickname = request.getParameter("nickname");
 		List list = null;
 		ReserveDAO  dao = ReserveDAO.getInstance();
-		int count = dao.getListAllCount(); 
+		int count = dao.getListAllCount(nickname); 
 		
 		if( count > 0 ) {
 			list = dao.getSelectAll(nickname);  //레코드 목록 보기
@@ -24,6 +24,7 @@ public class RealMypageAction implements CommandAction {
 		}
 		
 		request.setAttribute("count", count);
+		System.out.println("count : "+count+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		request.setAttribute("list", list);
 		return "/reserve/mypage.jsp";
 	}
