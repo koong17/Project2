@@ -119,15 +119,15 @@
 		</ul> 
 		<!-- </form> 예약바 끝 -->
         <h2>팀4</h2>
-        <p>테스트임니다</p>
+        <p>프로젝트 입니다</p>
         <ul>
           <li>
-            <strong>인ㅎㅗ</strong>
+            <strong>다람쥐대장</strong>
           </li>
-          <li>민지</li>
-          <li>수아</li>
-          <li>지형</li>
-          <li>혜수</li>
+          <li>구리너구리</li>
+          <li>짜짜짜</li>
+          <li>문달달이</li>
+          <li>Enodave</li>
         </ul>
         <p>내용</p>
       </div>
