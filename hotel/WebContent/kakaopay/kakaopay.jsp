@@ -53,7 +53,7 @@
       function kakaopay(e){
          e.preventDefault();
          $.ajax({
-            url : 'http://localhost:8080/hotel/pay',
+            url : 'http://ec2-15-164-228-53.ap-northeast-2.compute.amazonaws.com:8080/hotel/pay',
             type : 'GET',
             success : function(res){
                res = JSON.parse(res);
@@ -61,7 +61,7 @@
                popup = window.open(res.next_redirect_pc_url, '카카오 결제', 'width=450, height=600, status=no, toolbar=no, location=no, top=200, left=200');
                timer = setInterval(function(){
                   if(popup.closed){
-                     location.href="http://localhost:8080/hotel/index.go"
+                     location.href="http://ec2-15-164-228-53.ap-northeast-2.compute.amazonaws.com:8080/hotel/index.go"
                   }
                }, 1000)
             }
